@@ -1,0 +1,22 @@
+.avatar-div {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: -100px;
+
+  /* box-shadow: 0px 0px 5px 2px #888888; */
+}
+
+#avatar-img {
+  border-radius: 100px;
+  border-width: 10px;
+  background-color: white;
+  padding: 10px;
+}
+
+#title {
+  position: absolute;
+  font-family: sans-serif;
+  text-align: center;
+  top: 100px;
+}

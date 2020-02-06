@@ -1,0 +1,287 @@
+<!-- Central Modal Small -->
+<div
+  class="modal fade"
+  id="registerModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div
+        class="modal-header"
+        style="background-color: #FF3547; color: white;"
+      >
+        <h4 class="modal-title w-100" id="myModalLabel">
+          <a
+            ><i
+              style="padding-right: 10px !important;"
+              class="fas fa-user-plus"
+            ></i></a
+          >Register
+        </h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          style="color: white;"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <ul class="stepper linear">
+          <li class="step active">
+            <div
+              data-step-label="Enter your details"
+              class="step-title waves-effect waves-dark"
+            >
+              Step 1
+            </div>
+            <div class="step-new-content">
+              <div class="row">
+                <div class="md-form col-6 ml-auto">
+                  <input
+                    id="username-linear"
+                    type="text"
+                    class="form-control validate"
+                    required
+                  />
+                  <label for="username-linear">Username</label>
+                </div>
+                <div class="md-form col-6 ml-auto">
+                  <input
+                    id="password-linear"
+                    type="password"
+                    class="form-control validate"
+                    required
+                  />
+                  <label for="password-linear">Password</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="md-form col-6 ml-auto">
+                  <input
+                    id="firstname-linear"
+                    type="text"
+                    class="form-control validate"
+                    required
+                  />
+                  <label for="firstname-linear">First name</label>
+                </div>
+                <div class="md-form col-6 ml-auto">
+                  <input
+                    id="lastname-linear"
+                    type="text"
+                    class="form-control validate"
+                    required
+                  />
+                  <label for="lastname-linear">Last name</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="md-form col-12 ml-auto">
+                  <input
+                    id="status-linear"
+                    type="text"
+                    class="form-control validate"
+                  />
+                  <label for="status-linear">Write a status line</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="md-form col-6 ml-auto">
+                  <input
+                    id="email-linear"
+                    type="email"
+                    class="form-control validate"
+                    required
+                  />
+                  <label for="email-linear">Email</label>
+                </div>
+                <div class="md-form col-6 ml-auto">
+                  <input
+                    id="phone-linear"
+                    type="text"
+                    class="form-control validate"
+                    required
+                  />
+                  <label for="phone-linear">Phone number</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="md-form col-12 ml-auto">
+                  <div class="file-field">
+                    <div
+                      style="background-color: #FF3547 !important;"
+                      class="btn btn-primary btn-sm float-left"
+                    >
+                      <span style="font-family: sans-serif !important;"
+                        >Choose file</span
+                      >
+                      <input type="file" />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input
+                        class="file-path validate"
+                        type="text"
+                        placeholder="Upload your picture"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-actions">
+                <button
+                  style="background-color: #FF3547 !important;"
+                  class="waves-effect waves-dark btn btn-sm btn-primary next-step"
+                >
+                  CONTINUE
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="step">
+            <div
+              data-step-label="Set up your organization"
+              class="step-title waves-effect waves-dark"
+            >
+              Step 2
+            </div>
+            <div class="step-new-content">
+              <div class="row">
+                <div class="md-form col-6 ml-auto">
+                  <input
+                    id="orgname-linear"
+                    type="text"
+                    class="form-control validate"
+                    required
+                  />
+                  <label for="orgname-linear">Name of organization</label>
+                </div>
+                <div class="md-form col-6 ml-auto">
+                  <input
+                    id="website-linear"
+                    type="url"
+                    class="form-control validate"
+                    required
+                  />
+                  <label for="website-linear">Website</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="md-form col-12 ml-auto">
+                  <input
+                    id="address-linear"
+                    type="text"
+                    class="form-control validate"
+                    required
+                  />
+                  <label for="address-linear">Address</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="md-form form-group col-12 ml-auto">
+                  <div class="md-form mb-4 pink-textarea active-pink-textarea">
+                    <textarea
+                      id="about-linear"
+                      class="md-textarea form-control"
+                      rows="3"
+                    ></textarea>
+                    <label for="about-linear">About this organization</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="md-form col-6 ml-auto">
+                  <input
+                    id="orgphone-linear"
+                    type="text"
+                    class="form-control validate"
+                  />
+                  <label for="orgphone-linear">Phone number</label>
+                </div>
+                <div class="md-form col-6 ml-auto">
+                  <div class="file-field">
+                    <div
+                      style="background-color: #FF3547 !important;"
+                      class="btn btn-primary btn-sm float-left"
+                    >
+                      <span style="font-family: sans-serif !important;"
+                        >Choose file</span
+                      >
+                      <input type="file" />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input
+                        class="file-path validate"
+                        type="text"
+                        placeholder="Upload logo"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-actions">
+                <button
+                  style="background-color: #FF3547 !important;"
+                  class="waves-effect waves-dark btn btn-sm btn-primary next-step"
+                >
+                  CONTINUE
+                </button>
+                <button
+                  class="waves-effect waves-dark btn btn-sm btn-secondary previous-step"
+                >
+                  BACK
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="step">
+            <div
+              data-step-label="Welcome to Connectico"
+              class="step-title waves-effect waves-dark"
+            >
+              Step 3
+            </div>
+            <div class="step-new-content">
+              You're all set! Click submit to continue.
+              <div class="step-actions">
+                <button
+                  style="background-color: #FF3547 !important;"
+                  class="waves-effect waves-dark btn btn-sm btn-primary m-0 mt-4"
+                  type="button"
+                >
+                  SUBMIT
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          style="background-color: #FF3547 !important;"
+          type="button"
+          class="close-button"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Central Modal Small -->

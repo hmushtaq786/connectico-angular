@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div
+        style="text-align: center; top: 150px; background-color: #f0f2ef;"
+        class="col-md-8"
+      >
+        <div
+          style="font-size: 20px; padding: 10px; font-family: sans-serif; color: white; background-color: royalblue;"
+          class="row"
+        >
+          <a style="margin-right:5px; color: white;"
+            ><i class="fas fa-address-card"></i></a
+          >Details
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="row heading-column" (click)="changeSection($event)">
+              <a style="margin-right:5px"
+                ><i class="fas fa-question-circle"></i></a
+              >About
+            </div>
+            <div class="row heading-column" (click)="changeSection($event)">
+              <a style="margin-right:5px"><i class="fas fa-briefcase"></i></a
+              >Organization
+            </div>
+            <div class="row heading-column" (click)="changeSection($event)">
+              <a style="margin-right:5px"><i class="fas fa-cog"></i></a>Settings
+            </div>
+          </div>
+          <div class="col-md-9">
+            <!-- inside details box -->
+            <app-details-about
+              *ngIf="currentSection === 'About'"
+            ></app-details-about>
+            <app-details-organization
+              *ngIf="currentSection === 'Organization'"
+            ></app-details-organization>
+            <app-details-settings
+              *ngIf="currentSection === 'Settings'"
+            ></app-details-settings>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</div>

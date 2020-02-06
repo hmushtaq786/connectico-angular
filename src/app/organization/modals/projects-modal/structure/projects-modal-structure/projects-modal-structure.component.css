@@ -1,0 +1,53 @@
+#avatar-img {
+  border-radius: 100px;
+}
+
+.view-button {
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 15px;
+  width: 100px;
+  height: 35px;
+  margin-left: 0px;
+  margin-right: 0px;
+  border: 1px solid royalblue;
+  font-family: sans-serif;
+  background-color: white;
+}
+
+.view-button:hover {
+  background-color: royalblue;
+  color: white;
+}
+
+.close-button {
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 15px;
+  width: 100px;
+  height: 35px;
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: royalblue;
+  border: 1px solid white;
+  color: white;
+  font-family: sans-serif;
+}
+
+.close-button:hover {
+  background-color: royalblue;
+  border: 1px solid cornflowerblue;
+}
+/* 
+  #centralModalSm {
+    overflow-y: initial;
+  } */
+
+.modal-body {
+  height: 400px;
+  overflow-y: auto;
+}
+
+.member-tile:hover {
+  background-color: rgb(233, 233, 233);
+}

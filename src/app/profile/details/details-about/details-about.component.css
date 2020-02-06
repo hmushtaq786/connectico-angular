@@ -1,0 +1,10 @@
+.about-column {
+  text-align: left;
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+.left-column {
+  font-weight: bold;
+}

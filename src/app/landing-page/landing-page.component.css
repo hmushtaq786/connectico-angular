@@ -1,0 +1,38 @@
+.background {
+  position: relative;
+  height: 100vh;
+  background-image: url("../../assets/images/landing-page-bg.jpg");
+}
+
+.element-div {
+  position: relative;
+  top: 25%;
+  left: 30%;
+  /* backdrop-filter: blur(3px); */
+}
+
+h1 {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 70px;
+  color: royalblue;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+h4 {
+  /* color: royalblue; */
+  /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+  font-family: sans-serif;
+}
+
+.login-btn {
+  background-color: royalblue !important;
+  text-align: right !important;
+  left: 5%;
+}
+
+.btn {
+  font-family: sans-serif !important;
+  text-transform: none !important;
+  font-size: 17px;
+}

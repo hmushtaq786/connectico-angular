@@ -1,0 +1,29 @@
+.workspace-capsule {
+  background-color: #00227b;
+  padding: 5px;
+  text-align: center;
+  border-width: 10px;
+  border-color: white;
+}
+.project-capsule {
+  background-color: #00227b;
+  padding: 5px;
+  text-align: center;
+  border-width: 10px;
+  border-color: white;
+}
+
+.task-capsule {
+  background-color: #00227b;
+  padding: 5px;
+  text-align: center;
+  border-width: 10px;
+  border-color: white;
+}
+
+.capsule-text {
+  color: white;
+  font-family: sans-serif;
+  vertical-align: bottom;
+  text-align: ;
+}

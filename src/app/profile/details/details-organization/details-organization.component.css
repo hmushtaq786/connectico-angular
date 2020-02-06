@@ -1,0 +1,14 @@
+.avatar-div {
+  width: 100px;
+  height: 100px;
+}
+#avatar-img {
+  border-radius: 100px;
+  background-color: white;
+  padding: 5px;
+}
+
+#title {
+  font-family: sans-serif;
+  font-size: 25px;
+}
