@@ -1,6 +1,7 @@
 # Connectico-Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+Connectico is a project management and inter-organization social media application using Django and Angular. This repository is for the angular part of that application.
 
 ## Development server
 
