@@ -121,10 +121,6 @@ export class RegisterModalComponent implements OnInit {
                                 (getOrganizationResult: any) => {
                                   this.user["organization_id"] =
                                     getOrganizationResult.id;
-                                  console.log(getOrganizationResult);
-                                  console.log(getOrganizationResult.id);
-                                  console.log(this.user);
-                                  console.log(this.user["organization_id"]);
                                   var org_id = {
                                     organization_id: getOrganizationResult.id
                                   };
@@ -132,13 +128,27 @@ export class RegisterModalComponent implements OnInit {
                                     .updateUser(getUserRegister.id, org_id)
                                     .subscribe(
                                       (updateUserResult: any) => {
-                                        console.log(updateUserResult);
-                                        hideRegisterModal();
-                                        localStorage.setItem(
-                                          "user",
-                                          JSON.stringify(this.user)
-                                        );
-                                        this.router.navigate(["profile"]);
+                                        this.connectionService
+                                          .getUser(this.user.username)
+                                          .subscribe(
+                                            (getUserResult: any) => {
+                                              localStorage.setItem(
+                                                "user",
+                                                JSON.stringify(getUserResult)
+                                              );
+                                              localStorage.setItem(
+                                                "org",
+                                                JSON.stringify(
+                                                  getOrganizationResult
+                                                )
+                                              );
+                                              hideRegisterModal();
+                                              this.router.navigate(["profile"]);
+                                            },
+                                            error => {
+                                              console.log(error);
+                                            }
+                                          );
                                       },
                                       error => {
                                         console.log(error);
