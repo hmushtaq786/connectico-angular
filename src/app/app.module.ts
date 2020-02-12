@@ -1,9 +1,13 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { RouterModule, Routes } from "@angular/router";
+
+import { HttpClientModule } from "@angular/common/http";
+
+import { CookieService } from "ngx-cookie-service";
 
 // Profile components
 import { ProfileStructureComponent } from "./profile/structure/structure.component";
@@ -32,9 +36,12 @@ import { LandingPageComponent } from "./landing-page/landing-page.component";
 import { LandingPageModalsComponent } from "./landing-page/landing-page-modals/landing-page-modals.component";
 import { RegisterModalComponent } from "./landing-page/landing-page-modals/register-modal/register-modal.component";
 import { LoginModalComponent } from "./landing-page/landing-page-modals/login-modal/login-modal.component";
-import { AppRoutingModule } from './app-routing.module';
-import { WorkspaceComponent } from './workspace/workspace.component';
-import { FeedComponent } from './workspace/feed/feed.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { WorkspaceComponent } from "./workspace/workspace.component";
+import { FeedComponent } from "./workspace/feed/feed.component";
+import { WorkspaceHomeComponent } from "./workspace/workspace-home/workspace-home.component";
+import { WorkspaceProjectComponent } from "./workspace/workspace-project/workspace-project.component";
+import { ConnectionService } from "./connection.service";
 
 @NgModule({
   declarations: [
@@ -67,10 +74,19 @@ import { FeedComponent } from './workspace/feed/feed.component';
     RegisterModalComponent,
     LoginModalComponent,
     WorkspaceComponent,
-    FeedComponent
+    FeedComponent,
+    WorkspaceHomeComponent,
+    WorkspaceProjectComponent
   ],
-  imports: [BrowserModule, FormsModule, RouterModule, AppRoutingModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    AppRoutingModule,
+    HttpClientModule
+  ],
+  providers: [ConnectionService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

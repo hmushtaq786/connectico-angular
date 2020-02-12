@@ -7,7 +7,7 @@
   >
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column">
+        <div class="row heading-column" (click)="leftbar_click($event)">
           <a style="margin-right:5px"><i class="fas fa-home"></i></a>Home
         </div>
       </div>
@@ -15,7 +15,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column">
+        <div class="row heading-column" (click)="leftbar_click($event)">
           <a style="margin-right:5px"><i class="fas fa-newspaper"></i></a>Feed
         </div>
       </div>
@@ -23,7 +23,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column">
+        <div class="row heading-column" (click)="leftbar_click($event)">
           <a style="margin-right:5px"><i class="fas fa-tasks"></i></a>Projects
         </div>
       </div>
@@ -52,9 +52,14 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <app-feed></app-feed>
+        <app-workspace-home
+          *ngIf="screen === 'workspace_home'"
+        ></app-workspace-home>
+        <app-feed *ngIf="screen === 'feed'"></app-feed>
+        <app-workspace-project
+          *ngIf="screen === 'workspace_project'"
+        ></app-workspace-project>
       </div>
     </div>
-    <!-- <div id="chartdiv" style="height: 500px; width: 100%;"></div> -->
   </div>
 </div>
