@@ -134,6 +134,10 @@ export class RegisterModalComponent implements OnInit {
                                       (updateUserResult: any) => {
                                         console.log(updateUserResult);
                                         hideRegisterModal();
+                                        localStorage.setItem(
+                                          "user",
+                                          JSON.stringify(this.user)
+                                        );
                                         this.router.navigate(["profile"]);
                                       },
                                       error => {
