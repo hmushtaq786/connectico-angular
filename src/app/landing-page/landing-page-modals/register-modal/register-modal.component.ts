@@ -13,6 +13,7 @@ import { Cloudinary } from "@cloudinary/angular-5.x";
 
 import { ConnectionService } from "../../../connection.service";
 
+declare const hideRegisterModal: any;
 declare const stepper: any;
 
 @Component({
@@ -132,6 +133,7 @@ export class RegisterModalComponent implements OnInit {
                                     .subscribe(
                                       (updateUserResult: any) => {
                                         console.log(updateUserResult);
+                                        hideRegisterModal();
                                         this.router.navigate(["profile"]);
                                       },
                                       error => {
