@@ -27,6 +27,11 @@ interface Organization {
   photo_address: string;
 }
 
+interface AuthCredentials {
+  username: string;
+  password: string;
+}
+
 @Injectable({
   providedIn: "root"
 })
@@ -129,6 +134,13 @@ export class ConnectionService {
     const org = JSON.stringify(organizationData);
     return this.httpClient.post(`${this.baseUrl}register/organizations/`, org, {
       headers: this.getHeaders()
+    });
+  }
+
+  loginUser(credentials: AuthCredentials) {
+    const body = JSON.stringify(credentials);
+    return this.httpClient.post(`${this.baseUrl}auth/`, body, {
+      headers: this.getAuthHeaders()
     });
   }
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { ConeColumn } from "@amcharts/amcharts4/charts";
 
+import { CookieService } from "ngx-cookie-service";
+
 import { Router } from "@angular/router";
 
 import {
@@ -62,7 +64,8 @@ export class RegisterModalComponent implements OnInit {
 
   constructor(
     private connectionService: ConnectionService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) {}
 
   ngOnInit() {
@@ -142,8 +145,28 @@ export class RegisterModalComponent implements OnInit {
                                                   getOrganizationResult
                                                 )
                                               );
-                                              hideRegisterModal();
-                                              this.router.navigate(["profile"]);
+                                              var loginData = {
+                                                username:
+                                                  getUserResult.username,
+                                                password: this.user.password
+                                              };
+                                              this.connectionService
+                                                .loginUser(loginData)
+                                                .subscribe(
+                                                  (loginUserResult: any) => {
+                                                    this.cookieService.set(
+                                                      "auth-token",
+                                                      loginUserResult.token
+                                                    );
+                                                    hideRegisterModal();
+                                                    this.router.navigate([
+                                                      "profile"
+                                                    ]);
+                                                  },
+                                                  error => {
+                                                    console.log(error);
+                                                  }
+                                                );
                                             },
                                             error => {
                                               console.log(error);
