@@ -41,3 +41,10 @@ function stepper() {
     $(".stepper").mdbStepper();
   });
 }
+
+function fileTable() {
+  $(document).ready(function() {
+    $("#dtBasicExample").DataTable();
+    $(".dataTables_length").addClass("bs-select");
+  });
+}

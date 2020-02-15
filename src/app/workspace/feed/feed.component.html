@@ -211,5 +211,60 @@
     </div> -->
   </div>
 
-  <div class="col-md-4" style="background-color: #f0f2ef;">side</div>
+  <div class="col-md-4" style="background-color: #f0f2ef;">
+    <div class="row">
+      <div style="padding: 10px;" class="col-md-12">
+        <div class="row" *ngFor="let temp of tempUsers">
+          <div class="col-md-3">
+            <div class="avatar-div">
+              <img
+                id="avatar-img"
+                src="{{ temp.photo_address }}"
+                alt="avatar mx-auto white"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-9" style="margin: auto;">
+            <div class="row">
+              <div style="text-align: left; " class="col-md-12">
+                <a
+                  ><span id="title">{{
+                    temp.first_name + " " + temp.last_name
+                  }}</span></a
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div
+                style="text-align: left; padding-top: 2px;"
+                class="col-md-12"
+              >
+                <a
+                  ><i class="fas fa-envelope"></i
+                  ><span style="margin-left:5px;">
+                    {{ temp.email }}
+                  </span></a
+                >
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div
+                style="text-align: left; padding-top: 2px;"
+                class="col-md-12"
+              >
+                <a
+                  ><i class="fas fa-phone-square-alt"></i
+                  ><span style="margin-left:5px;">
+                    {{ user.phone_number }}
+                  </span></a
+                >
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

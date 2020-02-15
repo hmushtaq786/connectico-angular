@@ -12,3 +12,17 @@
   color: white;
   font-family: sans-serif;
 } */
+.avatar-div {
+  width: 70px;
+  height: 70px;
+}
+#avatar-img {
+  border-radius: 100px;
+  background-color: white;
+  padding: 5px;
+}
+
+#title {
+  font-family: sans-serif;
+  font-size: 20px;
+}
