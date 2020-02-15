@@ -3,7 +3,7 @@
 <div class="row">
   <div
     class="col-md-2"
-    style="background-color: #f0f2ef; border-right: 1px solid lightgrey; position: relative; height: 90vh;"
+    style="background-color: #f0f2ef; border-right: 1px solid lightgrey;  height: auto;"
   >
     <div class="row">
       <div class="col-md-12">
@@ -43,15 +43,30 @@
     <div class="row">
       <div
         class="col-md-12"
-        style="background-color: #7d96ff
-
-      ; color: #F3FFFF;"
+        style="background-color: #7d96ff; color: #F3FFFF; margin: auto;"
       >
-        <h3 style="font-family: sans-serif; padding: 5px;">Workspace 1</h3>
+        <h3 style="font-family: sans-serif; padding: 5px; margin: auto; ">
+          Workspace 1
+          <span style="font-weight: normal; font-size: 25px;"
+            ><i class="fas fa-caret-right"></i>{{ " " + page }}</span
+          >
+        </h3>
       </div>
     </div>
-    <div class="container-fluid row">
-      <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12" *ngIf="screen === 'workspace_home'">
+        <app-workspace-home></app-workspace-home>
+      </div>
+      <div class="col-md-12" *ngIf="screen === 'feed'">
+        <app-feed></app-feed>
+      </div>
+      <div class="col-md-12" *ngIf="screen === 'workspace_project'">
+        <app-workspace-project></app-workspace-project>
+      </div>
+      <div class="col-md-12" *ngIf="screen === 'workspace_files'">
+        <app-workspace-files></app-workspace-files>
+      </div>
+      <!-- <div class="col-md-12">
         <app-workspace-home
           *ngIf="screen === 'workspace_home'"
         ></app-workspace-home>
@@ -62,7 +77,7 @@
         <app-workspace-files
           *ngIf="screen === 'workspace_files'"
         ></app-workspace-files>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
