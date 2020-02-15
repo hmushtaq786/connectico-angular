@@ -111,11 +111,14 @@ export class ConnectionService {
   }
 
   registerUser(userData: User) {
+    var form_data = new FormData();
+
+    for (var key in userData) {
+      form_data.append(key, userData[key]);
+    }
     console.log(userData);
-    const user = JSON.stringify(userData);
-    return this.httpClient.post(`${this.baseUrl}register/users/`, user, {
-      headers: this.getHeaders()
-    });
+    // const user = JSON.stringify(form_data);
+    return this.httpClient.post(`${this.baseUrl}register/users/`, form_data);
   }
 
   updateUser(u_id, o_id) {

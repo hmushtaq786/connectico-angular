@@ -10,7 +10,7 @@
         <div class="avatar-div">
           <img
             id="avatar-img"
-            src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
+            src="{{ user.photo_address }}"
             alt="avatar mx-auto white"
             class="img-fluid"
           />
@@ -20,7 +20,9 @@
       <div class="col-md-9">
         <div class="row">
           <div style="text-align: left;" class="col-md-12">
-            <a><span id="title">Hamza Mushtaq</span></a>
+            <a
+              ><span id="title">{{ user.first_name + user.last_name }}</span></a
+            >
           </div>
         </div>
         <div class="row">
@@ -28,7 +30,7 @@
             <a
               ><i class="fas fa-envelope"></i
               ><span style="margin-left:5px;">
-                hm.khanzada786@gmail.com
+                {{ user.email }}
               </span></a
             >
           </div>
@@ -38,7 +40,7 @@
             <a
               ><i class="fas fa-phone-square-alt"></i
               ><span style="margin-left:5px;">
-                03006857834
+                {{ user.phone_number }}
               </span></a
             >
           </div>

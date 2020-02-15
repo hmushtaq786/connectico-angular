@@ -4,7 +4,7 @@
     <div class="avatar-div">
       <img
         id="avatar-img"
-        src="https://images.adsttc.com/media/images/54f6/48b6/e58e/cee8/4d00/00ca/large_jpg/01_Max-Dudler_Buerogebaeude-Herostrasse%C2%A9Stefan-Mueller.jpg?1425426591"
+        src="{{ org.photo_address }}"
         alt="avatar mx-auto white"
         class="img-fluid"
       />
@@ -16,7 +16,9 @@
 <div class="row">
   <div class="col-md-5"></div>
   <div class="col-md-2" style="top: 10px;">
-    <span id="title"><h3>Ufone Telecoms</h3></span>
+    <span id="title"
+      ><h3>{{ org.name }}</h3></span
+    >
   </div>
   <div class="col-md-5"></div>
 </div>

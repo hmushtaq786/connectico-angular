@@ -10,7 +10,7 @@
         <a><i style="margin-right: 5px;" class="fas fa-user"></i></a>Description
       </div>
       <div class="col-md-6 about-column right-column">
-        Ufone - Tum Hi Tou Ho!
+        {{ org.description }}
       </div>
     </div>
 
@@ -20,7 +20,7 @@
         >Phone
       </div>
       <div class="col-md-6 about-column right-column">
-        +92 300 0000123
+        {{ org.phone_number }}
       </div>
     </div>
 
@@ -29,7 +29,7 @@
         <a><i style="margin-right: 5px;" class="fas fa-globe"></i></a>Website
       </div>
       <div class="col-md-6 about-column right-column">
-        http://www.jazz.com.pk
+        {{ org.website }}
       </div>
     </div>
 
