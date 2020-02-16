@@ -22,6 +22,7 @@
     "@angular/router": "~8.2.14",
     "@cloudinary/angular-5.x": "^1.1.0",
     "@types/jquery": "^3.3.31",
+    "angular-google-charts": "^0.1.6",
     "axios": "^0.19.2",
     "ng2-file-upload": "^1.4.0",
     "ngx-cookie-service": "^2.3.0",

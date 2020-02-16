@@ -5,6 +5,7 @@ import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { RouterModule, Routes } from "@angular/router";
 
+import { GoogleChartsModule } from "angular-google-charts";
 import { HttpClientModule } from "@angular/common/http";
 
 import { CookieService } from "ngx-cookie-service";
@@ -42,9 +43,9 @@ import { FeedComponent } from "./workspace/feed/feed.component";
 import { WorkspaceHomeComponent } from "./workspace/workspace-home/workspace-home.component";
 import { WorkspaceProjectComponent } from "./workspace/workspace-project/workspace-project.component";
 import { ConnectionService } from "./connection.service";
-import { WorkspaceFilesComponent } from './workspace/workspace-files/workspace-files.component';
-import { ProjectComponent } from './project/project.component';
-import { MessagesComponent } from './messages/messages.component';
+import { WorkspaceFilesComponent } from "./workspace/workspace-files/workspace-files.component";
+import { ProjectComponent } from "./project/project.component";
+import { MessagesComponent } from "./messages/messages.component";
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { MessagesComponent } from './messages/messages.component';
     ReactiveFormsModule,
     RouterModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    GoogleChartsModule
   ],
   providers: [ConnectionService, CookieService],
   bootstrap: [AppComponent]
