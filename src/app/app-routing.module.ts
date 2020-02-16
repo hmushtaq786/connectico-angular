@@ -6,12 +6,16 @@ import { OrganizationStructureComponent } from "./organization/structure/structu
 import { LandingPageComponent } from "./landing-page/landing-page.component";
 import { ProfileStructureComponent } from "./profile/structure/structure.component";
 import { WorkspaceComponent } from "./workspace/workspace.component";
+import { ProjectComponent } from "./project/project.component";
+import { MessagesComponent } from "./messages/messages.component";
 
 const routes: Routes = [
   { path: "", component: LandingPageComponent },
   { path: "profile", component: ProfileStructureComponent },
   { path: "organization", component: OrganizationStructureComponent },
-  { path: "workspace", component: WorkspaceComponent }
+  { path: "workspace", component: WorkspaceComponent },
+  { path: "project", component: ProjectComponent },
+  { path: "messages", component: MessagesComponent }
 ];
 
 @NgModule({

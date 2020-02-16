@@ -43,6 +43,8 @@ import { WorkspaceHomeComponent } from "./workspace/workspace-home/workspace-hom
 import { WorkspaceProjectComponent } from "./workspace/workspace-project/workspace-project.component";
 import { ConnectionService } from "./connection.service";
 import { WorkspaceFilesComponent } from './workspace/workspace-files/workspace-files.component';
+import { ProjectComponent } from './project/project.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { WorkspaceFilesComponent } from './workspace/workspace-files/workspace-f
     FeedComponent,
     WorkspaceHomeComponent,
     WorkspaceProjectComponent,
-    WorkspaceFilesComponent
+    WorkspaceFilesComponent,
+    ProjectComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

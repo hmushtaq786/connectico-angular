@@ -5,6 +5,8 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
+declare const counter: any;
+
 @Component({
   selector: "app-workspace-home",
   templateUrl: "./workspace-home.component.html",
@@ -14,6 +16,7 @@ export class WorkspaceHomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    counter();
     /* Chart code */
     // Themes begin
     am4core.useTheme(am4themes_animated);
@@ -108,5 +111,23 @@ export class WorkspaceHomeComponent implements OnInit {
     let columnTemplate = series.columns.template;
     columnTemplate.strokeWidth = 2;
     columnTemplate.strokeOpacity = 1;
+
+    // google.charts.load('current', {'packages':['timeline']});
+    // google.charts.setOnLoadCallback(drawChart);
+    // function drawChart() {
+    //   var container = document.getElementById('timeline');
+    //   var chart = new google.visualization.Timeline(container);
+    //   var dataTable = new google.visualization.DataTable();
+
+    //   dataTable.addColumn({ type: 'string', id: 'President' });
+    //   dataTable.addColumn({ type: 'date', id: 'Start' });
+    //   dataTable.addColumn({ type: 'date', id: 'End' });
+    //   dataTable.addRows([
+    //     [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
+    //     [ 'Adams',      new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
+    //     [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]]);
+
+    //   chart.draw(dataTable);
+    // }
   }
 }

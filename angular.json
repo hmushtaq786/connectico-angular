@@ -24,7 +24,7 @@
               "src/styles.css",
               "src/assets/mdbootstrap/css/bootstrap.min.css",
               "src/assets/mdbootstrap/css/mdb.min.css",
-              "src/assets/fontawesome/css/all.min.css",
+              "../FYP/frontend/src/assets/fontawesome-pro/css/all.min.css",
               "src/assets/mdbootstrap/css/addons-pro/steppers.min.css"
             ],
             "scripts": [

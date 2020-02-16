@@ -4134,6 +4134,8 @@ readers do not read off random characters that represent icons */
 .fa-users:before {
   content: "\f0c0"; }
 
+.fa-users-class:before{content:"\f63d";}
+
 .fa-users-cog:before {
   content: "\f509"; }
 
