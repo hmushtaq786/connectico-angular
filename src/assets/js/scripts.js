@@ -101,3 +101,35 @@ function counter() {
     }
   );
 }
+
+function createpProject() {
+  $("#createProject").modal("show");
+}
+
+function createWorkspaceEvent() {
+  $("#createEvent").modal("show");
+}
+
+function createWorkspacePost() {
+  $("#createPost").modal("show");
+}
+
+function leaveWorkspace() {
+  $("#leaveWorkspace").modal("show");
+}
+
+function totalWorkspaceMembers() {
+  $("#totalMembers").modal("show");
+}
+
+function projectsCompleted() {
+  $("#projectsCompleted").modal("show");
+}
+
+function projectsRemaining() {
+  $("#projectsRemaining").modal("show");
+}
+
+function totalTeams() {
+  $("#totalTeams").modal("show");
+}

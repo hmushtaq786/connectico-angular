@@ -54,6 +54,7 @@ import { ShowMembersComponent } from './workspace/modals/show-members/show-membe
 import { ShowCompletedProjectsComponent } from './workspace/modals/show-completed-projects/show-completed-projects.component';
 import { ShowRemainingProjectsComponent } from './workspace/modals/show-remaining-projects/show-remaining-projects.component';
 import { ShowTeamsComponent } from './workspace/modals/show-teams/show-teams.component';
+import { LeaveWorkspaceComponent } from './workspace/modals/leave-workspace/leave-workspace.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { ShowTeamsComponent } from './workspace/modals/show-teams/show-teams.com
     ShowMembersComponent,
     ShowCompletedProjectsComponent,
     ShowRemainingProjectsComponent,
-    ShowTeamsComponent
+    ShowTeamsComponent,
+    LeaveWorkspaceComponent
   ],
   imports: [
     BrowserModule,
