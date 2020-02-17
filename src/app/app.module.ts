@@ -51,6 +51,7 @@ import { CreateProjectComponent } from './workspace/modals/create-project/create
 import { CreateEventComponent } from './workspace/modals/create-event/create-event.component';
 import { CreatePostComponent } from './workspace/modals/create-post/create-post.component';
 import { ShowMembersComponent } from './workspace/modals/show-members/show-members.component';
+import { ShowCompletedProjectsComponent } from './workspace/modals/show-completed-projects/show-completed-projects.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { ShowMembersComponent } from './workspace/modals/show-members/show-membe
     CreateProjectComponent,
     CreateEventComponent,
     CreatePostComponent,
-    ShowMembersComponent
+    ShowMembersComponent,
+    ShowCompletedProjectsComponent
   ],
   imports: [
     BrowserModule,
