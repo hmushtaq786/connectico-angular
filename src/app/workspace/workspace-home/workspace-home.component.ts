@@ -17,117 +17,110 @@ export class WorkspaceHomeComponent implements OnInit {
 
   ngOnInit() {
     counter();
-    /* Chart code */
-    // Themes begin
+
     am4core.useTheme(am4themes_animated);
     // Themes end
 
-    // Create chart instance
     let chart = am4core.create("chartdiv", am4charts.XYChart);
+    chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
-    // Add data
+    chart.paddingRight = 30;
+    chart.dateFormatter.inputDateFormat = "yyyy-MM-dd HH:mm";
+
+    let colorSet = new am4core.ColorSet();
+    colorSet.saturation = 0.4;
+
     chart.data = [
       {
-        country: "USA",
-        visits: 2025
+        name: "John",
+        fromDate: "2018-01-01 08:00",
+        toDate: "2018-01-01 10:00",
+        color: colorSet.getIndex(0).brighten(0)
       },
       {
-        country: "China",
-        visits: 1882
+        name: "John",
+        fromDate: "2018-01-01 12:00",
+        toDate: "2018-01-01 15:00",
+        color: colorSet.getIndex(0).brighten(0.4)
       },
       {
-        country: "Japan",
-        visits: 1809
+        name: "John",
+        fromDate: "2018-01-01 15:30",
+        toDate: "2018-01-01 21:30",
+        color: colorSet.getIndex(0).brighten(0.8)
+      },
+
+      {
+        name: "Jane",
+        fromDate: "2018-01-01 09:00",
+        toDate: "2018-01-01 12:00",
+        color: colorSet.getIndex(2).brighten(0)
       },
       {
-        country: "Germany",
-        visits: 1322
+        name: "Jane",
+        fromDate: "2018-01-01 13:00",
+        toDate: "2018-01-01 17:00",
+        color: colorSet.getIndex(2).brighten(0.4)
+      },
+
+      {
+        name: "Peter",
+        fromDate: "2018-01-01 11:00",
+        toDate: "2018-01-01 16:00",
+        color: colorSet.getIndex(4).brighten(0)
       },
       {
-        country: "UK",
-        visits: 1122
+        name: "Peter",
+        fromDate: "2018-01-01 16:00",
+        toDate: "2018-01-01 19:00",
+        color: colorSet.getIndex(4).brighten(0.4)
+      },
+
+      {
+        name: "Melania",
+        fromDate: "2018-01-01 16:00",
+        toDate: "2018-01-01 20:00",
+        color: colorSet.getIndex(6).brighten(0)
       },
       {
-        country: "France",
-        visits: 1114
+        name: "Melania",
+        fromDate: "2018-01-01 20:30",
+        toDate: "2018-01-01 24:00",
+        color: colorSet.getIndex(6).brighten(0.4)
       },
+
       {
-        country: "India",
-        visits: 984
-      },
-      {
-        country: "Spain",
-        visits: 711
-      },
-      {
-        country: "Netherlands",
-        visits: 665
-      },
-      {
-        country: "Russia",
-        visits: 580
-      },
-      {
-        country: "South Korea",
-        visits: 443
-      },
-      {
-        country: "Canada",
-        visits: 441
-      },
-      {
-        country: "Brazil",
-        visits: 395
+        name: "Donald",
+        fromDate: "2018-01-01 13:00",
+        toDate: "2018-01-01 24:00",
+        color: colorSet.getIndex(8).brighten(0)
       }
     ];
 
-    // Create axes
-
-    let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = "country";
+    let categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.dataFields.category = "name";
     categoryAxis.renderer.grid.template.location = 0;
-    categoryAxis.renderer.minGridDistance = 30;
+    categoryAxis.renderer.inversed = true;
 
-    categoryAxis.renderer.labels.template.adapter.add("dy", function(
-      dy,
-      target
-    ) {
-      if (target.dataItem && target.dataItem.index) {
-        return dy + 25;
-      }
-      return dy;
-    });
+    let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+    dateAxis.dateFormatter.dateFormat = "yyyy-MM-dd HH:mm";
+    dateAxis.renderer.minGridDistance = 70;
+    dateAxis.baseInterval = { count: 30, timeUnit: "minute" };
+    dateAxis.max = new Date(2018, 0, 1, 24, 0, 0, 0).getTime();
+    dateAxis.strictMinMax = true;
+    dateAxis.renderer.tooltipLocation = 0;
 
-    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    let series1 = chart.series.push(new am4charts.ColumnSeries());
+    series1.columns.template.width = am4core.percent(80);
+    series1.columns.template.tooltipText = "{name}: {openDateX} - {dateX}";
 
-    // Create series
-    let series = chart.series.push(new am4charts.ColumnSeries());
-    series.dataFields.valueY = "visits";
-    series.dataFields.categoryX = "country";
-    series.name = "Visits";
-    series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/]";
-    series.columns.template.fillOpacity = 0.8;
+    series1.dataFields.openDateX = "fromDate";
+    series1.dataFields.dateX = "toDate";
+    series1.dataFields.categoryY = "name";
+    series1.columns.template.propertyFields.fill = "color"; // get color from data
+    series1.columns.template.propertyFields.stroke = "color";
+    series1.columns.template.strokeOpacity = 1;
 
-    let columnTemplate = series.columns.template;
-    columnTemplate.strokeWidth = 2;
-    columnTemplate.strokeOpacity = 1;
-
-    // google.charts.load('current', {'packages':['timeline']});
-    // google.charts.setOnLoadCallback(drawChart);
-    // function drawChart() {
-    //   var container = document.getElementById('timeline');
-    //   var chart = new google.visualization.Timeline(container);
-    //   var dataTable = new google.visualization.DataTable();
-
-    //   dataTable.addColumn({ type: 'string', id: 'President' });
-    //   dataTable.addColumn({ type: 'date', id: 'Start' });
-    //   dataTable.addColumn({ type: 'date', id: 'End' });
-    //   dataTable.addRows([
-    //     [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
-    //     [ 'Adams',      new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
-    //     [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]]);
-
-    //   chart.draw(dataTable);
-    // }
+    chart.scrollbarX = new am4core.Scrollbar();
   }
 }

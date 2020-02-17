@@ -19,9 +19,9 @@ export class ProfileStructureComponent implements OnInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    const tokenCookie = this.cookieService.get("auth-token");
-    if (!tokenCookie) {
-      this.router.navigate(["/"]);
-    }
+    // const tokenCookie = this.cookieService.get("auth-token");
+    // if (!tokenCookie) {
+    //   this.router.navigate(["/"]);
+    // }
   }
 }
