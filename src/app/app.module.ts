@@ -46,6 +46,7 @@ import { ConnectionService } from "./connection.service";
 import { WorkspaceFilesComponent } from "./workspace/workspace-files/workspace-files.component";
 import { ProjectComponent } from "./project/project.component";
 import { MessagesComponent } from "./messages/messages.component";
+import { WorkspaceEventComponent } from './workspace/workspace-event/workspace-event.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { MessagesComponent } from "./messages/messages.component";
     WorkspaceProjectComponent,
     WorkspaceFilesComponent,
     ProjectComponent,
-    MessagesComponent
+    MessagesComponent,
+    WorkspaceEventComponent
   ],
   imports: [
     BrowserModule,

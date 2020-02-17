@@ -29,8 +29,18 @@
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
           <a style="margin-right:5px"
-            ><i class="fas fa-tasks" style="color: royalblue;"></i></a
+            ><i class="fas fa-folder" style="color: royalblue;"></i></a
           >Projects
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row heading-column" (click)="leftbar_click($event)">
+          <a style="margin-right:5px"
+            ><i class="fas fa-calendar-star" style="color: royalblue;"></i></a
+          >Events
         </div>
       </div>
     </div>
@@ -69,6 +79,9 @@
       </div>
       <div class="col-md-12" *ngIf="screen === 'workspace_project'">
         <app-workspace-project></app-workspace-project>
+      </div>
+      <div class="col-md-12" *ngIf="screen === 'workspace_event'">
+        <app-workspace-event></app-workspace-event>
       </div>
       <div class="col-md-12" *ngIf="screen === 'workspace_files'">
         <app-workspace-files></app-workspace-files>
