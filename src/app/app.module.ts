@@ -50,6 +50,7 @@ import { WorkspaceEventComponent } from './workspace/workspace-event/workspace-e
 import { CreateProjectComponent } from './workspace/modals/create-project/create-project.component';
 import { CreateEventComponent } from './workspace/modals/create-event/create-event.component';
 import { CreatePostComponent } from './workspace/modals/create-post/create-post.component';
+import { ShowMembersComponent } from './workspace/modals/show-members/show-members.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { CreatePostComponent } from './workspace/modals/create-post/create-post.
     WorkspaceEventComponent,
     CreateProjectComponent,
     CreateEventComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    ShowMembersComponent
   ],
   imports: [
     BrowserModule,
