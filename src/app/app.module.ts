@@ -49,6 +49,7 @@ import { MessagesComponent } from "./messages/messages.component";
 import { WorkspaceEventComponent } from './workspace/workspace-event/workspace-event.component';
 import { CreateProjectComponent } from './workspace/modals/create-project/create-project.component';
 import { CreateEventComponent } from './workspace/modals/create-event/create-event.component';
+import { CreatePostComponent } from './workspace/modals/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { CreateEventComponent } from './workspace/modals/create-event/create-eve
     MessagesComponent,
     WorkspaceEventComponent,
     CreateProjectComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
