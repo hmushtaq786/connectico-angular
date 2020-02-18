@@ -102,7 +102,7 @@ function counter() {
   );
 }
 
-function createpProject() {
+function createProject() {
   $("#createProject").modal("show");
 }
 

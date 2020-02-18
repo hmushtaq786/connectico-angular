@@ -7,6 +7,15 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 declare const counter: any;
 
+declare const createProject: any;
+declare const createWorkspaceEvent: any;
+declare const createWorkspacePost: any;
+declare const leaveWorkspace: any;
+declare const totalWorkspaceMembers: any;
+declare const projectsCompleted: any;
+declare const projectsRemaining: any;
+declare const totalTeams: any;
+
 @Component({
   selector: "app-workspace-home",
   templateUrl: "./workspace-home.component.html",
@@ -122,5 +131,9 @@ export class WorkspaceHomeComponent implements OnInit {
     series1.columns.template.strokeOpacity = 1;
 
     chart.scrollbarX = new am4core.Scrollbar();
+  }
+
+  openModal(event) {
+    console.log(event);
   }
 }
