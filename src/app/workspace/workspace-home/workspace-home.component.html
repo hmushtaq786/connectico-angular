@@ -17,7 +17,7 @@
           class="item wow fadeInUpBig animated animated"
           data-number="70"
           style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
-          (click)="openModal($event)"
+          (click)="createWorkspaceProject()"
         >
           <i class="fas fa-folder-plus"></i>
           <p>Create project</p>
@@ -27,7 +27,7 @@
           class="item wow fadeInUpBig animated animated"
           data-number="359"
           style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
-          (click)="openModal($event)"
+          (click)="createEvent()"
         >
           <i class="fa fa-calendar-plus"></i>
           <p>Create event</p>
@@ -36,7 +36,7 @@
           class="item wow fadeInUpBig animated animated"
           data-number="246"
           style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
-          (click)="openModal($event)"
+          (click)="writePost()"
         >
           <i class="fa fa-file-plus"></i>
           <p>Write a post</p>
@@ -46,7 +46,7 @@
           class="item wow fadeInUpBig animated animated"
           data-number="246"
           style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
-          (click)="openModal($event)"
+          (click)="leaveWorkspace()"
         >
           <i class="fa fa-sign-out-alt"></i>
           <p>Leave workspace</p>
@@ -66,7 +66,7 @@
           class="item wow fadeInUpBig animated animated"
           data-number="70"
           style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
-          (click)="openModal($event)"
+          (click)="viewMembers()"
         >
           <i class="fas fa-users"></i>
           <p id="number1" class="number">70</p>
@@ -78,7 +78,7 @@
           class="item wow fadeInUpBig animated animated"
           data-number="359"
           style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
-          (click)="openModal($event)"
+          (click)="projectsDone()"
         >
           <i class="fa fa-clipboard-check"></i>
           <p id="number3" class="number">359</p>
@@ -89,7 +89,7 @@
           class="item wow fadeInUpBig animated animated"
           data-number="246"
           style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
-          (click)="openModal($event)"
+          (click)="projectsLeft()"
         >
           <i class="fa fa-clipboard-list"></i>
           <p id="number4" class="number">246</p>
@@ -101,7 +101,7 @@
           class="item wow fadeInUpBig animated animated"
           data-number="246"
           style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
-          (click)="openModal($event)"
+          (click)="viewTeams()"
         >
           <i class="fa fa-users-class"></i>
           <p id="number4" class="number">246</p>
