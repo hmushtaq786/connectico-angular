@@ -25,7 +25,7 @@
                 style="padding-right: 10px !important;"
                 class="fas fa-user-plus"
               ></i></a
-            >Register
+            >Add members
           </h4>
           <button
             type="button"
@@ -38,7 +38,46 @@
           </button>
         </div>
 
-        <div class="modal-body"></div>
+        <div class="modal-body">
+          <div class="row member-tile" *ngFor="let member of members">
+            <div
+              style="text-align: center; padding-top: 5px;padding-bottom: 5px;"
+              class="col-md-2"
+            >
+              <img
+                id="avatar-img"
+                style="width: 70px;"
+                src="{{ member.image }}"
+                alt="avatar mx-auto white"
+                class="img-fluid"
+              />
+            </div>
+            <div class="col-md-8" style="margin: auto;">
+              <div class="row">
+                <div
+                  style="font-family: sans-serif; font-size: 20px; margin-left: 0px; padding-left: 0px;"
+                  class="col-md-12"
+                >
+                  {{ member.name }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12" style="margin-left: 0px;">
+                  <a
+                    ><i class="fas fa-envelope"></i
+                    ><span style="margin-left:5px; font-family: sans-serif;">
+                      {{ member.email }}
+                    </span></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div style="text-align: center; margin: auto;" class="col-md-2">
+              <button class="message-button">Add</button>
+            </div>
+          </div>
+        </div>
 
         <div class="modal-footer">
           <button
