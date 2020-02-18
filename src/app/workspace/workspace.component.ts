@@ -24,7 +24,7 @@ export class WorkspaceComponent implements OnInit {
       this.page = "Projects";
     } else if (event.target.innerText === "Events") {
       this.screen = "workspace_event";
-      this.page = "Projects";
+      this.page = "Events";
     } else if (event.target.innerText === "Files") {
       this.screen = "workspace_files";
       this.page = "Files";

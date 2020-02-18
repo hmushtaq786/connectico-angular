@@ -110,8 +110,8 @@ function createWorkspaceEvent() {
   $("#createEvent").modal("show");
 }
 
-function createWorkspacePost() {
-  $("#createPost").modal("show");
+function addWorkspaceMembers() {
+  $("#addMembers").modal("show");
 }
 
 function leaveWorkspace() {

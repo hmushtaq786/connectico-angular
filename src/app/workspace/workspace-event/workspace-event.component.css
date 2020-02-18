@@ -1,0 +1,32 @@
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.tg td {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 20px 20px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: black;
+}
+.tg th {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 20px 20px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: black;
+}
+.tg .tg-nxs7 {
+  background-color: #4169e1;
+  color: #f5f5f5;
+  border-color: #f5f5f5;
+  text-align: left;
+  vertical-align: top;
+}

@@ -46,15 +46,15 @@ import { ConnectionService } from "./connection.service";
 import { WorkspaceFilesComponent } from "./workspace/workspace-files/workspace-files.component";
 import { ProjectComponent } from "./project/project.component";
 import { MessagesComponent } from "./messages/messages.component";
-import { WorkspaceEventComponent } from './workspace/workspace-event/workspace-event.component';
-import { CreateProjectComponent } from './workspace/modals/create-project/create-project.component';
-import { CreateEventComponent } from './workspace/modals/create-event/create-event.component';
-import { CreatePostComponent } from './workspace/modals/create-post/create-post.component';
-import { ShowMembersComponent } from './workspace/modals/show-members/show-members.component';
-import { ShowCompletedProjectsComponent } from './workspace/modals/show-completed-projects/show-completed-projects.component';
-import { ShowRemainingProjectsComponent } from './workspace/modals/show-remaining-projects/show-remaining-projects.component';
-import { ShowTeamsComponent } from './workspace/modals/show-teams/show-teams.component';
-import { LeaveWorkspaceComponent } from './workspace/modals/leave-workspace/leave-workspace.component';
+import { WorkspaceEventComponent } from "./workspace/workspace-event/workspace-event.component";
+import { CreateProjectComponent } from "./workspace/modals/create-project/create-project.component";
+import { CreateEventComponent } from "./workspace/modals/create-event/create-event.component";
+import { ShowMembersComponent } from "./workspace/modals/show-members/show-members.component";
+import { ShowCompletedProjectsComponent } from "./workspace/modals/show-completed-projects/show-completed-projects.component";
+import { ShowRemainingProjectsComponent } from "./workspace/modals/show-remaining-projects/show-remaining-projects.component";
+import { ShowTeamsComponent } from "./workspace/modals/show-teams/show-teams.component";
+import { LeaveWorkspaceComponent } from "./workspace/modals/leave-workspace/leave-workspace.component";
+import { AddMembersComponent } from "./workspace/modals/add-members/add-members.component";
 
 @NgModule({
   declarations: [
@@ -96,12 +96,12 @@ import { LeaveWorkspaceComponent } from './workspace/modals/leave-workspace/leav
     WorkspaceEventComponent,
     CreateProjectComponent,
     CreateEventComponent,
-    CreatePostComponent,
     ShowMembersComponent,
     ShowCompletedProjectsComponent,
     ShowRemainingProjectsComponent,
     ShowTeamsComponent,
-    LeaveWorkspaceComponent
+    LeaveWorkspaceComponent,
+    AddMembersComponent
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ declare const counter: any;
 
 declare const createProject: any;
 declare const createWorkspaceEvent: any;
-declare const createWorkspacePost: any;
+declare const addWorkspaceMembers: any;
 declare const leaveWorkspace: any;
 declare const totalWorkspaceMembers: any;
 declare const projectsCompleted: any;
@@ -139,8 +139,8 @@ export class WorkspaceHomeComponent implements OnInit {
   createEvent() {
     createWorkspaceEvent();
   }
-  writePost() {
-    createWorkspacePost();
+  addMembers() {
+    addWorkspaceMembers();
   }
   leaveWorkspace() {
     leaveWorkspace();
