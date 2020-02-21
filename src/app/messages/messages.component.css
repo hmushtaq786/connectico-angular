@@ -19,10 +19,30 @@
 #avatar-img {
   border-radius: 100px;
   background-color: white;
-  padding: 5px;
+  padding: 1px;
 }
 
 #title {
   font-family: sans-serif;
   font-size: 17px;
+}
+
+.message-tile {
+  margin: auto;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.message-tile:hover {
+  background-color: rgb(233, 233, 233);
+}
+
+.message-body {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  padding-top: 2px;
+  padding-left: 20px;
 }
