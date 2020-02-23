@@ -77,13 +77,25 @@
       <div class="col-md-12" *ngIf="screen === 'feed'">
         <app-feed></app-feed>
       </div>
-      <div class="col-md-12" *ngIf="screen === 'workspace_project'">
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'workspace_project'"
+        style="padding-left: 10px; padding-right:25px;"
+      >
         <app-workspace-project></app-workspace-project>
       </div>
-      <div class="col-md-12" *ngIf="screen === 'workspace_event'">
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'workspace_event'"
+        style="padding-left: 10px; padding-right:25px;"
+      >
         <app-workspace-event></app-workspace-event>
       </div>
-      <div class="col-md-12" *ngIf="screen === 'workspace_files'">
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'workspace_files'"
+        style="padding-left: 10px; padding-right:25px;"
+      >
         <app-workspace-files></app-workspace-files>
       </div>
       <!-- <div class="col-md-12">
