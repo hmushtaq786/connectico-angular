@@ -1,0 +1,232 @@
+<app-create-project></app-create-project>
+<app-create-event></app-create-event>
+<app-add-members></app-add-members>
+<app-leave-workspace></app-leave-workspace>
+<app-show-members></app-show-members>
+<app-show-completed-projects></app-show-completed-projects>
+<app-show-remaining-projects></app-show-remaining-projects>
+<app-show-teams></app-show-teams>
+<!-- <div class="row">
+  <div class="col-md-12">
+    <div id="chartdiv" style="height: 300px; width: 100%;"></div>
+  </div>
+</!-->
+
+<div style="min-height: 84.5vh;">
+  <div class="sectiontitle">
+    <h2>User actions</h2>
+    <span class="headerLine"></span>
+  </div>
+
+  <div id="projectFacts" class="sectionClass" style="left: -9px; top: -20px;">
+    <div class="fullWidth eight columns">
+      <div class="projectFactsWrap">
+        <div
+          class="item wow fadeInUpBig animated animated"
+          data-number="70"
+          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          (click)="createWorkspaceProject()"
+        >
+          <i class="fas fa-folder-plus"></i>
+          <p>Create project</p>
+        </div>
+
+        <div
+          class="item wow fadeInUpBig animated animated"
+          data-number="359"
+          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          (click)="createEvent()"
+        >
+          <i class="fa fa-calendar-plus"></i>
+          <p>Create event</p>
+        </div>
+        <div
+          class="item wow fadeInUpBig animated animated"
+          data-number="246"
+          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          (click)="addMembers()"
+        >
+          <i class="fa fa-user-plus"></i>
+          <p>Add members</p>
+        </div>
+
+        <div
+          class="item wow fadeInUpBig animated animated"
+          data-number="246"
+          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          (click)="leaveWorkspace()"
+        >
+          <i class="fa fa-sign-out-alt"></i>
+          <p>Leave workspace</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sectiontitle" style="margin-top: -30px;">
+    <h2>Project statistics</h2>
+    <span class="headerLine"></span>
+  </div>
+  <div id="projectFacts" class="sectionClass" style="left: -9px; top: -20px;">
+    <div class="fullWidth eight columns">
+      <div class="projectFactsWrap">
+        <div
+          class="item wow fadeInUpBig animated animated"
+          data-number="70"
+          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          (click)="viewMembers()"
+        >
+          <i class="fas fa-users"></i>
+          <p id="number1" class="number">70</p>
+          <span></span>
+          <p>Total members</p>
+        </div>
+
+        <div
+          class="item wow fadeInUpBig animated animated"
+          data-number="359"
+          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          (click)="projectsDone()"
+        >
+          <i class="fa fa-clipboard-check"></i>
+          <p id="number3" class="number">359</p>
+          <span></span>
+          <p>Projects completed</p>
+        </div>
+        <div
+          class="item wow fadeInUpBig animated animated"
+          data-number="246"
+          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          (click)="projectsLeft()"
+        >
+          <i class="fa fa-clipboard-list"></i>
+          <p id="number4" class="number">246</p>
+          <span></span>
+          <p>Projects remaining</p>
+        </div>
+
+        <div
+          class="item wow fadeInUpBig animated animated"
+          data-number="246"
+          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          (click)="viewTeams()"
+        >
+          <i class="fa fa-users-class"></i>
+          <p id="number4" class="number">246</p>
+          <span></span>
+          <p>Total teams</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sectiontitle" style="padding-bottom: 30px; margin-top: -30px;">
+    <h2>Projects progress</h2>
+    <span class="headerLine"></span>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <span style="font-family: sans-serif; font-size: 17px;">Project 1</span>
+    </div>
+    <div class="col-md-10">
+      <div class="progress md-progress" style="height: 20px; right: 10px;">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          style="width: 25%; height: 20px; background-color: royalblue ;"
+          aria-valuenow="25"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" style="height: 10px;"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <span style="font-family: sans-serif; font-size: 17px;">Project 2</span>
+    </div>
+    <div class="col-md-10">
+      <div class="progress md-progress" style="height: 20px; right: 10px;">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          style="width: 50%; height: 20px; background-color: royalblue;"
+          aria-valuenow="50"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" style="height: 10px;"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <span style="font-family: sans-serif; font-size: 17px;">Project 3</span>
+    </div>
+    <div class="col-md-10">
+      <div class="progress md-progress" style="height: 20px; right: 10px;">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          style="width: 5%; height: 20px; background-color: royalblue;"
+          aria-valuenow="5"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" style="height: 10px;"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <span style="font-family: sans-serif; font-size: 17px;">Project 4</span>
+    </div>
+    <div class="col-md-10">
+      <div class="progress md-progress" style="height: 20px; right: 10px;">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          style="width: 100%; height: 20px; background-color: royalblue;"
+          aria-valuenow="100"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" style="height: 10px;"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <span style="font-family: sans-serif; font-size: 17px;">Project 5</span>
+    </div>
+    <div class="col-md-10">
+      <div class="progress md-progress" style="height: 20px; right: 10px;">
+        <div
+          class="progress-bar"
+          role="progressbar"
+          style="width: 70%; height: 20px; background-color: royalblue;"
+          aria-valuenow="70"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+       <div id="timeline" style="height: 180px;"></div>
+    -->
+</div>

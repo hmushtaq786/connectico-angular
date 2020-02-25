@@ -1,2 +1,110 @@
 <app-navbar></app-navbar>
-<p>project works!</p>
+
+<div class="row">
+  <div
+    class="col-md-2"
+    style="background-color: #f0f2ef; border-right: 1px solid lightgrey;  height: auto;"
+  >
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row heading-column" (click)="leftbar_click($event)">
+          <a style="margin-right:5px"
+            ><i class="fas fa-home" style="color: royalblue;"></i></a
+          >Home
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row heading-column" (click)="leftbar_click($event)">
+          <a style="margin-right:5px"
+            ><i class="fas fa-newspaper" style="color: royalblue;"></i></a
+          >Feed
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row heading-column" (click)="leftbar_click($event)">
+          <a style="margin-right:5px"
+            ><i
+              class="fas fa-users-class"
+              style="font-size: 13px; color: royalblue;"
+            ></i></a
+          >Teams
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row heading-column" (click)="leftbar_click($event)">
+          <a style="margin-right:5px"
+            ><i class="fas fa-calendar-star" style="color: royalblue;"></i></a
+          >Events
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row heading-column" (click)="leftbar_click($event)">
+          <a style="margin-right:5px"
+            ><i class="fas fa-file-signature" style="color: royalblue;"></i></a
+          >Files
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-10">
+    <div class="row">
+      <div
+        class="col-md-12"
+        style="background-color: royalblue; color: #F3FFFF; margin: auto;"
+      >
+        <h3 style="font-family: sans-serif; padding: 5px; margin: auto; ">
+          Workspace 1
+          <span style="font-weight: normal; font-size: 25px;"
+            ><i class="fas fa-caret-right"></i>{{ " " }} Project 1
+            {{ " " }}</span
+          >
+          <span style="font-weight: normal; font-size: 25px;"
+            ><i class="fas fa-caret-right"></i>{{ " " + page }}</span
+          >
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" *ngIf="screen === 'workspace_home'">
+        <app-project-home></app-project-home>
+      </div>
+      <div class="col-md-12" *ngIf="screen === 'feed'">
+        <app-feed></app-feed>
+      </div>
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'workspace_project'"
+        style="padding-left: 10px; padding-right:25px;"
+      >
+        <app-workspace-project></app-workspace-project>
+      </div>
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'workspace_event'"
+        style="padding-left: 10px; padding-right:25px;"
+      >
+        <app-workspace-event></app-workspace-event>
+      </div>
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'workspace_files'"
+        style="padding-left: 10px; padding-right:25px;"
+      >
+        <app-workspace-files></app-workspace-files>
+      </div>
+    </div>
+  </div>
+</div>
