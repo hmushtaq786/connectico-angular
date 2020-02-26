@@ -58,6 +58,7 @@ import { AddMembersComponent } from "./workspace/modals/add-members/add-members.
 import { MessageDetailComponent } from './messages/message-detail/message-detail.component';
 import { TeamComponent } from './team/team.component';
 import { ProjectHomeComponent } from './project/project-home/project-home.component';
+import { ProjectFilesComponent } from './project/project-files/project-files.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { ProjectHomeComponent } from './project/project-home/project-home.compon
     AddMembersComponent,
     MessageDetailComponent,
     TeamComponent,
-    ProjectHomeComponent
+    ProjectHomeComponent,
+    ProjectFilesComponent
   ],
   imports: [
     BrowserModule,
