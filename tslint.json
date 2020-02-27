@@ -1,4 +1,3 @@
-// lalala
 {
   "extends": "tslint:recommended",
   "rules": {
