@@ -140,6 +140,7 @@ export class ConnectionService {
     });
   }
 
+  //login user with the credentials provided
   loginUser(credentials: AuthCredentials) {
     const body = JSON.stringify(credentials);
     return this.httpClient.post(`${this.baseUrl}auth/`, body, {
