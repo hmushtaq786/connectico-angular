@@ -15,7 +15,7 @@
           >Actions
         </div>
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-3" style="border-right: 1px solid lightgrey;">
             <div class="row heading-column" (click)="changeSection($event)">
               <a style="margin-right:5px"><i class="fas fa-plus-square"></i></a
               >New workspace
@@ -27,12 +27,12 @@
           </div>
           <div class="col-md-9">
             <!-- inside details box -->
-            <app-organization-details-about
-              *ngIf="currentSection === 'About'"
-            ></app-organization-details-about>
-            <app-organization-details-createdby
-              *ngIf="currentSection === 'Created By'"
-            ></app-organization-details-createdby>
+            <app-create-workspace
+              *ngIf="currentSection === 'New workspace'"
+            ></app-create-workspace>
+            <app-add-organization-members
+              *ngIf="currentSection === 'Add members'"
+            ></app-add-organization-members>
           </div>
         </div>
       </div>

@@ -66,6 +66,7 @@ import { TeamTaskComponent } from "./team/team-task/team-task.component";
 import { TeamFeedComponent } from './team/team-feed/team-feed.component';
 import { OrganizationActionsComponent } from './organization/details/organization-actions/organization-actions.component';
 import { CreateWorkspaceComponent } from './organization/details/organization-actions/create-workspace/create-workspace.component';
+import { AddOrganizationMembersComponent } from './organization/details/organization-actions/add-organization-members/add-organization-members.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ import { CreateWorkspaceComponent } from './organization/details/organization-ac
     TeamTaskComponent,
     TeamFeedComponent,
     OrganizationActionsComponent,
-    CreateWorkspaceComponent
+    CreateWorkspaceComponent,
+    AddOrganizationMembersComponent
   ],
   imports: [
     BrowserModule,
