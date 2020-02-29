@@ -32,6 +32,10 @@ function hideRegisterModal() {
   $("#registerModal").modal("hide");
 }
 
+function hideLoginModal() {
+  $("#loginModal").modal("hide");
+}
+
 function loginModal() {
   $("#loginModal").modal("show");
 }
