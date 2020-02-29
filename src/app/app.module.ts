@@ -55,10 +55,15 @@ import { ShowRemainingProjectsComponent } from "./workspace/modals/show-remainin
 import { ShowTeamsComponent } from "./workspace/modals/show-teams/show-teams.component";
 import { LeaveWorkspaceComponent } from "./workspace/modals/leave-workspace/leave-workspace.component";
 import { AddMembersComponent } from "./workspace/modals/add-members/add-members.component";
-import { MessageDetailComponent } from './messages/message-detail/message-detail.component';
-import { TeamComponent } from './team/team.component';
-import { ProjectHomeComponent } from './project/project-home/project-home.component';
-import { ProjectFilesComponent } from './project/project-files/project-files.component';
+import { MessageDetailComponent } from "./messages/message-detail/message-detail.component";
+import { TeamComponent } from "./team/team.component";
+import { ProjectHomeComponent } from "./project/project-home/project-home.component";
+import { ProjectFilesComponent } from "./project/project-files/project-files.component";
+import { TeamEventComponent } from "./team/team-event/team-event.component";
+import { TeamFilesComponent } from "./team/team-files/team-files.component";
+import { TeamHomeComponent } from "./team/team-home/team-home.component";
+import { TeamTaskComponent } from "./team/team-task/team-task.component";
+import { TeamFeedComponent } from './team/team-feed/team-feed.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +114,12 @@ import { ProjectFilesComponent } from './project/project-files/project-files.com
     MessageDetailComponent,
     TeamComponent,
     ProjectHomeComponent,
-    ProjectFilesComponent
+    ProjectFilesComponent,
+    TeamEventComponent,
+    TeamFilesComponent,
+    TeamHomeComponent,
+    TeamTaskComponent,
+    TeamFeedComponent
   ],
   imports: [
     BrowserModule,
