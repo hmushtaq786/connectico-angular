@@ -64,6 +64,7 @@ import { TeamFilesComponent } from "./team/team-files/team-files.component";
 import { TeamHomeComponent } from "./team/team-home/team-home.component";
 import { TeamTaskComponent } from "./team/team-task/team-task.component";
 import { TeamFeedComponent } from './team/team-feed/team-feed.component';
+import { OrganizationActionsComponent } from './organization/details/organization-actions/organization-actions.component';
 
 @NgModule({
   declarations: [
@@ -119,7 +120,8 @@ import { TeamFeedComponent } from './team/team-feed/team-feed.component';
     TeamFilesComponent,
     TeamHomeComponent,
     TeamTaskComponent,
-    TeamFeedComponent
+    TeamFeedComponent,
+    OrganizationActionsComponent
   ],
   imports: [
     BrowserModule,
