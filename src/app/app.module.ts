@@ -5,7 +5,7 @@ import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { RouterModule, Routes } from "@angular/router";
 
-import { GoogleChartsModule } from "angular-google-charts";
+// import { GoogleChartsModule } from "angular-google-charts";
 import { HttpClientModule } from "@angular/common/http";
 
 import { CookieService } from "ngx-cookie-service";
@@ -63,10 +63,10 @@ import { TeamEventComponent } from "./team/team-event/team-event.component";
 import { TeamFilesComponent } from "./team/team-files/team-files.component";
 import { TeamHomeComponent } from "./team/team-home/team-home.component";
 import { TeamTaskComponent } from "./team/team-task/team-task.component";
-import { TeamFeedComponent } from './team/team-feed/team-feed.component';
-import { OrganizationActionsComponent } from './organization/details/organization-actions/organization-actions.component';
-import { CreateWorkspaceComponent } from './organization/details/organization-actions/create-workspace/create-workspace.component';
-import { AddOrganizationMembersComponent } from './organization/details/organization-actions/add-organization-members/add-organization-members.component';
+import { TeamFeedComponent } from "./team/team-feed/team-feed.component";
+import { OrganizationActionsComponent } from "./organization/organization-actions/organization-actions.component";
+import { CreateWorkspaceComponent } from "./organization/organization-actions/create-workspace/create-workspace.component";
+import { AddOrganizationMembersComponent } from "./organization/organization-actions/add-organization-members/add-organization-members.component";
 
 @NgModule({
   declarations: [
@@ -133,8 +133,8 @@ import { AddOrganizationMembersComponent } from './organization/details/organiza
     ReactiveFormsModule,
     RouterModule,
     AppRoutingModule,
-    HttpClientModule,
-    GoogleChartsModule
+    HttpClientModule
+    // GoogleChartsModule
   ],
   providers: [ConnectionService, CookieService],
   bootstrap: [AppComponent]
