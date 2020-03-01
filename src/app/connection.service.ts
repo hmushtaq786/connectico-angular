@@ -162,4 +162,39 @@ export class ConnectionService {
       }
     );
   }
+
+  getTotalMembers(org_id: string) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/members/${org_id}/`,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
+
+  getTotalWorkspaces(org_id: string) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/${org_id}/`,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
+
+  getTotalProjects(org_id: string) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/${org_id}/`,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
+  getTotalTeams(org_id: string) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/${org_id}/`,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
 }
