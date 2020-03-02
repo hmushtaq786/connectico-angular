@@ -197,4 +197,11 @@ export class ConnectionService {
       }
     );
   }
+
+  sendMemberInvites(list) {
+    const members = JSON.stringify(list);
+    return this.httpClient.post(`${this.baseUrl}register/invite`, members, {
+      headers: this.getHeaders()
+    });
+  }
 }
