@@ -16,7 +16,13 @@ export class ProfileStructureComponent implements OnInit {
     private cookieService: CookieService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    console.log(tokenCookie);
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+  }
 
   ngAfterViewInit() {
     // const tokenCookie = this.cookieService.get("auth-token");

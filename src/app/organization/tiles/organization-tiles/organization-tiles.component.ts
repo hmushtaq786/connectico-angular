@@ -34,7 +34,11 @@ export class OrganizationTilesComponent implements OnInit {
     );
     this.connectionService.getTotalWorkspaces(this.org.id).subscribe(
       (getTotalWorkspacesResult: any) => {
-        this.totalWorkspaces = getTotalWorkspacesResult.length;
+        if (!getTotalWorkspacesResult) {
+          this.totalWorkspaces = 0;
+        } else {
+          this.totalWorkspaces = getTotalWorkspacesResult.length;
+        }
       },
       error => {
         console.log(error);

@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { CookieService } from "ngx-cookie-service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-messages",
@@ -147,7 +149,13 @@ export class MessagesComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  constructor(private cookieService: CookieService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    console.log(tokenCookie);
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+  }
 }

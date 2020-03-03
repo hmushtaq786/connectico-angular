@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { CookieService } from "ngx-cookie-service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-workspace",
@@ -8,9 +10,15 @@ import { Component, OnInit } from "@angular/core";
 export class WorkspaceComponent implements OnInit {
   screen = "workspace_home";
   page = "Home";
-  constructor() {}
+  constructor(private cookieService: CookieService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    console.log(tokenCookie);
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+  }
 
   leftbar_click(event) {
     if (event.target.innerText === "Home") {
