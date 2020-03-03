@@ -34,7 +34,7 @@ export class AddOrganizationMembersComponent implements OnInit {
     this.inviteRequest.list = this.list;
     this.connectionService.sendMemberInvites(this.inviteRequest).subscribe(
       result => {
-        console.log(result);
+        alert("Invites sent successfully!");
       },
       error => {
         console.log(error);
