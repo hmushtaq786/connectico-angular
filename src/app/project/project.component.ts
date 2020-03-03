@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./project.component.css"]
 })
 export class ProjectComponent implements OnInit {
-  screen = "workspace_home";
+  screen = "project_home";
   page = "Home";
 
   constructor(private cookieService: CookieService, private router: Router) {}
@@ -23,19 +23,19 @@ export class ProjectComponent implements OnInit {
 
   leftbar_click(event) {
     if (event.target.innerText === "Home") {
-      this.screen = "workspace_home";
+      this.screen = "project_home";
       this.page = "Home";
     } else if (event.target.innerText === "Feed") {
-      this.screen = "feed";
+      this.screen = "project_feed";
       this.page = "Feed";
-    } else if (event.target.innerText === "Projects") {
-      this.screen = "workspace_project";
+    } else if (event.target.innerText === "Teams") {
+      this.screen = "project_team";
       this.page = "Projects";
     } else if (event.target.innerText === "Events") {
-      this.screen = "workspace_event";
+      this.screen = "project_event";
       this.page = "Events";
     } else if (event.target.innerText === "Files") {
-      this.screen = "workspace_files";
+      this.screen = "project_files";
       this.page = "Files";
     }
   }

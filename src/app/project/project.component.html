@@ -78,32 +78,32 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12" *ngIf="screen === 'workspace_home'">
+      <div class="col-md-12" *ngIf="screen === 'project_home'">
         <app-project-home></app-project-home>
       </div>
-      <div class="col-md-12" *ngIf="screen === 'feed'">
-        <app-feed></app-feed>
+      <div class="col-md-12" *ngIf="screen === 'project_feed'">
+        <app-project-feed></app-project-feed>
       </div>
       <div
         class="col-md-12"
-        *ngIf="screen === 'workspace_project'"
+        *ngIf="screen === 'project_team'"
         style="padding-left: 10px; padding-right:25px;"
       >
-        <app-workspace-project></app-workspace-project>
+        <app-project-team></app-project-team>
       </div>
       <div
         class="col-md-12"
-        *ngIf="screen === 'workspace_event'"
+        *ngIf="screen === 'project_event'"
         style="padding-left: 10px; padding-right:25px;"
       >
-        <app-workspace-event></app-workspace-event>
+        <app-project-event></app-project-event>
       </div>
       <div
         class="col-md-12"
-        *ngIf="screen === 'workspace_files'"
+        *ngIf="screen === 'project_files'"
         style="padding-left: 10px; padding-right:25px;"
       >
-        <app-workspace-files></app-workspace-files>
+        <app-project-files></app-project-files>
       </div>
     </div>
   </div>
