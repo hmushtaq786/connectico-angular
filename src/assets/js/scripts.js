@@ -137,3 +137,31 @@ function projectsRemaining() {
 function totalTeams() {
   $("#totalTeams").modal("show");
 }
+
+function createTask() {
+  $("#createteamtask").modal("show");
+}
+
+function createTeamEvent() {
+  $("#createEvent").modal("show");
+}
+
+function addTeamMembers() {
+  $("#addMembers").modal("show");
+}
+
+function leaveteam() {
+  $("#leaveTeam").modal("show");
+}
+
+function totalTeamMembers() {
+  $("#viewMembers").modal("show");
+}
+
+function tasksCompleted() {
+  $("#tasksDone").modal("show");
+}
+
+function tasksRemaining() {
+  $("#tasksLeft").modal("show");
+}

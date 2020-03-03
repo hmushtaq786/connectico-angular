@@ -1,1 +1,33 @@
-<p>team-task works!</p>
+<div style="min-height: 84.5vh">
+  <div>
+    <a href=""> Create new </a>
+  </div>
+
+  <table
+    id="dtBasicExample"
+    class="table table-striped table-bordered table-sm"
+    cellspacing="0"
+    width="100%"
+  >
+    <thead>
+      <tr>
+        <th class="th-sm">Task name</th>
+        <th class="th-sm">Description</th>
+        <th class="th-sm">Team Lead</th>
+        <th class="th-sm">Start Date</th>
+        <th class="th-sm">End Date</th>
+        <th class="th-sm">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.task_name }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.team_lead }}</td>
+        <td>{{ task.start_date }}</td>
+        <td>{{ task.end_date }}</td>
+        <td>{{ task.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

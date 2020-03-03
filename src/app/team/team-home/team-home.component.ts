@@ -1,20 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 
-/* Imports */
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-
 declare const counter: any;
 
-declare const createtask: any;
+declare const createTask: any;
 declare const createTeamEvent: any;
 declare const addTeamMembers: any;
-declare const leaveTeam: any;
+declare const leaveteam: any;
 declare const totalTeamMembers: any;
 declare const tasksCompleted: any;
 declare const tasksRemaining: any;
-declare const totalTeams: any;
 
 @Component({
   selector: "app-team-home",
@@ -25,8 +19,9 @@ export class TeamHomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
   createteamtask() {
-    createtask();
+    createTask();
   }
   createEvent() {
     createTeamEvent();
@@ -34,8 +29,8 @@ export class TeamHomeComponent implements OnInit {
   addMembers() {
     addTeamMembers();
   }
-  LeaveTeam() {
-    leaveTeam();
+  leaveTeam() {
+    leaveteam();
   }
   viewMembers() {
     totalTeamMembers();
@@ -45,8 +40,5 @@ export class TeamHomeComponent implements OnInit {
   }
   tasksLeft() {
     tasksRemaining();
-  }
-  viewTeams() {
-    totalTeams();
   }
 }

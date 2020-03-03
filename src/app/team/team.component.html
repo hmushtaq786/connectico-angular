@@ -63,7 +63,8 @@
         style="background-color: royalblue; color: #F3FFFF; margin: auto;"
       >
         <h3 style="font-family: sans-serif; padding: 5px; margin: auto; ">
-          Workspace 1
+          Team 1
+
           <span style="font-weight: normal; font-size: 25px;"
             ><i class="fas fa-caret-right"></i>{{ " " + page }}</span
           >
@@ -74,29 +75,17 @@
       <div class="col-md-12" *ngIf="screen === 'team_home'">
         <app-team-home></app-team-home>
       </div>
-      <div class="col-md-12" *ngIf="screen === 'feed'">
+      <div class="col-md-12" *ngIf="screen === 'team_feed'">
         <app-team-feed></app-team-feed>
       </div>
-      <div
-        class="col-md-12"
-        *ngIf="screen === 'workspace_project'"
-        style="padding-left: 10px; padding-right:25px;"
-      >
-        <app-workspace-project></app-workspace-project>
+      <div class="col-md-12" *ngIf="screen === 'team_task'">
+        <app-team-task></app-team-task>
       </div>
-      <div
-        class="col-md-12"
-        *ngIf="screen === 'workspace_event'"
-        style="padding-left: 10px; padding-right:25px;"
-      >
-        <app-workspace-event></app-workspace-event>
+      <div class="col-md-12" *ngIf="screen === 'team_event'">
+        <app-team-event></app-team-event>
       </div>
-      <div
-        class="col-md-12"
-        *ngIf="screen === 'workspace_files'"
-        style="padding-left: 10px; padding-right:25px;"
-      >
-        <app-workspace-files></app-workspace-files>
+      <div class="col-md-12" *ngIf="screen === 'team_files'">
+        <app-team-files></app-team-files>
       </div>
       <!-- <div class="col-md-12">
         <app-workspace-home

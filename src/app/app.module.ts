@@ -56,20 +56,28 @@ import { ShowTeamsComponent } from "./workspace/modals/show-teams/show-teams.com
 import { LeaveWorkspaceComponent } from "./workspace/modals/leave-workspace/leave-workspace.component";
 import { AddMembersComponent } from "./workspace/modals/add-members/add-members.component";
 import { MessageDetailComponent } from "./messages/message-detail/message-detail.component";
-import { TeamComponent } from "./team/team.component";
 import { ProjectHomeComponent } from "./project/project-home/project-home.component";
 import { ProjectFilesComponent } from "./project/project-files/project-files.component";
-import { TeamEventComponent } from "./team/team-event/team-event.component";
-import { TeamFilesComponent } from "./team/team-files/team-files.component";
-import { TeamHomeComponent } from "./team/team-home/team-home.component";
-import { TeamTaskComponent } from "./team/team-task/team-task.component";
-import { TeamFeedComponent } from "./team/team-feed/team-feed.component";
+
 import { OrganizationActionsComponent } from "./organization/organization-actions/organization-actions.component";
 import { CreateWorkspaceComponent } from "./organization/organization-actions/create-workspace/create-workspace.component";
 import { AddOrganizationMembersComponent } from "./organization/organization-actions/add-organization-members/add-organization-members.component";
 import { ProjectEventComponent } from "./project/project-event/project-event.component";
 import { ProjectTeamComponent } from "./project/project-team/project-team.component";
 import { ProjectFeedComponent } from "./project/project-feed/project-feed.component";
+import { TeamComponent } from './team/team.component';
+import { TeamTaskComponent } from './team/team-task/team-task.component';
+import { TeamHomeComponent } from './team/team-home/team-home.component';
+import { TeamFilesComponent } from './team/team-files/team-files.component';
+import { TeamFeedComponent } from './team/team-feed/team-feed.component';
+import { TeamEventComponent } from './team/team-event/team-event.component';
+import { AddTeamMembersComponent } from './team/modals/add-team-members/add-team-members.component';
+import { ShowTeamMembersComponent } from './team/modals/show-team-members/show-team-members.component';
+import { CreateTeamEventComponent } from './team/modals/create-team-event/create-team-event.component';
+import { CreateTaskComponent } from './team/modals/create-task/create-task.component';
+import { LeaveTeamComponent } from './team/modals/leave-team/leave-team.component';
+import { ShowCompletedTasksComponent } from './team/modals/show-completed-tasks/show-completed-tasks.component';
+import { ShowRemainingTasksComponent } from './team/modals/show-remaining-tasks/show-remaining-tasks.component';
 
 @NgModule({
   declarations: [
@@ -118,20 +126,27 @@ import { ProjectFeedComponent } from "./project/project-feed/project-feed.compon
     LeaveWorkspaceComponent,
     AddMembersComponent,
     MessageDetailComponent,
-    TeamComponent,
     ProjectHomeComponent,
     ProjectFilesComponent,
-    TeamEventComponent,
-    TeamFilesComponent,
-    TeamHomeComponent,
-    TeamTaskComponent,
-    TeamFeedComponent,
     OrganizationActionsComponent,
     CreateWorkspaceComponent,
     AddOrganizationMembersComponent,
     ProjectEventComponent,
     ProjectTeamComponent,
-    ProjectFeedComponent
+    ProjectFeedComponent,
+    TeamComponent,
+    TeamTaskComponent,
+    TeamHomeComponent,
+    TeamFilesComponent,
+    TeamFeedComponent,
+    TeamEventComponent,
+    AddTeamMembersComponent,
+    ShowTeamMembersComponent,
+    CreateTeamEventComponent,
+    CreateTaskComponent,
+    LeaveTeamComponent,
+    ShowCompletedTasksComponent,
+    ShowRemainingTasksComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,10 @@
-<app-create-project></app-create-project>
-<app-create-event></app-create-event>
-<app-add-members></app-add-members>
-<app-leave-workspace></app-leave-workspace>
-<app-show-members></app-show-members>
-<app-show-completed-projects></app-show-completed-projects>
-<app-show-remaining-projects></app-show-remaining-projects>
-<app-show-teams></app-show-teams>
+<app-create-task></app-create-task>
+<app-create-team-event></app-create-team-event>
+<app-add-team-members></app-add-team-members>
+<app-leave-team></app-leave-team>
+<app-show-team-members></app-show-team-members>
+<app-show-completed-tasks></app-show-completed-tasks>
+<app-show-remaining-tasks></app-show-remaining-tasks>
 <!-- <div class="row">
   <div class="col-md-12">
     <div id="chartdiv" style="height: 300px; width: 100%;"></div>
@@ -28,7 +27,7 @@
           (click)="createteamtask()"
         >
           <i class="fas fa-folder-plus"></i>
-          <p>Create tasks</p>
+          <p>Create Task</p>
         </div>
 
         <div
@@ -38,7 +37,7 @@
           (click)="createEvent()"
         >
           <i class="fa fa-calendar-plus"></i>
-          <p>Create event</p>
+          <p>Create Event</p>
         </div>
         <div
           class="item wow fadeInUpBig animated animated"
@@ -47,17 +46,17 @@
           (click)="addMembers()"
         >
           <i class="fa fa-user-plus"></i>
-          <p>Add members</p>
+          <p>Add Members</p>
         </div>
 
         <div
           class="item wow fadeInUpBig animated animated"
           data-number="246"
           style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
-          (click)="LeaveTeam()"
+          (click)="leaveTeam()"
         >
           <i class="fa fa-sign-out-alt"></i>
-          <p>Leave team</p>
+          <p>Leave Team</p>
         </div>
       </div>
     </div>
@@ -89,7 +88,7 @@
           (click)="tasksDone()"
         >
           <i class="fa fa-clipboard-check"></i>
-          <p id="number3" class="number">359</p>
+          <p id="number3" class="number">9</p>
           <span></span>
           <p>Tasks completed</p>
         </div>
@@ -100,134 +99,52 @@
           (click)="tasksLeft()"
         >
           <i class="fa fa-clipboard-list"></i>
-          <p id="number4" class="number">246</p>
+          <p id="number4" class="number">16</p>
           <span></span>
           <p>Tasks remaining</p>
-        </div>
-
-        <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="246"
-          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
-          (click)="viewTeams()"
-        >
-          <i class="fa fa-users-class"></i>
-          <p id="number4" class="number">246</p>
-          <span></span>
-          <p>Total teams</p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="sectiontitle" style="padding-bottom: 30px; margin-top: -30px;">
-    <h2>Teams progress</h2>
+    <h2>Task progress</h2>
     <span class="headerLine"></span>
   </div>
 
   <div class="row">
-    <div class="col-md-2">
-      <span style="font-family: sans-serif; font-size: 17px;">Task 1</span>
-    </div>
-    <div class="col-md-10">
-      <div class="progress md-progress" style="height: 20px; right: 10px;">
-        <div
-          class="progress-bar"
-          role="progressbar"
-          style="width: 25%; height: 20px; background-color: royalblue ;"
-          aria-valuenow="25"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
-      </div>
-    </div>
+    <div class="col-md-3"></div>
   </div>
   <div class="row">
-    <div class="col-md-12" style="height: 10px;"></div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <span style="font-family: sans-serif; font-size: 17px;">Task 2</span>
-    </div>
-    <div class="col-md-10">
-      <div class="progress md-progress" style="height: 20px; right: 10px;">
-        <div
-          class="progress-bar"
-          role="progressbar"
-          style="width: 50%; height: 20px; background-color: royalblue;"
-          aria-valuenow="50"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
-      </div>
-    </div>
-  </div>
+    <div class="col-md-6">
+      <h1 style="font-size: 20px; text-align: center;font-weight: bold;">
+        Select your task status
+      </h1>
+      <div class="dropdown" mdbDropdown>
+        <button
+          mdbDropdownToggle
+          mdbBtn
+          color="primary"
+          class="dropdown-toggle waves-light"
+          type="button"
+          mdbWavesEffect
+        >
+          Status
+        </button>
 
-  <div class="row">
-    <div class="col-md-12" style="height: 10px;"></div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <span style="font-family: sans-serif; font-size: 17px;">Task 3</span>
-    </div>
-    <div class="col-md-10">
-      <div class="progress md-progress" style="height: 20px; right: 10px;">
-        <div
-          class="progress-bar"
-          role="progressbar"
-          style="width: 5%; height: 20px; background-color: royalblue;"
-          aria-valuenow="5"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
+        <div class="dropdown-menu dropdown-primary">
+          <a class="dropdown-item" href="#">Assigned</a>
+          <a class="dropdown-item" href="#">In Progress</a>
+          <a class="dropdown-item" href="#">Completed</a>
+          <a class="dropdown-item" href="#">Submitted</a>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12" style="height: 10px;"></div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <span style="font-family: sans-serif; font-size: 17px;">Task 4</span>
-    </div>
-    <div class="col-md-10">
-      <div class="progress md-progress" style="height: 20px; right: 10px;">
-        <div
-          class="progress-bar"
-          role="progressbar"
-          style="width: 100%; height: 20px; background-color: royalblue;"
-          aria-valuenow="100"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12" style="height: 10px;"></div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <span style="font-family: sans-serif; font-size: 17px;">Task 5</span>
-    </div>
-    <div class="col-md-10">
-      <div class="progress md-progress" style="height: 20px; right: 10px;">
-        <div
-          class="progress-bar"
-          role="progressbar"
-          style="width: 70%; height: 20px; background-color: royalblue;"
-          aria-valuenow="70"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
        <div id="timeline" style="height: 180px;"></div>
     -->
+      </div>
+    </div>
+  </div>
 </div>
-
