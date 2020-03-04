@@ -79,6 +79,7 @@ import { LeaveTeamComponent } from './team/modals/leave-team/leave-team.componen
 import { ShowCompletedTasksComponent } from './team/modals/show-completed-tasks/show-completed-tasks.component';
 import { ShowRemainingTasksComponent } from './team/modals/show-remaining-tasks/show-remaining-tasks.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
+import { ErrorModalComponent } from './error-modal/error-modal.component';
 
 @NgModule({
   declarations: [
@@ -148,7 +149,8 @@ import { ProfileFormComponent } from './profile-form/profile-form.component';
     LeaveTeamComponent,
     ShowCompletedTasksComponent,
     ShowRemainingTasksComponent,
-    ProfileFormComponent
+    ProfileFormComponent,
+    ErrorModalComponent
   ],
   imports: [
     BrowserModule,
