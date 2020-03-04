@@ -78,6 +78,7 @@ import { CreateTaskComponent } from './team/modals/create-task/create-task.compo
 import { LeaveTeamComponent } from './team/modals/leave-team/leave-team.component';
 import { ShowCompletedTasksComponent } from './team/modals/show-completed-tasks/show-completed-tasks.component';
 import { ShowRemainingTasksComponent } from './team/modals/show-remaining-tasks/show-remaining-tasks.component';
+import { ProfileFormComponent } from './profile-form/profile-form.component';
 
 @NgModule({
   declarations: [
@@ -146,7 +147,8 @@ import { ShowRemainingTasksComponent } from './team/modals/show-remaining-tasks/
     CreateTaskComponent,
     LeaveTeamComponent,
     ShowCompletedTasksComponent,
-    ShowRemainingTasksComponent
+    ShowRemainingTasksComponent,
+    ProfileFormComponent
   ],
   imports: [
     BrowserModule,

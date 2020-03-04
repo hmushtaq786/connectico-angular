@@ -32,6 +32,11 @@ interface AuthCredentials {
   password: string;
 }
 
+interface FirstAuthCredentials {
+  email: string;
+  password: string;
+}
+
 @Injectable({
   providedIn: "root"
 })
@@ -145,6 +150,13 @@ export class ConnectionService {
     const body = JSON.stringify(credentials);
     return this.httpClient.post(`${this.baseUrl}auth/`, body, {
       headers: this.getAuthHeaders()
+    });
+  }
+
+  firstLogin(credentials: FirstAuthCredentials) {
+    const data = JSON.stringify(credentials);
+    return this.httpClient.post(`${this.baseUrl}register/authenticate`, data, {
+      headers: this.getHeaders()
     });
   }
 

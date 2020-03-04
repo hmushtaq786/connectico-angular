@@ -9,6 +9,7 @@ import { WorkspaceComponent } from "./workspace/workspace.component";
 import { ProjectComponent } from "./project/project.component";
 import { MessagesComponent } from "./messages/messages.component";
 import { TeamComponent } from "./team/team.component";
+import { ProfileFormComponent } from "./profile-form/profile-form.component";
 
 const routes: Routes = [
   { path: "", component: LandingPageComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: "workspace", component: WorkspaceComponent },
   { path: "project", component: ProjectComponent },
   { path: "messages", component: MessagesComponent },
-  { path: "team", component: TeamComponent }
+  { path: "team", component: TeamComponent },
+  { path: "profile/setup", component: ProfileFormComponent }
 ];
 
 @NgModule({

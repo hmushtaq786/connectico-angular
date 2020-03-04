@@ -86,6 +86,16 @@ export class LoginModalComponent implements OnInit {
     } else {
       this.first_login.email = this.loginForm.get("email").value;
       this.first_login.password = this.loginForm.get("password").value;
+      this.connectionService.firstLogin(this.first_login).subscribe(
+        (firstAuthResult: any) => {
+          localStorage.setItem("temp-auth", JSON.stringify(firstAuthResult));
+          hideLoginModal();
+          this.router.navigate(["profile/setup"]);
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }
     console.log(this.first_login);
     console.log(this.normal_login);
