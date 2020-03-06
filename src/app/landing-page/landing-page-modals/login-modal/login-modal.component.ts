@@ -7,6 +7,7 @@ import { CookieService } from "ngx-cookie-service";
 import { ConnectionService } from "../../../connection.service";
 
 declare const hideLoginModal: any;
+declare const newUserModal: any;
 
 @Component({
   selector: "app-login-modal",
@@ -38,7 +39,9 @@ export class LoginModalComponent implements OnInit {
     private cookieService: CookieService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.buttonLoader();
+  }
 
   checkbox_click() {
     if (this.checked == 0) {
@@ -90,14 +93,22 @@ export class LoginModalComponent implements OnInit {
         (firstAuthResult: any) => {
           localStorage.setItem("temp-auth", JSON.stringify(firstAuthResult));
           hideLoginModal();
-          this.router.navigate(["profile/setup"]);
+          newUserModal();
         },
         error => {
           console.log(error);
         }
       );
     }
-    console.log(this.first_login);
-    console.log(this.normal_login);
   };
+
+  buttonLoader() {
+    $("#loginBtn").click(function() {
+      $("#loginBtn")
+        .html(
+          'Login <span class="spinner-border spinner-border-sm mr-2" style="padding-left=10px" role="status" aria-hidden="true"></span>'
+        )
+        .addClass("disabled");
+    });
+  }
 }

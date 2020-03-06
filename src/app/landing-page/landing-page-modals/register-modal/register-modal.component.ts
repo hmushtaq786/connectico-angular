@@ -69,6 +69,7 @@ export class RegisterModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.buttonLoader();
     stepper();
   }
 
@@ -208,4 +209,13 @@ export class RegisterModalComponent implements OnInit {
       }
     );
   };
+
+  buttonLoader() {
+    $("#registerBtn").click(function() {
+      $("#registerBtn").addClass("disabled");
+      $("#loader").html(
+        '<span class="spinner-border spinner-border-md mr-2" style="color:#FF3547; padding-left=10px" role="status" aria-hidden="true"></span>'
+      );
+    });
+  }
 }

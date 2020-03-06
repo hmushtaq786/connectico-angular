@@ -28,6 +28,14 @@ function registerModal() {
   $("#registerModal").modal("show");
 }
 
+function newUserModal() {
+  $("#newUserModal").modal("show");
+}
+
+function hideNewUserModal() {
+  $("#newUserModal").modal("hide");
+}
+
 function hideRegisterModal() {
   $("#registerModal").modal("hide");
 }

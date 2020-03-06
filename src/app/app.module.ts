@@ -65,21 +65,21 @@ import { AddOrganizationMembersComponent } from "./organization/organization-act
 import { ProjectEventComponent } from "./project/project-event/project-event.component";
 import { ProjectTeamComponent } from "./project/project-team/project-team.component";
 import { ProjectFeedComponent } from "./project/project-feed/project-feed.component";
-import { TeamComponent } from './team/team.component';
-import { TeamTaskComponent } from './team/team-task/team-task.component';
-import { TeamHomeComponent } from './team/team-home/team-home.component';
-import { TeamFilesComponent } from './team/team-files/team-files.component';
-import { TeamFeedComponent } from './team/team-feed/team-feed.component';
-import { TeamEventComponent } from './team/team-event/team-event.component';
-import { AddTeamMembersComponent } from './team/modals/add-team-members/add-team-members.component';
-import { ShowTeamMembersComponent } from './team/modals/show-team-members/show-team-members.component';
-import { CreateTeamEventComponent } from './team/modals/create-team-event/create-team-event.component';
-import { CreateTaskComponent } from './team/modals/create-task/create-task.component';
-import { LeaveTeamComponent } from './team/modals/leave-team/leave-team.component';
-import { ShowCompletedTasksComponent } from './team/modals/show-completed-tasks/show-completed-tasks.component';
-import { ShowRemainingTasksComponent } from './team/modals/show-remaining-tasks/show-remaining-tasks.component';
-import { ProfileFormComponent } from './profile-form/profile-form.component';
-import { ErrorModalComponent } from './error-modal/error-modal.component';
+import { TeamComponent } from "./team/team.component";
+import { TeamTaskComponent } from "./team/team-task/team-task.component";
+import { TeamHomeComponent } from "./team/team-home/team-home.component";
+import { TeamFilesComponent } from "./team/team-files/team-files.component";
+import { TeamFeedComponent } from "./team/team-feed/team-feed.component";
+import { TeamEventComponent } from "./team/team-event/team-event.component";
+import { AddTeamMembersComponent } from "./team/modals/add-team-members/add-team-members.component";
+import { ShowTeamMembersComponent } from "./team/modals/show-team-members/show-team-members.component";
+import { CreateTeamEventComponent } from "./team/modals/create-team-event/create-team-event.component";
+import { CreateTaskComponent } from "./team/modals/create-task/create-task.component";
+import { LeaveTeamComponent } from "./team/modals/leave-team/leave-team.component";
+import { ShowCompletedTasksComponent } from "./team/modals/show-completed-tasks/show-completed-tasks.component";
+import { ShowRemainingTasksComponent } from "./team/modals/show-remaining-tasks/show-remaining-tasks.component";
+import { ErrorModalComponent } from "./error-modal/error-modal.component";
+import { NewUserModalComponent } from "./landing-page/landing-page-modals/new-user-modal/new-user-modal.component";
 
 @NgModule({
   declarations: [
@@ -149,8 +149,8 @@ import { ErrorModalComponent } from './error-modal/error-modal.component';
     LeaveTeamComponent,
     ShowCompletedTasksComponent,
     ShowRemainingTasksComponent,
-    ProfileFormComponent,
-    ErrorModalComponent
+    ErrorModalComponent,
+    NewUserModalComponent
   ],
   imports: [
     BrowserModule,
