@@ -6,8 +6,14 @@
   >
     <img
       width="500"
-      src="https://maps.googleapis.com/maps/api/staticmap?center=Comsats Islamabad&zoom=15&scale=2&size=500x300&maptype=roadmap&key=AIzaSyCflgUeLcHjjuu2xT9hA1DM1BaFnREWjFg&format=png&visual_refresh=true"
-      alt="Google Map of Comsats Islamabad"
+      src="https://maps.googleapis.com/maps/api/staticmap?center={{
+        org.address
+      }}&zoom=15&scale=2&size=500x300&maptype=roadmap&key={{
+        API_KEY
+      }}&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0x0000ff%7Clabel:%7C{{
+        org.address
+      }}"
+      alt="Google Map of {{ org.address }}"
     />
   </div>
   <div class="col-md-1"></div>
