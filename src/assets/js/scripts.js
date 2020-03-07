@@ -8,6 +8,10 @@ function sidenav() {
   });
 }
 
+function errorModal() {
+  $("#errorModal").modal("show");
+}
+
 function membersModal() {
   $("#membersModal").modal("show");
 }

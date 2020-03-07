@@ -61,7 +61,7 @@ export class LoginModalComponent implements OnInit {
           this.connectionService.getUser(this.normal_login.username).subscribe(
             (getUserResult: any) => {
               this.connectionService
-                .getOrganization(getUserResult.id)
+                .getOrganization(getUserResult.organization_id)
                 .subscribe(
                   (getOrganizationResult: any) => {
                     localStorage.setItem("user", JSON.stringify(getUserResult));

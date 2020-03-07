@@ -166,13 +166,10 @@ export class ConnectionService {
     });
   }
 
-  getOrganization(created_by: string) {
-    return this.httpClient.get(
-      `${this.baseUrl}register/organizations/${created_by}/`,
-      {
-        headers: this.getHeaders()
-      }
-    );
+  getOrganization(id: string) {
+    return this.httpClient.get(`${this.baseUrl}register/organizations/${id}/`, {
+      headers: this.getHeaders()
+    });
   }
 
   getTotalMembers(org_id: string) {
@@ -215,5 +212,14 @@ export class ConnectionService {
     return this.httpClient.post(`${this.baseUrl}register/invite`, members, {
       headers: this.getHeaders()
     });
+  }
+
+  deleteTempInvite(id) {
+    return this.httpClient.delete(
+      `${this.baseUrl}register/organization/invites/${id}/`,
+      {
+        headers: this.getHeaders()
+      }
+    );
   }
 }

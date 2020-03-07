@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 
 declare const loginModal: any;
 declare const registerModal: any;
+declare const errorModal: any;
 
 @Component({
   selector: "app-landing-page",
@@ -23,6 +24,7 @@ export class LandingPageComponent implements OnInit {
 
   register = () => {
     registerModal();
+    // errorModal();
   };
 
   login = () => {

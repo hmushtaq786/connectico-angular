@@ -119,55 +119,41 @@ export class RegisterModalComponent implements OnInit {
                         .registerOrganization(this.organization)
                         .subscribe(
                           (orgRegisterResult: any) => {
+                            this.user["organization_id"] = orgRegisterResult.id;
+                            var org_id = {
+                              organization_id: orgRegisterResult.id,
+                              org_creator: true
+                            };
                             this.connectionService
-                              .getOrganization(getUserRegister.id)
+                              .updateUser(getUserRegister.id, org_id)
                               .subscribe(
-                                (getOrganizationResult: any) => {
-                                  this.user["organization_id"] =
-                                    getOrganizationResult.id;
-                                  var org_id = {
-                                    organization_id: getOrganizationResult.id
-                                  };
+                                (updateUserResult: any) => {
                                   this.connectionService
-                                    .updateUser(getUserRegister.id, org_id)
+                                    .getUser(this.user.username)
                                     .subscribe(
-                                      (updateUserResult: any) => {
+                                      (getUserResult: any) => {
+                                        localStorage.setItem(
+                                          "user",
+                                          JSON.stringify(getUserResult)
+                                        );
+                                        localStorage.setItem(
+                                          "org",
+                                          JSON.stringify(orgRegisterResult)
+                                        );
+                                        var loginData = {
+                                          username: getUserResult.username,
+                                          password: this.user.password
+                                        };
                                         this.connectionService
-                                          .getUser(this.user.username)
+                                          .loginUser(loginData)
                                           .subscribe(
-                                            (getUserResult: any) => {
-                                              localStorage.setItem(
-                                                "user",
-                                                JSON.stringify(getUserResult)
+                                            (loginUserResult: any) => {
+                                              this.cookieService.set(
+                                                "auth-token",
+                                                loginUserResult.token
                                               );
-                                              localStorage.setItem(
-                                                "org",
-                                                JSON.stringify(
-                                                  getOrganizationResult
-                                                )
-                                              );
-                                              var loginData = {
-                                                username:
-                                                  getUserResult.username,
-                                                password: this.user.password
-                                              };
-                                              this.connectionService
-                                                .loginUser(loginData)
-                                                .subscribe(
-                                                  (loginUserResult: any) => {
-                                                    this.cookieService.set(
-                                                      "auth-token",
-                                                      loginUserResult.token
-                                                    );
-                                                    hideRegisterModal();
-                                                    this.router.navigate([
-                                                      "profile"
-                                                    ]);
-                                                  },
-                                                  error => {
-                                                    console.log(error);
-                                                  }
-                                                );
+                                              hideRegisterModal();
+                                              this.router.navigate(["profile"]);
                                             },
                                             error => {
                                               console.log(error);
