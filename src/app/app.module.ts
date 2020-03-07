@@ -80,6 +80,7 @@ import { ShowCompletedTasksComponent } from "./team/modals/show-completed-tasks/
 import { ShowRemainingTasksComponent } from "./team/modals/show-remaining-tasks/show-remaining-tasks.component";
 import { ErrorModalComponent } from "./error-modal/error-modal.component";
 import { NewUserModalComponent } from "./landing-page/landing-page-modals/new-user-modal/new-user-modal.component";
+import { OrganizationDetailsLocationComponent } from './organization/details/organization-details-location/organization-details-location.component';
 
 @NgModule({
   declarations: [
@@ -150,7 +151,8 @@ import { NewUserModalComponent } from "./landing-page/landing-page-modals/new-us
     ShowCompletedTasksComponent,
     ShowRemainingTasksComponent,
     ErrorModalComponent,
-    NewUserModalComponent
+    NewUserModalComponent,
+    OrganizationDetailsLocationComponent
   ],
   imports: [
     BrowserModule,
