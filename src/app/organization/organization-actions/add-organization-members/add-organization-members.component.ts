@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { ConnectionService } from "../../../connection.service";
-import { number } from "@amcharts/amcharts4/core";
-import { any } from "@amcharts/amcharts4/.internal/core/utils/Array";
 
 declare const errorModal: any;
 
@@ -19,8 +17,8 @@ export class AddOrganizationMembersComponent implements OnInit {
   org: any;
 
   inviteRequest = {
-    org_id: number,
-    list: any
+    org_id: Number,
+    list: Object
   };
 
   modalMessage = "<System message>";

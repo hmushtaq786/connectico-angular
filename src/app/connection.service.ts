@@ -145,6 +145,17 @@ export class ConnectionService {
     });
   }
 
+  createWorkspace(workspaceData: object) {
+    const workspace = JSON.stringify(workspaceData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/workspaces/`,
+      workspace,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
+
   //login user with the credentials provided
   loginUser(credentials: AuthCredentials) {
     const body = JSON.stringify(credentials);
