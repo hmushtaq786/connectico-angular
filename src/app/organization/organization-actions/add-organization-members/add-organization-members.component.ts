@@ -4,6 +4,8 @@ import { ConnectionService } from "../../../connection.service";
 import { number } from "@amcharts/amcharts4/core";
 import { any } from "@amcharts/amcharts4/.internal/core/utils/Array";
 
+declare const errorModal: any;
+
 @Component({
   selector: "app-add-organization-members",
   templateUrl: "./add-organization-members.component.html",
@@ -21,12 +23,19 @@ export class AddOrganizationMembersComponent implements OnInit {
     list: any
   };
 
+  modalMessage = "<System message>";
+
   constructor(private connectionService: ConnectionService) {}
 
   ngOnInit() {}
 
   invite() {
-    console.log(this.emailList.get("emails").value);
+    $("#inviteBtn")
+      .html(
+        '<span class="spinner-border spinner-border-sm mr-2" style="padding-left=10px" role="status" aria-hidden="true"></span>'
+      )
+      .addClass("disabled");
+
     var emailsString: string = this.emailList.get("emails").value;
     this.list = emailsString.split(";");
     this.org = JSON.parse(localStorage.getItem("org"));
@@ -34,7 +43,11 @@ export class AddOrganizationMembersComponent implements OnInit {
     this.inviteRequest.list = this.list;
     this.connectionService.sendMemberInvites(this.inviteRequest).subscribe(
       result => {
-        alert("Invites sent successfully!");
+        this.modalMessage = "Invites sent successfully!";
+        errorModal();
+        $("#inviteBtn")
+          .html("Send invite")
+          .removeClass("disabled");
       },
       error => {
         console.log(error);

@@ -1,3 +1,5 @@
+<app-error-modal [message]="modalMessage"></app-error-modal>
+
 <form [formGroup]="emailList" (ngSubmit)="invite()">
   <div class="row">
     <div style="margin-bottom: 20px;" class="col-md-12"></div>
@@ -40,7 +42,7 @@
           class="col-md-10"
           style="text-align: right; padding: 10px; padding-left: 0px; right: 10px;"
         >
-          <button type="submit" class="create-button">
+          <button type="submit" id="inviteBtn" class="create-button">
             Send invite
           </button>
         </div>

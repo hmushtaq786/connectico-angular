@@ -33,7 +33,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="row member-tile" *ngFor="let member of members">
+        <div class="row member-tile" *ngFor="let member of orgMembers">
           <div
             style="text-align: center; padding-top: 5px;padding-bottom: 5px;"
             class="col-md-2"
@@ -41,7 +41,7 @@
             <img
               id="avatar-img"
               style="width: 70px;"
-              src="{{ member.image }}"
+              src="{{ member.photo_address }}"
               alt="avatar mx-auto white"
               class="img-fluid"
             />
@@ -52,7 +52,7 @@
                 style="font-family: sans-serif; font-size: 20px; margin-left: 0px; padding-left: 0px;"
                 class="col-md-12"
               >
-                {{ member.name }}
+                {{ member.first_name + " " + member.last_name }}
               </div>
             </div>
             <div class="row">

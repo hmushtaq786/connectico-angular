@@ -26,6 +26,10 @@ export class OrganizationTilesComponent implements OnInit {
     this.connectionService.getTotalMembers(this.org.id).subscribe(
       (getTotalMembersResult: any) => {
         console.log(getTotalMembersResult);
+        localStorage.setItem(
+          "org-members",
+          JSON.stringify(getTotalMembersResult)
+        );
         this.totalMembers = getTotalMembersResult.length;
       },
       error => {
