@@ -81,6 +81,7 @@ import { ShowRemainingTasksComponent } from "./team/modals/show-remaining-tasks/
 import { ErrorModalComponent } from "./error-modal/error-modal.component";
 import { NewUserModalComponent } from "./landing-page/landing-page-modals/new-user-modal/new-user-modal.component";
 import { OrganizationDetailsLocationComponent } from './organization/details/organization-details-location/organization-details-location.component';
+import { NotFoundErrorComponent } from './not-found-error/not-found-error.component';
 
 @NgModule({
   declarations: [
@@ -152,7 +153,8 @@ import { OrganizationDetailsLocationComponent } from './organization/details/org
     ShowRemainingTasksComponent,
     ErrorModalComponent,
     NewUserModalComponent,
-    OrganizationDetailsLocationComponent
+    OrganizationDetailsLocationComponent,
+    NotFoundErrorComponent
   ],
   imports: [
     BrowserModule,
