@@ -58,13 +58,12 @@
           aria-labelledby="navbarDropdownMenuLink-555"
         >
           <a
+            *ngFor="let workspace of orgWorkspaces"
             class="dropdown-item"
             [routerLink]="['/workspace']"
-            [routerLinkActive]="'active'"
-            >Workspace 1</a
+            [routerLinkActive]="'//active'"
+            >{{ workspace.w_name }}</a
           >
-          <a class="dropdown-item" href="#">Workspace 2</a>
-          <a class="dropdown-item" href="#">Workspace 3</a>
         </div>
       </li>
       <li class="nav-item dropdown">

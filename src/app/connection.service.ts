@@ -194,7 +194,7 @@ export class ConnectionService {
 
   getTotalWorkspaces(org_id: string) {
     return this.httpClient.get(
-      `${this.baseUrl}register/organization/workspaces/${org_id}/`,
+      `${this.baseUrl}register/organization/workspaces/members/${org_id}/`,
       {
         headers: this.getHeaders()
       }

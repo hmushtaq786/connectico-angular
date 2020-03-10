@@ -41,7 +41,11 @@ export class WorkspacesModalStructureComponent implements OnInit {
     }
   ];
 
+  orgWorkspaces;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.orgWorkspaces = JSON.parse(localStorage.getItem("org-workspaces"));
+  }
 }

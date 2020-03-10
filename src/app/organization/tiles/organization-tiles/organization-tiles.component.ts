@@ -41,6 +41,11 @@ export class OrganizationTilesComponent implements OnInit {
         if (!getTotalWorkspacesResult) {
           this.totalWorkspaces = 0;
         } else {
+          console.log(getTotalWorkspacesResult);
+          localStorage.setItem(
+            "org-workspaces",
+            JSON.stringify(getTotalWorkspacesResult)
+          );
           this.totalWorkspaces = getTotalWorkspacesResult.length;
         }
       },
@@ -50,9 +55,14 @@ export class OrganizationTilesComponent implements OnInit {
     );
     this.connectionService.getTotalProjects(this.org.id).subscribe(
       (getTotalProjectsResult: any) => {
-        this.totalProjects = getTotalProjectsResult.length;
+        if (!getTotalProjectsResult) {
+          this.totalProjects = 0;
+        } else {
+          this.totalProjects = getTotalProjectsResult.length;
+        }
       },
       error => {
+        this.totalProjects = 0;
         console.log(error);
       }
     );
@@ -61,6 +71,7 @@ export class OrganizationTilesComponent implements OnInit {
         this.totalTeams = getTotalTeamsResult.length;
       },
       error => {
+        this.totalTeams = 0;
         console.log(error);
       }
     );

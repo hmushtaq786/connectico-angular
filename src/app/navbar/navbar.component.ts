@@ -10,6 +10,7 @@ import { CookieService } from "ngx-cookie-service";
 export class NavbarComponent implements OnInit {
   user: any;
   org: any;
+  orgWorkspaces: any;
   tokenCookie: any;
 
   constructor(private cookieService: CookieService, private router: Router) {}
@@ -17,6 +18,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("user"));
     this.org = JSON.parse(localStorage.getItem("org"));
+    this.orgWorkspaces = JSON.parse(localStorage.getItem("org-workspaces"));
   }
 
   logout() {
