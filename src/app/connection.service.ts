@@ -183,6 +183,16 @@ export class ConnectionService {
     });
   }
 
+  getWorkspace(id: string) {
+    console.log("Get workspace");
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/${id}/`,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
+
   getTotalMembers(org_id: string) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/members/${org_id}/`,

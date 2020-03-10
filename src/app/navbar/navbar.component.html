@@ -60,7 +60,7 @@
           <a
             *ngFor="let workspace of orgWorkspaces"
             class="dropdown-item"
-            [routerLink]="['/workspace']"
+            [routerLink]="['/workspace', workspace.w_id]"
             [routerLinkActive]="'//active'"
             >{{ workspace.w_name }}</a
           >

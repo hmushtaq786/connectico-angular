@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: "", component: LandingPageComponent },
   { path: "profile", component: ProfileStructureComponent },
   { path: "organization", component: OrganizationStructureComponent },
-  { path: "workspace", component: WorkspaceComponent },
+  { path: "workspace/:id", component: WorkspaceComponent },
   { path: "project", component: ProjectComponent },
   { path: "messages", component: MessagesComponent },
   { path: "team", component: TeamComponent },

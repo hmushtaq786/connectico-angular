@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { CookieService } from "ngx-cookie-service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
+import { switchMap } from "rxjs/operators";
+import { ConnectionService } from "../connection.service";
 
 @Component({
   selector: "app-workspace",
@@ -8,9 +10,16 @@ import { Router } from "@angular/router";
   styleUrls: ["./workspace.component.css"]
 })
 export class WorkspaceComponent implements OnInit {
+  workspace: object;
+  workspaces;
   screen = "workspace_home";
   page = "Home";
-  constructor(private cookieService: CookieService, private router: Router) {}
+  constructor(
+    private cookieService: CookieService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public connectionService: ConnectionService
+  ) {}
 
   ngOnInit() {
     const tokenCookie = this.cookieService.get("auth-token");
@@ -18,6 +27,27 @@ export class WorkspaceComponent implements OnInit {
     if (!tokenCookie) {
       this.router.navigate(["/"]);
     }
+
+    this.workspaces = JSON.parse(localStorage.getItem("org-workspaces"));
+
+    // let id = this.activatedRoute.snapshot.paramMap.get("id");
+
+    // workspaces.forEach(element => {
+    //   if (id == element.w_id) {
+    //     this.workspace = element;
+    //   }
+    // });
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.workspaces.forEach(element => {
+        if (element.w_id == +params.get("id")) {
+          this.workspace = element;
+        }
+      });
+    });
+    // this.workspace = this.activatedRoute.paramMap.pipe(
+    //   switchMap((params: ParamMap) => params.get("id"))
+    // );
+    // console.log(this.workspace);
   }
 
   leftbar_click(event) {
