@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
+import { ConnectionService } from "../connection.service";
 
 @Component({
   selector: "app-navbar",
@@ -13,12 +14,26 @@ export class NavbarComponent implements OnInit {
   orgWorkspaces: any;
   tokenCookie: any;
 
-  constructor(private cookieService: CookieService, private router: Router) {}
+  constructor(
+    private cookieService: CookieService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private connectionService: ConnectionService
+  ) {}
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("user"));
     this.org = JSON.parse(localStorage.getItem("org"));
-    this.orgWorkspaces = JSON.parse(localStorage.getItem("org-workspaces"));
+
+    // this.orgWorkspaces = JSON.parse(localStorage.getItem("org-workspaces"));
+    this.connectionService.getTotalWorkspaces(this.org.id).subscribe(
+      (getOrgWorkspaces: any) => {
+        this.orgWorkspaces = getOrgWorkspaces;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   logout() {

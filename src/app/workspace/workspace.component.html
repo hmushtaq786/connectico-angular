@@ -72,7 +72,7 @@
     </div>
     <div class="row">
       <div class="col-md-12" *ngIf="screen === 'workspace_home'">
-        <app-workspace-home></app-workspace-home>
+        <app-workspace-home [currentWorkspace]="workspace"></app-workspace-home>
       </div>
       <div class="col-md-12" *ngIf="screen === 'feed'">
         <app-feed></app-feed>
@@ -82,7 +82,9 @@
         *ngIf="screen === 'workspace_project'"
         style="padding-left: 10px; padding-right:25px;"
       >
-        <app-workspace-project></app-workspace-project>
+        <app-workspace-project
+          [currentWorkspace]="workspace"
+        ></app-workspace-project>
       </div>
       <div
         class="col-md-12"

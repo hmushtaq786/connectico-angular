@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { ConnectionService } from "../../../connection.service";
+import { Router } from "@angular/router";
 
 declare const errorModal: any;
 
@@ -23,7 +24,10 @@ export class AddOrganizationMembersComponent implements OnInit {
 
   modalMessage = "<System message>";
 
-  constructor(private connectionService: ConnectionService) {}
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -46,6 +50,14 @@ export class AddOrganizationMembersComponent implements OnInit {
         $("#inviteBtn")
           .html("Send invite")
           .removeClass("disabled");
+        $("#errorModal").on("hidden.bs.modal", () => {
+          this.router
+            .navigateByUrl("/loading", { skipLocationChange: true })
+            .then(() => {
+              errorModal();
+              this.router.navigate(["organization"]);
+            });
+        });
       },
       error => {
         console.log(error);

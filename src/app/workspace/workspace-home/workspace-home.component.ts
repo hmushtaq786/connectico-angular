@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 /* Imports */
 import * as am4core from "@amcharts/amcharts4/core";
@@ -22,6 +22,8 @@ declare const totalTeams: any;
   styleUrls: ["./workspace-home.component.css"]
 })
 export class WorkspaceHomeComponent implements OnInit {
+  @Input() currentWorkspace;
+
   constructor() {}
 
   ngOnInit() {

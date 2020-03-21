@@ -12,6 +12,10 @@ function errorModal() {
   $("#errorModal").modal("show");
 }
 
+function hideErrorModal() {
+  $("#errorModal").modal("hide");
+}
+
 function membersModal() {
   $("#membersModal").modal("show");
 }

@@ -14,7 +14,5 @@ export class OrganizationDetailsAboutComponent implements OnInit {
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("user"));
     this.org = JSON.parse(localStorage.getItem("org"));
-    console.log(this.user);
-    console.log(this.org);
   }
 }

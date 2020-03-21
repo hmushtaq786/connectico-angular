@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { ConnectionService } from "src/app/connection.service";
 
@@ -10,6 +10,8 @@ declare const errorModal: any;
   styleUrls: ["./create-project.component.css"]
 })
 export class CreateProjectComponent implements OnInit {
+  @Input() currentWorkspace;
+
   modalMessage = "<System message>";
 
   projectForm = new FormGroup({
@@ -31,7 +33,12 @@ export class CreateProjectComponent implements OnInit {
 
   constructor(private connectionService: ConnectionService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    $(document).ready(function() {
+      var comp: any = $(".mdb-select");
+      comp.materialSelect();
+    });
+  }
 
   createProject() {
     $("#createBtn")
@@ -48,17 +55,18 @@ export class CreateProjectComponent implements OnInit {
     this.project.p_start_date = this.projectForm.get("startDate").value;
     this.project.p_end_date = this.projectForm.get("endDate").value;
     this.project.p_status = "Created";
-    this.project.workspace_id = org.id;
+    this.project.workspace_id = this.currentWorkspace.w_id;
     this.project.created_by = user.id;
 
-    this.connectionService.createWorkspace(this.project).subscribe(
-      (createWorkspaceResult: any) => {
-        console.log(createWorkspaceResult);
+    this.connectionService.createProject(this.project).subscribe(
+      (createProjectResult: any) => {
+        console.log(createProjectResult);
         this.modalMessage = "New project created successfully!";
-        errorModal();
-        $("#createBtn")
-          .html("Create")
-          .removeClass("disabled");
+        //TO BE ADDED AFTER CLOSING THE CURRENT MODAL
+        // errorModal();
+        // $("#createBtn")
+        //   .html("Create")
+        //   .removeClass("disabled");
       },
       error => {
         console.log(error);

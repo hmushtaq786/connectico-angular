@@ -25,7 +25,6 @@ export class OrganizationTilesComponent implements OnInit {
     this.org = JSON.parse(localStorage.getItem("org"));
     this.connectionService.getTotalMembers(this.org.id).subscribe(
       (getTotalMembersResult: any) => {
-        console.log(getTotalMembersResult);
         localStorage.setItem(
           "org-members",
           JSON.stringify(getTotalMembersResult)
@@ -41,7 +40,6 @@ export class OrganizationTilesComponent implements OnInit {
         if (!getTotalWorkspacesResult) {
           this.totalWorkspaces = 0;
         } else {
-          console.log(getTotalWorkspacesResult);
           localStorage.setItem(
             "org-workspaces",
             JSON.stringify(getTotalWorkspacesResult)

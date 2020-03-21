@@ -156,6 +156,27 @@ export class ConnectionService {
     );
   }
 
+  createProject(projectData: object) {
+    const project = JSON.stringify(projectData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/workspaces/projects/`,
+      project,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
+
+  // get project by workspace id
+  getProjectByWID(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/projects/${"w" + id}/`,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
+
   //login user with the credentials provided
   loginUser(credentials: AuthCredentials) {
     const body = JSON.stringify(credentials);
@@ -183,15 +204,15 @@ export class ConnectionService {
     });
   }
 
-  getWorkspace(id: string) {
-    console.log("Get workspace");
-    return this.httpClient.get(
-      `${this.baseUrl}register/organization/workspaces/${id}/`,
-      {
-        headers: this.getHeaders()
-      }
-    );
-  }
+  // getWorkspace(id: string) {
+  //   console.log("Get workspace");
+  //   return this.httpClient.get(
+  //     `${this.baseUrl}register/organization/workspaces/${id}/`,
+  //     {
+  //       headers: this.getHeaders()
+  //     }
+  //   );
+  // }
 
   getTotalMembers(org_id: string) {
     return this.httpClient.get(

@@ -18,7 +18,7 @@ export class WorkspaceComponent implements OnInit {
     private cookieService: CookieService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public connectionService: ConnectionService
+    private connectionService: ConnectionService
   ) {}
 
   ngOnInit() {
@@ -40,6 +40,7 @@ export class WorkspaceComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.workspaces.forEach(element => {
         if (element.w_id == +params.get("id")) {
+          // + is for converting the string to int
           this.workspace = element;
         }
       });

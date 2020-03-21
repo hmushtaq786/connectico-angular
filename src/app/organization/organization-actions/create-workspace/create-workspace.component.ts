@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { ConnectionService } from "../../../connection.service";
+import { Router } from "@angular/router";
 
 declare const errorModal: any;
 
@@ -26,7 +27,10 @@ export class CreateWorkspaceComponent implements OnInit {
     created_by: ""
   };
 
-  constructor(private connectionService: ConnectionService) {}
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -50,14 +54,39 @@ export class CreateWorkspaceComponent implements OnInit {
       (createWorkspaceResult: any) => {
         console.log(createWorkspaceResult);
         this.modalMessage = "New workspace created successfully!";
-        errorModal();
         $("#createBtn")
           .html("Create")
           .removeClass("disabled");
+        var error: any = $("#errorModal");
+        errorModal();
+        // $("#errorModal").on("hidden.bs.modal", this.reloadPage);
+        $("#errorModal").on("hidden.bs.modal", () => {
+          this.router
+            .navigateByUrl("/loading", { skipLocationChange: true })
+            .then(() => {
+              errorModal();
+              this.router.navigate(["organization"]);
+            });
+        });
+        // this.router
+        //   .navigateByUrl("/loading", { skipLocationChange: true })
+        //   .then(() => {
+        //     errorModal();
+        //     this.router.navigate(["organization"]);
+        //   });
       },
       error => {
         console.log(error);
       }
     );
+  }
+  reloadPage() {
+    window.location.reload();
+    // this.router
+    //   .navigateByUrl("/loading", { skipLocationChange: true })
+    //   .then(() => {
+    //     errorModal();
+    //     this.router.navigate(["organization"]);
+    //   });
   }
 }
