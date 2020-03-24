@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { ConnectionService } from "src/app/connection.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-add-members",
@@ -6,70 +8,81 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./add-members.component.css"]
 })
 export class AddMembersComponent implements OnInit {
-  members = [
-    {
-      name: "Hamza Mushtaq",
-      email: "hm.khanzada786@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    },
-    {
-      name: "Ali Mushtaq",
-      email: "ali.mushtaq@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    },
-    {
-      name: "Basit Ahmed",
-      email: "ahmed.basit@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    },
-    {
-      name: "Aisha Khan",
-      email: "khan.aisha@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    },
-    {
-      name: "Amjad Dawood",
-      email: "amjad.dawood@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    },
-    {
-      name: "Ahmer Raza",
-      email: "ahmer.raza@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    },
-    {
-      name: "Hamza Mushtaq",
-      email: "hm.khanzada786@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    },
-    {
-      name: "Ali Mushtaq",
-      email: "ali.mushtaq@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    },
-    {
-      name: "Basit Ahmed",
-      email: "ahmed.basit@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    },
-    {
-      name: "Aisha Khan",
-      email: "khan.aisha@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    },
-    {
-      name: "Amjad Dawood",
-      email: "amjad.dawood@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    },
-    {
-      name: "Ahmer Raza",
-      email: "ahmer.raza@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-    }
-  ];
+  @Input() currentWorkspace;
 
-  constructor() {}
+  orgMembers: any;
+  workspaceMembers: any;
 
-  ngOnInit() {}
+  data = {
+    u_id: "",
+    w_id: "",
+    r_id: 2 //by default Workspace User = 2
+  };
+
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.orgMembers = JSON.parse(localStorage.getItem("org-members"));
+    // this.workspaceMembers = JSON.parse(
+    //   localStorage.getItem("workspace-members")
+    // );
+
+    this.connectionService
+      .membersOfWorkspace("w" + this.currentWorkspace.w_id)
+      .subscribe(
+        (membersOfWorkspaceResult: any) => {
+          this.workspaceMembers = membersOfWorkspaceResult;
+          for (var orgMember of this.orgMembers) {
+            orgMember["isAdded"] = false;
+            InnerLoop: for (var wcMember of this.workspaceMembers) {
+              console.log(orgMember.id + " and " + wcMember.u_id);
+              if (wcMember.u_id == orgMember.id) {
+                orgMember["isAdded"] = true;
+                break InnerLoop;
+              }
+            }
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
+  addMember(event) {
+    this.data.u_id = event.target.value;
+    this.data.w_id = this.currentWorkspace.w_id;
+
+    this.connectionService.addMemberWorkspace(this.data).subscribe(
+      (addMemberWorkspaceResult: any) => {
+        console.log(addMemberWorkspaceResult);
+        this.connectionService
+          .membersOfWorkspace("w" + this.currentWorkspace.w_id)
+          .subscribe(
+            (membersOfWorkspaceResult: any) => {
+              this.workspaceMembers = membersOfWorkspaceResult;
+              for (var orgMember of this.orgMembers) {
+                orgMember["isAdded"] = false;
+                InnerLoop: for (var wcMember of this.workspaceMembers) {
+                  console.log(orgMember.id + " and " + wcMember.u_id);
+                  if (wcMember.u_id == orgMember.id) {
+                    orgMember["isAdded"] = true;
+                    break InnerLoop;
+                  }
+                }
+              }
+            },
+            error => {
+              console.log(error);
+            }
+          );
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 }

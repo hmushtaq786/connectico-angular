@@ -10,7 +10,7 @@ import { ConnectionService } from "../connection.service";
   styleUrls: ["./workspace.component.css"]
 })
 export class WorkspaceComponent implements OnInit {
-  workspace: object;
+  workspace: any;
   workspaces;
   screen = "workspace_home";
   page = "Home";
@@ -45,10 +45,20 @@ export class WorkspaceComponent implements OnInit {
         }
       });
     });
-    // this.workspace = this.activatedRoute.paramMap.pipe(
-    //   switchMap((params: ParamMap) => params.get("id"))
-    // );
-    // console.log(this.workspace);
+
+    this.connectionService
+      .membersOfWorkspace("w" + this.workspace.w_id)
+      .subscribe(
+        (membersOfWorkspaceResult: any) => {
+          localStorage.setItem(
+            "workspace-members",
+            JSON.stringify(membersOfWorkspaceResult)
+          );
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   leftbar_click(event) {

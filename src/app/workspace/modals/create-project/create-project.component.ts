@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { ConnectionService } from "src/app/connection.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 declare const errorModal: any;
 
@@ -31,7 +32,10 @@ export class CreateProjectComponent implements OnInit {
     created_by: ""
   };
 
-  constructor(private connectionService: ConnectionService) {}
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     $(document).ready(function() {
@@ -54,7 +58,7 @@ export class CreateProjectComponent implements OnInit {
     this.project.p_description = this.projectForm.get("description").value;
     this.project.p_start_date = this.projectForm.get("startDate").value;
     this.project.p_end_date = this.projectForm.get("endDate").value;
-    this.project.p_status = "Created";
+    this.project.p_status = "ACTIVE";
     this.project.workspace_id = this.currentWorkspace.w_id;
     this.project.created_by = user.id;
 
@@ -62,11 +66,19 @@ export class CreateProjectComponent implements OnInit {
       (createProjectResult: any) => {
         console.log(createProjectResult);
         this.modalMessage = "New project created successfully!";
-        //TO BE ADDED AFTER CLOSING THE CURRENT MODAL
-        // errorModal();
-        // $("#createBtn")
-        //   .html("Create")
-        //   .removeClass("disabled");
+        var createModal: any = $("#createProject");
+        $("#createBtn")
+          .html("Create")
+          .removeClass("disabled");
+        createModal.modal("hide");
+        errorModal();
+        $("#errorModal").on("hidden.bs.modal", () => {
+          this.router
+            .navigateByUrl("/loading", { skipLocationChange: true })
+            .then(() => {
+              this.router.navigate(["workspace/" + this.currentWorkspace.w_id]);
+            });
+        });
       },
       error => {
         console.log(error);

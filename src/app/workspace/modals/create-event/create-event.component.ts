@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl } from "@angular/forms";
 
 @Component({
-  selector: 'app-create-event',
-  templateUrl: './create-event.component.html',
-  styleUrls: ['./create-event.component.css']
+  selector: "app-create-event",
+  templateUrl: "./create-event.component.html",
+  styleUrls: ["./create-event.component.css"]
 })
 export class CreateEventComponent implements OnInit {
+  modalMessage = "<System message>";
 
-  constructor() { }
+  eventForm = new FormGroup({
+    name: new FormControl(),
+    description: new FormControl(),
+    location: new FormControl(),
+    time: new FormControl(),
+    date: new FormControl()
+  });
 
-  ngOnInit() {
-  }
+  event = {
+    e_name: "",
+    e_description: "",
+    e_location: "",
+    e_date: "",
+    e_time: "",
+    created_by: "",
+    workspace_id: ""
+  };
 
+  constructor() {}
+
+  ngOnInit() {}
 }

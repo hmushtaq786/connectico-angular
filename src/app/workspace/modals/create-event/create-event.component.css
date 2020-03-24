@@ -18,7 +18,7 @@
 }
 
 .modal-body {
-  height: 400px;
+  height: 350px;
   overflow-y: auto;
   overflow-x: hidden;
 }

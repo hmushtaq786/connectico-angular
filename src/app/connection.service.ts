@@ -264,4 +264,24 @@ export class ConnectionService {
       }
     );
   }
+
+  addMemberWorkspace(data) {
+    const member_workspace = JSON.stringify(data);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/workspace/add/`,
+      member_workspace,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
+
+  membersOfWorkspace(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspace/add/${id}/`,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
 }
