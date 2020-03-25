@@ -30,6 +30,9 @@ export class LeaveWorkspaceComponent implements OnInit {
       .subscribe(
         (leaveWorkspaceResult: any) => {
           console.log(leaveWorkspaceResult);
+          var leaveWorkspaceModal: any = $("#leaveWorkspace");
+          leaveWorkspaceModal.modal("hide");
+          this.router.navigate(["/organization"]);
         },
         error => {
           console.log(error);
