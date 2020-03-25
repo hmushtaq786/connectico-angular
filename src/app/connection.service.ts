@@ -284,4 +284,13 @@ export class ConnectionService {
       }
     );
   }
+
+  leaveWorkspace(id) {
+    return this.httpClient.delete(
+      `${this.baseUrl}register/organization/workspace/add/${id}/`,
+      {
+        headers: this.getHeaders()
+      }
+    );
+  }
 }

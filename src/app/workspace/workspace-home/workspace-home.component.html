@@ -1,7 +1,9 @@
 <app-create-project [currentWorkspace]="currentWorkspace"></app-create-project>
 <app-create-event></app-create-event>
 <app-add-members [currentWorkspace]="currentWorkspace"></app-add-members>
-<app-leave-workspace></app-leave-workspace>
+<app-leave-workspace
+  [currentWorkspace]="currentWorkspace"
+></app-leave-workspace>
 <app-show-members></app-show-members>
 <app-show-completed-projects></app-show-completed-projects>
 <app-show-remaining-projects></app-show-remaining-projects>
