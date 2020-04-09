@@ -15,11 +15,16 @@ export class CreateProjectComponent implements OnInit {
 
   modalMessage = "<System message>";
 
+  workspaceMembers = [];
+
+  orgMembers: any;
+
   projectForm = new FormGroup({
     name: new FormControl(),
     description: new FormControl(),
     startDate: new FormControl(),
-    endDate: new FormControl()
+    endDate: new FormControl(),
+    projectManager: new FormControl()
   });
 
   project = {
@@ -29,6 +34,7 @@ export class CreateProjectComponent implements OnInit {
     p_end_date: "",
     p_status: "",
     workspace_id: "",
+    p_manager_id: 0,
     created_by: ""
   };
 
@@ -42,6 +48,34 @@ export class CreateProjectComponent implements OnInit {
       var comp: any = $(".mdb-select");
       comp.materialSelect();
     });
+
+    this.orgMembers = JSON.parse(localStorage.getItem("org-members"));
+
+    this.connectionService
+      .membersOfWorkspace("w" + this.currentWorkspace.w_id)
+      .subscribe(
+        (membersOfWorkspaceResult: any) => {
+          OuterLoop: for (var wcMember of membersOfWorkspaceResult) {
+            if (wcMember.w_id == this.currentWorkspace.w_id) {
+              InnerLoop: for (var orgMember of this.orgMembers) {
+                if (wcMember.u_id == orgMember.id) {
+                  this.workspaceMembers.push({
+                    id: orgMember.id,
+                    first_name: orgMember.first_name,
+                    last_name: orgMember.last_name
+                  });
+                  break InnerLoop;
+                }
+              }
+            }
+          }
+
+          console.log(this.workspaceMembers);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   createProject() {
@@ -60,7 +94,12 @@ export class CreateProjectComponent implements OnInit {
     this.project.p_end_date = this.projectForm.get("endDate").value;
     this.project.p_status = "ACTIVE";
     this.project.workspace_id = this.currentWorkspace.w_id;
+    this.project.p_manager_id = +$("#selectPM")
+      .children("option:selected")
+      .val();
     this.project.created_by = user.id;
+
+    console.log(this.project);
 
     this.connectionService.createProject(this.project).subscribe(
       (createProjectResult: any) => {
