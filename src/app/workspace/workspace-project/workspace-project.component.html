@@ -1,4 +1,4 @@
-<div style="min-height: 84.5vh">
+<div style="min-height: 84.5vh;">
   <div *ngIf="projects; else emptyProjects">
     <table
       id="dtBasicExample"
@@ -20,7 +20,7 @@
         <tr *ngFor="let project of projects">
           <td>{{ project.p_name }}</td>
           <td>{{ project.p_description }}</td>
-          <td>{{ project.p_manager_id }}</td>
+          <td>{{ project.manager_name }}</td>
           <td>{{ project.p_start_date }}</td>
           <td>{{ project.p_end_date }}</td>
           <td>{{ project.p_status }}</td>
