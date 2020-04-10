@@ -20,8 +20,6 @@ export class WorkspaceProjectComponent implements OnInit {
         (getProjectResult: any) => {
           this.projects = getProjectResult;
           let orgUsers = JSON.parse(localStorage.getItem("org-members"));
-          console.log(this.projects);
-          console.log(orgUsers);
           for (var project of this.projects) {
             InnerLoop: for (var user of orgUsers) {
               if (project.p_manager_id == user.id) {
@@ -31,7 +29,6 @@ export class WorkspaceProjectComponent implements OnInit {
               }
             }
           }
-          console.log(this.projects);
         },
         (error) => {
           console.log(error);

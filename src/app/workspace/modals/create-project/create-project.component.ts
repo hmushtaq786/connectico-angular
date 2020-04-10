@@ -8,7 +8,7 @@ declare const errorModal: any;
 @Component({
   selector: "app-create-project",
   templateUrl: "./create-project.component.html",
-  styleUrls: ["./create-project.component.css"]
+  styleUrls: ["./create-project.component.css"],
 })
 export class CreateProjectComponent implements OnInit {
   @Input() currentWorkspace;
@@ -24,7 +24,7 @@ export class CreateProjectComponent implements OnInit {
     description: new FormControl(),
     startDate: new FormControl(),
     endDate: new FormControl(),
-    projectManager: new FormControl()
+    projectManager: new FormControl(),
   });
 
   project = {
@@ -35,7 +35,7 @@ export class CreateProjectComponent implements OnInit {
     p_status: "",
     workspace_id: "",
     p_manager_id: 0,
-    created_by: ""
+    created_by: "",
   };
 
   constructor(
@@ -44,7 +44,7 @@ export class CreateProjectComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    $(document).ready(function() {
+    $(document).ready(function () {
       var comp: any = $(".mdb-select");
       comp.materialSelect();
     });
@@ -62,7 +62,7 @@ export class CreateProjectComponent implements OnInit {
                   this.workspaceMembers.push({
                     id: orgMember.id,
                     first_name: orgMember.first_name,
-                    last_name: orgMember.last_name
+                    last_name: orgMember.last_name,
                   });
                   break InnerLoop;
                 }
@@ -72,14 +72,14 @@ export class CreateProjectComponent implements OnInit {
 
           console.log(this.workspaceMembers);
         },
-        error => {
+        (error) => {
           console.log(error);
         }
       );
   }
 
   createProject() {
-    $("#createBtn")
+    $("#projectCreateBtn")
       .html(
         '<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>'
       )
@@ -106,9 +106,7 @@ export class CreateProjectComponent implements OnInit {
         console.log(createProjectResult);
         this.modalMessage = "New project created successfully!";
         var createModal: any = $("#createProject");
-        $("#createBtn")
-          .html("Create")
-          .removeClass("disabled");
+        $("#projectCreateBtn").html("Create").removeClass("disabled");
         createModal.modal("hide");
         errorModal();
         $("#errorModal").on("hidden.bs.modal", () => {
@@ -119,7 +117,7 @@ export class CreateProjectComponent implements OnInit {
             });
         });
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );

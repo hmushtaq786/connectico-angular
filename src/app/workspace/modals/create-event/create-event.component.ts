@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 @Component({
   selector: "app-create-event",
   templateUrl: "./create-event.component.html",
-  styleUrls: ["./create-event.component.css"]
+  styleUrls: ["./create-event.component.css"],
 })
 export class CreateEventComponent implements OnInit {
   modalMessage = "<System message>";
@@ -14,7 +14,7 @@ export class CreateEventComponent implements OnInit {
     description: new FormControl(),
     location: new FormControl(),
     time: new FormControl(),
-    date: new FormControl()
+    date: new FormControl(),
   });
 
   event = {
@@ -24,10 +24,18 @@ export class CreateEventComponent implements OnInit {
     e_date: "",
     e_time: "",
     created_by: "",
-    workspace_id: ""
+    workspace_id: "",
   };
 
   constructor() {}
 
   ngOnInit() {}
+
+  createEvent() {
+    $("#eventCreateBtn")
+      .html(
+        '<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>'
+      )
+      .addClass("disabled");
+  }
 }
