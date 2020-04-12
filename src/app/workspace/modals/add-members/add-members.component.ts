@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 @Component({
   selector: "app-add-members",
   templateUrl: "./add-members.component.html",
-  styleUrls: ["./add-members.component.css"]
+  styleUrls: ["./add-members.component.css"],
 })
 export class AddMembersComponent implements OnInit {
   @Input() currentWorkspace;
@@ -16,7 +16,7 @@ export class AddMembersComponent implements OnInit {
   data = {
     u_id: "",
     w_id: "",
-    r_id: 2 //by default Workspace User = 2
+    r_id: 2, //by default Workspace User = 2
   };
 
   constructor(
@@ -38,7 +38,6 @@ export class AddMembersComponent implements OnInit {
           for (var orgMember of this.orgMembers) {
             orgMember["isAdded"] = false;
             InnerLoop: for (var wcMember of this.workspaceMembers) {
-              console.log(orgMember.id + " and " + wcMember.u_id);
               if (wcMember.u_id == orgMember.id) {
                 orgMember["isAdded"] = true;
                 break InnerLoop;
@@ -46,7 +45,7 @@ export class AddMembersComponent implements OnInit {
             }
           }
         },
-        error => {
+        (error) => {
           console.log(error);
         }
       );
@@ -58,7 +57,7 @@ export class AddMembersComponent implements OnInit {
 
     this.connectionService.addMemberWorkspace(this.data).subscribe(
       (addMemberWorkspaceResult: any) => {
-        console.log(addMemberWorkspaceResult);
+        // console.log(addMemberWorkspaceResult);
         this.connectionService
           .membersOfWorkspace("w" + this.currentWorkspace.w_id)
           .subscribe(
@@ -67,7 +66,7 @@ export class AddMembersComponent implements OnInit {
               for (var orgMember of this.orgMembers) {
                 orgMember["isAdded"] = false;
                 InnerLoop: for (var wcMember of this.workspaceMembers) {
-                  console.log(orgMember.id + " and " + wcMember.u_id);
+                  // console.log(orgMember.id + " and " + wcMember.u_id);
                   if (wcMember.u_id == orgMember.id) {
                     orgMember["isAdded"] = true;
                     break InnerLoop;
@@ -75,12 +74,12 @@ export class AddMembersComponent implements OnInit {
                 }
               }
             },
-            error => {
+            (error) => {
               console.log(error);
             }
           );
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );

@@ -7,7 +7,7 @@ import { ConnectionService } from "../../connection.service";
 @Component({
   selector: "profile-structure",
   templateUrl: "./structure.component.html",
-  styleUrls: ["./structure.component.css"]
+  styleUrls: ["./structure.component.css"],
 })
 export class ProfileStructureComponent implements OnInit {
   constructor(
@@ -18,7 +18,6 @@ export class ProfileStructureComponent implements OnInit {
 
   ngOnInit() {
     const tokenCookie = this.cookieService.get("auth-token");
-    console.log(tokenCookie);
     if (!tokenCookie) {
       this.router.navigate(["/"]);
     }

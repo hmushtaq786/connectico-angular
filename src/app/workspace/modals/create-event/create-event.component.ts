@@ -1,5 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
+import { ConnectionService } from "src/app/connection.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-create-event",
@@ -7,6 +9,8 @@ import { FormGroup, FormControl } from "@angular/forms";
   styleUrls: ["./create-event.component.css"],
 })
 export class CreateEventComponent implements OnInit {
+  @Input() currentWorkspace;
+
   modalMessage = "<System message>";
 
   eventForm = new FormGroup({
@@ -27,7 +31,10 @@ export class CreateEventComponent implements OnInit {
     workspace_id: "",
   };
 
-  constructor() {}
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -37,5 +44,17 @@ export class CreateEventComponent implements OnInit {
         '<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>'
       )
       .addClass("disabled");
+
+    var user = JSON.parse(localStorage.getItem("user"));
+
+    this.event.e_name = this.eventForm.get("name").value;
+    this.event.e_description = this.eventForm.get("description").value;
+    this.event.e_location = this.eventForm.get("location").value;
+    this.event.e_date = this.eventForm.get("date").value;
+    this.event.e_time = this.eventForm.get("time").value;
+    this.event.created_by = user.id;
+    this.event.workspace_id = this.currentWorkspace.w_id;
+
+    // console.log(this.event);
   }
 }

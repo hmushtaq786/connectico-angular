@@ -7,7 +7,7 @@ import { ConnectionService } from "../connection.service";
 @Component({
   selector: "app-workspace",
   templateUrl: "./workspace.component.html",
-  styleUrls: ["./workspace.component.css"]
+  styleUrls: ["./workspace.component.css"],
 })
 export class WorkspaceComponent implements OnInit {
   workspace: any;
@@ -23,7 +23,6 @@ export class WorkspaceComponent implements OnInit {
 
   ngOnInit() {
     const tokenCookie = this.cookieService.get("auth-token");
-    console.log(tokenCookie);
     if (!tokenCookie) {
       this.router.navigate(["/"]);
     }
@@ -37,8 +36,8 @@ export class WorkspaceComponent implements OnInit {
     //     this.workspace = element;
     //   }
     // });
-    this.activatedRoute.paramMap.subscribe(params => {
-      this.workspaces.forEach(element => {
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.workspaces.forEach((element) => {
         if (element.w_id == +params.get("id")) {
           // + is for converting the string to int
           this.workspace = element;
@@ -55,7 +54,7 @@ export class WorkspaceComponent implements OnInit {
             JSON.stringify(membersOfWorkspaceResult)
           );
         },
-        error => {
+        (error) => {
           console.log(error);
         }
       );

@@ -70,7 +70,7 @@ export class CreateProjectComponent implements OnInit {
             }
           }
 
-          console.log(this.workspaceMembers);
+          // console.log(this.workspaceMembers);
         },
         (error) => {
           console.log(error);
@@ -99,11 +99,11 @@ export class CreateProjectComponent implements OnInit {
       .val();
     this.project.created_by = user.id;
 
-    console.log(this.project);
+    // console.log(this.project);
 
     this.connectionService.createProject(this.project).subscribe(
       (createProjectResult: any) => {
-        console.log(createProjectResult);
+        // console.log(createProjectResult);
         this.modalMessage = "New project created successfully!";
         var createModal: any = $("#createProject");
         $("#projectCreateBtn").html("Create").removeClass("disabled");
