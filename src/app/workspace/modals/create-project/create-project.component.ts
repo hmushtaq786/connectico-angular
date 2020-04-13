@@ -14,8 +14,6 @@ declare const errorModal: any;
 export class CreateProjectComponent implements OnInit {
   @Input() currentWorkspace;
 
-  modalMessage = "<System (create-project) message>";
-
   workspaceMembers = [];
 
   orgMembers: any;
@@ -46,9 +44,6 @@ export class CreateProjectComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.data.currentMessage.subscribe(
-      (message) => (this.modalMessage = message)
-    );
     $(document).ready(function () {
       var comp: any = $(".mdb-select");
       comp.materialSelect();
@@ -109,7 +104,7 @@ export class CreateProjectComponent implements OnInit {
     this.connectionService.createProject(this.project).subscribe(
       (createProjectResult: any) => {
         // console.log(createProjectResult);
-        this.modalMessage = "New project created successfully!";
+        this.data.changeErrorModalMessage("New project created successfully.");
         var createModal: any = $("#createProject");
         $("#projectCreateBtn").html("Create").removeClass("disabled");
         createModal.modal("hide");

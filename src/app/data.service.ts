@@ -10,7 +10,7 @@ export class DataService {
 
   constructor() {}
 
-  changeMessage(message: string) {
+  changeErrorModalMessage(message: string) {
     this.messageSource.next(message);
   }
 }

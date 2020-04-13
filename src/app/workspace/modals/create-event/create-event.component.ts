@@ -70,7 +70,7 @@ export class CreateEventComponent implements OnInit {
         createModal.modal("hide");
         var error: any = $("#errorModal");
         error.modal("dispose");
-        this.data.changeMessage("Hello from Sibling");
+        this.data.changeErrorModalMessage("New event created successfully.");
         error.modal("show");
 
         $("#errorModal").on("hidden.bs.modal", () => {

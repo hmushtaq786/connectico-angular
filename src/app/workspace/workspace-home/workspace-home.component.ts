@@ -4,6 +4,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { DataService } from "src/app/data.service";
 
 declare const counter: any;
 
@@ -19,15 +20,21 @@ declare const totalTeams: any;
 @Component({
   selector: "app-workspace-home",
   templateUrl: "./workspace-home.component.html",
-  styleUrls: ["./workspace-home.component.css"]
+  styleUrls: ["./workspace-home.component.css"],
 })
 export class WorkspaceHomeComponent implements OnInit {
   @Input() currentWorkspace;
 
-  constructor() {}
+  modalMessage = "<System message>";
+
+  constructor(private data: DataService) {}
 
   ngOnInit() {
     counter();
+
+    this.data.currentMessage.subscribe(
+      (message) => (this.modalMessage = message)
+    );
 
     // am4core.useTheme(am4themes_animated);
     // // Themes end
