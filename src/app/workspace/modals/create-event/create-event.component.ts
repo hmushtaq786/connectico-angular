@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { ConnectionService } from "src/app/connection.service";
 import { Router } from "@angular/router";
+import { DataService } from "src/app/data.service";
+
+declare const errorModal: any;
 
 @Component({
   selector: "app-create-event",
@@ -11,7 +14,7 @@ import { Router } from "@angular/router";
 export class CreateEventComponent implements OnInit {
   @Input() currentWorkspace;
 
-  modalMessage = "<System message>";
+  modalMessage = "<System (create-event) message>";
 
   eventForm = new FormGroup({
     name: new FormControl(),
@@ -33,7 +36,8 @@ export class CreateEventComponent implements OnInit {
 
   constructor(
     private connectionService: ConnectionService,
-    private router: Router
+    private router: Router,
+    private data: DataService
   ) {}
 
   ngOnInit() {}
@@ -56,5 +60,30 @@ export class CreateEventComponent implements OnInit {
     this.event.workspace_id = this.currentWorkspace.w_id;
 
     // console.log(this.event);
+
+    this.connectionService.createEvent(this.event).subscribe(
+      (CreateEventResult: any) => {
+        console.log(CreateEventResult);
+        this.modalMessage = "New event created successfully!";
+        var createModal: any = $("#createEvent");
+        $("#eventCreateBtn").html("Create").removeClass("disabled");
+        createModal.modal("hide");
+        var error: any = $("#errorModal");
+        error.modal("dispose");
+        this.data.changeMessage("Hello from Sibling");
+        error.modal("show");
+
+        $("#errorModal").on("hidden.bs.modal", () => {
+          this.router
+            .navigateByUrl("/loading", { skipLocationChange: true })
+            .then(() => {
+              this.router.navigate(["workspace/" + this.currentWorkspace.w_id]);
+            });
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

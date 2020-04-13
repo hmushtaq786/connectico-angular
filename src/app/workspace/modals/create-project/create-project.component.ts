@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { ConnectionService } from "src/app/connection.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import { DataService } from "src/app/data.service";
 
 declare const errorModal: any;
 
@@ -13,7 +14,7 @@ declare const errorModal: any;
 export class CreateProjectComponent implements OnInit {
   @Input() currentWorkspace;
 
-  modalMessage = "<System message>";
+  modalMessage = "<System (create-project) message>";
 
   workspaceMembers = [];
 
@@ -40,10 +41,14 @@ export class CreateProjectComponent implements OnInit {
 
   constructor(
     private connectionService: ConnectionService,
-    private router: Router
+    private router: Router,
+    private data: DataService
   ) {}
 
   ngOnInit() {
+    this.data.currentMessage.subscribe(
+      (message) => (this.modalMessage = message)
+    );
     $(document).ready(function () {
       var comp: any = $(".mdb-select");
       comp.materialSelect();
