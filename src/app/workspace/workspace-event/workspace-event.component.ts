@@ -1,63 +1,35 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { ConnectionService } from "src/app/connection.service";
 
 @Component({
   selector: "app-workspace-event",
   templateUrl: "./workspace-event.component.html",
-  styleUrls: ["./workspace-event.component.css"]
+  styleUrls: ["./workspace-event.component.css"],
 })
 export class WorkspaceEventComponent implements OnInit {
-  events = [
-    {
-      e_name: "Annual Dinner",
-      e_description: "For all the workspace members",
-      e_location: "Headquarter",
-      e_date: "15/02/2020",
-      e_time: "20:10 A.M",
-      created_by: "Hamza Mushtaq"
-    },
-    {
-      e_name: "Annual Dinner",
-      e_description: "For all the workspace members",
-      e_location: "Headquarter",
-      e_date: "15/02/2020",
-      e_time: "20:10 A.M",
-      created_by: "Hamza Mushtaq"
-    },
-    {
-      e_name: "Annual Dinner",
-      e_description: "For all the workspace members",
-      e_location: "Headquarter",
-      e_date: "15/02/2020",
-      e_time: "20:10 A.M",
-      created_by: "Hamza Mushtaq"
-    },
-    {
-      e_name: "Annual Dinner",
-      e_description: "For all the workspace members",
-      e_location: "Headquarter",
-      e_date: "15/02/2020",
-      e_time: "20:10 A.M",
-      created_by: "Hamza Mushtaq"
-    },
-    {
-      e_name: "Annual Dinner",
-      e_description: "For all the workspace members",
-      e_location: "Headquarter",
-      e_date: "15/02/2020",
-      e_time: "20:10 A.M",
-      created_by: "Hamza Mushtaq"
-    },
-    {
-      e_name: "Annual Dinner",
-      e_description: "For all the workspace members",
-      e_location: "Headquarter",
-      e_date: "15/02/2020",
-      e_time: "20:10 A.M",
-      created_by: "Hamza Mushtaq"
-    }
-  ];
+  @Input() currentWorkspace;
 
-  constructor() {}
+  events: any;
 
-  ngOnInit() {}
+  constructor(private connectionService: ConnectionService) {}
+
+  ngOnInit() {
+    this.connectionService.getEventByWID(this.currentWorkspace.w_id).subscribe(
+      (getEventResult: any) => {
+        this.events = getEventResult;
+        let orgUsers = JSON.parse(localStorage.getItem("org-members"));
+        for (var event of this.events) {
+          InnerLoop: for (var user of orgUsers) {
+            if (event.created_by == user.id) {
+              event["created_by"] = user.first_name + " " + user.last_name;
+              break InnerLoop;
+            }
+          }
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

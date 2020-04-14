@@ -188,6 +188,15 @@ export class ConnectionService {
     );
   }
 
+  getEventByWID(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/events/workspace/${"w" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   //login user with the credentials provided
   loginUser(credentials: AuthCredentials) {
     const body = JSON.stringify(credentials);

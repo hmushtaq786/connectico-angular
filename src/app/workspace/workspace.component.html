@@ -3,12 +3,16 @@
 <div class="row">
   <div
     class="col-md-2"
-    style="background-color: #f0f2ef; border-right: 1px solid lightgrey;  height: auto;"
+    style="
+      background-color: #f0f2ef;
+      border-right: 1px solid lightgrey;
+      height: auto;
+    "
   >
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-home" style="color: royalblue;"></i></a
           >Home
         </div>
@@ -18,7 +22,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-newspaper" style="color: royalblue;"></i></a
           >Feed
         </div>
@@ -28,7 +32,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-folder" style="color: royalblue;"></i></a
           >Projects
         </div>
@@ -38,7 +42,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-calendar-star" style="color: royalblue;"></i></a
           >Events
         </div>
@@ -48,7 +52,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-file-signature" style="color: royalblue;"></i></a
           >Files
         </div>
@@ -60,9 +64,9 @@
     <div class="row">
       <div
         class="col-md-12"
-        style="background-color: royalblue; color: #F3FFFF; margin: auto;"
+        style="background-color: royalblue; color: #f3ffff; margin: auto;"
       >
-        <h3 style="font-family: sans-serif; padding: 5px; margin: auto; ">
+        <h3 style="font-family: sans-serif; padding: 5px; margin: auto;">
           {{ workspace.w_name }}
           <span style="font-weight: normal; font-size: 25px;"
             ><i class="fas fa-caret-right"></i>{{ " " + page }}</span
@@ -80,7 +84,7 @@
       <div
         class="col-md-12"
         *ngIf="screen === 'workspace_project'"
-        style="padding-left: 10px; padding-right:25px;"
+        style="padding-left: 10px; padding-right: 25px;"
       >
         <app-workspace-project
           [currentWorkspace]="workspace"
@@ -89,14 +93,16 @@
       <div
         class="col-md-12"
         *ngIf="screen === 'workspace_event'"
-        style="padding-left: 10px; padding-right:25px;"
+        style="padding-left: 10px; padding-right: 25px;"
       >
-        <app-workspace-event></app-workspace-event>
+        <app-workspace-event
+          [currentWorkspace]="workspace"
+        ></app-workspace-event>
       </div>
       <div
         class="col-md-12"
         *ngIf="screen === 'workspace_files'"
-        style="padding-left: 10px; padding-right:25px;"
+        style="padding-left: 10px; padding-right: 25px;"
       >
         <app-workspace-files></app-workspace-files>
       </div>
