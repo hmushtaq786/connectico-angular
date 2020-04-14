@@ -38,7 +38,7 @@ interface FirstAuthCredentials {
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ConnectionService {
   baseUrl = "http://127.0.0.1:8000/";
@@ -53,13 +53,13 @@ export class ConnectionService {
 
   getHeaders() {
     return new HttpHeaders({
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     });
   }
 
   getUploadHeaders() {
     return new HttpHeaders({
-      "Content-Type": "application/x-www-form-urlencoded"
+      "Content-Type": "application/x-www-form-urlencoded",
     });
   }
 
@@ -67,7 +67,7 @@ export class ConnectionService {
     const token = this.cookieServie.get("auth-token");
     return new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization: `Token ${token}`
+      Authorization: `Token ${token}`,
     });
   }
 
@@ -132,7 +132,7 @@ export class ConnectionService {
       `${this.baseUrl}register/users/${u_id}/`,
       org_id,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
@@ -141,7 +141,7 @@ export class ConnectionService {
     console.log(organizationData);
     const org = JSON.stringify(organizationData);
     return this.httpClient.post(`${this.baseUrl}register/organizations/`, org, {
-      headers: this.getHeaders()
+      headers: this.getHeaders(),
     });
   }
 
@@ -151,18 +151,18 @@ export class ConnectionService {
       `${this.baseUrl}register/organization/workspaces/`,
       workspace,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
 
-  createEvent(eventData: object) {
+  createWorkspaceEvent(eventData: object) {
     const event = JSON.stringify(eventData);
     return this.httpClient.post(
-      `${this.baseUrl}register/organization/events/`,
+      `${this.baseUrl}register/organization/events/workspace/`,
       event,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
@@ -173,7 +173,7 @@ export class ConnectionService {
       `${this.baseUrl}register/organization/workspaces/projects/`,
       project,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
@@ -183,7 +183,7 @@ export class ConnectionService {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspaces/projects/${"w" + id}/`,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
@@ -192,26 +192,26 @@ export class ConnectionService {
   loginUser(credentials: AuthCredentials) {
     const body = JSON.stringify(credentials);
     return this.httpClient.post(`${this.baseUrl}auth/`, body, {
-      headers: this.getAuthHeaders()
+      headers: this.getAuthHeaders(),
     });
   }
 
   firstLogin(credentials: FirstAuthCredentials) {
     const data = JSON.stringify(credentials);
     return this.httpClient.post(`${this.baseUrl}register/authenticate`, data, {
-      headers: this.getHeaders()
+      headers: this.getHeaders(),
     });
   }
 
   getUser(username: string) {
     return this.httpClient.get(`${this.baseUrl}register/users/${username}/`, {
-      headers: this.getHeaders()
+      headers: this.getHeaders(),
     });
   }
 
   getOrganization(id: string) {
     return this.httpClient.get(`${this.baseUrl}register/organizations/${id}/`, {
-      headers: this.getHeaders()
+      headers: this.getHeaders(),
     });
   }
 
@@ -229,7 +229,7 @@ export class ConnectionService {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/members/${org_id}/`,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
@@ -238,7 +238,7 @@ export class ConnectionService {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspaces/members/${org_id}/`,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
@@ -247,7 +247,7 @@ export class ConnectionService {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspaces/${org_id}/`,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
@@ -255,7 +255,7 @@ export class ConnectionService {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspaces/${org_id}/`,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
@@ -263,7 +263,7 @@ export class ConnectionService {
   sendMemberInvites(list) {
     const members = JSON.stringify(list);
     return this.httpClient.post(`${this.baseUrl}register/invite`, members, {
-      headers: this.getHeaders()
+      headers: this.getHeaders(),
     });
   }
 
@@ -271,7 +271,7 @@ export class ConnectionService {
     return this.httpClient.delete(
       `${this.baseUrl}register/organization/invites/${id}/`,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
@@ -282,7 +282,7 @@ export class ConnectionService {
       `${this.baseUrl}register/organization/workspace/add/`,
       member_workspace,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
@@ -291,7 +291,7 @@ export class ConnectionService {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspace/add/${id}/`,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }
@@ -300,7 +300,7 @@ export class ConnectionService {
     return this.httpClient.delete(
       `${this.baseUrl}register/organization/workspace/add/${id}/`,
       {
-        headers: this.getHeaders()
+        headers: this.getHeaders(),
       }
     );
   }

@@ -59,9 +59,9 @@ export class CreateEventComponent implements OnInit {
     this.event.created_by = user.id;
     this.event.workspace_id = this.currentWorkspace.w_id;
 
-    // console.log(this.event);
+    console.log(this.event);
 
-    this.connectionService.createEvent(this.event).subscribe(
+    this.connectionService.createWorkspaceEvent(this.event).subscribe(
       (CreateEventResult: any) => {
         console.log(CreateEventResult);
         this.modalMessage = "New event created successfully!";
