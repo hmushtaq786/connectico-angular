@@ -305,6 +305,15 @@ export class ConnectionService {
     );
   }
 
+  WorkspaceMembersData(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/members/${id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   leaveWorkspace(id) {
     return this.httpClient.delete(
       `${this.baseUrl}register/organization/workspace/add/${id}/`,
