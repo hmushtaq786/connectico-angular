@@ -43,8 +43,10 @@ interface FirstAuthCredentials {
 export class ConnectionService {
   baseUrl = "http://127.0.0.1:8000/";
   CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/connectico/image/upload";
+  CLOUDINARY_URL_RAW = "https://api.cloudinary.com/v1_1/connectico/raw/upload";
   CLOUDINARY_UPLOAD_PRESET_USER = "v1zqrsgl";
   CLOUDINARY_UPLOAD_PRESET_ORG = "f8uypc6p";
+  CLOUDINARY_UPLOAD_PRESET_WORKSPACE_FILE = "wrkh6b9a";
 
   constructor(
     private httpClient: HttpClient,
@@ -77,6 +79,16 @@ export class ConnectionService {
   //   formData.append("upload_preset", this.CLOUDINARY_UPLOAD_PRESET_USER);
   //   return this.httpClient.post(this.CLOUDINARY_URL, formData);
   // }
+
+  uploadWorkspaceFile(file) {
+    var formData = new FormData();
+    formData.append("file", file);
+    formData.append(
+      "upload_preset",
+      this.CLOUDINARY_UPLOAD_PRESET_WORKSPACE_FILE
+    );
+    return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
+  }
 
   uploadUserPhoto(file) {
     var formData = new FormData();
@@ -172,6 +184,26 @@ export class ConnectionService {
     return this.httpClient.post(
       `${this.baseUrl}register/organization/workspaces/projects/`,
       project,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  createWorkspacePost(postData: object) {
+    const post = JSON.stringify(postData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/workspaces/posts/`,
+      post,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  getWorkspacePostsByWID(id: any) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/posts/${"w" + id}/`,
       {
         headers: this.getHeaders(),
       }
