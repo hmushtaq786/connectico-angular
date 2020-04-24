@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+@import url(https://fonts.googleapis.com/css?family=PT + Sans + Narrow);
 body {
   font-family: Open Sans, "Helvetica Neue", "Helvetica", Helvetica, Arial,
     sans-serif;
@@ -42,7 +42,7 @@ td {
 }
 
 .sectionClass {
-  padding: 20px 0px 50px 0px;
+  padding: 10px 0px 50px 0px;
   position: relative;
   display: block;
 }
@@ -68,6 +68,7 @@ td {
   font-size: 30px;
   color: #222;
   margin-bottom: 0px;
+  margin-top: 0px;
   padding-right: 10px;
   padding-left: 10px;
 }

@@ -1,12 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
 
-/* Imports */
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { DataService } from "src/app/data.service";
+import { ConnectionService } from "src/app/connection.service";
 
-declare const counter: any;
+// declare const counter: any;
 
 declare const createProject: any;
 declare const createWorkspaceEvent: any;
@@ -25,121 +22,90 @@ declare const totalTeams: any;
 export class WorkspaceHomeComponent implements OnInit {
   @Input() currentWorkspace;
 
+  totalWorkspaceMembers;
+
   modalMessage = "<System message>";
 
-  constructor(private data: DataService) {}
+  constructor(
+    private connectionService: ConnectionService,
+    private data: DataService
+  ) {}
 
   ngOnInit() {
-    counter();
+    this.connectionService
+      .WorkspaceMembersData(this.currentWorkspace.w_id)
+      .subscribe(
+        (WorkspaceMembersDataResult: any) => {
+          this.totalWorkspaceMembers = Object.keys(
+            WorkspaceMembersDataResult
+          ).length;
+          this.counter(this.totalWorkspaceMembers);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    // counter();
 
     this.data.currentMessage.subscribe(
       (message) => (this.modalMessage = message)
     );
+  }
 
-    // am4core.useTheme(am4themes_animated);
-    // // Themes end
+  counter(totalMembers) {
+    let fn: any = $.fn;
+    fn.jQuerySimpleCounter = function (options) {
+      var settings = $.extend(
+        {
+          start: 0,
+          end: 100,
+          easing: "swing",
+          duration: 400,
+          complete: "",
+        },
+        options
+      );
 
-    // let chart = am4core.create("chartdiv", am4charts.XYChart);
-    // chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+      var thisElement = $(this);
 
-    // chart.paddingRight = 30;
-    // chart.dateFormatter.inputDateFormat = "yyyy-MM-dd HH:mm";
+      $({ count: settings.start }).animate(
+        { count: settings.end },
+        {
+          duration: settings.duration,
+          easing: settings.easing,
+          step: function () {
+            var mathCount = Math.ceil(this.count);
+            thisElement.text(mathCount);
+          },
+          complete: settings.complete,
+        }
+      );
+    };
+    ($("#number1") as any).jQuerySimpleCounter({
+      end: totalMembers,
+      duration: 2500,
+    });
+    ($("#number2") as any).jQuerySimpleCounter({ end: 55, duration: 2500 });
+    ($("#number3") as any).jQuerySimpleCounter({ end: 359, duration: 2500 });
+    ($("#number4") as any).jQuerySimpleCounter({ end: 246, duration: 2500 });
 
-    // let colorSet = new am4core.ColorSet();
-    // colorSet.saturation = 0.4;
-
-    // chart.data = [
-    //   {
-    //     name: "John",
-    //     fromDate: "2018-01-01 08:00",
-    //     toDate: "2018-01-01 10:00",
-    //     color: colorSet.getIndex(0).brighten(0)
-    //   },
-    //   {
-    //     name: "John",
-    //     fromDate: "2018-01-01 12:00",
-    //     toDate: "2018-01-01 15:00",
-    //     color: colorSet.getIndex(0).brighten(0.4)
-    //   },
-    //   {
-    //     name: "John",
-    //     fromDate: "2018-01-01 15:30",
-    //     toDate: "2018-01-01 21:30",
-    //     color: colorSet.getIndex(0).brighten(0.8)
-    //   },
-
-    //   {
-    //     name: "Jane",
-    //     fromDate: "2018-01-01 09:00",
-    //     toDate: "2018-01-01 12:00",
-    //     color: colorSet.getIndex(2).brighten(0)
-    //   },
-    //   {
-    //     name: "Jane",
-    //     fromDate: "2018-01-01 13:00",
-    //     toDate: "2018-01-01 17:00",
-    //     color: colorSet.getIndex(2).brighten(0.4)
-    //   },
-
-    //   {
-    //     name: "Peter",
-    //     fromDate: "2018-01-01 11:00",
-    //     toDate: "2018-01-01 16:00",
-    //     color: colorSet.getIndex(4).brighten(0)
-    //   },
-    //   {
-    //     name: "Peter",
-    //     fromDate: "2018-01-01 16:00",
-    //     toDate: "2018-01-01 19:00",
-    //     color: colorSet.getIndex(4).brighten(0.4)
-    //   },
-
-    //   {
-    //     name: "Melania",
-    //     fromDate: "2018-01-01 16:00",
-    //     toDate: "2018-01-01 20:00",
-    //     color: colorSet.getIndex(6).brighten(0)
-    //   },
-    //   {
-    //     name: "Melania",
-    //     fromDate: "2018-01-01 20:30",
-    //     toDate: "2018-01-01 24:00",
-    //     color: colorSet.getIndex(6).brighten(0.4)
-    //   },
-
-    //   {
-    //     name: "Donald",
-    //     fromDate: "2018-01-01 13:00",
-    //     toDate: "2018-01-01 24:00",
-    //     color: colorSet.getIndex(8).brighten(0)
-    //   }
-    // ];
-
-    // let categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-    // categoryAxis.dataFields.category = "name";
-    // categoryAxis.renderer.grid.template.location = 0;
-    // categoryAxis.renderer.inversed = true;
-
-    // let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-    // dateAxis.dateFormatter.dateFormat = "yyyy-MM-dd HH:mm";
-    // dateAxis.renderer.minGridDistance = 70;
-    // dateAxis.baseInterval = { count: 30, timeUnit: "minute" };
-    // dateAxis.max = new Date(2018, 0, 1, 24, 0, 0, 0).getTime();
-    // dateAxis.strictMinMax = true;
-    // dateAxis.renderer.tooltipLocation = 0;
-
-    // let series1 = chart.series.push(new am4charts.ColumnSeries());
-    // series1.columns.template.width = am4core.percent(80);
-    // series1.columns.template.tooltipText = "{name}: {openDateX} - {dateX}";
-
-    // series1.dataFields.openDateX = "fromDate";
-    // series1.dataFields.dateX = "toDate";
-    // series1.dataFields.categoryY = "name";
-    // series1.columns.template.propertyFields.fill = "color"; // get color from data
-    // series1.columns.template.propertyFields.stroke = "color";
-    // series1.columns.template.strokeOpacity = 1;
-
-    // chart.scrollbarX = new am4core.Scrollbar();
+    /* AUTHOR LINK */
+    $(".about-me-img").hover(
+      function () {
+        $(".authorWindowWrapper")
+          .stop()
+          .fadeIn("fast")
+          .find("p")
+          .addClass("trans");
+      },
+      function () {
+        $(".authorWindowWrapper")
+          .stop()
+          .fadeOut("fast")
+          .find("p")
+          .removeClass("trans");
+      }
+    );
   }
 
   createWorkspaceProject() {
@@ -157,11 +123,11 @@ export class WorkspaceHomeComponent implements OnInit {
   viewMembers() {
     totalWorkspaceMembers();
   }
-  projectsDone() {
-    projectsCompleted();
-  }
-  projectsLeft() {
+  totalProjects() {
     projectsRemaining();
+  }
+  completedProjects() {
+    projectsCompleted();
   }
   viewTeams() {
     totalTeams();
