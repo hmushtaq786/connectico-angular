@@ -104,7 +104,9 @@
         *ngIf="screen === 'workspace_files'"
         style="padding-left: 10px; padding-right: 25px;"
       >
-        <app-workspace-files></app-workspace-files>
+        <app-workspace-files
+          [currentWorkspace]="workspace"
+        ></app-workspace-files>
       </div>
       <!-- <div class="col-md-12">
         <app-workspace-home
