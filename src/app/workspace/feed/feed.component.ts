@@ -56,6 +56,11 @@ export class FeedComponent implements OnInit {
   }
 
   createPost() {
+    $("#workspacePostBtn")
+      .html(
+        '<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>'
+      )
+      .addClass("disabled");
     this.postObj.pst_content = this.postForm.get("postContent").value;
     this.postObj.created_by = this.user.id;
     this.postObj.workspace_id = this.currentWorkspace.w_id;
@@ -68,7 +73,13 @@ export class FeedComponent implements OnInit {
           this.postObj.pst_filepath = UploadWorkspaceFileResult.secure_url;
           this.connectionService.createWorkspacePost(this.postObj).subscribe(
             (CreateWorkspacePostResult: any) => {
-              console.log(CreateWorkspacePostResult);
+              this.router
+                .navigateByUrl("/loading", { skipLocationChange: true })
+                .then(() => {
+                  this.router.navigate([
+                    "workspace/" + this.currentWorkspace.w_id,
+                  ]);
+                });
             },
             (error) => {
               console.log(error);
@@ -91,6 +102,7 @@ export class FeedComponent implements OnInit {
       .subscribe(
         (GetWorkspacePostsByWIDResult: any) => {
           this.userPostsData = GetWorkspacePostsByWIDResult;
+          console.log(GetWorkspacePostsByWIDResult);
         },
         (error) => {
           console.log(error);
