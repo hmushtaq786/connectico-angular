@@ -17,6 +17,8 @@ export class FeedComponent implements OnInit {
 
   tempUsers: any;
 
+  userPostsData: any;
+
   postForm = new FormGroup({
     postContent: new FormControl(),
   });
@@ -88,7 +90,7 @@ export class FeedComponent implements OnInit {
       .getWorkspacePostsByWID(this.currentWorkspace.w_id)
       .subscribe(
         (GetWorkspacePostsByWIDResult: any) => {
-          console.log(GetWorkspacePostsByWIDResult);
+          this.userPostsData = GetWorkspacePostsByWIDResult;
         },
         (error) => {
           console.log(error);

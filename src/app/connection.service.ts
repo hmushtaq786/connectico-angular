@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
-
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { Observable, of } from "rxjs";
 import { CookieService } from "ngx-cookie-service";
 import { AxisItemLocation } from "@amcharts/amcharts4/.internal/charts/axes/Axis";
 import Axios from "axios";
@@ -81,13 +80,17 @@ export class ConnectionService {
   // }
 
   uploadWorkspaceFile(file) {
-    var formData = new FormData();
-    formData.append("file", file);
-    formData.append(
-      "upload_preset",
-      this.CLOUDINARY_UPLOAD_PRESET_WORKSPACE_FILE
-    );
-    return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
+    if (file == "") {
+      return of("null");
+    } else {
+      var formData = new FormData();
+      formData.append("file", file);
+      formData.append(
+        "upload_preset",
+        this.CLOUDINARY_UPLOAD_PRESET_WORKSPACE_FILE
+      );
+      return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
+    }
   }
 
   uploadUserPhoto(file) {

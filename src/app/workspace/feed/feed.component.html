@@ -54,13 +54,13 @@
         </div>
       </form>
       <hr />
-      <div class="row">
+      <div class="row" *ngFor="let post of userPostsData">
         <div style="background-color: whitesmoke;" class="col-md-12">
           <div class="row" style="background-color: whitesmoke; padding: 5px;">
             <div class="col-md-1">
               <img
                 style="width: 50px;"
-                src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                src="{{ post.created_by__photo_address }}"
                 class="rounded-circle z-depth-0"
                 alt="avatar image"
               />
@@ -76,7 +76,11 @@
                       padding-top: 5px;
                     "
                   >
-                    Ayesha Haq
+                    {{
+                      post.created_by__first_name +
+                        " " +
+                        post.created_by__last_name
+                    }}
                   </h6>
                 </div>
               </div>
@@ -86,93 +90,15 @@
                   class="col-md-12"
                 >
                   <a style="margin-right: 5px;"><i class="fas fa-clock"></i></a
-                  >07:12 AM
+                  >{{ post.created_on }}
                 </div>
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-md-12">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-          </div>
-
-          <div class="row" style="margin-top: 10px; margin-left: 10px;">
-            <div class="col-md-1">
-              <img
-                style="width: 40px;"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR7ULXhTjsUrfpFmzCzUo8T_dMjCwwshvugIVID97Y_5KYouGDJ"
-                class="rounded-circle z-depth-0"
-                alt="avatar image"
-              />
-            </div>
-            <div class="col-md-9" style="margin-top: 5px;">
-              <input
-                class="form-control form-control-sm"
-                type="text"
-                placeholder="Write a comment.."
-              />
-            </div>
-            <div class="col-md-2">
-              <button class="myButton btn-sm btn-primary">
-                Post
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div style="background-color: whitesmoke;" class="col-md-12">
-          <div class="row" style="background-color: whitesmoke; padding: 5px;">
-            <div class="col-md-1">
-              <img
-                style="width: 50px;"
-                src="https://2d3z3x4e2xrx130kvm2hxdsp-wpengine.netdna-ssl.com/wp-content/uploads/2019/01/Tracy_Wright_Corvo_Photography_branding_portrait-1-4.jpg"
-                class="rounded-circle z-depth-0"
-                alt="avatar image"
-              />
-            </div>
-            <div class="col-md-11">
-              <div class="row">
-                <div class="col-md-12">
-                  <h6
-                    style="
-                      font-family: sans-serif;
-                      font-size: 15px;
-                      font-weight: bold;
-                      padding-top: 5px;
-                    "
-                  >
-                    Ahmed Ali
-                  </h6>
-                </div>
-              </div>
-              <div class="row">
-                <div
-                  style="font-family: sans-serif; font-size: 12px;"
-                  class="col-md-12"
-                >
-                  <a style="margin-right: 5px;"><i class="fas fa-clock"></i></a
-                  >01:58 PM
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-12">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            <div class="col-md-12" style="text-align: justify;">
+              {{ post.pst_content }}
             </div>
           </div>
 
@@ -214,8 +140,10 @@
               </button>
             </div>
           </div>
+          <hr />
         </div>
       </div>
+
       <!-- <div class="row">
       <div style="background-color: olive;" class="col-md-12">
         <div style="background-color: palegoldenrod; height: 150px;"></div>
