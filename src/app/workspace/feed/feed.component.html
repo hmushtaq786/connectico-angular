@@ -162,28 +162,38 @@
             <div class="col-md-1"></div>
           </div>
 
-          <div class="row" style="margin-top: 10px; margin-left: 10px;">
-            <div class="col-md-1">
-              <img
-                style="width: 40px;"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR7ULXhTjsUrfpFmzCzUo8T_dMjCwwshvugIVID97Y_5KYouGDJ"
-                class="rounded-circle z-depth-0"
-                alt="avatar image"
-              />
+          <form
+            [formGroup]="commentForm"
+            (ngSubmit)="createComment(post.pst_id)"
+          >
+            <div class="row" style="margin-top: 10px; margin-left: 10px;">
+              <div class="col-md-1">
+                <img
+                  style="width: 40px;"
+                  src="{{ user.photo_address }}"
+                  class="rounded-circle z-depth-0"
+                  alt="avatar image"
+                />
+              </div>
+              <div class="col-md-9" style="margin-top: 5px;">
+                <input
+                  class="form-control form-control-sm"
+                  type="text"
+                  placeholder="Write a comment.."
+                  formControlName="commentContent"
+                />
+              </div>
+              <div class="col-md-2">
+                <button
+                  type="submit"
+                  id="workspaceCommentBtn"
+                  class="myButton btn-sm btn-primary"
+                >
+                  Post
+                </button>
+              </div>
             </div>
-            <div class="col-md-9" style="margin-top: 5px;">
-              <input
-                class="form-control form-control-sm"
-                type="text"
-                placeholder="Write a comment.."
-              />
-            </div>
-            <div class="col-md-2">
-              <button class="myButton btn-sm btn-primary">
-                Post
-              </button>
-            </div>
-          </div>
+          </form>
           <hr />
         </div>
       </div>

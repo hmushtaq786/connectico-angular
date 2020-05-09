@@ -23,12 +23,23 @@ export class FeedComponent implements OnInit {
     postContent: new FormControl(),
   });
 
+  commentForm = new FormGroup({
+    commentContent: new FormControl(),
+    commentPostID: new FormControl(),
+  });
+
   postObj = {
     pst_content: "",
     created_by: "",
     pst_filepath: "",
     workspace_id: "",
     pst_filename: "",
+  };
+
+  commentObj = {
+    c_content: "",
+    created_by: "",
+    post_id: "",
   };
 
   constructor(
@@ -108,5 +119,28 @@ export class FeedComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  createComment(id) {
+    $("#workspaceCommentBtn")
+      .html(
+        '<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>'
+      )
+      .addClass("disabled");
+    this.commentObj.c_content = this.commentForm.get("commentContent").value;
+    this.commentObj.created_by = this.user.id;
+    this.commentObj.post_id = id;
+
+    this.connectionService.createWorkspaceComment(this.commentObj).subscribe(
+      (CreateWorkspaceCommentResult: any) => {
+        console.log(CreateWorkspaceCommentResult);
+        this.router
+          .navigateByUrl("/loading", { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(["workspace/" + this.currentWorkspace.w_id]);
+          });
+      },
+      (error) => console.log(error)
+    );
   }
 }

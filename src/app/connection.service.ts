@@ -204,6 +204,17 @@ export class ConnectionService {
     );
   }
 
+  createWorkspaceComment(commentData: object) {
+    const comment = JSON.stringify(commentData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/workspaces/comments/`,
+      comment,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   getWorkspacePostsByWID(id: any) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspaces/posts/${"w" + id}/`,
