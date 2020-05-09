@@ -128,12 +128,12 @@
           <div
             class="row"
             style="margin-top: 10px; margin-left: 10px;"
-            *ngFor="let comment of post.comments"
+            *ngFor="let comment of post.commentData"
           >
             <div class="col-md-1">
               <img
                 style="width: 40px;"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR7ULXhTjsUrfpFmzCzUo8T_dMjCwwshvugIVID97Y_5KYouGDJ"
+                src="{{ comment.created_by__photo_address }}"
                 class="rounded-circle z-depth-0"
                 alt="avatar image"
               />
@@ -149,7 +149,11 @@
                       margin-bottom: 2px;
                     "
                   >
-                    Hamza Mushtaq
+                    {{
+                      comment.created_by__first_name +
+                        " " +
+                        comment.created_by__last_name
+                    }}
                   </h6>
                 </div>
               </div>

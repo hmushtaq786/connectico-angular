@@ -113,7 +113,7 @@ export class FeedComponent implements OnInit {
       .subscribe(
         (GetWorkspacePostsByWIDResult: any) => {
           this.userPostsData = GetWorkspacePostsByWIDResult;
-          console.log(GetWorkspacePostsByWIDResult);
+          this.getComments();
         },
         (error) => {
           console.log(error);
@@ -121,12 +121,20 @@ export class FeedComponent implements OnInit {
       );
   }
 
+  getComments() {
+    this.userPostsData.forEach((post) => {
+      this.connectionService.getWorkspaceCommentByPID(post.pst_id).subscribe(
+        (GetWorkspaceCommentByPIDResult: any) => {
+          post["commentData"] = GetWorkspaceCommentByPIDResult;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    });
+  }
+
   createComment(id) {
-    $("#workspaceCommentBtn")
-      .html(
-        '<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>'
-      )
-      .addClass("disabled");
     this.commentObj.c_content = this.commentForm.get("commentContent").value;
     this.commentObj.created_by = this.user.id;
     this.commentObj.post_id = id;
