@@ -10,7 +10,12 @@
       alt=""
     />
     <span
-      style="font-family: sans-serif; font-size: 20px; font-weight: bold; vertical-align: bottom;"
+      style="
+        font-family: sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        vertical-align: bottom;
+      "
       >onnectico.</span
     ></a
   >
@@ -80,13 +85,12 @@
           aria-labelledby="navbarDropdownMenuLink-555"
         >
           <a
+            *ngFor="let project of workspaceProjects"
             class="dropdown-item"
-            [routerLink]="['/project']"
-            [routerLinkActive]="'active'"
-            >Project 1</a
+            [routerLink]="['/project', project.p_id__p_id]"
+            [routerLinkActive]="'//active'"
+            >{{ project.p_id__p_name }}</a
           >
-          <a class="dropdown-item" href="#">Project 2</a>
-          <a class="dropdown-item" href="#">Project 3</a>
         </div>
       </li>
       <li class="nav-item dropdown">

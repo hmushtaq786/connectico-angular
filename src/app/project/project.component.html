@@ -3,12 +3,16 @@
 <div class="row">
   <div
     class="col-md-2"
-    style="background-color: #f0f2ef; border-right: 1px solid lightgrey;  height: auto;"
+    style="
+      background-color: #f0f2ef;
+      border-right: 1px solid lightgrey;
+      height: auto;
+    "
   >
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-home" style="color: royalblue;"></i></a
           >Home
         </div>
@@ -18,7 +22,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-newspaper" style="color: royalblue;"></i></a
           >Feed
         </div>
@@ -28,7 +32,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i
               class="fas fa-users-class"
               style="font-size: 13px; color: royalblue;"
@@ -41,7 +45,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-calendar-star" style="color: royalblue;"></i></a
           >Events
         </div>
@@ -51,7 +55,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-file-signature" style="color: royalblue;"></i></a
           >Files
         </div>
@@ -63,13 +67,13 @@
     <div class="row">
       <div
         class="col-md-12"
-        style="background-color: royalblue; color: #F3FFFF; margin: auto;"
+        style="background-color: royalblue; color: #f3ffff; margin: auto;"
       >
-        <h3 style="font-family: sans-serif; padding: 5px; margin: auto; ">
-          Workspace 1
+        <h3 style="font-family: sans-serif; padding: 5px; margin: auto;">
+          {{ project.p_id__workspace_id__w_name + " " }}
           <span style="font-weight: normal; font-size: 25px;"
-            ><i class="fas fa-caret-right"></i>{{ " " }} Project 1
-            {{ " " }}</span
+            ><i class="fas fa-caret-right"></i
+            >{{ " " + project.p_id__p_name + " " }}</span
           >
           <span style="font-weight: normal; font-size: 25px;"
             ><i class="fas fa-caret-right"></i>{{ " " + page }}</span
@@ -79,31 +83,31 @@
     </div>
     <div class="row">
       <div class="col-md-12" *ngIf="screen === 'project_home'">
-        <app-project-home></app-project-home>
+        <app-project-home [currentProject]="project"></app-project-home>
       </div>
       <div class="col-md-12" *ngIf="screen === 'project_feed'">
-        <app-project-feed></app-project-feed>
+        <app-project-feed [currentProject]="project"></app-project-feed>
       </div>
       <div
         class="col-md-12"
         *ngIf="screen === 'project_team'"
-        style="padding-left: 10px; padding-right:25px;"
+        style="padding-left: 10px; padding-right: 25px;"
       >
-        <app-project-team></app-project-team>
+        <app-project-team [currentProject]="project"></app-project-team>
       </div>
       <div
         class="col-md-12"
         *ngIf="screen === 'project_event'"
-        style="padding-left: 10px; padding-right:25px;"
+        style="padding-left: 10px; padding-right: 25px;"
       >
-        <app-project-event></app-project-event>
+        <app-project-event [currentProject]="project"></app-project-event>
       </div>
       <div
         class="col-md-12"
         *ngIf="screen === 'project_files'"
-        style="padding-left: 10px; padding-right:25px;"
+        style="padding-left: 10px; padding-right: 25px;"
       >
-        <app-project-files></app-project-files>
+        <app-project-files [currentProject]="project"></app-project-files>
       </div>
     </div>
   </div>

@@ -1,11 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-project-event",
   templateUrl: "./project-event.component.html",
-  styleUrls: ["./project-event.component.css"]
+  styleUrls: ["./project-event.component.css"],
 })
 export class ProjectEventComponent implements OnInit {
+  @Input() currentProject;
+
   events = [
     {
       e_name: "Project meeting",
@@ -13,7 +15,7 @@ export class ProjectEventComponent implements OnInit {
       e_location: "Lahore",
       e_date: "05/02/2020",
       e_time: "10:10 A.M",
-      created_by: "Arzoo Malik"
+      created_by: "Arzoo Malik",
     },
     {
       e_name: "Gather requirements",
@@ -21,8 +23,8 @@ export class ProjectEventComponent implements OnInit {
       e_location: "Lahore",
       e_date: "15/01/2020",
       e_time: "12:10 A.M",
-      created_by: "Hamza Mushtaq"
-    }
+      created_by: "Hamza Mushtaq",
+    },
   ];
 
   constructor() {}

@@ -6,12 +6,13 @@ import { ConnectionService } from "../connection.service";
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.css"]
+  styleUrls: ["./navbar.component.css"],
 })
 export class NavbarComponent implements OnInit {
   user: any;
   org: any;
   orgWorkspaces: any;
+  workspaceProjects: any;
   tokenCookie: any;
 
   constructor(
@@ -30,7 +31,20 @@ export class NavbarComponent implements OnInit {
       (getOrgWorkspaces: any) => {
         this.orgWorkspaces = getOrgWorkspaces;
       },
-      error => {
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    this.connectionService.getTotalProjects("u" + this.user.id).subscribe(
+      (GetTotalProjectsResult: any) => {
+        this.workspaceProjects = GetTotalProjectsResult;
+        localStorage.setItem(
+          "user-projects",
+          JSON.stringify(GetTotalProjectsResult)
+        );
+      },
+      (error) => {
         console.log(error);
       }
     );

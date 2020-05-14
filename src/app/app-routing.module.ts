@@ -16,15 +16,15 @@ const routes: Routes = [
   { path: "profile", component: ProfileStructureComponent },
   { path: "organization", component: OrganizationStructureComponent },
   { path: "workspace/:id", component: WorkspaceComponent },
-  { path: "project", component: ProjectComponent },
+  { path: "project/:id", component: ProjectComponent },
   { path: "messages", component: MessagesComponent },
   { path: "team", component: TeamComponent },
 
-  { path: "**", component: NotFoundErrorComponent }
+  { path: "**", component: NotFoundErrorComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

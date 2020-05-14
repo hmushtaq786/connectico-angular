@@ -307,9 +307,9 @@ export class ConnectionService {
     );
   }
 
-  getTotalProjects(org_id: string) {
+  getTotalProjects(user_id: string) {
     return this.httpClient.get(
-      `${this.baseUrl}register/organization/workspaces/${org_id}/`,
+      `${this.baseUrl}register/organization/users/projects/${user_id}/`,
       {
         headers: this.getHeaders(),
       }
