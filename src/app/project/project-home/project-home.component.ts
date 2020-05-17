@@ -5,7 +5,7 @@ declare const counter: any;
 declare const createProject: any;
 declare const createWorkspaceEvent: any;
 declare const addWorkspaceMembers: any;
-declare const leaveWorkspace: any;
+declare const leaveProject: any;
 declare const totalWorkspaceMembers: any;
 declare const projectsCompleted: any;
 declare const projectsRemaining: any;
@@ -35,8 +35,8 @@ export class ProjectHomeComponent implements OnInit {
   addMembers() {
     addWorkspaceMembers();
   }
-  leaveWorkspace() {
-    leaveWorkspace();
+  leaveProject() {
+    leaveProject();
   }
   viewMembers() {
     totalWorkspaceMembers();

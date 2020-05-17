@@ -1,1 +1,69 @@
-<p>leave-project works!</p>
+<!-- Central Modal Small -->
+<div
+  class="modal fade"
+  id="leaveProject"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div
+        class="modal-header"
+        style="background-color: royalblue; color: white;"
+      >
+        <h4 class="modal-title w-100" id="myModalLabel">
+          <a
+            ><i
+              style="padding-right: 10px !important;"
+              class="fa fa-sign-out-alt"
+            ></i></a
+          >Leave project
+        </h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          style="color: white;"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            Are you sure you want to leave this project?
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button
+              style="background-color: #ff3547 !important;"
+              type="button"
+              class="close-button"
+              (click)="leaveProject()"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          style="background-color: royalblue !important;"
+          type="button"
+          class="close-button"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Central Modal Small -->

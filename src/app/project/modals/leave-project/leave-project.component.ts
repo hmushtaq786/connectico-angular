@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-leave-project',
-  templateUrl: './leave-project.component.html',
-  styleUrls: ['./leave-project.component.css']
+  selector: "app-leave-project",
+  templateUrl: "./leave-project.component.html",
+  styleUrls: ["./leave-project.component.css"],
 })
 export class LeaveProjectComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-
+  leaveProject() {}
 }

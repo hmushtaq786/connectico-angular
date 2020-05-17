@@ -1,5 +1,5 @@
 function sidenav() {
-  $(document).ready(function() {
+  $(document).ready(function () {
     // SideNav Button Initialization
     $(".button-collapse").sideNav();
     // SideNav Scrollbar Initialization
@@ -57,27 +57,27 @@ function loginModal() {
 }
 
 function stepper() {
-  $(document).ready(function() {
+  $(document).ready(function () {
     $(".stepper").mdbStepper();
   });
 }
 
 function fileTable() {
-  $(document).ready(function() {
+  $(document).ready(function () {
     $("#dtBasicExample").DataTable();
     $(".dataTables_length").addClass("bs-select");
   });
 }
 
 function counter() {
-  $.fn.jQuerySimpleCounter = function(options) {
+  $.fn.jQuerySimpleCounter = function (options) {
     var settings = $.extend(
       {
         start: 0,
         end: 100,
         easing: "swing",
         duration: 400,
-        complete: ""
+        complete: "",
       },
       options
     );
@@ -89,11 +89,11 @@ function counter() {
       {
         duration: settings.duration,
         easing: settings.easing,
-        step: function() {
+        step: function () {
           var mathCount = Math.ceil(this.count);
           thisElement.text(mathCount);
         },
-        complete: settings.complete
+        complete: settings.complete,
       }
     );
   };
@@ -105,14 +105,14 @@ function counter() {
 
   /* AUTHOR LINK */
   $(".about-me-img").hover(
-    function() {
+    function () {
       $(".authorWindowWrapper")
         .stop()
         .fadeIn("fast")
         .find("p")
         .addClass("trans");
     },
-    function() {
+    function () {
       $(".authorWindowWrapper")
         .stop()
         .fadeOut("fast")
@@ -180,4 +180,8 @@ function tasksCompleted() {
 
 function tasksRemaining() {
   $("#tasksLeft").modal("show");
+}
+
+function leaveProject() {
+  $("#leaveProject").modal("show");
 }
