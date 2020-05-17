@@ -23,7 +23,6 @@ export class ProjectComponent implements OnInit {
 
   ngOnInit() {
     const tokenCookie = this.cookieService.get("auth-token");
-    console.log(tokenCookie);
     if (!tokenCookie) {
       this.router.navigate(["/"]);
     }

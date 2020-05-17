@@ -6,6 +6,8 @@ import { OrganizationStructureComponent } from "./organization/structure/structu
 import { LandingPageComponent } from "./landing-page/landing-page.component";
 import { ProfileStructureComponent } from "./profile/structure/structure.component";
 import { WorkspaceComponent } from "./workspace/workspace.component";
+import { WorkspaceHomeComponent } from "./workspace/workspace-home/workspace-home.component";
+import { FeedComponent } from "./workspace/feed/feed.component";
 import { ProjectComponent } from "./project/project.component";
 import { MessagesComponent } from "./messages/messages.component";
 import { TeamComponent } from "./team/team.component";
@@ -15,7 +17,14 @@ const routes: Routes = [
   { path: "", component: LandingPageComponent },
   { path: "profile", component: ProfileStructureComponent },
   { path: "organization", component: OrganizationStructureComponent },
-  { path: "workspace/:id", component: WorkspaceComponent },
+  {
+    path: "workspace/:id",
+    component: WorkspaceComponent,
+    // children: [
+    //   { path: "", component: WorkspaceHomeComponent },
+    //   { path: "feed", component: FeedComponent },
+    // ],
+  },
   { path: "project/:id", component: ProjectComponent },
   { path: "messages", component: MessagesComponent },
   { path: "team", component: TeamComponent },

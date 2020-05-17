@@ -82,6 +82,11 @@ import { ErrorModalComponent } from "./error-modal/error-modal.component";
 import { NewUserModalComponent } from "./landing-page/landing-page-modals/new-user-modal/new-user-modal.component";
 import { OrganizationDetailsLocationComponent } from './organization/details/organization-details-location/organization-details-location.component';
 import { NotFoundErrorComponent } from './not-found-error/not-found-error.component';
+import { CreateTeamComponent } from './project/modals/create-team/create-team.component';
+import { CreateProjectEventComponent } from './project/modals/create-project-event/create-project-event.component';
+import { AddProjectMembersComponent } from './project/modals/add-project-members/add-project-members.component';
+import { ShowProjectMembersComponent } from './project/modals/show-project-members/show-project-members.component';
+import { LeaveProjectComponent } from './project/modals/leave-project/leave-project.component';
 
 @NgModule({
   declarations: [
@@ -154,7 +159,12 @@ import { NotFoundErrorComponent } from './not-found-error/not-found-error.compon
     ErrorModalComponent,
     NewUserModalComponent,
     OrganizationDetailsLocationComponent,
-    NotFoundErrorComponent
+    NotFoundErrorComponent,
+    CreateTeamComponent,
+    CreateProjectEventComponent,
+    AddProjectMembersComponent,
+    ShowProjectMembersComponent,
+    LeaveProjectComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,12 @@
-<app-create-project></app-create-project>
-<app-create-event></app-create-event>
-<app-add-members></app-add-members>
-<app-leave-workspace></app-leave-workspace>
-<app-show-members></app-show-members>
-<app-show-completed-projects></app-show-completed-projects>
+<app-error-modal [message]="modalMessage"></app-error-modal>
+<app-create-team></app-create-team>
+<app-create-project-event></app-create-project-event>
+<app-add-project-members></app-add-project-members>
+<app-leave-project></app-leave-project>
+<app-show-project-members></app-show-project-members>
+<!-- <app-show-completed-projects></app-show-completed-projects>
 <app-show-remaining-projects></app-show-remaining-projects>
-<app-show-teams></app-show-teams>
+<app-show-teams></app-show-teams> -->
 <!-- <div class="row">
   <div class="col-md-12">
     <div id="chartdiv" style="height: 300px; width: 100%;"></div>
@@ -24,7 +25,12 @@
         <div
           class="item wow fadeInUpBig animated animated"
           data-number="70"
-          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          style="
+            visibility: visible;
+            background-color: royalblue;
+            padding: 10px;
+            padding-top: 30px;
+          "
           (click)="createWorkspaceProject()"
         >
           <i class="fas fa-folder-plus"></i>
@@ -34,7 +40,12 @@
         <div
           class="item wow fadeInUpBig animated animated"
           data-number="359"
-          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          style="
+            visibility: visible;
+            background-color: royalblue;
+            padding: 10px;
+            padding-top: 30px;
+          "
           (click)="createEvent()"
         >
           <i class="fa fa-calendar-plus"></i>
@@ -43,7 +54,12 @@
         <div
           class="item wow fadeInUpBig animated animated"
           data-number="246"
-          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          style="
+            visibility: visible;
+            background-color: royalblue;
+            padding: 10px;
+            padding-top: 30px;
+          "
           (click)="addMembers()"
         >
           <i class="fa fa-user-plus"></i>
@@ -53,7 +69,12 @@
         <div
           class="item wow fadeInUpBig animated animated"
           data-number="246"
-          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          style="
+            visibility: visible;
+            background-color: royalblue;
+            padding: 10px;
+            padding-top: 30px;
+          "
           (click)="leaveWorkspace()"
         >
           <i class="fa fa-sign-out-alt"></i>
@@ -73,7 +94,12 @@
         <div
           class="item wow fadeInUpBig animated animated"
           data-number="70"
-          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          style="
+            visibility: visible;
+            background-color: royalblue;
+            padding: 10px;
+            padding-top: 30px;
+          "
           (click)="viewMembers()"
         >
           <i class="fas fa-users"></i>
@@ -85,7 +111,12 @@
         <div
           class="item wow fadeInUpBig animated animated"
           data-number="359"
-          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          style="
+            visibility: visible;
+            background-color: royalblue;
+            padding: 10px;
+            padding-top: 30px;
+          "
           (click)="projectsDone()"
         >
           <i class="fa fa-clipboard-check"></i>
@@ -96,7 +127,12 @@
         <div
           class="item wow fadeInUpBig animated animated"
           data-number="246"
-          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          style="
+            visibility: visible;
+            background-color: royalblue;
+            padding: 10px;
+            padding-top: 30px;
+          "
           (click)="projectsLeft()"
         >
           <i class="fa fa-clipboard-list"></i>
@@ -108,7 +144,12 @@
         <div
           class="item wow fadeInUpBig animated animated"
           data-number="246"
-          style="visibility: visible; background-color: royalblue; padding: 10px; padding-top: 30px;"
+          style="
+            visibility: visible;
+            background-color: royalblue;
+            padding: 10px;
+            padding-top: 30px;
+          "
           (click)="viewTeams()"
         >
           <i class="fa fa-users-class"></i>
@@ -134,7 +175,7 @@
         <div
           class="progress-bar"
           role="progressbar"
-          style="width: 25%; height: 20px; background-color: royalblue ;"
+          style="width: 25%; height: 20px; background-color: royalblue;"
           aria-valuenow="25"
           aria-valuemin="0"
           aria-valuemax="100"

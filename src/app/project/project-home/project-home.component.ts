@@ -18,6 +18,7 @@ declare const totalTeams: any;
 })
 export class ProjectHomeComponent implements OnInit {
   @Input() currentProject;
+  modalMessage = "<System message>";
 
   constructor() {}
 

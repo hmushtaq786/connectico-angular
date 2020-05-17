@@ -77,6 +77,7 @@
     <div class="row">
       <div class="col-md-12" *ngIf="screen === 'workspace_home'">
         <app-workspace-home [currentWorkspace]="workspace"></app-workspace-home>
+        <!-- <router-outlet [currentWorkspace]="workspace"></router-outlet> -->
       </div>
       <div class="col-md-12" *ngIf="screen === 'feed'">
         <app-feed [currentWorkspace]="workspace"></app-feed>
@@ -108,18 +109,6 @@
           [currentWorkspace]="workspace"
         ></app-workspace-files>
       </div>
-      <!-- <div class="col-md-12">
-        <app-workspace-home
-          *ngIf="screen === 'workspace_home'"
-        ></app-workspace-home>
-        <app-feed *ngIf="screen === 'feed'"></app-feed>
-        <app-workspace-project
-          *ngIf="screen === 'workspace_project'"
-        ></app-workspace-project>
-        <app-workspace-files
-          *ngIf="screen === 'workspace_files'"
-        ></app-workspace-files>
-      </div> -->
     </div>
   </div>
 </div>
