@@ -2,10 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 
 declare const counter: any;
 
-declare const createProject: any;
 declare const createWorkspaceEvent: any;
 declare const addWorkspaceMembers: any;
-declare const leaveProject: any;
 declare const totalWorkspaceMembers: any;
 declare const projectsCompleted: any;
 declare const projectsRemaining: any;
@@ -26,17 +24,15 @@ export class ProjectHomeComponent implements OnInit {
     counter();
   }
 
-  createWorkspaceProject() {
-    createProject();
+  openModal(modal_id) {
+    var modal_obj: any = $("#" + modal_id);
+    modal_obj.modal("show");
   }
   createEvent() {
     createWorkspaceEvent();
   }
   addMembers() {
     addWorkspaceMembers();
-  }
-  leaveProject() {
-    leaveProject();
   }
   viewMembers() {
     totalWorkspaceMembers();

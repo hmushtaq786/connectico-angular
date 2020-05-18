@@ -181,7 +181,3 @@ function tasksCompleted() {
 function tasksRemaining() {
   $("#tasksLeft").modal("show");
 }
-
-function leaveProject() {
-  $("#leaveProject").modal("show");
-}

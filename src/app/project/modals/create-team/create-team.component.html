@@ -1,1 +1,119 @@
-<p>create-team works!</p>
+<!-- Central Modal Small -->
+<form [formGroup]="projectForm" (ngSubmit)="createProject()">
+  <div
+    class="modal fade"
+    id="createTeam"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+  >
+    <!-- Change class .modal-sm to change the size of the modal -->
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div
+          class="modal-header"
+          style="background-color: royalblue; color: white;"
+        >
+          <h4 class="modal-title w-100" id="myModalLabel">
+            <a
+              ><i
+                style="padding-right: 10px !important;"
+                class="fas fa-folder-plus"
+              ></i></a
+            >Create project
+          </h4>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            style="color: white;"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Name -->
+          <div class="md-form mt-3">
+            <input
+              type="text"
+              id="materialContactFormName"
+              class="form-control"
+              formControlName="name"
+            />
+            <label for="materialContactFormName">Name</label>
+          </div>
+
+          <!--Message-->
+          <div class="md-form">
+            <textarea
+              id="materialContactFormMessage"
+              class="form-control md-textarea"
+              rows="2"
+              formControlName="description"
+            ></textarea>
+            <label for="materialContactFormMessage">Description</label>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="md-form mt-3">
+                <input
+                  type="date"
+                  id="startdate"
+                  class="form-control"
+                  formControlName="startDate"
+                />
+                <label for="startdate">Start Date</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="md-form mt-3">
+                <input
+                  type="date"
+                  id="enddate"
+                  class="form-control"
+                  formControlName="endDate"
+                />
+                <label for="enddate">End Date</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <select
+                id="selectPM"
+                class="mdb-select md-form"
+                searchable="Search here.."
+              >
+                <option value="" disabled selected
+                  >Select project manager</option
+                >
+                <ng-container *ngFor="let member of workspaceMembers">
+                  <option value="{{ member.id }}">{{
+                    member.first_name + " " + member.last_name
+                  }}</option>
+                </ng-container>
+              </select>
+              <label class="mdb-main-label">Project Manager</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            style="background-color: royalblue !important;"
+            type="submit"
+            class="close-button"
+            id="projectCreateBtn"
+          >
+            Create
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- Central Modal Small -->

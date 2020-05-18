@@ -31,10 +31,10 @@
             padding: 10px;
             padding-top: 30px;
           "
-          (click)="createWorkspaceProject()"
+          (click)="openModal('createTeam')"
         >
           <i class="fas fa-folder-plus"></i>
-          <p>Create project</p>
+          <p>Create team</p>
         </div>
 
         <div
@@ -46,7 +46,7 @@
             padding: 10px;
             padding-top: 30px;
           "
-          (click)="createEvent()"
+          (click)="openModal('createProjectEvent')"
         >
           <i class="fa fa-calendar-plus"></i>
           <p>Create event</p>
@@ -60,7 +60,7 @@
             padding: 10px;
             padding-top: 30px;
           "
-          (click)="addMembers()"
+          (click)="openModal('addTeamMembers')"
         >
           <i class="fa fa-user-plus"></i>
           <p>Add members</p>
@@ -75,7 +75,7 @@
             padding: 10px;
             padding-top: 30px;
           "
-          (click)="leaveProject()"
+          (click)="openModal('leaveProject')"
         >
           <i class="fa fa-sign-out-alt"></i>
           <p>Leave project</p>
