@@ -5,15 +5,6 @@ import { ConnectionService } from "src/app/connection.service";
 
 // declare const counter: any;
 
-declare const createProject: any;
-declare const createWorkspaceEvent: any;
-declare const addWorkspaceMembers: any;
-declare const leaveWorkspace: any;
-declare const totalWorkspaceMembers: any;
-declare const projectsCompleted: any;
-declare const projectsRemaining: any;
-declare const totalTeams: any;
-
 @Component({
   selector: "app-workspace-home",
   templateUrl: "./workspace-home.component.html",
@@ -108,28 +99,8 @@ export class WorkspaceHomeComponent implements OnInit {
     );
   }
 
-  createWorkspaceProject() {
-    createProject();
-  }
-  createEvent() {
-    createWorkspaceEvent();
-  }
-  addMembers() {
-    addWorkspaceMembers();
-  }
-  leaveWorkspace() {
-    leaveWorkspace();
-  }
-  viewMembers() {
-    totalWorkspaceMembers();
-  }
-  totalProjects() {
-    projectsRemaining();
-  }
-  completedProjects() {
-    projectsCompleted();
-  }
-  viewTeams() {
-    totalTeams();
+  openWorkspaceModal(modal_id) {
+    var modal_obj: any = $("#" + modal_id);
+    modal_obj.modal("show");
   }
 }
