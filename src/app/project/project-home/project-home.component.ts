@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { ConnectionService } from "src/app/connection.service";
+import { DataService } from "src/app/data.service";
 
 declare const counter: any;
 
@@ -15,10 +17,17 @@ export class ProjectHomeComponent implements OnInit {
   @Input() currentProject;
   modalMessage = "<System message>";
 
-  constructor() {}
+  constructor(
+    private connectionService: ConnectionService,
+    private data: DataService
+  ) {}
 
   ngOnInit() {
     counter();
+
+    this.data.currentMessage.subscribe(
+      (message) => (this.modalMessage = message)
+    );
   }
 
   openModal(modal_id) {

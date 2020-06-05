@@ -1,5 +1,5 @@
 <!-- Central Modal Small -->
-<form [formGroup]="projectForm" (ngSubmit)="createProject()">
+<form [formGroup]="teamForm" (ngSubmit)="createTeam()">
   <div
     class="modal fade"
     id="createTeam"
@@ -21,7 +21,7 @@
                 style="padding-right: 10px !important;"
                 class="fas fa-folder-plus"
               ></i></a
-            >Create project
+            >Create team
           </h4>
           <button
             type="button"
@@ -88,16 +88,14 @@
                 class="mdb-select md-form"
                 searchable="Search here.."
               >
-                <option value="" disabled selected
-                  >Select project manager</option
-                >
-                <ng-container *ngFor="let member of workspaceMembers">
-                  <option value="{{ member.id }}">{{
-                    member.first_name + " " + member.last_name
+                <option value="" disabled selected>Select team lead</option>
+                <ng-container *ngFor="let member of projMembers">
+                  <option value="{{ member.u_id__id }}">{{
+                    member.u_id__first_name + " " + member.u_id__last_name
                   }}</option>
                 </ng-container>
               </select>
-              <label class="mdb-main-label">Project Manager</label>
+              <label class="mdb-main-label">Team Lead</label>
             </div>
           </div>
         </div>
@@ -107,7 +105,7 @@
             style="background-color: royalblue !important;"
             type="submit"
             class="close-button"
-            id="projectCreateBtn"
+            id="teamCreateBtn"
           >
             Create
           </button>

@@ -193,6 +193,17 @@ export class ConnectionService {
     );
   }
 
+  createTeam(teamData: object) {
+    const team = JSON.stringify(teamData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/workspaces/teams/`,
+      team,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   createWorkspacePost(postData: object) {
     const post = JSON.stringify(postData);
     return this.httpClient.post(
