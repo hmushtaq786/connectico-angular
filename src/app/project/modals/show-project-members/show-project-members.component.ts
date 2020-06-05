@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-show-project-members',
-  templateUrl: './show-project-members.component.html',
-  styleUrls: ['./show-project-members.component.css']
+  selector: "app-show-project-members",
+  templateUrl: "./show-project-members.component.html",
+  styleUrls: ["./show-project-members.component.css"],
 })
 export class ShowProjectMembersComponent implements OnInit {
+  @Input() currentProject;
 
-  constructor() { }
+  projMembers: any;
+  projectMembers: any;
 
-  ngOnInit() {
-  }
+  constructor() {}
 
+  ngOnInit() {}
+
+  sendMessage() {}
 }

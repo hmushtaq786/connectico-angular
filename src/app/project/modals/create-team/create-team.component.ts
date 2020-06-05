@@ -51,6 +51,7 @@ export class CreateTeamComponent implements OnInit {
       .subscribe(
         (getTotalProjectsResult: any) => {
           this.projMembers = getTotalProjectsResult;
+          console.log(this.projMembers);
         },
         (error) => {
           console.log(error);

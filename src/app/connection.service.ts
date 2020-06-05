@@ -182,6 +182,17 @@ export class ConnectionService {
     );
   }
 
+  createProjectEvent(eventData: object) {
+    const event = JSON.stringify(eventData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/events/project/`,
+      event,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   createProject(projectData: object) {
     const project = JSON.stringify(projectData);
     return this.httpClient.post(
