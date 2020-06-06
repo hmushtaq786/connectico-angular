@@ -1,10 +1,17 @@
 <app-error-modal [message]="modalMessage"></app-error-modal>
+
 <app-create-team [currentProject]="currentProject"></app-create-team>
+
 <app-create-project-event
   [currentProject]="currentProject"
 ></app-create-project-event>
-<app-add-project-members></app-add-project-members>
+
+<app-add-project-members
+  [currentProject]="currentProject"
+></app-add-project-members>
+
 <app-leave-project></app-leave-project>
+
 <app-show-project-members
   [currentProject]="currentProject"
 ></app-show-project-members>
@@ -64,7 +71,7 @@
             padding: 10px;
             padding-top: 30px;
           "
-          (click)="openModal('addTeamMembers')"
+          (click)="openModal('addProjectMembers')"
         >
           <i class="fa fa-user-plus"></i>
           <p>Add members</p>

@@ -1,7 +1,7 @@
 <!-- Central Modal Small -->
 <div
   class="modal fade"
-  id="addTeamMembers"
+  id="addProjectMembers"
   tabindex="-1"
   role="dialog"
   aria-labelledby="myModalLabel"
@@ -34,7 +34,7 @@
       </div>
 
       <div class="modal-body">
-        <div class="row member-tile" *ngFor="let member of orgMembers">
+        <div class="row member-tile" *ngFor="let member of workspaceMembers">
           <div
             style="text-align: center; padding-top: 5px; padding-bottom: 5px;"
             class="col-md-2"
@@ -42,7 +42,7 @@
             <img
               id="avatar-img"
               style="width: 70px;"
-              src="{{ member.photo_address }}"
+              src="{{ member.u_id__photo_address }}"
               alt="avatar mx-auto white"
               class="img-fluid"
             />
@@ -58,7 +58,7 @@
                 "
                 class="col-md-12"
               >
-                {{ member.first_name + " " + member.last_name }}
+                {{ member.u_id__first_name + " " + member.u_id__last_name }}
               </div>
             </div>
             <div class="row">
@@ -66,7 +66,7 @@
                 <a
                   ><i class="fas fa-envelope"></i
                   ><span style="margin-left: 5px; font-family: sans-serif;">
-                    {{ member.email }}
+                    {{ member.u_id__email }}
                   </span></a
                 >
               </div>
@@ -78,7 +78,7 @@
               <button
                 type="submit"
                 class="message-button"
-                value="{{ member.id }}"
+                value="{{ member.u_id__id }}"
                 (click)="addMember($event)"
                 disabled
               >
@@ -89,7 +89,7 @@
               <button
                 type="submit"
                 class="message-button"
-                value="{{ member.id }}"
+                value="{{ member.u_id__id }}"
                 (click)="addMember($event)"
               >
                 Add

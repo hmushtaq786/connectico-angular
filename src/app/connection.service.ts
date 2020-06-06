@@ -329,9 +329,9 @@ export class ConnectionService {
     );
   }
 
-  getTotalProjects(user_id: string) {
+  getTotalProjects(id: string) {
     return this.httpClient.get(
-      `${this.baseUrl}register/organization/users/projects/${user_id}/`,
+      `${this.baseUrl}register/organization/users/projects/${id}/`,
       {
         headers: this.getHeaders(),
       }
@@ -367,6 +367,17 @@ export class ConnectionService {
     return this.httpClient.post(
       `${this.baseUrl}register/organization/workspace/add/`,
       member_workspace,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  addMemberProject(data) {
+    const member_project = JSON.stringify(data);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/project/add/`,
+      member_project,
       {
         headers: this.getHeaders(),
       }
