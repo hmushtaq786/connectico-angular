@@ -283,6 +283,15 @@ export class ConnectionService {
     );
   }
 
+  getEventByPID(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/events/project/${"p" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   //login user with the credentials provided
   loginUser(credentials: AuthCredentials) {
     const body = JSON.stringify(credentials);

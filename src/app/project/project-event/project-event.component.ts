@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { ConnectionService } from "src/app/connection.service";
 
 @Component({
   selector: "app-project-event",
@@ -7,27 +8,29 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class ProjectEventComponent implements OnInit {
   @Input() currentProject;
+  projectEvents: any;
 
-  events = [
-    {
-      e_name: "Project meeting",
-      e_description: "Progress of the project discussed so far",
-      e_location: "Lahore",
-      e_date: "05/02/2020",
-      e_time: "10:10 A.M",
-      created_by: "Arzoo Malik",
-    },
-    {
-      e_name: "Gather requirements",
-      e_description: "For the completion of SRS",
-      e_location: "Lahore",
-      e_date: "15/01/2020",
-      e_time: "12:10 A.M",
-      created_by: "Hamza Mushtaq",
-    },
-  ];
+  constructor(private connectionService: ConnectionService) {}
 
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.connectionService
+      .getEventByPID(this.currentProject.p_id__p_id)
+      .subscribe(
+        (getEventResult: any) => {
+          this.projectEvents = getEventResult;
+          let orgUsers = JSON.parse(localStorage.getItem("org-members"));
+          for (var event of this.projectEvents) {
+            InnerLoop: for (var user of orgUsers) {
+              if (event.created_by == user.id) {
+                event["created_by"] = user.first_name + " " + user.last_name;
+                break InnerLoop;
+              }
+            }
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 }
