@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { ConnectionService } from "src/app/connection.service";
 
 @Component({
   selector: "app-project-team",
@@ -8,22 +9,30 @@ import { Component, OnInit, Input } from "@angular/core";
 export class ProjectTeamComponent implements OnInit {
   @Input() currentProject;
 
-  teams = [
-    {
-      team_name: "HR Team",
-      description: "HR for the team",
-      team_lead: "Hamza Mushtaq",
-      tasks_assigned: "10",
-    },
-    {
-      team_name: "IOS Dev Team",
-      description: "IOS development team",
-      team_lead: "Arzoo Malik",
-      tasks_assigned: "24",
-    },
-  ];
+  teams: any;
 
-  constructor() {}
+  constructor(private connectionService: ConnectionService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.connectionService
+      .getTeamByPID(this.currentProject.p_id__p_id)
+      .subscribe(
+        (getTeamResult: any) => {
+          this.teams = getTeamResult;
+          console.log(getTeamResult);
+          let orgUsers = JSON.parse(localStorage.getItem("org-members"));
+          for (var team of this.teams) {
+            InnerLoop: for (var user of orgUsers) {
+              if (team.team_lead_id == user.id) {
+                team["team_lead"] = user.first_name + " " + user.last_name;
+                break InnerLoop;
+              }
+            }
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 }

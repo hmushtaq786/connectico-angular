@@ -265,6 +265,15 @@ export class ConnectionService {
     );
   }
 
+  getTeamByPID(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/teams/${"p" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   getEventByWID(id) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/events/workspace/${"w" + id}/`,
