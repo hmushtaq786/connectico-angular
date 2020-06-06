@@ -410,4 +410,13 @@ export class ConnectionService {
       }
     );
   }
+
+  leaveProject(id) {
+    return this.httpClient.delete(
+      `${this.baseUrl}register/organization/project/add/${id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
 }

@@ -74,7 +74,7 @@ export class CreateTeamComponent implements OnInit {
     this.team.tm_start_date = this.teamForm.get("startDate").value;
     this.team.tm_end_date = this.teamForm.get("endDate").value;
     this.team.project_id = this.currentProject.p_id__p_id;
-    this.team.team_lead_id = +$("#selectPM").children("option:selected").val();
+    this.team.team_lead_id = +$("#selectTL").children("option:selected").val();
     this.team.created_by = user.id;
 
     // console.log(this.project);
