@@ -59,7 +59,6 @@ export class ProjectFeedComponent implements OnInit {
       .subscribe(
         (getTotalProjectsResult: any) => {
           this.projMembers = getTotalProjectsResult;
-          console.log(this.projMembers);
         },
         (error) => {
           console.log(error);
@@ -114,7 +113,7 @@ export class ProjectFeedComponent implements OnInit {
       .subscribe(
         (GetProjectPostsByPIDResult: any) => {
           this.userPostsData = GetProjectPostsByPIDResult;
-          // this.getComments();
+          this.getComments();
         },
         (error) => {
           console.log(error);
@@ -122,18 +121,18 @@ export class ProjectFeedComponent implements OnInit {
       );
   }
 
-  // getComments() {
-  //   this.userPostsData.forEach((post) => {
-  //     this.connectionService.getWorkspaceCommentByPID(post.pst_id).subscribe(
-  //       (GetWorkspaceCommentByPIDResult: any) => {
-  //         post["commentData"] = GetWorkspaceCommentByPIDResult;
-  //       },
-  //       (error) => {
-  //         console.log(error);
-  //       }
-  //     );
-  //   });
-  // }
+  getComments() {
+    this.userPostsData.forEach((post) => {
+      this.connectionService.getProjectCommentByPID(post.pst_id).subscribe(
+        (GetProjectCommentByPIDResult: any) => {
+          post["commentData"] = GetProjectCommentByPIDResult;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    });
+  }
 
   createComment(id) {
     this.commentObj.c_content = this.commentForm.get("commentContent").value;
@@ -142,7 +141,6 @@ export class ProjectFeedComponent implements OnInit {
 
     this.connectionService.createProjectComment(this.commentObj).subscribe(
       (CreateProjectCommentResult: any) => {
-        console.log(CreateProjectCommentResult);
         this.router
           .navigateByUrl("/loading", { skipLocationChange: true })
           .then(() => {

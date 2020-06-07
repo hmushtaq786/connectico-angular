@@ -283,6 +283,15 @@ export class ConnectionService {
     );
   }
 
+  getProjectCommentByPID(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/projects/comments/${"p" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   getWorkspacePostsByWID(id: any) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspaces/posts/${"w" + id}/`,
