@@ -76,7 +76,6 @@ export class ProjectFeedComponent implements OnInit {
     this.postObj.created_by = this.user.id;
     this.postObj.project_id = this.currentProject.p_id__p_id;
     this.postObj.pst_filename = this.postObj.pst_filepath["name"];
-
     this.connectionService
       .uploadProjectFile(this.postObj.pst_filepath)
       .subscribe(
