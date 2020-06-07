@@ -46,6 +46,7 @@ export class ConnectionService {
   CLOUDINARY_UPLOAD_PRESET_USER = "v1zqrsgl";
   CLOUDINARY_UPLOAD_PRESET_ORG = "f8uypc6p";
   CLOUDINARY_UPLOAD_PRESET_WORKSPACE_FILE = "wrkh6b9a";
+  CLOUDINARY_UPLOAD_PRESET_PROJECT_FILE = "kbwnpxp5";
 
   constructor(
     private httpClient: HttpClient,
@@ -88,6 +89,20 @@ export class ConnectionService {
       formData.append(
         "upload_preset",
         this.CLOUDINARY_UPLOAD_PRESET_WORKSPACE_FILE
+      );
+      return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
+    }
+  }
+
+  uploadProjectFile(file) {
+    if (file == "") {
+      return of("null");
+    } else {
+      var formData = new FormData();
+      formData.append("file", file);
+      formData.append(
+        "upload_preset",
+        this.CLOUDINARY_UPLOAD_PRESET_PROJECT_FILE
       );
       return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
     }
@@ -226,10 +241,32 @@ export class ConnectionService {
     );
   }
 
+  createProjectPost(postData: object) {
+    const post = JSON.stringify(postData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/projects/posts/`,
+      post,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   createWorkspaceComment(commentData: object) {
     const comment = JSON.stringify(commentData);
     return this.httpClient.post(
       `${this.baseUrl}register/organization/workspaces/comments/`,
+      comment,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  createProjectComment(commentData: object) {
+    const comment = JSON.stringify(commentData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/projects/comments/`,
       comment,
       {
         headers: this.getHeaders(),

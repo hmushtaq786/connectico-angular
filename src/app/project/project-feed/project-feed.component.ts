@@ -52,7 +52,7 @@ export class ProjectFeedComponent implements OnInit {
     this.org = JSON.parse(localStorage.getItem("org"));
     // this.members = JSON.parse(localStorage.getItem("workspace-members"));
 
-    // this.getPosts();
+    this.getPosts();
 
     this.connectionService
       .getTotalProjects("p" + this.currentProject.p_id__p_id)
@@ -67,60 +67,60 @@ export class ProjectFeedComponent implements OnInit {
       );
   }
 
-  // createPost() {
-  //   $("#workspacePostBtn")
-  //     .html(
-  //       '<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>'
-  //     )
-  //     .addClass("disabled");
-  //   this.postObj.pst_content = this.postForm.get("postContent").value;
-  //   this.postObj.created_by = this.user.id;
-  //   this.postObj.workspace_id = this.currentWorkspace.w_id;
-  //   this.postObj.pst_filename = this.postObj.pst_filepath["name"];
+  createProjectPost() {
+    $("#projectPostBtn")
+      .html(
+        '<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>'
+      )
+      .addClass("disabled");
+    this.postObj.pst_content = this.postForm.get("postContent").value;
+    this.postObj.created_by = this.user.id;
+    this.postObj.project_id = this.currentProject.p_id__p_id;
+    this.postObj.pst_filename = this.postObj.pst_filepath["name"];
 
-  //   this.connectionService
-  //     .uploadWorkspaceFile(this.postObj.pst_filepath)
-  //     .subscribe(
-  //       (UploadWorkspaceFileResult: any) => {
-  //         this.postObj.pst_filepath = UploadWorkspaceFileResult.secure_url;
-  //         this.connectionService.createWorkspacePost(this.postObj).subscribe(
-  //           (CreateWorkspacePostResult: any) => {
-  //             this.router
-  //               .navigateByUrl("/loading", { skipLocationChange: true })
-  //               .then(() => {
-  //                 this.router.navigate([
-  //                   "workspace/" + this.currentWorkspace.w_id,
-  //                 ]);
-  //               });
-  //           },
-  //           (error) => {
-  //             console.log(error);
-  //           }
-  //         );
-  //       },
-  //       (error) => {
-  //         console.log(error);
-  //       }
-  //     );
-  // }
+    this.connectionService
+      .uploadProjectFile(this.postObj.pst_filepath)
+      .subscribe(
+        (UploadProjectFileResult: any) => {
+          this.postObj.pst_filepath = UploadProjectFileResult.secure_url;
+          this.connectionService.createProjectPost(this.postObj).subscribe(
+            (CreateProjectPostResult: any) => {
+              this.router
+                .navigateByUrl("/loading", { skipLocationChange: true })
+                .then(() => {
+                  this.router.navigate([
+                    "project/" + this.currentProject.p_id__p_id,
+                  ]);
+                });
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 
-  // userFileSelected = (event) => {
-  //   this.postObj.pst_filepath = event.target.files[0];
-  // };
+  userFileSelected = (event) => {
+    this.postObj.pst_filepath = event.target.files[0];
+  };
 
-  // getPosts() {
-  //   this.connectionService
-  //     .getWorkspacePostsByWID(this.currentWorkspace.w_id)
-  //     .subscribe(
-  //       (GetWorkspacePostsByWIDResult: any) => {
-  //         this.userPostsData = GetWorkspacePostsByWIDResult;
-  //         this.getComments();
-  //       },
-  //       (error) => {
-  //         console.log(error);
-  //       }
-  //     );
-  // }
+  getPosts() {
+    this.connectionService
+      .getProjectPostsByPID(this.currentProject.p_id__p_id)
+      .subscribe(
+        (GetProjectPostsByPIDResult: any) => {
+          this.userPostsData = GetProjectPostsByPIDResult;
+          // this.getComments();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 
   // getComments() {
   //   this.userPostsData.forEach((post) => {
@@ -135,21 +135,21 @@ export class ProjectFeedComponent implements OnInit {
   //   });
   // }
 
-  // createComment(id) {
-  //   this.commentObj.c_content = this.commentForm.get("commentContent").value;
-  //   this.commentObj.created_by = this.user.id;
-  //   this.commentObj.post_id = id;
+  createComment(id) {
+    this.commentObj.c_content = this.commentForm.get("commentContent").value;
+    this.commentObj.created_by = this.user.id;
+    this.commentObj.post_id = id;
 
-  //   this.connectionService.createWorkspaceComment(this.commentObj).subscribe(
-  //     (CreateWorkspaceCommentResult: any) => {
-  //       console.log(CreateWorkspaceCommentResult);
-  //       this.router
-  //         .navigateByUrl("/loading", { skipLocationChange: true })
-  //         .then(() => {
-  //           this.router.navigate(["workspace/" + this.currentWorkspace.w_id]);
-  //         });
-  //     },
-  //     (error) => console.log(error)
-  //   );
-  // }
+    this.connectionService.createProjectComment(this.commentObj).subscribe(
+      (CreateProjectCommentResult: any) => {
+        console.log(CreateProjectCommentResult);
+        this.router
+          .navigateByUrl("/loading", { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(["project/" + this.currentProject.p_id__p_id]);
+          });
+      },
+      (error) => console.log(error)
+    );
+  }
 }
