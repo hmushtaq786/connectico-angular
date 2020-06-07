@@ -2,9 +2,7 @@
   <div class="row" style="padding-top: 0px;">
     <div
       class="col-md-8"
-      style="background-color: whitesmoke
-  
-    ; padding-top: 20px;"
+      style="background-color: whitesmoke; padding-top: 20px;"
     >
       <div class="row">
         <div class="col-md-12">
@@ -63,7 +61,12 @@
               <div class="row">
                 <div class="col-md-12">
                   <h6
-                    style="font-family: sans-serif; font-size: 15px; font-weight: bold; padding-top: 5px"
+                    style="
+                      font-family: sans-serif;
+                      font-size: 15px;
+                      font-weight: bold;
+                      padding-top: 5px;
+                    "
                   >
                     Arzoo Malik
                   </h6>
@@ -74,7 +77,7 @@
                   style="font-family: sans-serif; font-size: 12px;"
                   class="col-md-12"
                 >
-                  <a style="margin-right:5px;"><i class="fas fa-clock"></i></a
+                  <a style="margin-right: 5px;"><i class="fas fa-clock"></i></a
                   >10:10 AM
                 </div>
               </div>
@@ -130,7 +133,12 @@
               <div class="row">
                 <div class="col-md-12">
                   <h6
-                    style="font-family: sans-serif; font-size: 15px; font-weight: bold; padding-top: 5px"
+                    style="
+                      font-family: sans-serif;
+                      font-size: 15px;
+                      font-weight: bold;
+                      padding-top: 5px;
+                    "
                   >
                     Hamza Ali
                   </h6>
@@ -141,7 +149,7 @@
                   style="font-family: sans-serif; font-size: 12px;"
                   class="col-md-12"
                 >
-                  <a style="margin-right:5px;"><i class="fas fa-clock"></i></a
+                  <a style="margin-right: 5px;"><i class="fas fa-clock"></i></a
                   >03:58 PM
                 </div>
               </div>
@@ -209,12 +217,12 @@
     <div class="col-md-4" style="background-color: #f0f2ef;">
       <div class="row">
         <div style="padding: 10px;" class="col-md-12">
-          <div class="row" *ngFor="let temp of tempUsers">
+          <div class="row" *ngFor="let member of projMembers">
             <div class="col-md-2">
               <div class="avatar-div">
                 <img
                   id="avatar-img"
-                  src="{{ temp.photo_address }}"
+                  src="{{ member.u_id__photo_address }}"
                   alt="avatar mx-auto white"
                   class="img-fluid"
                 />
@@ -224,25 +232,29 @@
             <div class="col-md-10" style="margin: auto;">
               <div class="row">
                 <div
-                  style="text-align: left; padding-left: 20px; "
+                  style="text-align: left; padding-left: 20px;"
                   class="col-md-12"
                 >
                   <a
                     ><span id="title">{{
-                      temp.first_name + " " + temp.last_name
+                      member.u_id__first_name + " " + member.u_id__last_name
                     }}</span></a
                   >
                 </div>
               </div>
               <div class="row">
                 <div
-                  style="text-align: left; padding-top: 2px; padding-left: 20px;"
+                  style="
+                    text-align: left;
+                    padding-top: 2px;
+                    padding-left: 20px;
+                  "
                   class="col-md-12"
                 >
                   <a
                     ><i class="fas fa-envelope"></i
-                    ><span style="margin-left:5px;">
-                      {{ temp.email }}
+                    ><span style="margin-left: 5px;">
+                      {{ member.u_id__email }}
                     </span></a
                   >
                 </div>
