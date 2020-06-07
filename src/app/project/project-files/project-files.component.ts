@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { ConnectionService } from "src/app/connection.service";
 
 declare const fileTable: any;
 
@@ -10,33 +11,26 @@ declare const fileTable: any;
 export class ProjectFilesComponent implements OnInit {
   @Input() currentProject;
 
-  files = [
-    {
-      file_name: "SDS.docx",
-      comment: "Design document",
-      author: "Arzoo Malik",
-      ext: ".docx",
-      time: "12:51 15/2/2020",
-    },
-    {
-      file_name: "SRS report.docx",
-      comment: "Requirements specification",
-      author: "Hamza Mushtaq",
-      ext: ".docx",
-      time: "02:51 15/1/2020",
-    },
-    {
-      file_name: "Project report.xlsx",
-      comment: "Yearly report for the year 2019",
-      author: "Hamza Mushtaq",
-      ext: ".xlsx",
-      time: "10:51 15/2/2020",
-    },
-  ];
-
-  constructor() {}
+  filesCount = 0;
+  projectFiles = new Array();
+  constructor(private connectionService: ConnectionService) {}
 
   ngOnInit() {
     fileTable();
+    this.connectionService
+      .getProjectPostsByPID(this.currentProject.p_id__p_id)
+      .subscribe(
+        (GetProjectPostsByPIDResult: any) => {
+          GetProjectPostsByPIDResult.forEach((element) => {
+            if (element.pst_filepath) {
+              this.projectFiles.push(element);
+              this.filesCount++;
+            }
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }

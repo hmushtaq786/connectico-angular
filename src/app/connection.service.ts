@@ -255,6 +255,15 @@ export class ConnectionService {
     );
   }
 
+  getProjectPostsByPID(id: any) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/projects/posts/${"po" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   // get project by workspace id
   getProjectByWID(id) {
     return this.httpClient.get(
