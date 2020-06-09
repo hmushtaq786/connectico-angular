@@ -457,6 +457,17 @@ export class ConnectionService {
     );
   }
 
+  addMemberTeam(data) {
+    const member_team = JSON.stringify(data);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/team/add/`,
+      member_team,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   membersOfWorkspace(id) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspace/add/${id}/`,
@@ -469,6 +480,15 @@ export class ConnectionService {
   WorkspaceMembersData(id) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspaces/members/${id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  ProjectMembersData(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/projects/members/${id}/`,
       {
         headers: this.getHeaders(),
       }

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { ConnectionService } from "src/app/connection.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-add-team-members",
@@ -7,70 +9,94 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class AddTeamMembersComponent implements OnInit {
   @Input() currentTeam;
-  members = [
-    {
-      name: "Hamza Mushtaq",
-      email: "hm.khanzada786@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-    {
-      name: "Ali Mushtaq",
-      email: "ali.mushtaq@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-    {
-      name: "Basit Ahmed",
-      email: "ahmed.basit@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-    {
-      name: "Aisha Khan",
-      email: "khan.aisha@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-    {
-      name: "Amjad Dawood",
-      email: "amjad.dawood@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-    {
-      name: "Ahmer Raza",
-      email: "ahmer.raza@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-    {
-      name: "Hamza Mushtaq",
-      email: "hm.khanzada786@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-    {
-      name: "Ali Mushtaq",
-      email: "ali.mushtaq@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-    {
-      name: "Basit Ahmed",
-      email: "ahmed.basit@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-    {
-      name: "Aisha Khan",
-      email: "khan.aisha@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-    {
-      name: "Amjad Dawood",
-      email: "amjad.dawood@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-    {
-      name: "Ahmer Raza",
-      email: "ahmer.raza@gmail.com",
-      image: "https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg",
-    },
-  ];
+  projectMembers: any;
+  teamMembers: any;
 
-  constructor() {}
+  data = {
+    u_id: "",
+    t_id: "",
+    r_id: 2, //by default Workspace User = 2
+  };
 
-  ngOnInit() {}
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.connectionService
+      .ProjectMembersData(this.currentTeam.t_id__project_id__p_id)
+      .subscribe(
+        (ProjectMembersDataResult: any) => {
+          this.projectMembers = ProjectMembersDataResult;
+          // getTotalTeams method gives all teams when user id is provided and gives all users of a team when team id is provided
+          this.connectionService
+            .getTotalTeams("t" + this.currentTeam.t_id__tm_id)
+            .subscribe(
+              (getTotalTeamsResult: any) => {
+                this.teamMembers = getTotalTeamsResult;
+                for (var pMember of this.projectMembers) {
+                  pMember["isAdded"] = false;
+                  InnerLoop: for (var tMember of this.teamMembers) {
+                    if (tMember.u_id__id == pMember.u_id__id) {
+                      pMember["isAdded"] = true;
+                      break InnerLoop;
+                    }
+                  }
+                }
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
+  addMember(event) {
+    this.data.u_id = event.target.value;
+    this.data.t_id = this.currentTeam.t_id__tm_id;
+
+    this.connectionService.addMemberTeam(this.data).subscribe(
+      (addMemberTeamResult: any) => {
+        console.log(addMemberTeamResult);
+        this.connectionService
+          .ProjectMembersData(this.currentTeam.t_id__project_id__p_id)
+          .subscribe(
+            (ProjectMembersDataResult: any) => {
+              this.projectMembers = ProjectMembersDataResult;
+              // getTotalTeams method gives all teams when user id is provided and gives all users of a team when team id is provided
+              this.connectionService
+                .getTotalTeams("t" + this.currentTeam.t_id__tm_id)
+                .subscribe(
+                  (getTotalTeamsResult: any) => {
+                    this.teamMembers = getTotalTeamsResult;
+                    for (var pMember of this.projectMembers) {
+                      pMember["isAdded"] = false;
+                      InnerLoop: for (var tMember of this.teamMembers) {
+                        if (tMember.u_id__id == pMember.u_id__id) {
+                          pMember["isAdded"] = true;
+                          break InnerLoop;
+                        }
+                      }
+                    }
+                  },
+                  (error) => {
+                    console.log(error);
+                  }
+                );
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

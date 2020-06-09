@@ -1,100 +1,115 @@
-<form
-  [formGroup]="registerForm"
-  (ngSubmit)="register()"
-  enctype="multipart/form-data"
+<!-- Central Modal Small -->
+<div
+  class="modal fade"
+  id="addTeamMembers"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
 >
-  <div
-    class="modal fade"
-    id="addTeamMembers"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="myModalLabel"
-    aria-hidden="true"
-  >
-    <!-- Change class .modal-sm to change the size of the modal -->
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div
-          class="modal-header"
-          style="background-color: royalblue; color: white;"
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div
+        class="modal-header"
+        style="background-color: royalblue; color: white;"
+      >
+        <h4 class="modal-title w-100" id="myModalLabel">
+          <a
+            ><i
+              style="padding-right: 10px !important;"
+              class="fas fa-user-plus"
+            ></i></a
+          >Add members
+        </h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          style="color: white;"
         >
-          <h4 class="modal-title w-100" id="myModalLabel">
-            <a
-              ><i
-                style="padding-right: 10px !important;"
-                class="fas fa-user-plus"
-              ></i></a
-            >Add members
-          </h4>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-            style="color: white;"
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row member-tile" *ngFor="let member of projectMembers">
+          <div
+            style="text-align: center; padding-top: 5px; padding-bottom: 5px;"
+            class="col-md-2"
           >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <div class="row member-tile" *ngFor="let member of members">
-            <div
-              style="text-align: center; padding-top: 5px; padding-bottom: 5px;"
-              class="col-md-2"
-            >
-              <img
-                id="avatar-img"
-                style="width: 70px;"
-                src="{{ member.image }}"
-                alt="avatar mx-auto white"
-                class="img-fluid"
-              />
+            <img
+              id="avatar-img"
+              style="width: 70px;"
+              src="{{ member.u_id__photo_address }}"
+              alt="avatar mx-auto white"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-md-8" style="margin: auto;">
+            <div class="row">
+              <div
+                style="
+                  font-family: sans-serif;
+                  font-size: 20px;
+                  margin-left: 0px;
+                  padding-left: 0px;
+                "
+                class="col-md-12"
+              >
+                {{ member.u_id__first_name + " " + member.u_id__last_name }}
+              </div>
             </div>
-            <div class="col-md-8" style="margin: auto;">
-              <div class="row">
-                <div
-                  style="
-                    font-family: sans-serif;
-                    font-size: 20px;
-                    margin-left: 0px;
-                    padding-left: 0px;
-                  "
-                  class="col-md-12"
+            <div class="row">
+              <div class="col-md-12" style="margin-left: 0px;">
+                <a
+                  ><i class="fas fa-envelope"></i
+                  ><span style="margin-left: 5px; font-family: sans-serif;">
+                    {{ member.u_id__email }}
+                  </span></a
                 >
-                  {{ member.name }}
-                </div>
               </div>
-              <div class="row">
-                <div class="col-md-12" style="margin-left: 0px;">
-                  <a
-                    ><i class="fas fa-envelope"></i
-                    ><span style="margin-left: 5px; font-family: sans-serif;">
-                      {{ member.email }}
-                    </span></a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div style="text-align: center; margin: auto;" class="col-md-2">
-              <button class="message-button">Add</button>
             </div>
           </div>
-        </div>
 
-        <div class="modal-footer">
-          <button
-            style="background-color: royalblue !important;"
-            type="button"
-            class="close-button"
-            data-dismiss="modal"
-          >
-            Close
-          </button>
+          <div style="text-align: center; margin: auto;" class="col-md-2">
+            <ng-container *ngIf="member.isAdded; else notAdded">
+              <button
+                type="submit"
+                class="message-button"
+                value="{{ member.u_id__id }}"
+                (click)="addMember($event)"
+                disabled
+              >
+                Added
+              </button>
+            </ng-container>
+            <ng-template #notAdded>
+              <button
+                type="submit"
+                class="message-button"
+                value="{{ member.u_id__id }}"
+                (click)="addMember($event)"
+              >
+                Add
+              </button>
+            </ng-template>
+          </div>
         </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          style="background-color: royalblue !important;"
+          type="button"
+          class="close-button"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
       </div>
     </div>
   </div>
-</form>
+</div>
 <!-- Central Modal Small -->
