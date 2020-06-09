@@ -1,16 +1,43 @@
 import { Component, OnInit } from "@angular/core";
+import { CookieService } from "ngx-cookie-service";
+import { Router, ActivatedRoute } from "@angular/router";
+import { ConnectionService } from "../connection.service";
 
 @Component({
   selector: "app-team",
   templateUrl: "./team.component.html",
-  styleUrls: ["./team.component.css"]
+  styleUrls: ["./team.component.css"],
 })
 export class TeamComponent implements OnInit {
+  team: any;
+  teams;
   screen = "team_home";
   page = "Home";
-  constructor() {}
+  constructor(
+    private cookieService: CookieService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private connectionService: ConnectionService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+
+    this.teams = JSON.parse(localStorage.getItem("user-teams"));
+
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.teams.forEach((element) => {
+        if (element.t_id__tm_id == +params.get("id")) {
+          // + is for converting the string to int
+          this.team = element;
+        }
+      });
+    });
+    console.log(this.team);
+  }
 
   leftbar_click(event) {
     if (event.target.innerText === "Home") {

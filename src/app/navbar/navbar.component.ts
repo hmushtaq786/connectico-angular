@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   org: any;
   orgWorkspaces: any;
   workspaceProjects: any;
+  projectTeams: any;
   tokenCookie: any;
 
   constructor(
@@ -43,6 +44,16 @@ export class NavbarComponent implements OnInit {
           "user-projects",
           JSON.stringify(GetTotalProjectsResult)
         );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    this.connectionService.getTotalTeams("u" + this.user.id).subscribe(
+      (GetTotalTeamsResult: any) => {
+        this.projectTeams = GetTotalTeamsResult;
+        localStorage.setItem("user-teams", JSON.stringify(GetTotalTeamsResult));
       },
       (error) => {
         console.log(error);

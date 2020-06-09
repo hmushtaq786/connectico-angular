@@ -410,9 +410,9 @@ export class ConnectionService {
       }
     );
   }
-  getTotalTeams(org_id: string) {
+  getTotalTeams(id: string) {
     return this.httpClient.get(
-      `${this.baseUrl}register/organization/workspaces/${org_id}/`,
+      `${this.baseUrl}register/organization/users/teams/${id}/`,
       {
         headers: this.getHeaders(),
       }

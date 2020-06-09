@@ -5,7 +5,7 @@
 >
   <div
     class="modal fade"
-    id="addMembers"
+    id="addTeamMembers"
     tabindex="-1"
     role="dialog"
     aria-labelledby="myModalLabel"
@@ -40,7 +40,7 @@
         <div class="modal-body">
           <div class="row member-tile" *ngFor="let member of members">
             <div
-              style="text-align: center; padding-top: 5px;padding-bottom: 5px;"
+              style="text-align: center; padding-top: 5px; padding-bottom: 5px;"
               class="col-md-2"
             >
               <img
@@ -54,7 +54,12 @@
             <div class="col-md-8" style="margin: auto;">
               <div class="row">
                 <div
-                  style="font-family: sans-serif; font-size: 20px; margin-left: 0px; padding-left: 0px;"
+                  style="
+                    font-family: sans-serif;
+                    font-size: 20px;
+                    margin-left: 0px;
+                    padding-left: 0px;
+                  "
                   class="col-md-12"
                 >
                   {{ member.name }}
@@ -64,7 +69,7 @@
                 <div class="col-md-12" style="margin-left: 0px;">
                   <a
                     ><i class="fas fa-envelope"></i
-                    ><span style="margin-left:5px; font-family: sans-serif;">
+                    ><span style="margin-left: 5px; font-family: sans-serif;">
                       {{ member.email }}
                     </span></a
                   >
@@ -93,4 +98,3 @@
   </div>
 </form>
 <!-- Central Modal Small -->
-

@@ -3,12 +3,16 @@
 <div class="row">
   <div
     class="col-md-2"
-    style="background-color: #f0f2ef; border-right: 1px solid lightgrey;  height: auto;"
+    style="
+      background-color: #f0f2ef;
+      border-right: 1px solid lightgrey;
+      height: auto;
+    "
   >
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-home" style="color: royalblue;"></i></a
           >Home
         </div>
@@ -18,7 +22,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-newspaper" style="color: royalblue;"></i></a
           >Feed
         </div>
@@ -28,7 +32,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-folder" style="color: royalblue;"></i></a
           >Tasks
         </div>
@@ -38,7 +42,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-calendar-star" style="color: royalblue;"></i></a
           >Events
         </div>
@@ -48,7 +52,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right:5px"
+          <a style="margin-right: 5px;"
             ><i class="fas fa-file-signature" style="color: royalblue;"></i></a
           >Files
         </div>
@@ -60,16 +64,17 @@
     <div class="row">
       <div
         class="col-md-12"
-        style="background-color: royalblue; color: #F3FFFF; margin: auto;"
+        style="background-color: royalblue; color: #f3ffff; margin: auto;"
       >
-        <h3 style="font-family: sans-serif; padding: 5px; margin: auto; ">
-          Workspace 1
+        <h3 style="font-family: sans-serif; padding: 5px; margin: auto;">
+          {{ team.t_id__project_id__workspace_id__w_id + " " }}
           <span style="font-weight: normal; font-size: 25px;"
-            ><i class="fas fa-caret-right"></i>{{ " " }} Project 1
-            {{ " " }}</span
+            ><i class="fas fa-caret-right"></i
+            >{{ " " + team.t_id__project_id__p_name + " " }}</span
           >
           <span style="font-weight: normal; font-size: 25px;"
-            ><i class="fas fa-caret-right"></i>{{ " " }} Team 1 {{ " " }}</span
+            ><i class="fas fa-caret-right"></i
+            >{{ " " + team.t_id__tm_name + " " }}</span
           >
           <span style="font-weight: normal; font-size: 25px;"
             ><i class="fas fa-caret-right"></i>{{ " " + page }}</span
@@ -78,20 +83,40 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12" *ngIf="screen === 'team_home'">
-        <app-team-home></app-team-home>
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'team_home'"
+        style="padding-left: 10px; padding-right: 25px;"
+      >
+        <app-team-home [currentTeam]="team"></app-team-home>
       </div>
-      <div class="col-md-12" *ngIf="screen === 'team_feed'">
-        <app-team-feed></app-team-feed>
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'team_feed'"
+        style="padding-left: 10px; padding-right: 25px;"
+      >
+        <app-team-feed [currentTeam]="team"></app-team-feed>
       </div>
-      <div class="col-md-12" *ngIf="screen === 'team_task'">
-        <app-team-task></app-team-task>
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'team_task'"
+        style="padding-left: 10px; padding-right: 25px;"
+      >
+        <app-team-task [currentTeam]="team"></app-team-task>
       </div>
-      <div class="col-md-12" *ngIf="screen === 'team_event'">
-        <app-team-event></app-team-event>
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'team_event'"
+        style="padding-left: 10px; padding-right: 25px;"
+      >
+        <app-team-event [currentTeam]="team"></app-team-event>
       </div>
-      <div class="col-md-12" *ngIf="screen === 'team_files'">
-        <app-team-files></app-team-files>
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'team_files'"
+        style="padding-left: 10px; padding-right: 25px;"
+      >
+        <app-team-files [currentTeam]="team"></app-team-files>
       </div>
       <!-- <div class="col-md-12">
         <app-workspace-home

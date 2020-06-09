@@ -27,7 +27,7 @@ const routes: Routes = [
   },
   { path: "project/:id", component: ProjectComponent },
   { path: "messages", component: MessagesComponent },
-  { path: "team", component: TeamComponent },
+  { path: "team/:id", component: TeamComponent },
 
   { path: "**", component: NotFoundErrorComponent },
 ];

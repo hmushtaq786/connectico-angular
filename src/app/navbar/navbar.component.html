@@ -107,13 +107,12 @@
           aria-labelledby="navbarDropdownMenuLink-555"
         >
           <a
+            *ngFor="let team of projectTeams"
             class="dropdown-item"
-            [routerLink]="['/team']"
-            [routerLinkActive]="'active'"
-            >Team 1</a
+            [routerLink]="['/team', team.t_id__tm_id]"
+            [routerLinkActive]="'//active'"
+            >{{ team.t_id__tm_name }}</a
           >
-          <a class="dropdown-item" href="#">Team 2</a>
-          <a class="dropdown-item" href="#">Team 3</a>
         </div>
       </li>
       <li

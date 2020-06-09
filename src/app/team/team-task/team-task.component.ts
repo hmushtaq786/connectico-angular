@@ -1,11 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-team-task",
   templateUrl: "./team-task.component.html",
-  styleUrls: ["./team-task.component.css"]
+  styleUrls: ["./team-task.component.css"],
 })
 export class TeamTaskComponent implements OnInit {
+  @Input() currentTeam;
   tasks = [
     {
       task_name: "Locker app",
@@ -13,7 +14,7 @@ export class TeamTaskComponent implements OnInit {
       team_lead: "Arzoo Malik",
       start_date: "15/02/2020",
       end_date: "20/5/2020",
-      status: "In progress"
+      status: "In progress",
     },
     {
       task_name: "Locker app",
@@ -21,7 +22,7 @@ export class TeamTaskComponent implements OnInit {
       team_lead: "Arzoo Malik",
       start_date: "15/02/2020",
       end_date: "20/5/2020",
-      status: "In progress"
+      status: "In progress",
     },
     {
       task_name: "Locker app",
@@ -29,7 +30,7 @@ export class TeamTaskComponent implements OnInit {
       team_lead: "Arzoo Malik",
       start_date: "15/02/2020",
       end_date: "20/5/2020",
-      status: "In progress"
+      status: "In progress",
     },
     {
       task_name: "Locker app",
@@ -37,7 +38,7 @@ export class TeamTaskComponent implements OnInit {
       team_lead: "Arzoo Malik",
       start_date: "15/02/2020",
       end_date: "20/5/2020",
-      status: "In progress"
+      status: "In progress",
     },
     {
       task_name: "Locker app",
@@ -45,7 +46,7 @@ export class TeamTaskComponent implements OnInit {
       team_lead: "Arzoo Malik",
       start_date: "15/02/2020",
       end_date: "20/5/2020",
-      status: "In progress"
+      status: "In progress",
     },
     {
       task_name: "Locker app",
@@ -53,8 +54,8 @@ export class TeamTaskComponent implements OnInit {
       team_lead: "Arzoo Malik",
       start_date: "15/02/2020",
       end_date: "20/5/2020",
-      status: "In progress"
-    }
+      status: "In progress",
+    },
   ];
 
   constructor() {}

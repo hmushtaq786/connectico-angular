@@ -1,11 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-team-feed",
   templateUrl: "./team-feed.component.html",
-  styleUrls: ["./team-feed.component.css"]
+  styleUrls: ["./team-feed.component.css"],
 })
 export class TeamFeedComponent implements OnInit {
+  @Input() currentTeam;
   user: any;
   org: any;
 
@@ -21,32 +22,32 @@ export class TeamFeedComponent implements OnInit {
         first_name: "Hamza",
         last_name: "Mushtaq",
         email: "somemeail@gmail.com",
-        photo_address: this.user.photo_address
+        photo_address: this.user.photo_address,
       },
       {
         first_name: "Umer",
         last_name: "Khan",
         email: "somemeail@gmail.com",
-        photo_address: this.user.photo_address
+        photo_address: this.user.photo_address,
       },
       {
         first_name: "Ahsan",
         last_name: "Ali",
         email: "somemeail@gmail.com",
-        photo_address: this.user.photo_address
+        photo_address: this.user.photo_address,
       },
       {
         first_name: "Adil",
         last_name: "Shiekh",
         email: "somemeail@gmail.com",
-        photo_address: this.user.photo_address
+        photo_address: this.user.photo_address,
       },
       {
         first_name: "Iqbal",
         last_name: "Raza",
         email: "somemeail@gmail.com",
-        photo_address: this.user.photo_address
-      }
+        photo_address: this.user.photo_address,
+      },
     ];
   }
 }

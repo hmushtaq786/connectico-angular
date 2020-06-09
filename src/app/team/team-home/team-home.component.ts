@@ -1,11 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { ConnectionService } from "src/app/connection.service";
+import { DataService } from "src/app/data.service";
 
 declare const counter: any;
 
-declare const createTask: any;
-declare const createTeamEvent: any;
-declare const addTeamMembers: any;
-declare const leaveteam: any;
 declare const totalTeamMembers: any;
 declare const tasksCompleted: any;
 declare const tasksRemaining: any;
@@ -13,25 +11,29 @@ declare const tasksRemaining: any;
 @Component({
   selector: "app-team-home",
   templateUrl: "./team-home.component.html",
-  styleUrls: ["./team-home.component.css"]
+  styleUrls: ["./team-home.component.css"],
 })
 export class TeamHomeComponent implements OnInit {
-  constructor() {}
+  @Input() currentTeam;
+  modalMessage = "<System message>";
+  constructor(
+    private connectionService: ConnectionService,
+    private data: DataService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    counter();
 
-  createteamtask() {
-    createTask();
+    this.data.currentMessage.subscribe(
+      (message) => (this.modalMessage = message)
+    );
   }
-  createEvent() {
-    createTeamEvent();
+
+  openModal(modal_id) {
+    var modal_obj: any = $("#" + modal_id);
+    modal_obj.modal("show");
   }
-  addMembers() {
-    addTeamMembers();
-  }
-  leaveTeam() {
-    leaveteam();
-  }
+
   viewMembers() {
     totalTeamMembers();
   }

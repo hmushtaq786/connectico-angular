@@ -1,11 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-team-event",
   templateUrl: "./team-event.component.html",
-  styleUrls: ["./team-event.component.css"]
+  styleUrls: ["./team-event.component.css"],
 })
 export class TeamEventComponent implements OnInit {
+  @Input() currentTeam;
   events = [
     {
       e_name: "Annual Dinner",
@@ -13,7 +14,7 @@ export class TeamEventComponent implements OnInit {
       e_location: "Headquarter",
       e_date: "15/02/2020",
       e_time: "20:10 A.M",
-      created_by: "Arzoo Malik"
+      created_by: "Arzoo Malik",
     },
     {
       e_name: "Annual Dinner",
@@ -21,7 +22,7 @@ export class TeamEventComponent implements OnInit {
       e_location: "Headquarter",
       e_date: "15/02/2020",
       e_time: "20:10 A.M",
-      created_by: "Arzoo Malik"
+      created_by: "Arzoo Malik",
     },
     {
       e_name: "Annual Dinner",
@@ -29,7 +30,7 @@ export class TeamEventComponent implements OnInit {
       e_location: "Headquarter",
       e_date: "15/02/2020",
       e_time: "20:10 A.M",
-      created_by: "Arzoo Malik"
+      created_by: "Arzoo Malik",
     },
     {
       e_name: "Annual Dinner",
@@ -37,7 +38,7 @@ export class TeamEventComponent implements OnInit {
       e_location: "Headquarter",
       e_date: "15/02/2020",
       e_time: "20:10 A.M",
-      created_by: "Arzoo Malik"
+      created_by: "Arzoo Malik",
     },
     {
       e_name: "Annual Dinner",
@@ -45,7 +46,7 @@ export class TeamEventComponent implements OnInit {
       e_location: "Headquarter",
       e_date: "15/02/2020",
       e_time: "20:10 A.M",
-      created_by: "Arzoo Malik"
+      created_by: "Arzoo Malik",
     },
     {
       e_name: "Annual Dinner",
@@ -53,8 +54,8 @@ export class TeamEventComponent implements OnInit {
       e_location: "Headquarter",
       e_date: "15/02/2020",
       e_time: "20:10 A.M",
-      created_by: "Arzoo Malik"
-    }
+      created_by: "Arzoo Malik",
+    },
   ];
 
   constructor() {}
