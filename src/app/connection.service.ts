@@ -512,4 +512,13 @@ export class ConnectionService {
       }
     );
   }
+
+  leaveTeam(id) {
+    return this.httpClient.delete(
+      `${this.baseUrl}register/organization/team/add/${id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
 }
