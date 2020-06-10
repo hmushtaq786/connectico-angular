@@ -208,6 +208,17 @@ export class ConnectionService {
     );
   }
 
+  createTeamEvent(eventData: object) {
+    const event = JSON.stringify(eventData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/events/team/`,
+      event,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   createProject(projectData: object) {
     const project = JSON.stringify(projectData);
     return this.httpClient.post(
