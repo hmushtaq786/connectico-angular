@@ -241,6 +241,17 @@ export class ConnectionService {
     );
   }
 
+  createTask(taskData: object) {
+    const task = JSON.stringify(taskData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/workspaces/tasks/`,
+      task,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   createWorkspacePost(postData: object) {
     const post = JSON.stringify(postData);
     return this.httpClient.post(
@@ -340,6 +351,15 @@ export class ConnectionService {
     );
   }
 
+  getTaskByTID(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/tasks/${"tm" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   getEventByWID(id) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/events/workspace/${"w" + id}/`,
@@ -352,6 +372,15 @@ export class ConnectionService {
   getEventByPID(id) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/events/project/${"p" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  getEventByTID(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/events/team/${"t" + id}/`,
       {
         headers: this.getHeaders(),
       }
