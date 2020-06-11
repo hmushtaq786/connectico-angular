@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ConnectionService } from "src/app/connection.service";
 
-declare const fileTable: any;
-
 @Component({
   selector: "app-project-files",
   templateUrl: "./project-files.component.html",
@@ -16,7 +14,6 @@ export class ProjectFilesComponent implements OnInit {
   constructor(private connectionService: ConnectionService) {}
 
   ngOnInit() {
-    fileTable();
     this.connectionService
       .getProjectPostsByPID(this.currentProject.p_id__p_id)
       .subscribe(

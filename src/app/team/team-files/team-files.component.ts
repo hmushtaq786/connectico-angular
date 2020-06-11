@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-
-declare const fileTable: any;
+import { ConnectionService } from "src/app/connection.service";
 
 @Component({
   selector: "app-team-files",
@@ -9,68 +8,25 @@ declare const fileTable: any;
 })
 export class TeamFilesComponent implements OnInit {
   @Input() currentTeam;
-  files = [
-    {
-      file_name: "Yearly report.xlsx",
-      comment: "Yearly report for the year 2019",
-      author: "Arzoo Malik",
-      ext: ".xlsx",
-      time: "12:51 15/2/2020",
-    },
-    {
-      file_name: "Yearly report.xlsx",
-      comment: "Yearly report for the year 2019",
-      author: "Arzoo Malik",
-      ext: ".xlsx",
-      time: "12:51 15/2/2020",
-    },
-    {
-      file_name: "Yearly report.xlsx",
-      comment: "Yearly report for the year 2019",
-      author: "Arzoo Malik",
-      ext: ".xlsx",
-      time: "12:51 15/2/2020",
-    },
-    {
-      file_name: "Yearly report.xlsx",
-      comment: "Yearly report for the year 2019",
-      author: "Arzoo Malik",
-      ext: ".xlsx",
-      time: "12:51 15/2/2020",
-    },
-    {
-      file_name: "Yearly report.xlsx",
-      comment: "Yearly report for the year 2019",
-      author: "Arzoo Malik",
-      ext: ".xlsx",
-      time: "12:51 15/2/2020",
-    },
-    {
-      file_name: "Yearly report.xlsx",
-      comment: "Yearly report for the year 2019",
-      author: "Arzoo Malik",
-      ext: ".xlsx",
-      time: "12:51 15/2/2020",
-    },
-    {
-      file_name: "Yearly report.xlsx",
-      comment: "Yearly report for the year 2019",
-      author: "Arzoo Malik",
-      ext: ".xlsx",
-      time: "12:51 15/2/2020",
-    },
-    {
-      file_name: "Yearly report.xlsx",
-      comment: "Yearly report for the year 2019",
-      author: "Arzoo Malik",
-      ext: ".xlsx",
-      time: "12:51 15/2/2020",
-    },
-  ];
-
-  constructor() {}
+  filesCount = 0;
+  teamFiles = new Array();
+  constructor(private connectionService: ConnectionService) {}
 
   ngOnInit() {
-    fileTable();
+    this.connectionService
+      .getTeamPostsByTID(this.currentTeam.t_id__tm_id)
+      .subscribe(
+        (GetTeamPostsByTIDResult: any) => {
+          GetTeamPostsByTIDResult.forEach((element) => {
+            if (element.pst_filepath) {
+              this.teamFiles.push(element);
+              this.filesCount++;
+            }
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }

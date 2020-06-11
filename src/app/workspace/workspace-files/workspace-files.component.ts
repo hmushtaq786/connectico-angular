@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ConnectionService } from "src/app/connection.service";
 
-declare const fileTable: any;
-
 @Component({
   selector: "app-workspace-files",
   templateUrl: "./workspace-files.component.html",
@@ -16,7 +14,6 @@ export class WorkspaceFilesComponent implements OnInit {
   constructor(private connectionService: ConnectionService) {}
 
   ngOnInit() {
-    fileTable();
     this.connectionService
       .getWorkspacePostsByWID(this.currentWorkspace.w_id)
       .subscribe(
