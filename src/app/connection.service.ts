@@ -47,6 +47,7 @@ export class ConnectionService {
   CLOUDINARY_UPLOAD_PRESET_ORG = "f8uypc6p";
   CLOUDINARY_UPLOAD_PRESET_WORKSPACE_FILE = "wrkh6b9a";
   CLOUDINARY_UPLOAD_PRESET_PROJECT_FILE = "kbwnpxp5";
+  CLOUDINARY_UPLOAD_PRESET_TEAM_FILE = "czshyy3q";
 
   constructor(
     private httpClient: HttpClient,
@@ -104,6 +105,17 @@ export class ConnectionService {
         "upload_preset",
         this.CLOUDINARY_UPLOAD_PRESET_PROJECT_FILE
       );
+      return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
+    }
+  }
+
+  uploadTeamFile(file) {
+    if (file == "") {
+      return of("null");
+    } else {
+      var formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", this.CLOUDINARY_UPLOAD_PRESET_TEAM_FILE);
       return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
     }
   }
@@ -274,6 +286,17 @@ export class ConnectionService {
     );
   }
 
+  createTeamPost(postData: object) {
+    const post = JSON.stringify(postData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/teams/posts/`,
+      post,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   createWorkspaceComment(commentData: object) {
     const comment = JSON.stringify(commentData);
     return this.httpClient.post(
@@ -289,6 +312,17 @@ export class ConnectionService {
     const comment = JSON.stringify(commentData);
     return this.httpClient.post(
       `${this.baseUrl}register/organization/projects/comments/`,
+      comment,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  createTeamComment(commentData: object) {
+    const comment = JSON.stringify(commentData);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/teams/comments/`,
       comment,
       {
         headers: this.getHeaders(),
@@ -314,6 +348,15 @@ export class ConnectionService {
     );
   }
 
+  getTeamCommentByPID(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/teams/comments/${"p" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   getWorkspacePostsByWID(id: any) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspaces/posts/${"w" + id}/`,
@@ -326,6 +369,15 @@ export class ConnectionService {
   getProjectPostsByPID(id: any) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/projects/posts/${"po" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  getTeamPostsByTID(id: any) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/teams/posts/${"t" + id}/`,
       {
         headers: this.getHeaders(),
       }
