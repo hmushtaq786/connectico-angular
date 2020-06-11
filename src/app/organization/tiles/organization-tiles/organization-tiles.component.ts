@@ -10,7 +10,7 @@ declare const teamsModal: any;
 @Component({
   selector: "app-organization-tiles",
   templateUrl: "./organization-tiles.component.html",
-  styleUrls: ["./organization-tiles.component.css"]
+  styleUrls: ["./organization-tiles.component.css"],
 })
 export class OrganizationTilesComponent implements OnInit {
   org: any;
@@ -31,7 +31,7 @@ export class OrganizationTilesComponent implements OnInit {
         );
         this.totalMembers = getTotalMembersResult.length;
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -47,28 +47,30 @@ export class OrganizationTilesComponent implements OnInit {
           this.totalWorkspaces = getTotalWorkspacesResult.length;
         }
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
-    this.connectionService.getTotalProjects(this.org.id).subscribe(
+    this.connectionService.getTotalProjects("o" + this.org.id).subscribe(
       (getTotalProjectsResult: any) => {
         if (!getTotalProjectsResult) {
           this.totalProjects = 0;
         } else {
+          console.log(getTotalProjectsResult);
           this.totalProjects = getTotalProjectsResult.length;
         }
       },
-      error => {
+      (error) => {
         this.totalProjects = 0;
         console.log(error);
       }
     );
-    this.connectionService.getTotalTeams(this.org.id).subscribe(
+    this.connectionService.getTotalTeams("o" + this.org.id).subscribe(
       (getTotalTeamsResult: any) => {
+        console.log(getTotalTeamsResult);
         this.totalTeams = getTotalTeamsResult.length;
       },
-      error => {
+      (error) => {
         this.totalTeams = 0;
         console.log(error);
       }
