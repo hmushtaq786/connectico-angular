@@ -28,8 +28,9 @@ export class NavbarComponent implements OnInit {
     this.org = JSON.parse(localStorage.getItem("org"));
 
     // this.orgWorkspaces = JSON.parse(localStorage.getItem("org-workspaces"));
-    this.connectionService.getTotalWorkspaces(this.org.id).subscribe(
+    this.connectionService.getUserWorkspaces("u" + this.user.id).subscribe(
       (getOrgWorkspaces: any) => {
+        console.log(getOrgWorkspaces);
         this.orgWorkspaces = getOrgWorkspaces;
       },
       (error) => {

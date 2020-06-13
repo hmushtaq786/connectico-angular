@@ -494,6 +494,15 @@ export class ConnectionService {
     );
   }
 
+  getUserWorkspaces(org_id: string) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/users/workspaces/${org_id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   getTotalProjects(id: string) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/users/projects/${id}/`,
@@ -608,6 +617,15 @@ export class ConnectionService {
   leaveTeam(id) {
     return this.httpClient.delete(
       `${this.baseUrl}register/organization/team/add/${id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  getUserMessages(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/users/messages/${id}/`,
       {
         headers: this.getHeaders(),
       }
