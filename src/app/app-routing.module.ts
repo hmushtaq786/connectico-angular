@@ -12,6 +12,8 @@ import { ProjectComponent } from "./project/project.component";
 import { MessagesComponent } from "./messages/messages.component";
 import { TeamComponent } from "./team/team.component";
 import { NotFoundErrorComponent } from "./not-found-error/not-found-error.component";
+import { MessageDetailComponent } from "./messages/message-detail/message-detail.component";
+import { BlankComponent } from "./blank/blank.component";
 
 const routes: Routes = [
   { path: "", component: LandingPageComponent },
@@ -26,7 +28,14 @@ const routes: Routes = [
     // ],
   },
   { path: "project/:id", component: ProjectComponent },
-  { path: "messages", component: MessagesComponent },
+  {
+    path: "messages",
+    component: MessagesComponent,
+    children: [
+      { path: "", component: BlankComponent },
+      { path: ":slug", component: MessageDetailComponent },
+    ],
+  },
   { path: "team/:id", component: TeamComponent },
 
   { path: "**", component: NotFoundErrorComponent },

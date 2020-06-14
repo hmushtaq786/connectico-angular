@@ -2,18 +2,37 @@
 <div class="row">
   <div
     class="col-md-4"
-    style="background-color: gainsboro; min-height: 84.5vh; max-height: 91vh; overflow-y: auto; "
+    style="
+      background-color: gainsboro;
+      min-height: 84.5vh;
+      max-height: 91vh;
+      overflow-y: auto;
+    "
   >
     <h3 style="padding: 10px; font-family: sans-serif;">Messages</h3>
     <div class="row" style="margin-top: 10px; margin-bottom: 30px;">
       <div class="col-md-1"></div>
       <div class="col-md-10">
-        <div class="row message-tile" *ngFor="let message of messages">
+        <div
+          class="row message-tile"
+          *ngFor="let conversation of conversations"
+          [routerLink]="[
+            '/messages',
+            conversation.otherUser.username + '-' + conversation.c_id
+          ]"
+          [routerLinkActive]="'active'"
+          (click)="
+            changeOtherUser(
+              conversation.otherUser.username + '-' + conversation.c_id,
+              conversation.otherUser
+            )
+          "
+        >
           <div class="col-md-2">
             <div class="avatar-div">
               <img
                 id="avatar-img"
-                src="{{ message.photo_address }}"
+                src="{{ conversation.otherUser.photo_address }}"
                 alt="avatar mx-auto white"
                 class="img-fluid"
               />
@@ -22,20 +41,24 @@
           <div class="col-md-10" style="margin: auto;">
             <div class="row">
               <div
-                style="text-align: left; padding-top: 2px; padding-left: 25px; "
+                style="text-align: left; padding-top: 2px; padding-left: 25px;"
                 class="col-md-12"
               >
                 <a
                   ><span id="title">
-                    {{ message.first_name + " " + message.last_name }}
+                    {{
+                      conversation.otherUser.first_name +
+                        " " +
+                        conversation.otherUser.last_name
+                    }}
                   </span></a
                 >
               </div>
             </div>
             <div class="row">
               <div class="col-md-12 message-body">
-                <span style="margin-left:5px;">
-                  {{ message.message_body }}
+                <span style="margin-left: 5px;">
+                  {{ conversation.lastMessage.m_content }}
                 </span>
               </div>
             </div>
@@ -46,6 +69,7 @@
     </div>
   </div>
   <div class="col-md-8" style="background-color: #f0f2ef;">
-    <app-message-detail></app-message-detail>
+    <!-- <app-message-detail></app-message-detail> -->
+    <router-outlet></router-outlet>
   </div>
 </div>

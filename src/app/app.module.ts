@@ -87,6 +87,7 @@ import { CreateProjectEventComponent } from './project/modals/create-project-eve
 import { AddProjectMembersComponent } from './project/modals/add-project-members/add-project-members.component';
 import { ShowProjectMembersComponent } from './project/modals/show-project-members/show-project-members.component';
 import { LeaveProjectComponent } from './project/modals/leave-project/leave-project.component';
+import { BlankComponent } from './blank/blank.component';
 
 @NgModule({
   declarations: [
@@ -164,7 +165,8 @@ import { LeaveProjectComponent } from './project/modals/leave-project/leave-proj
     CreateProjectEventComponent,
     AddProjectMembersComponent,
     ShowProjectMembersComponent,
-    LeaveProjectComponent
+    LeaveProjectComponent,
+    BlankComponent
   ],
   imports: [
     BrowserModule,

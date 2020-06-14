@@ -623,9 +623,27 @@ export class ConnectionService {
     );
   }
 
+  getUserConversations(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/users/conversations/${id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   getUserMessages(id) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/users/messages/${id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  getLastUserMessage(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/users/messages/last/${id}/`,
       {
         headers: this.getHeaders(),
       }
