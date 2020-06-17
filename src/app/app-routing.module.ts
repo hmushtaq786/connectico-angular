@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule, RouteReuseStrategy } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { OrganizationStructureComponent } from "./organization/structure/structure.component";
 import { LandingPageComponent } from "./landing-page/landing-page.component";
@@ -32,8 +32,12 @@ const routes: Routes = [
     path: "messages",
     component: MessagesComponent,
     children: [
-      { path: "", component: BlankComponent },
-      { path: ":slug", component: MessageDetailComponent },
+      { path: "", component: BlankComponent, data: { animation: "Messages" } },
+      {
+        path: ":slug",
+        component: MessageDetailComponent,
+        data: { animation: "DetailedMessages" },
+      },
     ],
   },
   { path: "team/:id", component: TeamComponent },

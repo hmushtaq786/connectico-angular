@@ -14,6 +14,9 @@ export class DataService {
   private currentHistorySubject = new BehaviorSubject({});
   currentHistory = this.currentHistorySubject.asObservable();
 
+  private conversationIDSubject = new BehaviorSubject(0);
+  currentConversationID = this.conversationIDSubject.asObservable();
+
   constructor() {}
 
   changeErrorModalMessage(message: string) {
@@ -26,5 +29,9 @@ export class DataService {
 
   changeCurrentHistory(conversation: object) {
     this.currentHistorySubject.next(conversation);
+  }
+
+  changeConversationID(id) {
+    this.conversationIDSubject.next(id);
   }
 }

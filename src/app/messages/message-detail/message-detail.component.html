@@ -39,7 +39,7 @@
                     margin-bottom: 0px;
                   "
                 >
-                  07:43 A.M - Monday 20, 2020
+                  {{ formatDate(message.datetime) }}
                 </div>
               </div>
               <div
@@ -96,7 +96,7 @@
                     margin-bottom: 0px;
                   "
                 >
-                  07:43 A.M - Monday 20, 2020
+                  {{ formatDate(message.datetime) }}
                 </div>
               </div>
 
@@ -143,24 +143,27 @@
 
   <div class="row" style="position: absolute; width: 100%; bottom: 10px;">
     <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-10">
-          <div class="form-group shadow-textarea">
-            <textarea
-              class="form-control z-depth-1"
-              id="exampleFormControlTextarea6"
-              rows="2"
-              style="resize: none;"
-              placeholder="Write a message..."
-            ></textarea>
+      <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="form-group shadow-textarea">
+              <textarea
+                class="form-control z-depth-1"
+                id="messageContent"
+                rows="2"
+                style="resize: none;"
+                placeholder="Write a message..."
+                formControlName="message"
+              ></textarea>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-primary" style="right: 10px;">
+              Send
+            </button>
           </div>
         </div>
-        <div class="col-md-2">
-          <button class="btn btn-primary" style="right: 10px;">
-            Send
-          </button>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

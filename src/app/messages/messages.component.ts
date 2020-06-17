@@ -5,11 +5,13 @@ import { ConnectionService } from "../connection.service";
 import Pusher from "pusher-js";
 import { element } from "protractor";
 import { DataService } from "../data.service";
+import { slideInAnimation } from "../route-animation";
 
 @Component({
   selector: "app-messages",
   templateUrl: "./messages.component.html",
   styleUrls: ["./messages.component.css"],
+  animations: [slideInAnimation],
 })
 export class MessagesComponent implements OnInit {
   conversations;
@@ -24,15 +26,7 @@ export class MessagesComponent implements OnInit {
     private router: Router,
     private connectionService: ConnectionService,
     private dataService: DataService
-  ) {
-    this.pusherClient = new Pusher("c2c29162a0876ff05eae", { cluster: "ap2" });
-
-    const channel = this.pusherClient.subscribe("my-channel");
-    var count = 0;
-    channel.bind("my-event", (data) => {
-      alert(JSON.stringify(data));
-    });
-  }
+  ) {}
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("user"));
@@ -131,6 +125,7 @@ export class MessagesComponent implements OnInit {
         // this.messageObject["totalMessages"] = getUserMessagesResult.length;
 
         this.messageObject["messagesHistory"].forEach((element) => {
+          element["datetime"] = new Date(Date.parse(element.created_on));
           if (element.sent_by__id == otherUser.id) {
             element["received"] = true;
           } else {

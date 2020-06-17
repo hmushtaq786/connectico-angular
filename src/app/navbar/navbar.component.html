@@ -124,11 +124,22 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light"
-          >1
-          <i class="fas fa-envelope"></i>
-        </a>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle waves-effect waves-light"
+          id="navbarDropdownMessages"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >0 <i class="fas fa-envelope"></i
+        ></a>
+        <div
+          id="messageslist"
+          class="dropdown-menu dropdown-menu-lg-right dropdown-primary"
+          aria-labelledby="navbarDropdownMessages"
+        >
+          <span id="defaultmessagelist">No new messages!</span>
+        </div>
       </li>
       <li class="nav-item avatar dropdown">
         <a

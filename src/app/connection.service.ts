@@ -2,9 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { CookieService } from "ngx-cookie-service";
-import { AxisItemLocation } from "@amcharts/amcharts4/.internal/charts/axes/Axis";
-import Axios from "axios";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
 interface User {
   username: string;
@@ -635,6 +632,17 @@ export class ConnectionService {
   getUserMessages(id) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/users/messages/${id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  sendUserMessage(message) {
+    const messageData = JSON.stringify(message);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/users/messages/`,
+      messageData,
       {
         headers: this.getHeaders(),
       }
