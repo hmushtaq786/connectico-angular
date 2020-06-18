@@ -15,7 +15,36 @@
       <div class="col-md-10">
         <div
           class="row message-tile"
+          [routerLink]="['new']"
+          [routerLinkActive]="'active'"
+        >
+          <div class="col-md-2">
+            <div class="avatar-div">
+              <img
+                id="avatar-img"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTmQOnEWuJfyeRVDR-A9DT3TJPTrfPWBXeO4z995Y-DtEEvtQk5&usqp=CAU"
+                alt="avatar mx-auto white"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div
+            class="col-md-10 title"
+            style="
+              margin: auto;
+              text-align: left;
+              padding-top: 2px;
+              padding-left: 25px;
+            "
+          >
+            New message
+          </div>
+        </div>
+
+        <div
+          class="row message-tile"
           *ngFor="let conversation of conversations"
+          id="{{ 'c' + conversation.c_id }}"
           [routerLink]="[
             '/messages',
             conversation.otherUser.username + '-' + conversation.c_id
@@ -45,7 +74,7 @@
                 class="col-md-12"
               >
                 <a
-                  ><span id="title">
+                  ><span class="title">
                     {{
                       conversation.otherUser.first_name +
                         " " +

@@ -41,15 +41,20 @@ export class NavbarComponent implements OnInit {
         this.conversations.forEach((element) => {
           let channel = this.pusherClient.subscribe(element.channel_name);
           channel.bind("message-received", (data) => {
-            toastr["info"](JSON.stringify(data.message));
-            count++;
-            $("#navbarDropdownMessages").html(count.toString());
-            $("#defaultmessagelist").remove();
-            $("#messageslist").append(
-              "<a class='dropdown-item' href='http://localhost:4200/messages'>" +
-                JSON.stringify(data.message) +
-                "</a>"
-            );
+            if (JSON.stringify(data.user_id) != this.user.id) {
+              console.log(
+                JSON.stringify(data.user_id + " and " + this.user.id)
+              );
+              toastr["info"](JSON.stringify(data.message));
+              count++;
+              $("#navbarDropdownMessages").html(count.toString());
+              $("#defaultmessagelist").remove();
+              $("#messageslist").append(
+                "<a class='dropdown-item' href='http://localhost:4200/messages'>" +
+                  JSON.stringify(data.message) +
+                  "</a>"
+              );
+            }
           });
         });
       },

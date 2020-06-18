@@ -1,0 +1,61 @@
+<form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+  <div class="row">
+    <div
+      class="col-md-12"
+      style="background-color: royalblue; color: #f3ffff; margin: auto;"
+    >
+      <h3 style="font-family: sans-serif; padding: 5px; margin: auto;">
+        New message
+      </h3>
+    </div>
+  </div>
+  <div
+    class="row"
+    style="padding: 50px; padding-top: 20px; padding-bottom: 10px;"
+  >
+    <div
+      class="col-md-2"
+      style="margin: auto; font-family: sans-serif; font-size: 17px;"
+    >
+      To:
+    </div>
+    <div class="col-md-10 md-form">
+      <select
+        id="selectMember"
+        class="mdb-select md-form"
+        searchable="Search here.."
+      >
+        <option value="" disabled selected>Select member</option>
+        <ng-container *ngFor="let member of orgMembers">
+          <option *ngIf="member['isAdded'] == false" value="{{ member.id }}">{{
+            member.first_name + " " + member.last_name
+          }}</option>
+        </ng-container>
+      </select>
+      <!-- <input style="width: 100%;" type="text" /> -->
+    </div>
+  </div>
+  <div
+    class="row"
+    style="padding: 50px; padding-top: 10px; padding-bottom: 10px;"
+  >
+    <div class="col-md-2" style="font-family: sans-serif; font-size: 17px;">
+      Message:
+    </div>
+    <div class="col-md-10">
+      <textarea
+        style="width: 100%;"
+        name=""
+        id=""
+        cols="30"
+        rows="10"
+        formControlName="content"
+      ></textarea>
+    </div>
+  </div>
+  <div class="row" style="padding: 50px; padding-top: 10px; text-align: right;">
+    <div class="col-md-12">
+      <button type="submit" class="close-button">Send</button>
+    </div>
+  </div>
+</form>

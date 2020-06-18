@@ -101,6 +101,8 @@ export class MessageDetailComponent implements OnInit {
       (sendUserMessageResult: any) => {
         console.log(sendUserMessageResult);
         $("#messageContent").val("");
+        console.log($("#c" + this.newMessage.conversation));
+        $("#c" + this.newMessage.conversation).trigger("click");
       },
       (error) => {
         console.log(error);

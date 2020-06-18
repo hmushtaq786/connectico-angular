@@ -14,6 +14,7 @@ import { TeamComponent } from "./team/team.component";
 import { NotFoundErrorComponent } from "./not-found-error/not-found-error.component";
 import { MessageDetailComponent } from "./messages/message-detail/message-detail.component";
 import { BlankComponent } from "./blank/blank.component";
+import { NewMessageComponent } from "./messages/new-message/new-message.component";
 
 const routes: Routes = [
   { path: "", component: LandingPageComponent },
@@ -33,6 +34,11 @@ const routes: Routes = [
     component: MessagesComponent,
     children: [
       { path: "", component: BlankComponent, data: { animation: "Messages" } },
+      {
+        path: "new",
+        component: NewMessageComponent,
+        data: { animation: "NewMessages" },
+      },
       {
         path: ":slug",
         component: MessageDetailComponent,

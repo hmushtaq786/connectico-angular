@@ -90,6 +90,7 @@ import { LeaveProjectComponent } from "./project/modals/leave-project/leave-proj
 import { BlankComponent } from "./blank/blank.component";
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NewMessageComponent } from './messages/new-message/new-message.component';
 
 @NgModule({
   declarations: [
@@ -169,6 +170,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ShowProjectMembersComponent,
     LeaveProjectComponent,
     BlankComponent,
+    NewMessageComponent,
   ],
   imports: [
     BrowserAnimationsModule,

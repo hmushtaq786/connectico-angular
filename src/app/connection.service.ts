@@ -629,6 +629,17 @@ export class ConnectionService {
     );
   }
 
+  createNewConversation(data) {
+    const conversationData = JSON.stringify(data);
+    return this.httpClient.post(
+      `${this.baseUrl}register/organization/users/conversations/`,
+      conversationData,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   getUserMessages(id) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/users/messages/${id}/`,
