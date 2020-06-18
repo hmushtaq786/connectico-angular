@@ -1,53 +1,38 @@
 import { Component, OnInit } from "@angular/core";
+import { ConnectionService } from "src/app/connection.service";
 
 @Component({
   selector: "app-projects-modal-structure",
   templateUrl: "./projects-modal-structure.component.html",
-  styleUrls: ["./projects-modal-structure.component.css"]
+  styleUrls: ["./projects-modal-structure.component.css"],
 })
 export class ProjectsModalStructureComponent implements OnInit {
-  workspaces = ["Lahore Office", "Overseas Headquarter", "Digital HQ"];
+  org: any;
+  workspaces: any;
 
-  projects = [
-    {
-      name: "Website development",
-      workspace: this.workspaces[0]
-    },
-    {
-      name: "IOS development",
-      workspace: this.workspaces[1]
-    },
-    {
-      name: "Digital Upgradation",
-      workspace: this.workspaces[2]
-    },
-    {
-      name: "Java development",
-      workspace: this.workspaces[0]
-    },
-    {
-      name: "Website development",
-      workspace: this.workspaces[0]
-    },
-    {
-      name: "Python development",
-      workspace: this.workspaces[1]
-    },
-    {
-      name: "JS development",
-      workspace: this.workspaces[2]
-    },
-    {
-      name: "Nodejs development",
-      workspace: this.workspaces[1]
-    },
-    {
-      name: "App development",
-      workspace: this.workspaces[2]
-    }
-  ];
+  constructor(private connectionService: ConnectionService) {}
 
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.org = JSON.parse(localStorage.getItem("org"));
+    this.connectionService.getTotalWorkspaces(this.org.id).subscribe(
+      (getTotalWorkspacesResult: any) => {
+        this.workspaces = getTotalWorkspacesResult;
+        this.workspaces.forEach((workspace) => {
+          this.connectionService.getProjectByWID(workspace.w_id).subscribe(
+            (getProjectByWIDResult: any) => {
+              workspace["projects"] = getProjectByWIDResult;
+            },
+            (error) => {
+              console.log(error);
+              workspace["projects"] = null;
+            }
+          );
+        });
+      },
+      (error) => {
+        console.log(error);
+        this.workspaces = null;
+      }
+    );
+  }
 }
