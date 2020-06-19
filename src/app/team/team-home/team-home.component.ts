@@ -16,6 +16,7 @@ declare const tasksRemaining: any;
 export class TeamHomeComponent implements OnInit {
   @Input() currentTeam;
   modalMessage = "<System message>";
+  user: any;
   constructor(
     private connectionService: ConnectionService,
     private data: DataService
@@ -23,6 +24,16 @@ export class TeamHomeComponent implements OnInit {
 
   ngOnInit() {
     counter();
+
+    this.user = JSON.parse(localStorage.getItem("user"));
+
+    if (this.currentTeam.t_id__team_lead_id__id != this.user.id) {
+      var addMembersModal = $("#addTeamMemberButton");
+      addMembersModal.addClass("disabled");
+
+      var teamModal = $("#createTeamTaskButton");
+      teamModal.addClass("disabled");
+    }
 
     this.data.currentMessage.subscribe(
       (message) => (this.modalMessage = message)

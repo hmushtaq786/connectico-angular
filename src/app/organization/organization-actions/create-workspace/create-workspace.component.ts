@@ -8,7 +8,7 @@ declare const errorModal: any;
 @Component({
   selector: "app-create-workspace",
   templateUrl: "./create-workspace.component.html",
-  styleUrls: ["./create-workspace.component.css"]
+  styleUrls: ["./create-workspace.component.css"],
 })
 export class CreateWorkspaceComponent implements OnInit {
   modalMessage = "<System message>";
@@ -16,7 +16,7 @@ export class CreateWorkspaceComponent implements OnInit {
   workspaceForm = new FormGroup({
     name: new FormControl(),
     description: new FormControl(),
-    address: new FormControl()
+    address: new FormControl(),
   });
 
   workspace = {
@@ -24,15 +24,23 @@ export class CreateWorkspaceComponent implements OnInit {
     description: "",
     w_address: "",
     organization_id: "",
-    created_by: ""
+    created_by: "",
+    w_manager_id: 0,
   };
+  orgMembers: any;
 
   constructor(
     private connectionService: ConnectionService,
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    $(document).ready(function () {
+      var comp: any = $(".mdb-select");
+      comp.materialSelect();
+    });
+    this.orgMembers = JSON.parse(localStorage.getItem("org-members"));
+  }
 
   createWorkspace() {
     $("#createBtn")
@@ -49,14 +57,15 @@ export class CreateWorkspaceComponent implements OnInit {
     this.workspace.w_address = this.workspaceForm.get("address").value;
     this.workspace.organization_id = org.id;
     this.workspace.created_by = user.id;
+    this.workspace.w_manager_id = +$("#selectMember")
+      .children("option:selected")
+      .val();
 
     this.connectionService.createWorkspace(this.workspace).subscribe(
       (createWorkspaceResult: any) => {
         console.log(createWorkspaceResult);
         this.modalMessage = "New workspace created successfully!";
-        $("#createBtn")
-          .html("Create")
-          .removeClass("disabled");
+        $("#createBtn").html("Create").removeClass("disabled");
         var error: any = $("#errorModal");
         errorModal();
         // $("#errorModal").on("hidden.bs.modal", this.reloadPage);
@@ -75,7 +84,7 @@ export class CreateWorkspaceComponent implements OnInit {
         //     this.router.navigate(["organization"]);
         //   });
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );

@@ -34,17 +34,12 @@ export class NavbarComponent implements OnInit {
 
     this.connectionService.getUserConversations("u" + this.user.id).subscribe(
       (getUserConversationsResult: any) => {
-        console.log("test");
-        console.log(getUserConversationsResult);
         this.conversations = getUserConversationsResult;
         var count = 0;
         this.conversations.forEach((element) => {
           let channel = this.pusherClient.subscribe(element.channel_name);
           channel.bind("message-received", (data) => {
             if (JSON.stringify(data.user_id) != this.user.id) {
-              console.log(
-                JSON.stringify(data.user_id + " and " + this.user.id)
-              );
               toastr["info"](JSON.stringify(data.message));
               count++;
               $("#navbarDropdownMessages").html(count.toString());
@@ -75,7 +70,6 @@ export class NavbarComponent implements OnInit {
     // this.orgWorkspaces = JSON.parse(localStorage.getItem("org-workspaces"));
     this.connectionService.getUserWorkspaces("u" + this.user.id).subscribe(
       (getOrgWorkspaces: any) => {
-        console.log(getOrgWorkspaces);
         this.orgWorkspaces = getOrgWorkspaces;
       },
       (error) => {

@@ -8,14 +8,25 @@
     <div class="col-md-1"></div>
     <div
       class="col-md-10"
-      style="padding-left: 0px; border: 1px solid lightgrey; padding-right: 0px;"
+      style="
+        padding-left: 0px;
+        border: 1px solid lightgrey;
+        padding-right: 0px;
+      "
     >
       <div class="row">
         <div class="col-md-12" style="text-align: left;">
           <h5
-            style="margin: auto; font-family: sans-serif;background-color: royalblue; padding: 5px; color: #f0f2ef; margin-bottom: 20px;"
+            style="
+              margin: auto;
+              font-family: sans-serif;
+              background-color: royalblue;
+              padding: 5px;
+              color: #f0f2ef;
+              margin-bottom: 20px;
+            "
           >
-            <a style="margin-right:5px"><i class="fas fa-plus-square"></i></a>
+            <a style="margin-right: 5px;"><i class="fas fa-plus-square"></i></a>
             Create a new workspace
           </h5>
         </div>
@@ -74,6 +85,39 @@
             style="width: 100%;"
             formControlName="address"
           />
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div
+          class="col-md-3"
+          style="
+            text-align: left;
+            padding: 10px;
+            margin: auto;
+            padding-left: 0px;
+          "
+        >
+          Manager
+        </div>
+        <div
+          class="col-md-7 md-form"
+          style="padding: 0px; margin: 0px; padding-left: 0px;"
+        >
+          <select
+            id="selectMember"
+            class="mdb-select md-form"
+            searchable="Search here.."
+          >
+            <option value="" disabled selected>Select member</option>
+            <ng-container *ngFor="let member of orgMembers">
+              <option value="{{ member.id }}">{{
+                member.first_name + " " + member.last_name
+              }}</option>
+            </ng-container>
+          </select>
         </div>
         <div class="col-md-1"></div>
       </div>

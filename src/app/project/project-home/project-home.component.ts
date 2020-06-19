@@ -16,6 +16,7 @@ declare const totalTeams: any;
 export class ProjectHomeComponent implements OnInit {
   @Input() currentProject;
   modalMessage = "<System message>";
+  user: any;
 
   constructor(
     private connectionService: ConnectionService,
@@ -24,6 +25,16 @@ export class ProjectHomeComponent implements OnInit {
 
   ngOnInit() {
     counter();
+
+    this.user = JSON.parse(localStorage.getItem("user"));
+
+    if (this.currentProject.p_id__p_manager_id__id != this.user.id) {
+      var addMembersModal = $("#addProjectMemberButton");
+      addMembersModal.addClass("disabled");
+
+      var teamModal = $("#createProjectTeamButton");
+      teamModal.addClass("disabled");
+    }
 
     this.data.currentMessage.subscribe(
       (message) => (this.modalMessage = message)

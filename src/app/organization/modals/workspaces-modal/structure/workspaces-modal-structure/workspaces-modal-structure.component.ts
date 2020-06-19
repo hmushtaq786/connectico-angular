@@ -1,51 +1,66 @@
 import { Component, OnInit } from "@angular/core";
+import { ConnectionService } from "src/app/connection.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-workspaces-modal-structure",
   templateUrl: "./workspaces-modal-structure.component.html",
-  styleUrls: ["./workspaces-modal-structure.component.css"]
+  styleUrls: ["./workspaces-modal-structure.component.css"],
 })
 export class WorkspacesModalStructureComponent implements OnInit {
-  workspaces = [
-    {
-      name: "Lahore Headoffice",
-      image:
-        "http://cdn.home-designing.com/wp-content/uploads/2013/04/square-white-tiled-workspace-with-panelled-glass-wall-and-views.jpg",
-      members: 27,
-      projects: 12,
-      teams: 4
-    },
-    {
-      name: "Karachi Branch",
-      image:
-        "http://cdn.home-designing.com/wp-content/uploads/2013/04/square-white-tiled-workspace-with-panelled-glass-wall-and-views.jpg",
-      members: 42,
-      projects: 19,
-      teams: 7
-    },
-    {
-      name: "Digital Headquarter",
-      image:
-        "http://cdn.home-designing.com/wp-content/uploads/2013/04/square-white-tiled-workspace-with-panelled-glass-wall-and-views.jpg",
-      members: 78,
-      projects: 34,
-      teams: 12
-    },
-    {
-      name: "Overseas Main",
-      image:
-        "http://cdn.home-designing.com/wp-content/uploads/2013/04/square-white-tiled-workspace-with-panelled-glass-wall-and-views.jpg",
-      members: 56,
-      projects: 20,
-      teams: 9
-    }
-  ];
-
   orgWorkspaces;
+  user;
 
-  constructor() {}
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.orgWorkspaces = JSON.parse(localStorage.getItem("org-workspaces"));
+    this.user = JSON.parse(localStorage.getItem("user"));
+
+    this.orgWorkspaces.forEach((workspace) => {
+      this.connectionService.WorkspaceMembersData(workspace.w_id).subscribe(
+        (workspaceMembersData: any) => {
+          workspace["members"] = workspaceMembersData.length;
+          workspace["joined"] = false;
+          workspaceMembersData.forEach((member) => {
+            if (member.u_id__id == this.user.id) {
+              workspace["joined"] = true;
+            }
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      workspace["teams"] = 0;
+      workspace["projects"] = 0;
+      this.connectionService.getProjectByWID(workspace.w_id).subscribe(
+        (getProjectResult: any) => {
+          workspace["projects"] = getProjectResult.length;
+          getProjectResult.forEach((project) => {
+            this.connectionService.getTeamByPID(project.p_id).subscribe(
+              (getTeamByPIDResult: any) => {
+                workspace["teams"] += getTeamByPIDResult.length;
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    });
+  }
+
+  navigateToWorkspace(w_id) {
+    var workspaceModal: any = $("#workspacesModal");
+    workspaceModal.modal("hide");
+    this.router.navigate(["/workspace", w_id]);
   }
 }

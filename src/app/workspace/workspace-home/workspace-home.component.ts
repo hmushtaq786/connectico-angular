@@ -16,6 +16,7 @@ export class WorkspaceHomeComponent implements OnInit {
   totalWorkspaceMembers;
 
   modalMessage = "<System message>";
+  user: any;
 
   constructor(
     private connectionService: ConnectionService,
@@ -23,6 +24,16 @@ export class WorkspaceHomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem("user"));
+
+    if (this.currentWorkspace.w_manager_id != this.user.id) {
+      var addMembersModal = $("#addWorkspaceMemberButton");
+      addMembersModal.addClass("disabled");
+
+      var workspaceModal = $("#createWorkspaceProjectButton");
+      workspaceModal.addClass("disabled");
+    }
+
     this.connectionService
       .WorkspaceMembersData(this.currentWorkspace.w_id)
       .subscribe(
