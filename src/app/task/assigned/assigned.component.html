@@ -26,18 +26,18 @@
     <div id="task{{ +task.t_id }}" class="row detail-tile">
       <div class="col-md-12" style="padding: 10px;">
         <div class="row" style="padding-top: 5px; padding-bottom: 10px;">
-          <div class="col-md-2" style="font-family: sans-serif;">
+          <div class="col-md-3" style="font-family: sans-serif;">
             Team:
           </div>
-          <div class="col-md-10">
+          <div class="col-md-9">
             {{ task.team }}
           </div>
         </div>
         <div class="row" style="padding-top: 10px; padding-bottom: 10px;">
-          <div class="col-md-2" style="font-family: sans-serif;">
+          <div class="col-md-3" style="font-family: sans-serif;">
             Description:
           </div>
-          <div class="col-md-10">
+          <div class="col-md-9">
             {{ task.t_description }}
           </div>
         </div>
@@ -46,11 +46,19 @@
           style="padding-top: 10px; padding-bottom: 10px;"
           *ngIf="task.assigned_filepath != null"
         >
-          <div class="col-md-2" style="font-family: sans-serif;">
+          <div class="col-md-3" style="font-family: sans-serif;">
             Task file:
           </div>
-          <div class="col-md-10">
+          <div class="col-md-9">
             <a href="{{ task.assigned_filepath }}">Download</a>
+          </div>
+        </div>
+        <div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+          <div class="col-md-3" style="font-family: sans-serif;">
+            Created by:
+          </div>
+          <div class="col-md-9">
+            {{ task.created_by }}
           </div>
         </div>
         <div class="row" style="padding-top: 10px; padding-bottom: 5px;">

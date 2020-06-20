@@ -19,25 +19,30 @@ export class CreatedComponent implements OnInit {
       (getTaskResult: any) => {
         this.tasks = getTaskResult;
 
-        // let orgUsers = JSON.parse(localStorage.getItem("org-members"));
-        // for (var task of this.tasks) {
-        //   InnerLoop: for (var user of orgUsers) {
-        //     if (task.assigned_to == user.id) {
-        //       task["assigned_to"] = user.first_name + " " + user.last_name;
-        //       break InnerLoop;
-        //     }
-        //   }
-        // }
+        let teams = JSON.parse(localStorage.getItem("user-teams"));
+        for (var task of this.tasks) {
+          InnerLoop: for (var team of teams) {
+            if (task.team_id == team.t_id__tm_id) {
+              task["team"] = team.t_id__tm_name;
+              break InnerLoop;
+            }
+          }
+        }
+
+        let orgUsers = JSON.parse(localStorage.getItem("org-members"));
+        for (var task of this.tasks) {
+          InnerLoop: for (var user of orgUsers) {
+            if (task.assigned_to == user.id) {
+              task["assigned_to"] = user.first_name + " " + user.last_name;
+              break InnerLoop;
+            }
+          }
+        }
+
         this.tasks.forEach((element) => {
           if (element.t_status == 0) {
-            element.t_status = "Created";
-          } else if (element.t_status == 1) {
             element.t_status = "Assigned";
-          } else if (element.t_status == 2) {
-            element.t_status = "In progress";
-          } else if (element.t_status == 3) {
-            element.t_status = "Completed";
-          } else if (element.t_status == 4) {
+          } else if (element.t_status == 1) {
             element.t_status = "Submitted";
           }
         });
@@ -46,5 +51,12 @@ export class CreatedComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  openDetails(task_id) {
+    var detailDiv = $("#task" + task_id);
+    // detailDiv.css("display", "block");
+    // detailDiv.show();
+    detailDiv.toggle();
   }
 }

@@ -29,6 +29,17 @@ export class AssignedComponent implements OnInit {
             }
           }
         }
+
+        let orgUsers = JSON.parse(localStorage.getItem("org-members"));
+        for (var task of this.tasks) {
+          InnerLoop: for (var user of orgUsers) {
+            if (task.created_by == user.id) {
+              task["created_by"] = user.first_name + " " + user.last_name;
+              break InnerLoop;
+            }
+          }
+        }
+
         this.tasks.forEach((element) => {
           if (element.t_status == 0) {
             element.t_status = "Assigned";
