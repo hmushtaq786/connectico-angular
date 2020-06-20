@@ -1,0 +1,80 @@
+<!-- Central Modal Small -->
+<form [formGroup]="submitTaskForm" (ngSubmit)="submitTask()">
+  <div
+    class="modal fade"
+    id="submitTask"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModalLabel"
+    aria-hidden="true"
+  >
+    <!-- Change class .modal-sm to change the size of the modal -->
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div
+          class="modal-header"
+          style="background-color: royalblue; color: white;"
+        >
+          <h4 class="modal-title w-100" id="myModalLabel">
+            <a
+              ><i style="padding-right: 10px !important;" class="fas fa-upload">
+              </i></a
+            >Submit task
+          </h4>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            style="color: white;"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <!--Message-->
+          <div class="md-form">
+            <textarea
+              id="materialContactFormMessage"
+              class="form-control md-textarea"
+              rows="2"
+              formControlName="comment"
+            ></textarea>
+            <label for="materialContactFormMessage">Comment</label>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="file-field">
+                <div class="btn btn-primary btn-sm float-left">
+                  <span>Choose file</span>
+                  <input type="file" (change)="userFileSelected($event)" />
+                </div>
+                <div class="file-path-wrapper">
+                  <input
+                    class="file-path validate"
+                    type="text"
+                    placeholder="Upload your task file (if any)"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            style="background-color: royalblue !important;"
+            type="submit"
+            class="close-button"
+            id="taskSubmitBtn"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- Central Modal Small -->

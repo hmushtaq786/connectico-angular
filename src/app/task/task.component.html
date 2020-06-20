@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<app-error-modal [message]="modalMessage"></app-error-modal>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div
+        class="row"
+        style="
+          padding: 15px;
+          font-size: 20px;
+          font-family: sans-serif;
+          background-color: #dcdcdc;
+        "
+      >
+        <div
+          class="col-md-6 task-tile"
+          [routerLink]="['/task', 'created']"
+          [routerLinkActive]="'active'"
+        >
+          Tasks created
+        </div>
+        <div
+          class="col-md-6 task-tile"
+          [routerLink]="['/task', 'assigned']"
+          [routerLinkActive]="'active'"
+        >
+          Tasks assigned
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

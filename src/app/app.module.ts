@@ -91,6 +91,10 @@ import { BlankComponent } from "./blank/blank.component";
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NewMessageComponent } from './messages/new-message/new-message.component';
+import { TaskComponent } from './task/task.component';
+import { CreatedComponent } from './task/created/created.component';
+import { AssignedComponent } from './task/assigned/assigned.component';
+import { SubmitTaskComponent } from './task/modals/submit-task/submit-task.component';
 
 @NgModule({
   declarations: [
@@ -171,6 +175,10 @@ import { NewMessageComponent } from './messages/new-message/new-message.componen
     LeaveProjectComponent,
     BlankComponent,
     NewMessageComponent,
+    TaskComponent,
+    CreatedComponent,
+    AssignedComponent,
+    SubmitTaskComponent,
   ],
   imports: [
     BrowserAnimationsModule,

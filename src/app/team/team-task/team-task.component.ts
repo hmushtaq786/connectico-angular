@@ -28,14 +28,8 @@ export class TeamTaskComponent implements OnInit {
         }
         this.tasks.forEach((element) => {
           if (element.t_status == 0) {
-            element.t_status = "Created";
-          } else if (element.t_status == 1) {
             element.t_status = "Assigned";
-          } else if (element.t_status == 2) {
-            element.t_status = "In progress";
-          } else if (element.t_status == 3) {
-            element.t_status = "Completed";
-          } else if (element.t_status == 4) {
+          } else if (element.t_status == 1) {
             element.t_status = "Submitted";
           }
         });

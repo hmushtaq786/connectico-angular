@@ -1,0 +1,16 @@
+.task-tile {
+  padding: 5px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.task-tile:hover {
+  background-color: cornflowerblue;
+  cursor: pointer;
+  color: #f3ffff;
+}
+
+.active {
+  background-color: #4169e1;
+  color: #f3ffff;
+}

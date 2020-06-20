@@ -31,6 +31,8 @@ export class CreateTaskComponent implements OnInit {
     team_id: "",
     created_by: "",
     assigned_to: 0,
+    assigned_filepath: "",
+    completed: false,
   };
 
   constructor(
@@ -80,25 +82,44 @@ export class CreateTaskComponent implements OnInit {
 
     // console.log(this.project);
 
-    this.connectionService.createTask(this.task).subscribe(
-      (createTaskResult: any) => {
-        console.log(createTaskResult);
-        this.data.changeErrorModalMessage("New task created successfully.");
-        var createModal: any = $("#createTask");
-        $("#taskCreateBtn").html("Create").removeClass("disabled");
-        createModal.modal("hide");
-        errorModal();
-        $("#errorModal").on("hidden.bs.modal", () => {
-          this.router
-            .navigateByUrl("/loading", { skipLocationChange: true })
-            .then(() => {
-              this.router.navigate(["team/" + this.currentTeam.t_id__tm_id]);
-            });
-        });
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.connectionService
+      .uploadTaskFile(this.task.assigned_filepath)
+      .subscribe(
+        (uploadTaskFile: any) => {
+          this.task.assigned_filepath = uploadTaskFile.secure_url;
+
+          this.connectionService.createTask(this.task).subscribe(
+            (createTaskResult: any) => {
+              console.log(createTaskResult);
+              this.data.changeErrorModalMessage(
+                "New task created successfully."
+              );
+              var createModal: any = $("#createTask");
+              $("#taskCreateBtn").html("Create").removeClass("disabled");
+              createModal.modal("hide");
+              errorModal();
+              $("#errorModal").on("hidden.bs.modal", () => {
+                this.router
+                  .navigateByUrl("/loading", { skipLocationChange: true })
+                  .then(() => {
+                    this.router.navigate([
+                      "team/" + this.currentTeam.t_id__tm_id,
+                    ]);
+                  });
+              });
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
+
+  userFileSelected = (event) => {
+    this.task.assigned_filepath = event.target.files[0];
+  };
 }

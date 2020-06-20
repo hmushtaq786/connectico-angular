@@ -15,6 +15,9 @@ import { NotFoundErrorComponent } from "./not-found-error/not-found-error.compon
 import { MessageDetailComponent } from "./messages/message-detail/message-detail.component";
 import { BlankComponent } from "./blank/blank.component";
 import { NewMessageComponent } from "./messages/new-message/new-message.component";
+import { TaskComponent } from "./task/task.component";
+import { CreatedComponent } from "./task/created/created.component";
+import { AssignedComponent } from "./task/assigned/assigned.component";
 
 const routes: Routes = [
   { path: "", component: LandingPageComponent },
@@ -47,7 +50,21 @@ const routes: Routes = [
     ],
   },
   { path: "team/:id", component: TeamComponent },
-
+  {
+    path: "task",
+    component: TaskComponent,
+    children: [
+      { path: "", component: BlankComponent },
+      {
+        path: "created",
+        component: CreatedComponent,
+      },
+      {
+        path: "assigned",
+        component: AssignedComponent,
+      },
+    ],
+  },
   { path: "**", component: NotFoundErrorComponent },
 ];
 

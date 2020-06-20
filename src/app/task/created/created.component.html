@@ -1,0 +1,19 @@
+<div
+  class="row"
+  *ngFor="let task of tasks"
+  style="padding: 10px; font-family: sans-serif; background-color: #f0f2ef;"
+>
+  <div class="col-md-10">
+    {{ task.t_name }}
+  </div>
+  <div class="col-md-2">
+    <button>Status</button>
+  </div>
+</div>
+<div
+  class="row"
+  style="padding: 10px; font-family: sans-serif; background-color: #f0f2ef;"
+  *ngIf="tasks.length == 0"
+>
+  No tasks assigned yet.
+</div>

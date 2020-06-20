@@ -45,6 +45,8 @@ export class ConnectionService {
   CLOUDINARY_UPLOAD_PRESET_WORKSPACE_FILE = "wrkh6b9a";
   CLOUDINARY_UPLOAD_PRESET_PROJECT_FILE = "kbwnpxp5";
   CLOUDINARY_UPLOAD_PRESET_TEAM_FILE = "czshyy3q";
+  CLOUDINARY_UPLOAD_PRESET_TASK_ASSIGNED_FILE = "mo2wzluf";
+  CLOUDINARY_UPLOAD_PRESET_TASK_SUBMITTED_FILE = "qzu2kplt";
 
   constructor(
     private httpClient: HttpClient,
@@ -113,6 +115,34 @@ export class ConnectionService {
       var formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", this.CLOUDINARY_UPLOAD_PRESET_TEAM_FILE);
+      return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
+    }
+  }
+
+  uploadTaskFile(file) {
+    if (file == "") {
+      return of("null");
+    } else {
+      var formData = new FormData();
+      formData.append("file", file);
+      formData.append(
+        "upload_preset",
+        this.CLOUDINARY_UPLOAD_PRESET_TASK_ASSIGNED_FILE
+      );
+      return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
+    }
+  }
+
+  uploadSubmittedTaskFile(file) {
+    if (file == "") {
+      return of("null");
+    } else {
+      var formData = new FormData();
+      formData.append("file", file);
+      formData.append(
+        "upload_preset",
+        this.CLOUDINARY_UPLOAD_PRESET_TASK_SUBMITTED_FILE
+      );
       return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
     }
   }
@@ -261,6 +291,17 @@ export class ConnectionService {
     );
   }
 
+  submitUpdatedTask(updatedTaskData: object, task_id) {
+    const updatedTask = JSON.stringify(updatedTaskData);
+    return this.httpClient.patch(
+      `${this.baseUrl}register/organization/workspaces/tasks/${task_id}/`,
+      updatedTask,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   createWorkspacePost(postData: object) {
     const post = JSON.stringify(postData);
     return this.httpClient.post(
@@ -403,6 +444,24 @@ export class ConnectionService {
   getTaskByTID(id) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspaces/tasks/${"tm" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  getTaskByAssignedBy(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/tasks/${"as" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  getTaskByCreatedBy(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/tasks/${"cr" + id}/`,
       {
         headers: this.getHeaders(),
       }
