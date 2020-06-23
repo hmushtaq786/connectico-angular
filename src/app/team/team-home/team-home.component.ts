@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { ConnectionService } from "src/app/connection.service";
 import { DataService } from "src/app/data.service";
 
-declare const counter: any;
+// declare const counter: any;
 
 declare const totalTeamMembers: any;
 declare const tasksCompleted: any;
@@ -17,13 +17,46 @@ export class TeamHomeComponent implements OnInit {
   @Input() currentTeam;
   modalMessage = "<System message>";
   user: any;
+
+  totalMembers = 0;
+  totalTasks = 0;
+  tasksCompleted = 0;
+  taskPending = 0;
+
   constructor(
     private connectionService: ConnectionService,
     private data: DataService
   ) {}
 
   ngOnInit() {
-    counter();
+    this.connectionService
+      .getTotalTeams("t" + this.currentTeam.t_id__tm_id)
+      .subscribe(
+        (getTotalTeamsResult: any) => {
+          this.totalMembers = getTotalTeamsResult.length;
+          this.connectionService
+            .getTaskByTID(this.currentTeam.t_id__tm_id)
+            .subscribe(
+              (getTaskByTID: any) => {
+                this.totalTasks = getTaskByTID.length;
+                getTaskByTID.forEach((task) => {
+                  if (task.completed == true) {
+                    this.tasksCompleted++;
+                  } else {
+                    this.taskPending++;
+                  }
+                  this.counter();
+                });
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
 
     this.user = JSON.parse(localStorage.getItem("user"));
 
@@ -40,18 +73,73 @@ export class TeamHomeComponent implements OnInit {
     );
   }
 
+  counter() {
+    let fn: any = $.fn;
+    fn.jQuerySimpleCounter = function (options) {
+      var settings = $.extend(
+        {
+          start: 0,
+          end: 100,
+          easing: "swing",
+          duration: 400,
+          complete: "",
+        },
+        options
+      );
+
+      var thisElement = $(this);
+
+      $({ count: settings.start }).animate(
+        { count: settings.end },
+        {
+          duration: settings.duration,
+          easing: settings.easing,
+          step: function () {
+            var mathCount = Math.ceil(this.count);
+            thisElement.text(mathCount);
+          },
+          complete: settings.complete,
+        }
+      );
+    };
+    ($("#number1") as any).jQuerySimpleCounter({
+      end: this.totalMembers,
+      duration: 2500,
+    });
+    ($("#number2") as any).jQuerySimpleCounter({
+      end: this.totalTasks,
+      duration: 2500,
+    });
+    ($("#number3") as any).jQuerySimpleCounter({
+      end: this.tasksCompleted,
+      duration: 2500,
+    });
+    ($("#number4") as any).jQuerySimpleCounter({
+      end: this.taskPending,
+      duration: 2500,
+    });
+
+    /* AUTHOR LINK */
+    $(".about-me-img").hover(
+      function () {
+        $(".authorWindowWrapper")
+          .stop()
+          .fadeIn("fast")
+          .find("p")
+          .addClass("trans");
+      },
+      function () {
+        $(".authorWindowWrapper")
+          .stop()
+          .fadeOut("fast")
+          .find("p")
+          .removeClass("trans");
+      }
+    );
+  }
+
   openModal(modal_id) {
     var modal_obj: any = $("#" + modal_id);
     modal_obj.modal("show");
-  }
-
-  viewMembers() {
-    totalTeamMembers();
-  }
-  tasksDone() {
-    tasksCompleted();
-  }
-  tasksLeft() {
-    tasksRemaining();
   }
 }

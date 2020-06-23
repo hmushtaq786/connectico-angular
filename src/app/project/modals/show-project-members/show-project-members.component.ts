@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { ConnectionService } from "src/app/connection.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-show-project-members",
@@ -8,12 +10,29 @@ import { Component, OnInit, Input } from "@angular/core";
 export class ShowProjectMembersComponent implements OnInit {
   @Input() currentProject;
 
-  projMembers: any;
   projectMembers: any;
 
-  constructor() {}
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.connectionService
+      .ProjectMembersData(this.currentProject.p_id__p_id)
+      .subscribe(
+        (ProjectMembersData: any) => {
+          this.projectMembers = ProjectMembersData;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 
-  sendMessage() {}
+  navigateToMessages() {
+    var membersModal: any = $("#totalProjectMembers");
+    membersModal.modal("hide");
+    this.router.navigate(["messages/"]);
+  }
 }

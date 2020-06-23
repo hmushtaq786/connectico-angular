@@ -90,11 +90,14 @@ import { LeaveProjectComponent } from "./project/modals/leave-project/leave-proj
 import { BlankComponent } from "./blank/blank.component";
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NewMessageComponent } from './messages/new-message/new-message.component';
-import { TaskComponent } from './task/task.component';
-import { CreatedComponent } from './task/created/created.component';
-import { AssignedComponent } from './task/assigned/assigned.component';
-import { SubmitTaskComponent } from './task/modals/submit-task/submit-task.component';
+import { NewMessageComponent } from "./messages/new-message/new-message.component";
+import { TaskComponent } from "./task/task.component";
+import { CreatedComponent } from "./task/created/created.component";
+import { AssignedComponent } from "./task/assigned/assigned.component";
+import { SubmitTaskComponent } from "./task/modals/submit-task/submit-task.component";
+import { TasksChartComponent } from "./team/team-home/tasks-chart/tasks-chart.component";
+
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 @NgModule({
   declarations: [
@@ -179,6 +182,7 @@ import { SubmitTaskComponent } from './task/modals/submit-task/submit-task.compo
     CreatedComponent,
     AssignedComponent,
     SubmitTaskComponent,
+    TasksChartComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -188,6 +192,7 @@ import { SubmitTaskComponent } from './task/modals/submit-task/submit-task.compo
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxChartsModule,
     // GoogleChartsModule
   ],
   providers: [ConnectionService, CookieService],

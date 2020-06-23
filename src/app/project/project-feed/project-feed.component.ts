@@ -66,6 +66,28 @@ export class ProjectFeedComponent implements OnInit {
       );
   }
 
+  formatDate(date) {
+    date = new Date(Date.parse(date));
+    let diffMs = Date.now() - date;
+    let diffSec = Math.round(diffMs / 1000);
+    let diffMin = Math.floor(diffSec / 60);
+    let diffHour = Math.floor(diffMin / 60);
+
+    if (diffSec < 1) {
+      return "right now";
+    } else if (diffMin < 1) {
+      return `${diffSec} sec. ago`;
+    } else if (diffHour < 1) {
+      return `${diffMin} min. ago`;
+    } else if (diffHour == 1) {
+      return `${diffHour} hr. ago`;
+    } else if (diffHour < 24) {
+      return `${diffHour} hrs. ago`;
+    } else {
+      return date.toLocaleTimeString() + " - " + date.toLocaleDateString();
+    }
+  }
+
   createProjectPost() {
     $("#projectPostBtn")
       .html(

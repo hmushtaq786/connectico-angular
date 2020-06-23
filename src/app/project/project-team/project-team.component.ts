@@ -29,6 +29,17 @@ export class ProjectTeamComponent implements OnInit {
               }
             }
           }
+          this.teams.forEach((team) => {
+            this.connectionService.getTaskByTID(team.tm_id).subscribe(
+              (getTaskByTIDResult: any) => {
+                team["totalTasks"] = getTaskByTIDResult.length;
+              },
+              (error) => {
+                console.log(error);
+                team["totalTasks"] = 0;
+              }
+            );
+          });
         },
         (error) => {
           console.log(error);

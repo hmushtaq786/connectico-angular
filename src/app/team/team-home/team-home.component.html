@@ -3,9 +3,9 @@
 <app-create-team-event [currentTeam]="currentTeam"></app-create-team-event>
 <app-add-team-members [currentTeam]="currentTeam"></app-add-team-members>
 <app-leave-team [currentTeam]="currentTeam"></app-leave-team>
-<app-show-team-members></app-show-team-members>
-<app-show-completed-tasks></app-show-completed-tasks>
-<app-show-remaining-tasks></app-show-remaining-tasks>
+<app-show-team-members [currentTeam]="currentTeam"></app-show-team-members>
+<!-- <app-show-completed-tasks></app-show-completed-tasks>
+<app-show-remaining-tasks></app-show-remaining-tasks> -->
 <!-- <div class="row">
   <div class="col-md-12">
     <div id="chartdiv" style="height: 300px; width: 100%;"></div>
@@ -101,10 +101,10 @@
             padding: 10px;
             padding-top: 30px;
           "
-          (click)="viewMembers()"
+          (click)="openModal('totalTeamMembers')"
         >
           <i class="fas fa-users"></i>
-          <p id="number1" class="number">70</p>
+          <p id="number1" class="number">0</p>
           <span></span>
           <p>Total members</p>
         </div>
@@ -118,10 +118,24 @@
             padding: 10px;
             padding-top: 30px;
           "
-          (click)="tasksDone()"
         >
           <i class="fa fa-clipboard-check"></i>
-          <p id="number3" class="number">9</p>
+          <p id="number2" class="number">0</p>
+          <span></span>
+          <p>Total tasks</p>
+        </div>
+        <div
+          class="item wow fadeInUpBig animated animated"
+          data-number="246"
+          style="
+            visibility: visible;
+            background-color: royalblue;
+            padding: 10px;
+            padding-top: 30px;
+          "
+        >
+          <i class="fa fa-clipboard-list"></i>
+          <p id="number3" class="number">0</p>
           <span></span>
           <p>Tasks completed</p>
         </div>
@@ -134,55 +148,24 @@
             padding: 10px;
             padding-top: 30px;
           "
-          (click)="tasksLeft()"
         >
           <i class="fa fa-clipboard-list"></i>
-          <p id="number4" class="number">16</p>
+          <p id="number4" class="number">0</p>
           <span></span>
-          <p>Tasks remaining</p>
+          <p>Tasks pending</p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="sectiontitle" style="padding-bottom: 30px; margin-top: -30px;">
-    <h2>Task progress</h2>
+  <!-- <div class="sectiontitle" style="padding-bottom: 30px; margin-top: -30px;">
+    <h2>Team progress</h2>
     <span class="headerLine"></span>
   </div>
 
-  <div class="row">
-    <div class="col-md-3"></div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <h1 style="font-size: 20px; text-align: center; font-weight: bold;">
-        Select your task status
-      </h1>
-      <div class="dropdown" mdbDropdown>
-        <button
-          mdbDropdownToggle
-          mdbBtn
-          color="primary"
-          class="dropdown-toggle waves-light"
-          type="button"
-          mdbWavesEffect
-        >
-          Status
-        </button>
-
-        <div class="dropdown-menu dropdown-primary">
-          <a class="dropdown-item" href="#">Assigned</a>
-          <a class="dropdown-item" href="#">In Progress</a>
-          <a class="dropdown-item" href="#">Completed</a>
-          <a class="dropdown-item" href="#">Submitted</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3"></div>
-        <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-       <div id="timeline" style="height: 180px;"></div>
-    -->
-      </div>
+  <div class="row" style="background-color: #4169e1;">
+    <div class="col-md-12">
+      <app-tasks-chart></app-tasks-chart>
     </div>
-  </div>
+  </div> -->
 </div>

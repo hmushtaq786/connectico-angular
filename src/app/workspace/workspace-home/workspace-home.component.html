@@ -6,9 +6,9 @@
   [currentWorkspace]="currentWorkspace"
 ></app-leave-workspace>
 <app-show-members [currentWorkspace]="currentWorkspace"></app-show-members>
-<app-show-completed-projects></app-show-completed-projects>
+<!-- <app-show-completed-projects></app-show-completed-projects>
 <app-show-remaining-projects></app-show-remaining-projects>
-<app-show-teams></app-show-teams>
+<app-show-teams></app-show-teams> -->
 <!-- <div class="row">
   <div class="col-md-12">
     <div id="chartdiv" style="height: 300px; width: 100%;"></div>
@@ -108,59 +108,62 @@
         >
           <i class="fas fa-users"></i>
           <p style="font-size: 35px;" id="number1" class="number">
-            {{ totalWorkspaceMembers }}
+            0
           </p>
           <span></span>
           <p>Total members</p>
         </div>
 
         <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="246"
+          class="item wow fadeInUpBig animated animated disabled"
+          data-number="totalWorkspaceProjects"
           style="
             visibility: visible;
             background-color: royalblue;
             padding: 10px;
             padding-top: 30px;
           "
-          (click)="openWorkspaceModal('projectsRemaining')"
         >
           <i class="fa fa-clipboard-list"></i>
-          <p style="font-size: 35px;" id="number4" class="number">246</p>
+          <p style="font-size: 35px;" id="number2" class="number">
+            0
+          </p>
           <span></span>
           <p>Total projects</p>
         </div>
 
         <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="359"
+          class="item wow fadeInUpBig animated animated disabled"
+          data-number="completedProjects"
           style="
             visibility: visible;
             background-color: royalblue;
             padding: 10px;
             padding-top: 30px;
           "
-          (click)="openWorkspaceModal('projectsCompleted')"
         >
           <i class="fa fa-clipboard-check"></i>
-          <p style="font-size: 35px;" id="number3" class="number">359</p>
+          <p style="font-size: 35px;" id="number3" class="number">
+            0
+          </p>
           <span></span>
           <p>Completed projects</p>
         </div>
 
         <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="246"
+          class="item wow fadeInUpBig animated animated disabled"
+          data-number="totalTeams"
           style="
             visibility: visible;
             background-color: royalblue;
             padding: 10px;
             padding-top: 30px;
           "
-          (click)="openWorkspaceModal('totalTeams')"
         >
           <i class="fa fa-users-class"></i>
-          <p style="font-size: 35px;" id="number4" class="number">246</p>
+          <p style="font-size: 35px;" id="number4" class="number">
+            0
+          </p>
           <span></span>
           <p>Total teams</p>
         </div>
@@ -172,107 +175,36 @@
     <h2>Projects progress</h2>
     <span class="headerLine"></span>
   </div>
-  <div style="padding-bottom: 20px;">
+  <div style="padding-bottom: 20px;" *ngFor="let project of workspaceProjects">
     <div class="row">
       <div class="col-md-2">
-        <span style="font-family: sans-serif; font-size: 17px;">Project 1</span>
+        <span style="font-family: sans-serif; font-size: 17px;">{{
+          project.p_name
+        }}</span>
       </div>
       <div class="col-md-10">
         <div class="progress md-progress" style="height: 20px; right: 10px;">
           <div
             class="progress-bar"
             role="progressbar"
-            style="width: 25%; height: 20px; background-color: royalblue;"
-            aria-valuenow="25"
+            [ngStyle]="{ width: project.completed + '%' }"
+            style="
+              height: 20px;
+              background-color: royalblue;
+              font-family: sans-serif;
+            "
+            aria-valuenow="0"
             aria-valuemin="0"
             aria-valuemax="100"
-          ></div>
+          >
+            {{ project.completed + " %" }}
+          </div>
         </div>
       </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-12" style="height: 10px;"></div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <span style="font-family: sans-serif; font-size: 17px;">Project 2</span>
-      </div>
-      <div class="col-md-10">
-        <div class="progress md-progress" style="height: 20px; right: 10px;">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            style="width: 50%; height: 20px; background-color: royalblue;"
-            aria-valuenow="50"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12" style="height: 10px;"></div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <span style="font-family: sans-serif; font-size: 17px;">Project 3</span>
-      </div>
-      <div class="col-md-10">
-        <div class="progress md-progress" style="height: 20px; right: 10px;">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            style="width: 5%; height: 20px; background-color: royalblue;"
-            aria-valuenow="5"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12" style="height: 10px;"></div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <span style="font-family: sans-serif; font-size: 17px;">Project 4</span>
-      </div>
-      <div class="col-md-10">
-        <div class="progress md-progress" style="height: 20px; right: 10px;">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            style="width: 100%; height: 20px; background-color: royalblue;"
-            aria-valuenow="100"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12" style="height: 10px;"></div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <span style="font-family: sans-serif; font-size: 17px;">Project 5</span>
-      </div>
-      <div class="col-md-10">
-        <div class="progress md-progress" style="height: 20px; right: 10px;">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            style="width: 70%; height: 20px; background-color: royalblue;"
-            aria-valuenow="70"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-      </div>
-    </div>
+    </div> -->
   </div>
 
   <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
