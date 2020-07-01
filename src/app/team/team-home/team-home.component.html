@@ -12,25 +12,19 @@
   </div>
 </!-->
 
-<div style="min-height: 84.5vh;">
+<div class="container" style="min-height: 84.5vh; width: 100%;">
   <div class="sectiontitle">
     <h2>User actions</h2>
     <span class="headerLine"></span>
   </div>
 
-  <div id="projectFacts" class="sectionClass" style="left: -9px; top: -20px;">
+  <div id="projectFacts" class="sectionClass" style="padding-bottom: 5px;">
     <div class="fullWidth eight columns">
-      <div class="projectFactsWrap">
+      <div class="projectFactsWrap" style="padding: 0px;">
         <div
           id="createTeamTaskButton"
-          class="item wow fadeInUpBig animated animated"
-          data-number="70"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab"
+          data-number="0"
           (click)="openModal('createTask')"
         >
           <i class="fas fa-folder-plus"></i>
@@ -38,29 +32,18 @@
         </div>
 
         <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="359"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab"
+          data-number="0"
           (click)="openModal('createTeamEvent')"
         >
           <i class="fa fa-calendar-plus"></i>
           <p>Create Event</p>
         </div>
+
         <div
           id="addTeamMemberButton"
-          class="item wow fadeInUpBig animated animated"
-          data-number="246"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab"
+          data-number="0"
           (click)="openModal('addTeamMembers')"
         >
           <i class="fa fa-user-plus"></i>
@@ -68,14 +51,8 @@
         </div>
 
         <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="246"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab"
+          data-number="0"
           (click)="openModal('leaveTeam')"
         >
           <i class="fa fa-sign-out-alt"></i>
@@ -85,22 +62,16 @@
     </div>
   </div>
 
-  <div class="sectiontitle" style="margin-top: -30px;">
+  <div class="sectiontitle">
     <h2>Team statistics</h2>
     <span class="headerLine"></span>
   </div>
-  <div id="projectFacts" class="sectionClass" style="left: -9px; top: -20px;">
+  <div id="projectFacts" class="sectionClass" style="padding-bottom: 5px;">
     <div class="fullWidth eight columns">
       <div class="projectFactsWrap">
         <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="70"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab"
+          data-number="0"
           (click)="openModal('totalTeamMembers')"
         >
           <i class="fas fa-users"></i>
@@ -110,14 +81,8 @@
         </div>
 
         <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="359"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab disabled action-tab-locked"
+          data-number="0"
         >
           <i class="fa fa-clipboard-check"></i>
           <p id="number2" class="number">0</p>
@@ -125,14 +90,8 @@
           <p>Total tasks</p>
         </div>
         <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="246"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab disabled"
+          data-number="0"
         >
           <i class="fa fa-clipboard-list"></i>
           <p id="number3" class="number">0</p>
@@ -140,14 +99,8 @@
           <p>Tasks completed</p>
         </div>
         <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="246"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab disabled"
+          data-number="0"
         >
           <i class="fa fa-clipboard-list"></i>
           <p id="number4" class="number">0</p>
@@ -158,7 +111,7 @@
     </div>
   </div>
 
-  <!-- <div class="sectiontitle" style="padding-bottom: 30px; margin-top: -30px;">
+  <!-- <div class="sectiontitle" style="padding-bottom: 5px;"">
     <h2>Team progress</h2>
     <span class="headerLine"></span>
   </div>

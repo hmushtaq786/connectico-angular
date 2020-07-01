@@ -60,7 +60,7 @@
     </div>
   </div>
 
-  <div class="col-md-10">
+  <div class="col-md-10" style="padding-right: 8%;">
     <div class="row">
       <div
         class="col-md-12"
@@ -75,7 +75,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12" *ngIf="screen === 'workspace_home'">
+      <div
+        class="col-md-12"
+        *ngIf="screen === 'workspace_home'"
+        style="padding: 0px;"
+      >
         <app-workspace-home [currentWorkspace]="workspace"></app-workspace-home>
         <!-- <router-outlet [currentWorkspace]="workspace"></router-outlet> -->
       </div>
@@ -85,7 +89,7 @@
       <div
         class="col-md-12"
         *ngIf="screen === 'workspace_project'"
-        style="padding-left: 10px; padding-right: 25px;"
+        style="padding: 0px;"
       >
         <app-workspace-project
           [currentWorkspace]="workspace"
@@ -94,7 +98,7 @@
       <div
         class="col-md-12"
         *ngIf="screen === 'workspace_event'"
-        style="padding-left: 10px; padding-right: 25px;"
+        style="padding: 0px;"
       >
         <app-workspace-event
           [currentWorkspace]="workspace"
@@ -103,7 +107,7 @@
       <div
         class="col-md-12"
         *ngIf="screen === 'workspace_files'"
-        style="padding-left: 10px; padding-right: 25px;"
+        style="padding: 0px;"
       >
         <app-workspace-files
           [currentWorkspace]="workspace"

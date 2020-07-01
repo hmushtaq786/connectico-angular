@@ -24,13 +24,13 @@
   </div>
 </!-->
 
-<div style="min-height: 84.5vh;">
+<div class="container" style="min-height: 84.5vh; width: 100%;">
   <div class="sectiontitle">
     <h2>User actions</h2>
     <span class="headerLine"></span>
   </div>
 
-  <div id="projectFacts" class="sectionClass" style="left: -9px; top: -20px;">
+  <div id="projectFacts" class="sectionClass" style="padding-bottom: 5px;">
     <div class="fullWidth eight columns">
       <div class="projectFactsWrap">
         <div
@@ -40,8 +40,8 @@
           style="
             visibility: visible;
             background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
+            padding: 15px;
+            padding-bottom: 0px;
           "
           (click)="openModal('createTeam')"
         >
@@ -55,8 +55,8 @@
           style="
             visibility: visible;
             background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
+            padding: 15px;
+            padding-bottom: 0px;
           "
           (click)="openModal('createProjectEvent')"
         >
@@ -70,8 +70,8 @@
           style="
             visibility: visible;
             background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
+            padding: 15px;
+            padding-bottom: 0px;
           "
           (click)="openModal('addProjectMembers')"
         >
@@ -85,8 +85,8 @@
           style="
             visibility: visible;
             background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
+            padding: 15px;
+            padding-bottom: 0px;
           "
           (click)="openModal('leaveProject')"
         >
@@ -97,11 +97,11 @@
     </div>
   </div>
 
-  <div class="sectiontitle" style="margin-top: -30px;">
+  <div class="sectiontitle">
     <h2>Project statistics</h2>
     <span class="headerLine"></span>
   </div>
-  <div id="projectFacts" class="sectionClass" style="left: -9px; top: -20px;">
+  <div id="projectFacts" class="sectionClass" style="padding-bottom: 5px;">
     <div class="fullWidth eight columns">
       <div class="projectFactsWrap">
         <div
@@ -110,8 +110,8 @@
           style="
             visibility: visible;
             background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
+            padding: 15px;
+            padding-bottom: 0px;
           "
           (click)="openModal('totalProjectMembers')"
         >
@@ -127,8 +127,8 @@
           style="
             visibility: visible;
             background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
+            padding: 15px;
+            padding-bottom: 0px;
           "
           (click)="projectsDone()"
         >
@@ -143,14 +143,14 @@
           style="
             visibility: visible;
             background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
+            padding: 15px;
+            padding-bottom: 0px;
           "
           (click)="projectsLeft()"
         >
           <i class="fa fa-clipboard-list"></i>
           <p id="number3" class="number">{{ totalRemainingTasks }}</p>
-          <span></span>
+          <span style="padding: 0px;"></span>
           <p>Tasks remaining</p>
         </div>
 
@@ -160,8 +160,8 @@
           style="
             visibility: visible;
             background-color: royalblue;
-            padding: 10px;
-            padding-top: 30px;
+            padding: 15px;
+            padding-bottom: 0px;
           "
           (click)="viewTeams()"
         >
@@ -174,15 +174,15 @@
     </div>
   </div>
 
-  <div class="sectiontitle" style="padding-bottom: 30px; margin-top: -30px;">
+  <div class="sectiontitle">
     <h2>Teams progress</h2>
     <span class="headerLine"></span>
   </div>
 
-  <div class="row" *ngFor="let team of teams">
+  <div class="row" *ngFor="let team of teams" style="padding-top: 5px;">
     <div class="col-md-12">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2" style="padding-left: 10px;">
           <span style="font-family: sans-serif; font-size: 17px;">{{
             team.tm_name
           }}</span>

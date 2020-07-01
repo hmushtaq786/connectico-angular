@@ -9,6 +9,7 @@
       height: auto;
     "
   >
+    <!-- <div class="container"> -->
     <div class="row">
       <div class="col-md-12">
         <div class="row heading-column" (click)="leftbar_click($event)">
@@ -60,10 +61,11 @@
           >Files
         </div>
       </div>
+      <!-- </div> -->
     </div>
   </div>
 
-  <div class="col-md-10">
+  <div class="col-md-10" style="padding-right: 8%;">
     <div class="row">
       <div
         class="col-md-12"
@@ -82,7 +84,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12" *ngIf="screen === 'project_home'">
+      <div
+        class="col-md-12"
+        style="padding: 0px;"
+        *ngIf="screen === 'project_home'"
+      >
         <app-project-home [currentProject]="project"></app-project-home>
       </div>
       <div class="col-md-12" *ngIf="screen === 'project_feed'">
@@ -91,21 +97,21 @@
       <div
         class="col-md-12"
         *ngIf="screen === 'project_team'"
-        style="padding-left: 10px; padding-right: 25px;"
+        style="padding: 0px;"
       >
         <app-project-team [currentProject]="project"></app-project-team>
       </div>
       <div
         class="col-md-12"
         *ngIf="screen === 'project_event'"
-        style="padding-left: 10px; padding-right: 25px;"
+        style="padding: 0px;"
       >
         <app-project-event [currentProject]="project"></app-project-event>
       </div>
       <div
         class="col-md-12"
         *ngIf="screen === 'project_files'"
-        style="padding-left: 10px; padding-right: 25px;"
+        style="padding: 0px;"
       >
         <app-project-files [currentProject]="project"></app-project-files>
       </div>

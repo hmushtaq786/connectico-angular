@@ -57,4 +57,16 @@ export class TeamComponent implements OnInit {
       this.page = "Files";
     }
   }
+
+  // fold() {
+  //   $(".left-column").toggleClass("col-md-1");
+  //   $(".left-column").toggleClass("col-md-2");
+  //   $(".right-column").toggleClass("col-md-10");
+  //   $(".right-column").toggleClass("col-md-11");
+
+  //   $(".heading-column a i").toggleClass("icons");
+
+  //   $(".heading-column").toggleClass("heading-column-min");
+  //   $(".right-column").toggleClass("right-column-min");
+  // }
 }

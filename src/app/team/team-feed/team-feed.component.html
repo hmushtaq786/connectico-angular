@@ -1,9 +1,6 @@
 <div style="min-height: 89.8vh;">
   <div class="row" style="padding-top: 0px;">
-    <div
-      class="col-md-8"
-      style="background-color: whitesmoke; padding-top: 20px;"
-    >
+    <div class="col-md-9" style="background-color: #feffff; padding-top: 20px;">
       <form
         [formGroup]="postForm"
         (ngSubmit)="createProjectPost()"
@@ -29,7 +26,10 @@
             class="md-form col-md-10"
           >
             <div class="file-field">
-              <div class="btn btn-primary btn-sm float-left">
+              <div
+                class="btn btn-primary btn-sm float-left"
+                style="background-color: #2b7a78 !important;"
+              >
                 <span>Choose file</span>
                 <input type="file" (change)="userFileSelected($event)" />
               </div>
@@ -44,7 +44,11 @@
           </div>
           <div class="col-md-2">
             <button
-              style="margin-left: -3px; margin-top: -5px;"
+              style="
+                margin-left: -3px;
+                margin-top: -5px;
+                background-color: #2b7a78 !important;
+              "
               class="btn btn-primary"
               type="submit"
               id="teamPostBtn"
@@ -55,9 +59,12 @@
         </div>
       </form>
       <hr />
-      <div class="row" *ngFor="let post of userPostsData">
-        <div style="background-color: whitesmoke;" class="col-md-12">
-          <div class="row" style="background-color: whitesmoke; padding: 5px;">
+      <div class="container row" *ngFor="let post of userPostsData">
+        <div
+          style="padding: 15px; margin: 10px; background-color: #faffff;"
+          class="col-md-12"
+        >
+          <div class="row" style="padding: 5px;">
             <div class="col-md-1">
               <img
                 style="width: 50px;"
@@ -110,7 +117,7 @@
               <div
                 class="col-md-12"
                 style="
-                  background-color: #eaeee9;
+                  background-color: #def2f1;
                   padding: 10px;
                   margin-top: 10px;
                   margin-bottom: 10px;
@@ -214,64 +221,65 @@
     </div> -->
     </div>
 
-    <div class="col-md-4" style="background-color: #f0f2ef;">
+    <div class="col-md-3" style="background-color: #def2f1;">
       <div class="row">
         <div style="padding: 10px;" class="col-md-12">
-          <div class="row" *ngFor="let member of teamMembers">
-            <div class="col-md-2">
-              <div class="avatar-div">
-                <img
-                  id="avatar-img"
-                  src="{{ member.u_id__photo_address }}"
-                  alt="avatar mx-auto white"
-                  class="img-fluid"
-                />
-              </div>
-            </div>
+          <div class="container-fluid row" *ngFor="let member of teamMembers">
+            <div class="col-md-12" style="padding: 0px; padding-bottom: 10px;">
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="avatar-div">
+                    <img
+                      id="avatar-img"
+                      src="{{ member.u_id__photo_address }}"
+                      alt="avatar mx-auto white"
+                      class="img-fluid"
+                    />
+                  </div>
+                </div>
 
-            <div class="col-md-10" style="margin: auto;">
-              <div class="row">
-                <div
-                  style="text-align: left; padding-left: 20px;"
-                  class="col-md-12"
-                >
-                  <a
-                    ><span id="title">{{
-                      member.u_id__first_name + " " + member.u_id__last_name
-                    }}</span></a
+                <div class="col-md-10" style="margin: auto; left: 20px;">
+                  <div class="row">
+                    <div style="text-align: left;" class="col-md-12">
+                      <a
+                        ><span id="title">{{
+                          member.u_id__first_name + " " + member.u_id__last_name
+                        }}</span></a
+                      >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div
+                      style="
+                        text-align: left;
+                        padding-top: 2px;
+                        padding-left: 20px;
+                      "
+                      class="col-md-12"
+                    >
+                      <a
+                        ><i class="fas fa-envelope"></i
+                        ><span style="margin-left: 5px;">
+                          <a href="mailto:{{ member.u_id__email }}">Email</a>
+                        </span></a
+                      >
+                    </div>
+                  </div>
+                  <!-- <div class="row">
+                  <div
+                    style="text-align: left; padding-top: 2px;"
+                    class="col-md-12"
                   >
+                    <a
+                      ><i class="fas fa-phone-square-alt"></i
+                      ><span style="margin-left:5px;">
+                        {{ user.phone_number }}
+                      </span></a
+                    >
+                  </div>
+                </div> -->
                 </div>
               </div>
-              <div class="row">
-                <div
-                  style="
-                    text-align: left;
-                    padding-top: 2px;
-                    padding-left: 20px;
-                  "
-                  class="col-md-12"
-                >
-                  <a
-                    ><i class="fas fa-envelope"></i
-                    ><span style="margin-left: 5px;">
-                      {{ member.u_id__email }}
-                    </span></a
-                  >
-                </div>
-              </div>
-              <!-- <div class="row">
-              <div
-                style="text-align: left; padding-top: 2px;"
-                class="col-md-12"
-              >
-                <a
-                  ><i class="fas fa-phone-square-alt"></i
-                  ><span style="margin-left:5px;">
-                    {{ user.phone_number }}
-                  </span></a
-                >
-              </div>
-            </div> -->
             </div>
           </div>
         </div>
