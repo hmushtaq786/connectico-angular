@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { ConnectionService } from "src/app/connection.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
+import { DataService } from "src/app/data.service";
 
 @Component({
   selector: "app-team-feed",
@@ -9,9 +11,14 @@ import { Router } from "@angular/router";
   styleUrls: ["./team-feed.component.css"],
 })
 export class TeamFeedComponent implements OnInit {
-  @Input() currentTeam;
+  // @Input() currentTeam;
   user: any;
   org: any;
+
+  orgTeams;
+
+  currentTeam;
+
   teamMembers: any;
 
   tempUsers: any;
@@ -43,10 +50,19 @@ export class TeamFeedComponent implements OnInit {
 
   constructor(
     private connectionService: ConnectionService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService,
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+
+    this.dataService.currentTeam.subscribe((data) => (this.currentTeam = data));
+
     this.user = JSON.parse(localStorage.getItem("user"));
     this.org = JSON.parse(localStorage.getItem("org"));
     // this.members = JSON.parse(localStorage.getItem("workspace-members"));
@@ -83,7 +99,9 @@ export class TeamFeedComponent implements OnInit {
             this.router
               .navigateByUrl("/loading", { skipLocationChange: true })
               .then(() => {
-                this.router.navigate(["team/" + this.currentTeam.t_id__tm_id]);
+                this.router.navigate([
+                  "team/" + this.currentTeam.t_id__tm_id + "/feed",
+                ]);
               });
           },
           (error) => {
@@ -160,7 +178,9 @@ export class TeamFeedComponent implements OnInit {
         this.router
           .navigateByUrl("/loading", { skipLocationChange: true })
           .then(() => {
-            this.router.navigate(["team/" + this.currentTeam.t_id__tm_id]);
+            this.router.navigate([
+              "team/" + this.currentTeam.t_id__tm_id + "/feed",
+            ]);
           });
       },
       (error) => console.log(error)

@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ConnectionService } from "src/app/connection.service";
+import { Router, ActivatedRoute } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
+import { DataService } from "src/app/data.service";
 
 @Component({
   selector: "app-team-event",
@@ -7,12 +10,26 @@ import { ConnectionService } from "src/app/connection.service";
   styleUrls: ["./team-event.component.css"],
 })
 export class TeamEventComponent implements OnInit {
-  @Input() currentTeam;
+  // @Input() currentTeam;
   teamEvents: any;
 
-  constructor(private connectionService: ConnectionService) {}
+  currentTeam: any;
+
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router,
+    private cookieService: CookieService,
+    private dataService: DataService
+  ) {}
 
   ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+
+    this.dataService.currentTeam.subscribe((data) => (this.currentTeam = data));
+
     this.connectionService
       .getEventByTID(this.currentTeam.t_id__tm_id)
       .subscribe(

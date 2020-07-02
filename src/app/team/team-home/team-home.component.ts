@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ConnectionService } from "src/app/connection.service";
 import { DataService } from "src/app/data.service";
+import { CookieService } from "ngx-cookie-service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 // declare const counter: any;
 
@@ -14,9 +16,11 @@ declare const tasksRemaining: any;
   styleUrls: ["./team-home.component.css"],
 })
 export class TeamHomeComponent implements OnInit {
-  @Input() currentTeam;
+  // @Input() currentTeam;
   modalMessage = "<System message>";
   user: any;
+
+  currentTeam;
 
   totalMembers = 0;
   totalTasks = 0;
@@ -25,10 +29,20 @@ export class TeamHomeComponent implements OnInit {
 
   constructor(
     private connectionService: ConnectionService,
-    private data: DataService
+    private data: DataService,
+    private cookieService: CookieService,
+    private router: Router,
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+
+    this.dataService.currentTeam.subscribe((data) => (this.currentTeam = data));
+
     this.connectionService
       .getTotalTeams("t" + this.currentTeam.t_id__tm_id)
       .subscribe(

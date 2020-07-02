@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ConnectionService } from "src/app/connection.service";
+import { Router } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
+import { DataService } from "src/app/data.service";
 
 @Component({
   selector: "app-team-files",
@@ -7,12 +10,25 @@ import { ConnectionService } from "src/app/connection.service";
   styleUrls: ["./team-files.component.css"],
 })
 export class TeamFilesComponent implements OnInit {
-  @Input() currentTeam;
+  // @Input() currentTeam;
+  currentTeam;
   filesCount = 0;
   teamFiles = new Array();
-  constructor(private connectionService: ConnectionService) {}
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router,
+    private cookieService: CookieService,
+    private dataService: DataService
+  ) {}
 
   ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+
+    this.dataService.currentTeam.subscribe((data) => (this.currentTeam = data));
+
     this.connectionService
       .getTeamPostsByTID(this.currentTeam.t_id__tm_id)
       .subscribe(

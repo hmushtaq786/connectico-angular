@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { CookieService } from "ngx-cookie-service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { ConnectionService } from "../connection.service";
+import { DataService } from "../data.service";
 
 @Component({
   selector: "app-team",
@@ -17,7 +18,8 @@ export class TeamComponent implements OnInit {
     private cookieService: CookieService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private connectionService: ConnectionService
+    private connectionService: ConnectionService,
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class TeamComponent implements OnInit {
         if (element.t_id__tm_id == +params.get("id")) {
           // + is for converting the string to int
           this.team = element;
+          this.dataService.changeCurrentTeam(this.team);
         }
       });
     });

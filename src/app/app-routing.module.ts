@@ -18,6 +18,11 @@ import { NewMessageComponent } from "./messages/new-message/new-message.componen
 import { TaskComponent } from "./task/task.component";
 import { CreatedComponent } from "./task/created/created.component";
 import { AssignedComponent } from "./task/assigned/assigned.component";
+import { TeamHomeComponent } from "./team/team-home/team-home.component";
+import { TeamFeedComponent } from "./team/team-feed/team-feed.component";
+import { TeamTaskComponent } from "./team/team-task/team-task.component";
+import { TeamEventComponent } from "./team/team-event/team-event.component";
+import { TeamFilesComponent } from "./team/team-files/team-files.component";
 
 const routes: Routes = [
   { path: "", component: LandingPageComponent },
@@ -49,7 +54,17 @@ const routes: Routes = [
       },
     ],
   },
-  { path: "team/:id", component: TeamComponent },
+  {
+    path: "team/:id",
+    component: TeamComponent,
+    children: [
+      { path: "", component: TeamHomeComponent },
+      { path: "feed", component: TeamFeedComponent },
+      { path: "tasks", component: TeamTaskComponent },
+      { path: "events", component: TeamEventComponent },
+      { path: "files", component: TeamFilesComponent },
+    ],
+  },
   {
     path: "task",
     component: TaskComponent,

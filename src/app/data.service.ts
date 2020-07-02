@@ -17,7 +17,14 @@ export class DataService {
   private conversationIDSubject = new BehaviorSubject(0);
   currentConversationID = this.conversationIDSubject.asObservable();
 
+  private teamSubject = new BehaviorSubject(0);
+  currentTeam = this.teamSubject.asObservable();
+
   constructor() {}
+
+  changeCurrentTeam(team) {
+    this.teamSubject.next(team);
+  }
 
   changeErrorModalMessage(message: string) {
     this.messageSource.next(message);
