@@ -98,6 +98,7 @@ import { SubmitTaskComponent } from "./task/modals/submit-task/submit-task.compo
 import { TasksChartComponent } from "./team/team-home/tasks-chart/tasks-chart.component";
 
 import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { TeamSettingsComponent } from './team/team-settings/team-settings.component';
 
 @NgModule({
   declarations: [
@@ -183,6 +184,7 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     AssignedComponent,
     SubmitTaskComponent,
     TasksChartComponent,
+    TeamSettingsComponent,
   ],
   imports: [
     BrowserAnimationsModule,

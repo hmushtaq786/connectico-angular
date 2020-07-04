@@ -6,7 +6,6 @@
       <div class="col-md-12">
         <div
           class="row heading-column"
-          (click)="leftbar_click($event)"
           [routerLink]="['/team', team.t_id__tm_id]"
         >
           <a style="margin-right: 5px;"><i class="fas fa-home"></i></a>Home
@@ -16,11 +15,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div
-          class="row heading-column"
-          (click)="leftbar_click($event)"
-          [routerLink]="['feed']"
-        >
+        <div class="row heading-column" [routerLink]="['feed']">
           <a style="margin-right: 5px;"><i class="fas fa-newspaper"></i></a>Feed
         </div>
       </div>
@@ -28,11 +23,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div
-          class="row heading-column"
-          (click)="leftbar_click($event)"
-          [routerLink]="['tasks']"
-        >
+        <div class="row heading-column" [routerLink]="['tasks']">
           <a style="margin-right: 5px;"><i class="fas fa-folder"></i></a>Tasks
         </div>
       </div>
@@ -40,11 +31,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div
-          class="row heading-column"
-          (click)="leftbar_click($event)"
-          [routerLink]="['events']"
-        >
+        <div class="row heading-column" [routerLink]="['events']">
           <a style="margin-right: 5px;"><i class="fas fa-calendar-star"></i></a
           >Events
         </div>
@@ -53,11 +40,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div
-          class="row heading-column"
-          (click)="leftbar_click($event)"
-          [routerLink]="['files']"
-        >
+        <div class="row heading-column" [routerLink]="['files']">
           <a style="margin-right: 5px;"><i class="fas fa-file-signature"></i></a
           >Files
         </div>
@@ -66,7 +49,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column">
+        <div class="row heading-column" [routerLink]="['settings']">
           <a style="margin-right: 5px;"><i class="fas fa-cog"></i></a>Settings
         </div>
       </div>
@@ -96,38 +79,6 @@
       <div class="col-md-12" style="padding: 0px;">
         <router-outlet></router-outlet>
       </div>
-      <!-- <div
-        class="col-md-12"
-        *ngIf="screen === 'team_home'"
-        style="padding: 0px;"
-      >
-        <router-outlet></router-outlet> -->
-      <!-- <app-team-home [currentTeam]="team"></app-team-home> -->
-      <!-- </div>
-      <div class="col-md-12" *ngIf="screen === 'team_feed'">
-        <app-team-feed [currentTeam]="team"></app-team-feed>
-      </div>
-      <div
-        class="col-md-12"
-        *ngIf="screen === 'team_task'"
-        style="padding: 0px;"
-      >
-        <app-team-task [currentTeam]="team"></app-team-task>
-      </div>
-      <div
-        class="col-md-12"
-        *ngIf="screen === 'team_event'"
-        style="padding: 0px;"
-      >
-        <app-team-event [currentTeam]="team"></app-team-event>
-      </div>
-      <div
-        class="col-md-12"
-        *ngIf="screen === 'team_files'"
-        style="padding: 0px;"
-      >
-        <app-team-files [currentTeam]="team"></app-team-files>
-      </div> -->
     </div>
   </div>
 

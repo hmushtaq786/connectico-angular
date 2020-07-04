@@ -106,4 +106,12 @@ export class NavbarComponent implements OnInit {
     this.cookieService.delete("auth-token");
     this.router.navigate(["/"]);
   }
+
+  navigate(id) {
+    this.router
+      .navigateByUrl("/loading", { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(["team/" + id]);
+      });
+  }
 }

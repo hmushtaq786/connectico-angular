@@ -23,6 +23,7 @@ import { TeamFeedComponent } from "./team/team-feed/team-feed.component";
 import { TeamTaskComponent } from "./team/team-task/team-task.component";
 import { TeamEventComponent } from "./team/team-event/team-event.component";
 import { TeamFilesComponent } from "./team/team-files/team-files.component";
+import { TeamSettingsComponent } from "./team/team-settings/team-settings.component";
 
 const routes: Routes = [
   { path: "", component: LandingPageComponent },
@@ -58,11 +59,17 @@ const routes: Routes = [
     path: "team/:id",
     component: TeamComponent,
     children: [
-      { path: "", component: TeamHomeComponent },
+      {
+        path: "",
+        redirectTo: "home",
+        pathMatch: "full",
+      },
+      { path: "home", component: TeamHomeComponent },
       { path: "feed", component: TeamFeedComponent },
       { path: "tasks", component: TeamTaskComponent },
       { path: "events", component: TeamEventComponent },
       { path: "files", component: TeamFilesComponent },
+      { path: "settings", component: TeamSettingsComponent },
     ],
   },
   {
