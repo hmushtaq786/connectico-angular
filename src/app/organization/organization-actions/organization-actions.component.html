@@ -2,30 +2,25 @@
   <div class="col-md-12">
     <div class="row">
       <div class="col-md-2"></div>
-      <div
-        style="text-align: center; top: 10px; background-color: #f0f2ef;"
-        class="col-md-8"
-      >
-        <div
-          style="font-size: 20px; padding: 10px; font-family: sans-serif; color: white; background-color: royalblue;"
-          class="row"
-        >
-          <a style="margin-right:5px"
+      <div class="col-md-8 box">
+        <div class="row box-heading">
+          <a style="margin-right: 5px;"
             ><i style="color: white;" class="fas fa-tools"></i></a
           >Actions
         </div>
         <div class="row">
           <div class="col-md-3" style="border-right: 1px solid lightgrey;">
             <div class="row heading-column" (click)="changeSection($event)">
-              <a style="margin-right:5px"><i class="fas fa-plus-square"></i></a
+              <a style="margin-right: 5px;"
+                ><i class="fas fa-plus-square"></i></a
               >New workspace
             </div>
             <div class="row heading-column" (click)="changeSection($event)">
-              <a style="margin-right:5px"><i class="fas fa-user-plus"></i></a
+              <a style="margin-right: 5px;"><i class="fas fa-user-plus"></i></a
               >Add members
             </div>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-9" style="background-color: #feffff;">
             <!-- inside details box -->
             <app-create-workspace
               *ngIf="currentSection === 'New workspace'"

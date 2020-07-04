@@ -4,10 +4,31 @@
   padding-right: 60px;
   text-align: left;
   font-family: sans-serif;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .heading-column:hover {
-  background-color: rgb(233, 233, 233);
+  background-color: #17252a;
   cursor: pointer;
+  color: #3aafa9;
+}
+
+.heading-column:hover a i {
+  /* color: #d75404; */
+  color: #3aafa9;
+}
+
+.box {
+  text-align: center;
+  top: 10px;
+  background-color: #def2f1;
+  border: 1px solid lightgrey;
+}
+
+.box-heading {
+  font-size: 20px;
+  padding: 10px;
+  font-family: sans-serif;
+  color: white;
+  background-color: #17252a;
 }

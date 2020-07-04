@@ -7,4 +7,9 @@
 
 .left-column {
   font-weight: bold;
+  /* font-size: 16px; */
+}
+
+.icons {
+  color: #17252a;
 }

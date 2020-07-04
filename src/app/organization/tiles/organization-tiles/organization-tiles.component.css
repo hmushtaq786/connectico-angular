@@ -9,6 +9,12 @@
 }
 
 .tile:hover {
-  background-color: rgb(233, 233, 233);
+  background-color: #17252a;
   cursor: pointer;
+  color: #3aafa9;
+}
+
+.tile:hover a i {
+  /* color: #d75404; */
+  color: #3aafa9;
 }
