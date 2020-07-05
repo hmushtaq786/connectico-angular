@@ -243,3 +243,15 @@ footer p strong {
     font-size: 14px;
   }
 }
+
+.action-tab {
+  visibility: visible !important;
+  background-color: #3aafa9 !important;
+  padding: 15px !important;
+  padding-bottom: 0px !important;
+}
+
+.action-tab:hover {
+  background-color: #17252a !important;
+  cursor: pointer;
+}

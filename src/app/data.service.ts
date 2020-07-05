@@ -17,10 +17,17 @@ export class DataService {
   private conversationIDSubject = new BehaviorSubject(0);
   currentConversationID = this.conversationIDSubject.asObservable();
 
+  private projectSubject = new BehaviorSubject(0);
+  currentProject = this.projectSubject.asObservable();
+
   private teamSubject = new BehaviorSubject(0);
   currentTeam = this.teamSubject.asObservable();
 
   constructor() {}
+
+  changeCurrentProject(project) {
+    this.projectSubject.next(project);
+  }
 
   changeCurrentTeam(team) {
     this.teamSubject.next(team);

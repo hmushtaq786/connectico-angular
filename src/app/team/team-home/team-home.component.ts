@@ -6,10 +6,6 @@ import { Router, ActivatedRoute } from "@angular/router";
 
 // declare const counter: any;
 
-declare const totalTeamMembers: any;
-declare const tasksCompleted: any;
-declare const tasksRemaining: any;
-
 @Component({
   selector: "app-team-home",
   templateUrl: "./team-home.component.html",

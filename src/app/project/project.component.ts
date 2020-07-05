@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CookieService } from "ngx-cookie-service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { ConnectionService } from "../connection.service";
+import { DataService } from "../data.service";
 
 @Component({
   selector: "app-project",
@@ -18,7 +18,7 @@ export class ProjectComponent implements OnInit {
     private cookieService: CookieService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private connectionService: ConnectionService
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
@@ -34,6 +34,7 @@ export class ProjectComponent implements OnInit {
         if (element.p_id__p_id == +params.get("id")) {
           // + is for converting the string to int
           this.project = element;
+          this.dataService.changeCurrentProject(this.project);
         }
       });
     });

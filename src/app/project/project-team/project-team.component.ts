@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ConnectionService } from "src/app/connection.service";
+import { Router } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
+import { DataService } from "src/app/data.service";
 
 @Component({
   selector: "app-project-team",
@@ -7,13 +10,27 @@ import { ConnectionService } from "src/app/connection.service";
   styleUrls: ["./project-team.component.css"],
 })
 export class ProjectTeamComponent implements OnInit {
-  @Input() currentProject;
+  currentProject;
 
   teams: any;
 
-  constructor(private connectionService: ConnectionService) {}
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router,
+    private cookieService: CookieService,
+    private dataService: DataService
+  ) {}
 
   ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+
+    this.dataService.currentProject.subscribe(
+      (data) => (this.currentProject = data)
+    );
+
     this.connectionService
       .getTeamByPID(this.currentProject.p_id__p_id)
       .subscribe(

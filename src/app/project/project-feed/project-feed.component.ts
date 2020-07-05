@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { ConnectionService } from "src/app/connection.service";
 import { Router } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
+import { DataService } from "src/app/data.service";
 
 @Component({
   selector: "app-project-feed",
@@ -9,7 +11,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./project-feed.component.css"],
 })
 export class ProjectFeedComponent implements OnInit {
-  @Input() currentProject;
+  currentProject;
 
   user: any;
   org: any;
@@ -44,10 +46,21 @@ export class ProjectFeedComponent implements OnInit {
 
   constructor(
     private connectionService: ConnectionService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService,
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+
+    this.dataService.currentProject.subscribe(
+      (data) => (this.currentProject = data)
+    );
+
     this.user = JSON.parse(localStorage.getItem("user"));
     this.org = JSON.parse(localStorage.getItem("org"));
     // this.members = JSON.parse(localStorage.getItem("workspace-members"));
@@ -109,7 +122,7 @@ export class ProjectFeedComponent implements OnInit {
                 .navigateByUrl("/loading", { skipLocationChange: true })
                 .then(() => {
                   this.router.navigate([
-                    "project/" + this.currentProject.p_id__p_id,
+                    "project/" + this.currentProject.p_id__p_id + "/feed",
                   ]);
                 });
             },
@@ -165,7 +178,9 @@ export class ProjectFeedComponent implements OnInit {
         this.router
           .navigateByUrl("/loading", { skipLocationChange: true })
           .then(() => {
-            this.router.navigate(["project/" + this.currentProject.p_id__p_id]);
+            this.router.navigate([
+              "project/" + this.currentProject.p_id__p_id + "/feed",
+            ]);
           });
       },
       (error) => console.log(error)

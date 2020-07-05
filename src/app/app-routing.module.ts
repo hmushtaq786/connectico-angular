@@ -24,6 +24,12 @@ import { TeamTaskComponent } from "./team/team-task/team-task.component";
 import { TeamEventComponent } from "./team/team-event/team-event.component";
 import { TeamFilesComponent } from "./team/team-files/team-files.component";
 import { TeamSettingsComponent } from "./team/team-settings/team-settings.component";
+import { ProjectHomeComponent } from "./project/project-home/project-home.component";
+import { ProjectFeedComponent } from "./project/project-feed/project-feed.component";
+import { ProjectTeamComponent } from "./project/project-team/project-team.component";
+import { ProjectEventComponent } from "./project/project-event/project-event.component";
+import { ProjectFilesComponent } from "./project/project-files/project-files.component";
+import { ProjectSettingsComponent } from "./project/project-settings/project-settings.component";
 
 const routes: Routes = [
   { path: "", component: LandingPageComponent },
@@ -37,7 +43,23 @@ const routes: Routes = [
     //   { path: "feed", component: FeedComponent },
     // ],
   },
-  { path: "project/:id", component: ProjectComponent },
+  {
+    path: "project/:id",
+    component: ProjectComponent,
+    children: [
+      {
+        path: "",
+        redirectTo: "home",
+        pathMatch: "full",
+      },
+      { path: "home", component: ProjectHomeComponent },
+      { path: "feed", component: ProjectFeedComponent },
+      { path: "teams", component: ProjectTeamComponent },
+      { path: "events", component: ProjectEventComponent },
+      { path: "files", component: ProjectFilesComponent },
+      { path: "settings", component: ProjectSettingsComponent },
+    ],
+  },
   {
     path: "messages",
     component: MessagesComponent,

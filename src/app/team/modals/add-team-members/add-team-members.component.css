@@ -40,35 +40,11 @@
   background-color: white;
 }
 
-.close-button {
-  padding: 5px;
-  font-family: sans-serif;
-  font-size: 15px;
-  width: 100px;
-  height: 35px;
-  margin-left: 0px;
-  margin-right: 0px;
-  background-color: #17252a;
-  border: 1px solid white;
-  color: white;
-  font-family: sans-serif;
-}
-
-.close-button:hover {
-  background-color: #17252a;
-  border: 1px solid #2b7a78;
-}
-
 .message-button:hover {
   background-color: #17252a;
   color: white;
 }
-/* 
-  #centralModalSm {
-    overflow-y: initial;
-  } */
 
 .member-tile:hover {
-  /* background-color: rgb(233, 233, 233); */
   background-color: #def2f1;
 }

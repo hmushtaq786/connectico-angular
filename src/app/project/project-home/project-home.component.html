@@ -32,17 +32,11 @@
 
   <div id="projectFacts" class="sectionClass" style="padding-bottom: 5px;">
     <div class="fullWidth eight columns">
-      <div class="projectFactsWrap">
+      <div class="projectFactsWrap" style="padding: 0px;">
         <div
           id="createProjectTeamButton"
-          class="item wow fadeInUpBig animated animated"
-          data-number="70"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 15px;
-            padding-bottom: 0px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab"
+          data-number="0"
           (click)="openModal('createTeam')"
         >
           <i class="fas fa-folder-plus"></i>
@@ -50,14 +44,8 @@
         </div>
 
         <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="359"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 15px;
-            padding-bottom: 0px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab"
+          data-number="0"
           (click)="openModal('createProjectEvent')"
         >
           <i class="fa fa-calendar-plus"></i>
@@ -65,14 +53,8 @@
         </div>
         <div
           id="addProjectMemberButton"
-          class="item wow fadeInUpBig animated animated"
-          data-number="246"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 15px;
-            padding-bottom: 0px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab"
+          data-number="0"
           (click)="openModal('addProjectMembers')"
         >
           <i class="fa fa-user-plus"></i>
@@ -80,14 +62,8 @@
         </div>
 
         <div
-          class="item wow fadeInUpBig animated animated"
-          data-number="246"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 15px;
-            padding-bottom: 0px;
-          "
+          class="item wow fadeInUpBig animated animated action-tab"
+          data-number="0"
           (click)="openModal('leaveProject')"
         >
           <i class="fa fa-sign-out-alt"></i>
@@ -105,14 +81,8 @@
     <div class="fullWidth eight columns">
       <div class="projectFactsWrap">
         <div
-          class="item wow fadeInUpBig animated animated"
+          class="item wow fadeInUpBig animated animated action-tab"
           attr.data-number="{{ totalProjectMembers }}"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 15px;
-            padding-bottom: 0px;
-          "
           (click)="openModal('totalProjectMembers')"
         >
           <i class="fas fa-users"></i>
@@ -122,14 +92,8 @@
         </div>
 
         <div
-          class="item wow fadeInUpBig animated animated disabled"
+          class="item wow fadeInUpBig animated animated action-tab disabled action-tab-locked"
           attr.data-number="{{ totalCompletedTasks }}"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 15px;
-            padding-bottom: 0px;
-          "
           (click)="projectsDone()"
         >
           <i class="fa fa-clipboard-check"></i>
@@ -138,14 +102,8 @@
           <p>Tasks completed</p>
         </div>
         <div
-          class="item wow fadeInUpBig animated animated disabled"
+          class="item wow fadeInUpBig animated animated action-tab disabled action-tab-locked"
           attr.data-number="{{ totalRemainingTasks }}"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 15px;
-            padding-bottom: 0px;
-          "
           (click)="projectsLeft()"
         >
           <i class="fa fa-clipboard-list"></i>
@@ -155,14 +113,8 @@
         </div>
 
         <div
-          class="item wow fadeInUpBig animated animated disabled"
+          class="item wow fadeInUpBig animated animated action-tab disabled action-tab-locked"
           attr.data-number="{{ totalTeams }}"
-          style="
-            visibility: visible;
-            background-color: royalblue;
-            padding: 15px;
-            padding-bottom: 0px;
-          "
           (click)="viewTeams()"
         >
           <i class="fa fa-users-class"></i>
@@ -195,7 +147,7 @@
               [ngStyle]="{ width: team.completed + '%' }"
               style="
                 height: 20px;
-                background-color: royalblue;
+                background-color: #3aafa9;
                 font-family: sans-serif;
               "
               aria-valuenow="0"

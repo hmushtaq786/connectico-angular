@@ -60,12 +60,12 @@
             >Workspaces
           </a>
           <div
-            class="dropdown-menu dropdown-primary"
+            class="dropdown-menu"
             aria-labelledby="navbarDropdownMenuLink-555"
           >
             <a
               *ngFor="let workspace of orgWorkspaces"
-              class="dropdown-item"
+              class="dropdown-item menu-option"
               [routerLink]="['/workspace', workspace.w_id__w_id]"
               [routerLinkActive]="'//active'"
               >{{ workspace.w_id__w_name }}</a
@@ -82,12 +82,13 @@
             >Projects
           </a>
           <div
-            class="dropdown-menu dropdown-primary"
+            class="dropdown-menu"
             aria-labelledby="navbarDropdownMenuLink-555"
           >
             <a
               *ngFor="let project of workspaceProjects"
-              class="dropdown-item"
+              class="dropdown-item menu-option"
+              (click)="navigate('project', project.p_id__p_id)"
               [routerLink]="['/project', project.p_id__p_id]"
               [routerLinkActive]="'//active'"
               >{{ project.p_id__p_name }}</a
@@ -110,7 +111,7 @@
             <a
               *ngFor="let team of projectTeams"
               class="dropdown-item menu-option"
-              (click)="navigate(team.t_id__tm_id)"
+              (click)="navigate('team', team.t_id__tm_id)"
               >{{ team.t_id__tm_name }}</a
             >
           </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ConnectionService } from "src/app/connection.service";
 import { DataService } from "src/app/data.service";
+import { CookieService } from "ngx-cookie-service";
+import { Router } from "@angular/router";
 
 declare const counter: any;
 
@@ -14,7 +16,7 @@ declare const totalTeams: any;
   styleUrls: ["./project-home.component.css"],
 })
 export class ProjectHomeComponent implements OnInit {
-  @Input() currentProject;
+  currentProject;
   modalMessage = "<System message>";
   user: any;
   teams: any;
@@ -25,10 +27,19 @@ export class ProjectHomeComponent implements OnInit {
 
   constructor(
     private connectionService: ConnectionService,
-    private data: DataService
+    private cookieService: CookieService,
+    private data: DataService,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+
+    this.data.currentProject.subscribe((data) => (this.currentProject = data));
+
     counter(
       this.totalProjectMembers,
       this.totalCompletedTasks,

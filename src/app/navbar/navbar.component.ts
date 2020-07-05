@@ -107,11 +107,11 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(["/"]);
   }
 
-  navigate(id) {
+  navigate(component, id) {
     this.router
       .navigateByUrl("/loading", { skipLocationChange: true })
       .then(() => {
-        this.router.navigate(["team/" + id]);
+        this.router.navigate([component + "/" + id]);
       });
   }
 }

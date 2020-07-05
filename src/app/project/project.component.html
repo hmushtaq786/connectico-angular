@@ -1,43 +1,30 @@
 <app-navbar></app-navbar>
 
 <div class="row">
-  <div
-    class="col-md-2"
-    style="
-      background-color: #f0f2ef;
-      border-right: 1px solid lightgrey;
-      height: auto;
-    "
-  >
-    <!-- <div class="container"> -->
+  <div class="col-md-2 left-column">
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right: 5px;"
-            ><i class="fas fa-home" style="color: royalblue;"></i></a
-          >Home
+        <div
+          class="row heading-column"
+          [routerLink]="['/project', project.p_id__p_id]"
+        >
+          <a style="margin-right: 5px;"><i class="fas fa-home"></i></a>Home
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right: 5px;"
-            ><i class="fas fa-newspaper" style="color: royalblue;"></i></a
-          >Feed
+        <div class="row heading-column" [routerLink]="['feed']">
+          <a style="margin-right: 5px;"><i class="fas fa-newspaper"></i></a>Feed
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right: 5px;"
-            ><i
-              class="fas fa-users-class"
-              style="font-size: 13px; color: royalblue;"
-            ></i></a
+        <div class="row heading-column" [routerLink]="['teams']">
+          <a style="margin-right: 5px;"><i class="fas fa-users-class"></i></a
           >Teams
         </div>
       </div>
@@ -45,9 +32,8 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right: 5px;"
-            ><i class="fas fa-calendar-star" style="color: royalblue;"></i></a
+        <div class="row heading-column" [routerLink]="['events']">
+          <a style="margin-right: 5px;"><i class="fas fa-calendar-star"></i></a
           >Events
         </div>
       </div>
@@ -55,22 +41,26 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" (click)="leftbar_click($event)">
-          <a style="margin-right: 5px;"
-            ><i class="fas fa-file-signature" style="color: royalblue;"></i></a
+        <div class="row heading-column" [routerLink]="['files']">
+          <a style="margin-right: 5px;"><i class="fas fa-file-signature"></i></a
           >Files
         </div>
       </div>
       <!-- </div> -->
     </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row heading-column" [routerLink]="['settings']">
+          <a style="margin-right: 5px;"><i class="fas fa-cog"></i></a>Settings
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="col-md-10" style="padding-right: 8%;">
+  <div class="col-md-9 right-column">
     <div class="row">
-      <div
-        class="col-md-12"
-        style="background-color: royalblue; color: #f3ffff; margin: auto;"
-      >
+      <div class="col-md-12 header">
         <h3 style="font-family: sans-serif; padding: 5px; margin: auto;">
           {{ project.p_id__workspace_id__w_name + " " }}
           <span style="font-weight: normal; font-size: 25px;"
@@ -83,38 +73,12 @@
         </h3>
       </div>
     </div>
-    <div class="row">
-      <div
-        class="col-md-12"
-        style="padding: 0px;"
-        *ngIf="screen === 'project_home'"
-      >
-        <app-project-home [currentProject]="project"></app-project-home>
-      </div>
-      <div class="col-md-12" *ngIf="screen === 'project_feed'">
-        <app-project-feed [currentProject]="project"></app-project-feed>
-      </div>
-      <div
-        class="col-md-12"
-        *ngIf="screen === 'project_team'"
-        style="padding: 0px;"
-      >
-        <app-project-team [currentProject]="project"></app-project-team>
-      </div>
-      <div
-        class="col-md-12"
-        *ngIf="screen === 'project_event'"
-        style="padding: 0px;"
-      >
-        <app-project-event [currentProject]="project"></app-project-event>
-      </div>
-      <div
-        class="col-md-12"
-        *ngIf="screen === 'project_files'"
-        style="padding: 0px;"
-      >
-        <app-project-files [currentProject]="project"></app-project-files>
+    <div class="row" style="background-color: #feffff; padding-right: 0px;">
+      <div class="col-md-12" style="padding: 0px;">
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
+
+  <div class="col-md-1"></div>
 </div>
