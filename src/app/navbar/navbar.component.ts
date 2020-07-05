@@ -45,7 +45,7 @@ export class NavbarComponent implements OnInit {
               $("#navbarDropdownMessages").html(count.toString());
               $("#defaultmessagelist").remove();
               $("#messageslist").append(
-                "<a class='dropdown-item' href='http://localhost:4200/messages'>" +
+                "<a class='dropdown-item menu-option' href='http://localhost:4200/messages'>" +
                   JSON.stringify(data.message) +
                   "</a>"
               );
