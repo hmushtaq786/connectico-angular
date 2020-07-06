@@ -17,6 +17,9 @@ export class DataService {
   private conversationIDSubject = new BehaviorSubject(0);
   currentConversationID = this.conversationIDSubject.asObservable();
 
+  private workspaceSubject = new BehaviorSubject(0);
+  currentWorkspace = this.workspaceSubject.asObservable();
+
   private projectSubject = new BehaviorSubject(0);
   currentProject = this.projectSubject.asObservable();
 
@@ -24,6 +27,10 @@ export class DataService {
   currentTeam = this.teamSubject.asObservable();
 
   constructor() {}
+
+  changeCurrentWorkspace(workspace) {
+    this.workspaceSubject.next(workspace);
+  }
 
   changeCurrentProject(project) {
     this.projectSubject.next(project);

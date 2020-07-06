@@ -30,6 +30,10 @@ import { ProjectTeamComponent } from "./project/project-team/project-team.compon
 import { ProjectEventComponent } from "./project/project-event/project-event.component";
 import { ProjectFilesComponent } from "./project/project-files/project-files.component";
 import { ProjectSettingsComponent } from "./project/project-settings/project-settings.component";
+import { WorkspaceProjectComponent } from "./workspace/workspace-project/workspace-project.component";
+import { WorkspaceEventComponent } from "./workspace/workspace-event/workspace-event.component";
+import { WorkspaceFilesComponent } from "./workspace/workspace-files/workspace-files.component";
+import { WorkspaceSettingsComponent } from "./workspace/workspace-settings/workspace-settings.component";
 
 const routes: Routes = [
   { path: "", component: LandingPageComponent },
@@ -38,10 +42,19 @@ const routes: Routes = [
   {
     path: "workspace/:id",
     component: WorkspaceComponent,
-    // children: [
-    //   { path: "", component: WorkspaceHomeComponent },
-    //   { path: "feed", component: FeedComponent },
-    // ],
+    children: [
+      {
+        path: "",
+        redirectTo: "home",
+        pathMatch: "full",
+      },
+      { path: "home", component: WorkspaceHomeComponent },
+      { path: "feed", component: FeedComponent },
+      { path: "projects", component: WorkspaceProjectComponent },
+      { path: "events", component: WorkspaceEventComponent },
+      { path: "files", component: WorkspaceFilesComponent },
+      { path: "settings", component: WorkspaceSettingsComponent },
+    ],
   },
   {
     path: "project/:id",

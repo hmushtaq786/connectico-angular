@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 
 import { DataService } from "src/app/data.service";
 import { ConnectionService } from "src/app/connection.service";
+import { CookieService } from "ngx-cookie-service";
+import { Router } from "@angular/router";
 
 // declare const counter: any;
 
@@ -24,10 +26,21 @@ export class WorkspaceHomeComponent implements OnInit {
 
   constructor(
     private connectionService: ConnectionService,
-    private data: DataService
+    private cookieService: CookieService,
+    private data: DataService,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+
+    this.data.currentWorkspace.subscribe(
+      (data) => (this.currentWorkspace = data)
+    );
+
     this.user = JSON.parse(localStorage.getItem("user"));
 
     if (this.currentWorkspace.w_manager_id != this.user.id) {

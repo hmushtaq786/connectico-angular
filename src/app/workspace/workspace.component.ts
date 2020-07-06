@@ -3,6 +3,7 @@ import { CookieService } from "ngx-cookie-service";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { ConnectionService } from "../connection.service";
+import { DataService } from "../data.service";
 
 @Component({
   selector: "app-workspace",
@@ -18,7 +19,8 @@ export class WorkspaceComponent implements OnInit {
     private cookieService: CookieService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private connectionService: ConnectionService
+    private connectionService: ConnectionService,
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
@@ -41,6 +43,7 @@ export class WorkspaceComponent implements OnInit {
         if (element.w_id == +params.get("id")) {
           // + is for converting the string to int
           this.workspace = element;
+          this.dataService.changeCurrentWorkspace(this.workspace);
         }
       });
     });

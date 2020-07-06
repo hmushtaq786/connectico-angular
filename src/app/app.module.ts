@@ -100,6 +100,7 @@ import { TasksChartComponent } from "./team/team-home/tasks-chart/tasks-chart.co
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { TeamSettingsComponent } from './team/team-settings/team-settings.component';
 import { ProjectSettingsComponent } from './project/project-settings/project-settings.component';
+import { WorkspaceSettingsComponent } from './workspace/workspace-settings/workspace-settings.component';
 
 @NgModule({
   declarations: [
@@ -187,6 +188,7 @@ import { ProjectSettingsComponent } from './project/project-settings/project-set
     TasksChartComponent,
     TeamSettingsComponent,
     ProjectSettingsComponent,
+    WorkspaceSettingsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
