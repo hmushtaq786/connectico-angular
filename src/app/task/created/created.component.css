@@ -1,7 +1,8 @@
 .task-tile {
   padding: 10px;
   font-family: sans-serif;
-  background-color: #f0f2ef;
+  background-color: #faffff;
+  border: 1px solid #def2f1;
 }
 
 .detail-tile {
@@ -35,6 +36,6 @@
 }
 
 .task-tile:hover {
-  background-color: #e9e9e9;
+  background-color: #def2f1;
   cursor: pointer;
 }

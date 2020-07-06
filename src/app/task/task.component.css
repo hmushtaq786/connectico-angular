@@ -5,12 +5,12 @@
 }
 
 .task-tile:hover {
-  background-color: cornflowerblue;
+  background-color: #3aafa9;
   cursor: pointer;
   color: #f3ffff;
 }
 
 .active {
-  background-color: #4169e1;
+  background-color: #17252a;
   color: #f3ffff;
 }

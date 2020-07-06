@@ -2,21 +2,16 @@
   <div class="col-md-12">
     <div class="row task-tile" (click)="openDetails(task.t_id)">
       <div class="col-md-10">
+        <i style="color: #2b7a78;" class="fas fa-caret-down"></i>
         {{ task.t_name }}
       </div>
       <div class="col-md-2" style="text-align: center;">
-        <a
-          *ngIf="task.t_status == 'Submitted'"
-          href="#"
-          class="badge badge-primary"
-          >{{ task.t_status }}</a
-        >
-        <a
-          *ngIf="task.t_status == 'Assigned'"
-          href="#"
-          class="badge badge-danger"
-          >{{ task.t_status }}</a
-        >
+        <a *ngIf="task.t_status == 'Submitted'" class="badge badge-primary">{{
+          task.t_status
+        }}</a>
+        <a *ngIf="task.t_status == 'Assigned'" class="badge badge-danger">{{
+          task.t_status
+        }}</a>
         <!-- <button class="task-button disabled" disabled>
           {{ task.t_status }}
         </button> -->
