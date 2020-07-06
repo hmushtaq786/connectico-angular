@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormControl, FormGroup } from "@angular/forms";
 import { ConnectionService } from "src/app/connection.service";
+import { CookieService } from "ngx-cookie-service";
+import { DataService } from "src/app/data.service";
 
 @Component({
   selector: "app-feed",
@@ -9,7 +11,7 @@ import { ConnectionService } from "src/app/connection.service";
   styleUrls: ["./feed.component.css"],
 })
 export class FeedComponent implements OnInit {
-  @Input() currentWorkspace;
+  currentWorkspace;
 
   user: any;
   org: any;
@@ -44,10 +46,21 @@ export class FeedComponent implements OnInit {
 
   constructor(
     private connectionService: ConnectionService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService,
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+
+    this.dataService.currentWorkspace.subscribe(
+      (data) => (this.currentWorkspace = data)
+    );
+
     this.user = JSON.parse(localStorage.getItem("user"));
     this.org = JSON.parse(localStorage.getItem("org"));
     // this.members = JSON.parse(localStorage.getItem("workspace-members"));
@@ -88,7 +101,7 @@ export class FeedComponent implements OnInit {
                 .navigateByUrl("/loading", { skipLocationChange: true })
                 .then(() => {
                   this.router.navigate([
-                    "workspace/" + this.currentWorkspace.w_id,
+                    "workspace/" + this.currentWorkspace.w_id + "/feed",
                   ]);
                 });
             },
@@ -167,7 +180,9 @@ export class FeedComponent implements OnInit {
         this.router
           .navigateByUrl("/loading", { skipLocationChange: true })
           .then(() => {
-            this.router.navigate(["workspace/" + this.currentWorkspace.w_id]);
+            this.router.navigate([
+              "workspace/" + this.currentWorkspace.w_id + "/feed",
+            ]);
           });
       },
       (error) => console.log(error)

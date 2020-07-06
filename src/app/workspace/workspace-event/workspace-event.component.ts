@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ConnectionService } from "src/app/connection.service";
+import { Router } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
+import { DataService } from "src/app/data.service";
 
 @Component({
   selector: "app-workspace-event",
@@ -7,13 +10,27 @@ import { ConnectionService } from "src/app/connection.service";
   styleUrls: ["./workspace-event.component.css"],
 })
 export class WorkspaceEventComponent implements OnInit {
-  @Input() currentWorkspace;
+  currentWorkspace;
 
   events: any;
 
-  constructor(private connectionService: ConnectionService) {}
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router,
+    private cookieService: CookieService,
+    private dataService: DataService
+  ) {}
 
   ngOnInit() {
+    const tokenCookie = this.cookieService.get("auth-token");
+    if (!tokenCookie) {
+      this.router.navigate(["/"]);
+    }
+
+    this.dataService.currentWorkspace.subscribe(
+      (data) => (this.currentWorkspace = data)
+    );
+
     this.connectionService.getEventByWID(this.currentWorkspace.w_id).subscribe(
       (getEventResult: any) => {
         this.events = getEventResult;

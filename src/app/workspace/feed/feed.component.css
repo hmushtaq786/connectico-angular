@@ -5,21 +5,21 @@
   padding-left: 0.8rem;
 }
 /* 
-.myButton {
-  height: 35px;
-  width: 100px;
-  background-color: royalblue;
-  color: white;
-  font-family: sans-serif;
-} */
+  .myButton {
+    height: 35px;
+    width: 100px;
+    background-color: royalblue;
+    color: white;
+    font-family: sans-serif;
+  } */
 .avatar-div {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
 }
 #avatar-img {
   border-radius: 100px;
   background-color: white;
-  padding: 5px;
+  padding: 3px;
 }
 
 #title {

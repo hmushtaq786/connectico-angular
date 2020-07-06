@@ -6,15 +6,15 @@
   height: 35px;
   margin-left: 0px;
   margin-right: 0px;
-  background-color: royalblue;
+  background-color: #17252a !important;
   border: 1px solid white;
   color: white;
   font-family: sans-serif;
 }
 
 .close-button:hover {
-  background-color: royalblue;
-  border: 1px solid cornflowerblue;
+  background-color: #17252a;
+  border: 1px solid #2b7a78;
 }
 
 .modal-body {
