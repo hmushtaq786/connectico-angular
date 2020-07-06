@@ -35,7 +35,9 @@
 }
 
 .message-tile:hover {
-  background-color: rgb(233, 233, 233);
+  background-color: #3aafa9;
+  /* color: #2b7a78; */
+  cursor: pointer;
 }
 
 .message-body {
@@ -45,4 +47,11 @@
   text-align: left;
   padding-top: 2px;
   padding-left: 20px;
+}
+.header {
+  background-color: #2b7a78;
+  color: #f3ffff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: auto;
 }

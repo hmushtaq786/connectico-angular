@@ -1,16 +1,24 @@
 <app-navbar></app-navbar>
 <div class="row">
+  <div class="col-md-1"></div>
   <div
-    class="col-md-4"
+    class="col-md-3"
     style="
-      background-color: gainsboro;
+      background-color: #def2f1;
       min-height: 91vh;
       max-height: 91vh;
       overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0px;
     "
   >
-    <h3 style="padding: 10px; font-family: sans-serif;">Messages</h3>
-    <div class="row" style="margin-top: 10px; margin-bottom: 30px;">
+    <div class="col-md-12 header">
+      <h3 style="font-family: sans-serif; padding: 5px; margin: auto;">
+        Messages
+      </h3>
+    </div>
+    <!-- <h3 style="padding: 10px; font-family: sans-serif;">Messages</h3> -->
+    <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
       <div class="col-md-1"></div>
       <div class="col-md-10">
         <div
@@ -34,7 +42,7 @@
               margin: auto;
               text-align: left;
               padding-top: 2px;
-              padding-left: 25px;
+              padding-left: 35px;
             "
           >
             New message
@@ -70,7 +78,7 @@
           <div class="col-md-10" style="margin: auto;">
             <div class="row">
               <div
-                style="text-align: left; padding-top: 2px; padding-left: 25px;"
+                style="text-align: left; padding-top: 2px; padding-left: 35px;"
                 class="col-md-12"
               >
                 <a
@@ -86,7 +94,7 @@
             </div>
             <div class="row">
               <div class="col-md-12 message-body">
-                <span style="margin-left: 5px;">
+                <span style="margin-left: 5px; padding-left: 10px;">
                   {{ conversation.lastMessage.m_content }}
                 </span>
               </div>
@@ -97,7 +105,7 @@
       <div class="col-md-1"></div>
     </div>
   </div>
-  <div class="col-md-8" style="background-color: #f0f2ef;">
+  <div class="col-md-7" style="background-color: #faffff;">
     <!-- <app-message-detail></app-message-detail> -->
     <!-- <router-outlet></router-outlet> -->
     <div
@@ -108,4 +116,5 @@
       <router-outlet #o="outlet"></router-outlet>
     </div>
   </div>
+  <div class="col-md-1"></div>
 </div>

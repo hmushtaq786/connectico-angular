@@ -6,13 +6,21 @@
   height: 35px;
   margin-left: 0px;
   margin-right: 0px;
-  background-color: royalblue;
+  background-color: #3aafa9;
   border: 1px solid white;
   color: white;
   font-family: sans-serif;
 }
 
 .close-button:hover {
-  background-color: royalblue;
-  border: 1px solid cornflowerblue;
+  background-color: #3aafa9;
+  border: 1px solid #def2f1;
+}
+
+.header {
+  background-color: #3aafa9;
+  color: #f3ffff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: auto;
 }
