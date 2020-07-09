@@ -1,3 +1,6 @@
+<app-in-progress-team [currentTeam]="selectedTeam"></app-in-progress-team>
+<app-completed-team [currentTeam]="selectedTeam"></app-completed-team>
+
 <div style="min-height: 84.5vh;">
   <table
     id="dtBasicExample"
@@ -10,7 +13,8 @@
         <th class="th-sm">Team name</th>
         <th class="th-sm">Description</th>
         <th class="th-sm">Team Lead</th>
-        <th class="th-sm">Tasks assigned</th>
+        <th class="th-sm">Total tasks</th>
+        <th class="th-sm">Check status</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +23,12 @@
         <td>{{ team.tm_description }}</td>
         <td>{{ team.team_lead }}</td>
         <td>{{ team.totalTasks }}</td>
+        <td *ngIf="team.tm_completed == false">
+          <a (click)="inProgress(team)">In progress</a>
+        </td>
+        <td *ngIf="team.tm_completed == true">
+          <a (click)="completed(team)">Completed</a>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -13,6 +13,8 @@ export class ProjectTeamComponent implements OnInit {
   currentProject;
 
   teams: any;
+  user;
+  selectedTeam: any;
 
   constructor(
     private connectionService: ConnectionService,
@@ -31,12 +33,15 @@ export class ProjectTeamComponent implements OnInit {
       (data) => (this.currentProject = data)
     );
 
+    this.user = JSON.parse(localStorage.getItem("user"));
+
     this.connectionService
       .getTeamByPID(this.currentProject.p_id__p_id)
       .subscribe(
         (getTeamResult: any) => {
           this.teams = getTeamResult;
-          console.log(getTeamResult);
+          this.selectedTeam = getTeamResult[0];
+          // console.log(getTeamResult);
           let orgUsers = JSON.parse(localStorage.getItem("org-members"));
           for (var team of this.teams) {
             InnerLoop: for (var user of orgUsers) {
@@ -62,5 +67,18 @@ export class ProjectTeamComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  inProgress(currentTeam) {
+    this.dataService.changeCurrentInProgressTeam(currentTeam);
+    this.selectedTeam = currentTeam;
+    var modal_obj: any = $("#inProgressTeam");
+    modal_obj.modal("show");
+  }
+
+  completed(currentTeam) {
+    this.selectedTeam = currentTeam;
+    var modal_obj: any = $("#completedTeam");
+    modal_obj.modal("show");
   }
 }
