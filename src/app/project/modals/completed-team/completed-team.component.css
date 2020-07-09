@@ -18,7 +18,74 @@
 }
 
 .modal-body {
-  height: 250px;
+  height: 350px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+.close-button {
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 15px;
+  width: 100px;
+  height: 35px;
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: #17252a;
+  border: 1px solid white;
+  color: white;
+  font-family: sans-serif;
+}
+
+.close-button:hover {
+  background-color: #17252a;
+  border: 1px solid #2b7a78;
+}
+
+#avatar-img {
+  border-radius: 100px;
+}
+
+.message-button {
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 15px;
+  width: 100px;
+  height: 35px;
+  margin-left: 0px;
+  margin-right: 0px;
+  border: 1px solid #17252a;
+  font-family: sans-serif;
+  background-color: white;
+}
+
+.message-button:hover {
+  background-color: #17252a;
+  color: white;
+}
+
+.member-tile:hover {
+  background-color: #def2f1;
+}
+.sectiontitle {
+  background-position: center;
+  margin: 5px 0 0px;
+  text-align: center;
+  min-height: 20px;
+  padding-bottom: 0px;
+}
+
+.sectiontitle h2 {
+  font-size: 25px;
+  color: #222;
+  margin-bottom: 0px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 0px;
+}
+
+.headerLine {
+  width: 100px;
+  height: 2px;
+  display: inline-block;
+  background: #101f2e;
 }
