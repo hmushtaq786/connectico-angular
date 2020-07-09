@@ -103,6 +103,7 @@ import { ProjectSettingsComponent } from './project/project-settings/project-set
 import { WorkspaceSettingsComponent } from './workspace/workspace-settings/workspace-settings.component';
 import { InProgressTeamComponent } from './project/modals/in-progress-team/in-progress-team.component';
 import { CompletedTeamComponent } from './project/modals/completed-team/completed-team.component';
+import { TeamFinishComponent } from './team/team-finish/team-finish.component';
 
 @NgModule({
   declarations: [
@@ -193,6 +194,7 @@ import { CompletedTeamComponent } from './project/modals/completed-team/complete
     WorkspaceSettingsComponent,
     InProgressTeamComponent,
     CompletedTeamComponent,
+    TeamFinishComponent,
   ],
   imports: [
     BrowserAnimationsModule,

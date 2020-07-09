@@ -1,3 +1,11 @@
+.locked {
+  /* height: 40px; */
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #ff3547;
+  text-align: center;
+}
+
 .left-column {
   /* background-color: #f0f2ef; */
   /* background-color: #f2edd7ff; */

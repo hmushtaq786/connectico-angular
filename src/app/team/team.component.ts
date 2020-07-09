@@ -11,6 +11,7 @@ import { DataService } from "../data.service";
 export class TeamComponent implements OnInit {
   team: any;
   teams;
+  user;
   screen = "team_home";
   page = "Home";
   constructor(
@@ -27,6 +28,7 @@ export class TeamComponent implements OnInit {
     }
 
     this.teams = JSON.parse(localStorage.getItem("user-teams"));
+    this.user = JSON.parse(localStorage.getItem("user"));
 
     this.activatedRoute.paramMap.subscribe((params) => {
       this.teams.forEach((element) => {
@@ -37,6 +39,11 @@ export class TeamComponent implements OnInit {
         }
       });
     });
+  }
+
+  openFinishModal() {
+    var modal_obj: any = $("#finishTeam");
+    modal_obj.modal("show");
   }
 
   // fold() {

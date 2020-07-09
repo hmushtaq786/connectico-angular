@@ -1,4 +1,12 @@
+<app-team-finish [currentTeam]="team"></app-team-finish>
 <app-navbar></app-navbar>
+
+<div class="row" *ngIf="team.t_id__tm_completed == true">
+  <div class="col-md-12 locked">
+    <i class="fas fa-exclamation-triangle"></i>{{ " " }}This team is locked. No
+    further changes can be made.
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-2 left-column">
@@ -47,13 +55,27 @@
       </div>
     </div>
 
-    <div class="row">
+    <div
+      class="row"
+      *ngIf="team.t_id__team_lead_id__id == user.id"
+      (click)="openFinishModal()"
+    >
       <div class="col-md-12">
-        <div class="row heading-column" [routerLink]="['settings']">
-          <a style="margin-right: 5px;"><i class="fas fa-cog"></i></a>Settings
+        <div class="row heading-column">
+          <a style="margin-right: 5px;"><i class="fas fa-check-square"></i></a
+          >Finish
         </div>
       </div>
     </div>
+
+    <!-- <div class="row" *ngIf="team.t_id__team_lead_id__id == user.id">
+      <div class="col-md-12">
+        <div class="row heading-column" [routerLink]="['settings']">
+          <a style="margin-right: 5px;"><i class="fas fa-cog"></i></a
+          >Settings
+        </div>
+      </div>
+    </div> -->
   </div>
 
   <div class="col-md-9 right-column">
