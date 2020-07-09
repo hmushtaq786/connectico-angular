@@ -47,6 +47,7 @@ export class ConnectionService {
   CLOUDINARY_UPLOAD_PRESET_TEAM_FILE = "czshyy3q";
   CLOUDINARY_UPLOAD_PRESET_TASK_ASSIGNED_FILE = "mo2wzluf";
   CLOUDINARY_UPLOAD_PRESET_TASK_SUBMITTED_FILE = "qzu2kplt";
+  CLOUDINARY_UPLOAD_PRESET_TEAM_COMPLETED_FILE = "kbqrmi03";
 
   constructor(
     private httpClient: HttpClient,
@@ -142,6 +143,20 @@ export class ConnectionService {
       formData.append(
         "upload_preset",
         this.CLOUDINARY_UPLOAD_PRESET_TASK_SUBMITTED_FILE
+      );
+      return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
+    }
+  }
+
+  uploadCompletedTeamFile(file) {
+    if (file == "") {
+      return of("null");
+    } else {
+      var formData = new FormData();
+      formData.append("file", file);
+      formData.append(
+        "upload_preset",
+        this.CLOUDINARY_UPLOAD_PRESET_TEAM_COMPLETED_FILE
       );
       return this.httpClient.post(this.CLOUDINARY_URL_RAW, formData);
     }
@@ -296,6 +311,17 @@ export class ConnectionService {
     return this.httpClient.patch(
       `${this.baseUrl}register/organization/workspaces/tasks/${task_id}/`,
       updatedTask,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  submitUpdatedTeam(updatedTeamData: object, team_id) {
+    const updatedTeam = JSON.stringify(updatedTeamData);
+    return this.httpClient.patch(
+      `${this.baseUrl}register/organization/workspaces/teams/${team_id}/`,
+      updatedTeam,
       {
         headers: this.getHeaders(),
       }
