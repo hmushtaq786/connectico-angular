@@ -10,6 +10,7 @@ import { DataService } from "../data.service";
 })
 export class ProjectComponent implements OnInit {
   project: any;
+  user;
   projects;
   screen = "project_home";
   page = "Home";
@@ -28,6 +29,7 @@ export class ProjectComponent implements OnInit {
     }
 
     this.projects = JSON.parse(localStorage.getItem("user-projects"));
+    this.user = JSON.parse(localStorage.getItem("user"));
 
     this.activatedRoute.paramMap.subscribe((params) => {
       this.projects.forEach((element) => {
@@ -41,22 +43,8 @@ export class ProjectComponent implements OnInit {
     console.log(this.project);
   }
 
-  leftbar_click(event) {
-    if (event.target.innerText === "Home") {
-      this.screen = "project_home";
-      this.page = "Home";
-    } else if (event.target.innerText === "Feed") {
-      this.screen = "project_feed";
-      this.page = "Feed";
-    } else if (event.target.innerText === "Teams") {
-      this.screen = "project_team";
-      this.page = "Teams";
-    } else if (event.target.innerText === "Events") {
-      this.screen = "project_event";
-      this.page = "Events";
-    } else if (event.target.innerText === "Files") {
-      this.screen = "project_files";
-      this.page = "Files";
-    }
+  openFinishModal() {
+    var modal_obj: any = $("#finishProject");
+    modal_obj.modal("show");
   }
 }
