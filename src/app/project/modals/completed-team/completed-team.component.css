@@ -68,14 +68,14 @@
 }
 .sectiontitle {
   background-position: center;
-  margin: 5px 0 0px;
+  margin: 0px;
   text-align: center;
-  min-height: 20px;
+  /* min-height: 20px; */
   padding-bottom: 0px;
 }
 
 .sectiontitle h2 {
-  font-size: 25px;
+  font-size: 20px;
   color: #222;
   margin-bottom: 0px;
   padding-right: 10px;

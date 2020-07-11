@@ -57,7 +57,10 @@
 
     <div
       class="row"
-      *ngIf="team.t_id__team_lead_id__id == user.id"
+      *ngIf="
+        team.t_id__team_lead_id__id == user.id &&
+        team.t_id__tm_completed != true
+      "
       (click)="openFinishModal()"
     >
       <div class="col-md-12">
@@ -98,7 +101,7 @@
       </div>
     </div>
     <div class="row" style="background-color: #feffff; padding-right: 0px;">
-      <div class="col-md-12" style="padding: 0px;">
+      <div id="routerDiv" class="col-md-12" style="padding: 0px;">
         <router-outlet></router-outlet>
       </div>
     </div>

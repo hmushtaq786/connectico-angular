@@ -29,7 +29,14 @@ export class DataService {
   private inProgressTeamSubject = new BehaviorSubject(0);
   currentinProgressTeam = this.inProgressTeamSubject.asObservable();
 
+  private completedTeamSubject = new BehaviorSubject(0);
+  currentCompletedTeam = this.completedTeamSubject.asObservable();
+
   constructor() {}
+
+  changeCurrentCompletedTeam(team) {
+    this.completedTeamSubject.next(team);
+  }
 
   changeCurrentInProgressTeam(team) {
     this.inProgressTeamSubject.next(team);

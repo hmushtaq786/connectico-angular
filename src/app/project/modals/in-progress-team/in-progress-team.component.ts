@@ -22,8 +22,7 @@ export class InProgressTeamComponent implements OnInit {
   ngOnInit() {
     this.dataService.currentinProgressTeam.subscribe((data) => {
       this.currentTeam = data;
-      console.log("hi");
-      console.log(this.currentTeam);
+
       let orgUsers = JSON.parse(localStorage.getItem("org-members"));
       for (var user of orgUsers) {
         if (this.currentTeam.team_lead_id == user.id) {

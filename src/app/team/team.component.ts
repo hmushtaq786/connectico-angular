@@ -36,6 +36,16 @@ export class TeamComponent implements OnInit {
           // + is for converting the string to int
           this.team = element;
           this.dataService.changeCurrentTeam(this.team);
+
+          if (this.team.t_id__tm_completed == true) {
+            var routerDiv = $("#routerDiv");
+            routerDiv.addClass("disabled");
+
+            var finishTab = $("#finishTab");
+            finishTab.addClass("disabled");
+          }
+
+          console.log(this.team);
         }
       });
     });

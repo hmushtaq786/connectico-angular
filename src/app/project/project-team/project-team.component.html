@@ -24,10 +24,25 @@
         <td>{{ team.team_lead }}</td>
         <td>{{ team.totalTasks }}</td>
         <td *ngIf="team.tm_completed == false">
-          <a (click)="inProgress(team)">In progress</a>
+          <a (click)="inProgress(team)"
+            >In progress<a
+              ><i
+                style="padding-right: 10px !important;"
+                class="fas fa-info-circle"
+              >
+              </i></a
+          ></a>
         </td>
         <td *ngIf="team.tm_completed == true">
-          <a (click)="completed(team)">Completed</a>
+          <a (click)="completed(team)"
+            >Completed
+            <a
+              ><i
+                style="padding-right: 10px !important;"
+                class="fas fa-info-circle"
+              >
+              </i></a
+          ></a>
         </td>
       </tr>
     </tbody>

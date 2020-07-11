@@ -1,5 +1,496 @@
 <!-- Central Modal Small -->
 <!-- <form [formGroup]="submitTaskForm" (ngSubmit)="submitTask()"> -->
+
+<div id="templateDiv" style="display: none;">
+  <div class="container">
+    <div class="row" style="border: 1px solid lightgrey; padding: 20px;">
+      <!-- <div class="col-md-1"></div> -->
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <div class="avatar-div">
+              <img
+                id="avatar-img"
+                style="
+                  width: 150px;
+                  height: 150px;
+                  border-width: 10px;
+                  border-radius: 100px;
+                  background-color: white;
+                  padding: 10px;
+                "
+                src="{{ org.photo_address }}"
+                alt="avatar mx-auto white"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <h2
+              style="
+                font-family: sans-serif;
+                font-size: 16px;
+                font-weight: bold;
+              "
+            >
+              {{ org.name }}
+            </h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-5">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Completion report for team:
+            </h3>
+          </div>
+          <div
+            class="col-sm-7"
+            style="
+              text-align: center;
+              border-bottom: 1px solid gray;
+              padding-bottom: 0px;
+            "
+          >
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              {{ currentTeam.tm_name }}
+            </h4>
+          </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-sm-5">
+              <h3>Team lead:</h3>
+            </div>
+            <div class="col-sm-7" style="text-align: center; border-bottom: 1px solid gray; padding-bottom: 0px;">
+              <h3>Hamza Mushtaq</h3>
+            </div>
+          </div> -->
+        <div class="row">
+          <div class="col-sm-5">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Workspace:
+            </h3>
+          </div>
+          <div
+            class="col-sm-7"
+            style="
+              text-align: center;
+              border-bottom: 1px solid gray;
+              padding-bottom: 0px;
+            "
+          >
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              Islamabad HQ
+            </h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <h3 style="font-family: sans-serif; font-size: 15px;">Project:</h3>
+          </div>
+          <div
+            class="col-sm-7"
+            style="
+              text-align: center;
+              border-bottom: 1px solid gray;
+              padding-bottom: 0px;
+            "
+          >
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              Northpole Software
+            </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12" style="padding-top: 20px;">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Description:
+            </h3>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-sm-12"
+            style="padding-top: 10px; text-align: justify;"
+          >
+            <p
+              style="
+                font-family: sans-serif;
+                font-weight: lighter;
+                font-size: 12px;
+              "
+            >
+              {{ currentTeam.tm_description }}
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12" style="padding-top: 20px;">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Participants:
+            </h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              Team lead:
+            </h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10" style="border: 1px solid gray;">
+            <div class="row member-tile" style="">
+              <div
+                style="
+                  text-align: center;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                "
+                class="col-md-2"
+              >
+                <img
+                  id="avatar-img"
+                  style="width: 60px; border-radius: 100px;"
+                  src="https://res.cloudinary.com/connectico/image/upload/v1582964696/user_photos/wyi0az9h1d88r5ntkni8.jpg"
+                  alt="avatar mx-auto white"
+                  class="img-fluid"
+                />
+              </div>
+              <div
+                class="col-md-4"
+                style="margin: auto; text-align: center; padding: 5px;"
+              >
+                <div class="row">
+                  <div
+                    style="font-family: sans-serif; font-size: 12px;"
+                    class="col-md-12"
+                  >
+                    {{ currentTeam.team_lead }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12" style="margin-left: 0px;">
+                    <a
+                      ><i class="fas fa-envelope"></i
+                      ><span
+                        style="
+                          margin-left: 5px;
+                          font-size: 11px;
+                          font-family: sans-serif;
+                        "
+                      >
+                        hm.khanzada786@gmail.com
+                      </span></a
+                    >
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12" style="margin-left: 0px;">
+                    <a
+                      ><i class="fas fa-envelope"></i
+                      ><span
+                        style="
+                          margin-left: 5px;
+                          font-size: 11px;
+                          font-family: sans-serif;
+                        "
+                      >
+                        03006857834
+                      </span></a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6"></div>
+            </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              Members:
+            </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10" style="border: 1px solid gray;">
+            <div class="row member-tile" style="">
+              <div
+                style="
+                  text-align: center;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                "
+                class="col-md-2"
+              >
+                <img
+                  id="avatar-img"
+                  style="width: 60px; border-radius: 100px;"
+                  src="https://res.cloudinary.com/connectico/image/upload/v1582964696/user_photos/wyi0az9h1d88r5ntkni8.jpg"
+                  alt="avatar mx-auto white"
+                  class="img-fluid"
+                />
+              </div>
+              <div
+                class="col-md-4"
+                style="margin: auto; text-align: center; padding: 5px;"
+              >
+                <div class="row">
+                  <div
+                    style="font-family: sans-serif; font-size: 12px;"
+                    class="col-md-12"
+                  >
+                    Asad Shah
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12" style="margin-left: 0px;">
+                    <a
+                      ><i class="fas fa-envelope"></i
+                      ><span
+                        style="
+                          margin-left: 5px;
+                          font-size: 11px;
+                          font-family: sans-serif;
+                        "
+                      >
+                        asad.shah@gmail.com
+                      </span></a
+                    >
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12" style="margin-left: 0px;">
+                    <a
+                      ><i class="fas fa-envelope"></i
+                      ><span
+                        style="
+                          margin-left: 5px;
+                          font-size: 11px;
+                          font-family: sans-serif;
+                        "
+                      >
+                        03006434434
+                      </span></a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6"></div>
+            </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10" style="border: 1px solid gray;">
+            <div class="row member-tile" style="">
+              <div
+                style="
+                  text-align: center;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                "
+                class="col-md-2"
+              >
+                <img
+                  id="avatar-img"
+                  style="width: 60px; border-radius: 100px;"
+                  src="https://res.cloudinary.com/connectico/image/upload/v1582964696/user_photos/wyi0az9h1d88r5ntkni8.jpg"
+                  alt="avatar mx-auto white"
+                  class="img-fluid"
+                />
+              </div>
+              <div
+                class="col-md-4"
+                style="margin: auto; text-align: center; padding: 5px;"
+              >
+                <div class="row">
+                  <div
+                    style="font-family: sans-serif; font-size: 12px;"
+                    class="col-md-12"
+                  >
+                    Ahmed Ali
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12" style="margin-left: 0px;">
+                    <a
+                      ><i class="fas fa-envelope"></i
+                      ><span
+                        style="
+                          margin-left: 5px;
+                          font-size: 11px;
+                          font-family: sans-serif;
+                        "
+                      >
+                        hm.ahmed@gmail.com
+                      </span></a
+                    >
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12" style="margin-left: 0px;">
+                    <a
+                      ><i class="fas fa-envelope"></i
+                      ><span
+                        style="
+                          margin-left: 5px;
+                          font-size: 11px;
+                          font-family: sans-serif;
+                        "
+                      >
+                        03304385434
+                      </span></a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6"></div>
+            </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12" style="padding-top: 20px;">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Submission:
+            </h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              Comment:
+            </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div
+            class="col-sm-12"
+            style="padding-top: 10px; text-align: justify;"
+          >
+            <p
+              style="
+                font-family: sans-serif;
+                font-weight: lighter;
+                font-size: 12px;
+              "
+            >
+              {{ currentTeam.tm_submitted_comment }}
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              File:
+            </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div
+            class="col-sm-12"
+            style="
+              padding-top: 10px;
+              text-align: justify;
+              font-family: sans-serif;
+              font-size: 12px;
+            "
+          >
+            Download team submission file from
+            <a href="{{ currentTeam.tm_submitted_filepath }}">here</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12" style="padding-top: 20px;">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Signature:
+            </h3>
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 40px;">
+          <div
+            class="col-md-12"
+            style="
+              left: 20px;
+              width: 200px;
+              border-top: 1px solid gray;
+              padding-top: 5px;
+              font-family: sans-serif;
+              font-size: 14px;
+            "
+          >
+            Project Manager
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-1"></div> -->
+    </div>
+  </div>
+</div>
+
 <div
   class="modal fade"
   id="completedTeam"
@@ -38,6 +529,15 @@
       <div class="modal-body">
         <div class="container">
           <div class="row">
+            <div class="col-md-12" style="padding-top: 0px;">
+              <div class="sectiontitle">
+                <h2>Description</h2>
+                <span class="headerLine"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
             <div
               class="col-md-12"
               style="
@@ -51,51 +551,48 @@
           </div>
 
           <div class="row">
-            <div class="col-md-12" style="padding-top: 10px;">
+            <div class="col-md-12" style="padding-top: 5px;">
               <div class="sectiontitle">
-                <h2>Timeline</h2>
+                <h2>Submission</h2>
                 <span class="headerLine"></span>
               </div>
             </div>
           </div>
 
-          <div class="row" style="padding-top: 10px; padding-bottom: 0px;">
+          <div class="row">
             <div
-              class="col-md-6"
-              style="text-align: center; font-size: 30px; font-weight: bold;"
+              class="col-md-12"
+              style="
+                background-color: #def2f1;
+                padding: 10px;
+                text-align: center;
+              "
             >
-              {{
-                getDate(currentTeam.tm_start_date) +
-                  "-" +
-                  getMonth(currentTeam.tm_start_date) +
-                  "-" +
-                  getYear(currentTeam.tm_start_date)
-              }}
-            </div>
-            <div
-              class="col-md-6"
-              style="text-align: center; font-size: 30px; font-weight: bold;"
-            >
-              {{
-                getDate(currentTeam.tm_end_date) +
-                  "-" +
-                  getMonth(currentTeam.tm_end_date) +
-                  "-" +
-                  getYear(currentTeam.tm_end_date)
-              }}
-            </div>
-          </div>
+              <div class="row" *ngIf="comment_attached == true">
+                <div class="col-md-12">
+                  {{ currentTeam.tm_submitted_comment }}
+                </div>
+              </div>
 
-          <div class="row" style="padding-bottom: 10px;">
-            <div class="col-md-6" style="text-align: center;">Start date</div>
-            <div class="col-md-6" style="text-align: center;">End date</div>
+              <div class="row" *ngIf="comment_attached == false">
+                <div class="col-md-12">
+                  No comments attached.
+                </div>
+              </div>
+
+              <div class="row" *ngIf="file_attached == true">
+                <div class="col-md-12">
+                  <a href="{{ currentTeam.tm_submitted_filepath }}">Download</a>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" style="padding-top: 5px;">
               <div class="sectiontitle">
                 <h2>Team Lead</h2>
-                <span class="headerLine"></span>
+                <span style="margin: 0px;" class="headerLine"></span>
               </div>
             </div>
           </div>
@@ -163,6 +660,15 @@
       </div>
 
       <div class="modal-footer">
+        <button
+          style="background-color: #17252a !important; margin-right: 5px;"
+          type="button"
+          class="close-button"
+          (click)="generateReport()"
+        >
+          Report
+        </button>
+
         <button
           style="background-color: #17252a !important;"
           type="button"

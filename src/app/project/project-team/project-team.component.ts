@@ -77,6 +77,7 @@ export class ProjectTeamComponent implements OnInit {
   }
 
   completed(currentTeam) {
+    this.dataService.changeCurrentCompletedTeam(currentTeam);
     this.selectedTeam = currentTeam;
     var modal_obj: any = $("#completedTeam");
     modal_obj.modal("show");
