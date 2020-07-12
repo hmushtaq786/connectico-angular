@@ -1,0 +1,202 @@
+<!-- Central Modal Small -->
+<!-- <form [formGroup]="submitTaskForm" (ngSubmit)="submitTask()"> -->
+<div
+  class="modal fade"
+  id="inProgressProject"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div
+        class="modal-header"
+        style="background-color: #17252a; color: white;"
+      >
+        <h4 class="modal-title w-100" id="myModalLabel">
+          <a
+            ><i
+              style="padding-right: 10px !important;"
+              class="fas fa-info-circle"
+            >
+            </i></a
+          >{{ currentProject.p_name }}
+        </h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          style="color: white;"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12" style="padding-top: 0px;">
+              <div class="sectiontitle">
+                <h2>Description</h2>
+                <span class="headerLine"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div
+              class="col-md-12"
+              style="
+                background-color: #def2f1;
+                padding: 10px;
+                text-align: center;
+              "
+            >
+              {{ currentProject.p_description }}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12" style="padding-top: 5px;">
+              <div class="sectiontitle">
+                <h2>Timeline</h2>
+                <span class="headerLine"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px; padding-bottom: 0px;">
+            <div
+              class="col-md-6"
+              style="
+                text-align: center;
+                font-size: 30px;
+                font-weight: bold;
+                font-family: sans-serif;
+              "
+            >
+              {{
+                getDate(currentProject.p_start_date) +
+                  "-" +
+                  getMonth(currentProject.p_start_date) +
+                  "-" +
+                  getYear(currentProject.p_start_date)
+              }}
+            </div>
+            <div
+              class="col-md-6"
+              style="
+                text-align: center;
+                font-size: 30px;
+                font-weight: bold;
+                font-family: sans-serif;
+              "
+            >
+              {{
+                getDate(currentProject.p_end_date) +
+                  "-" +
+                  getMonth(currentProject.p_end_date) +
+                  "-" +
+                  getYear(currentProject.p_end_date)
+              }}
+            </div>
+          </div>
+
+          <div class="row" style="padding-bottom: 5px;">
+            <div class="col-md-6" style="text-align: center;">Start date</div>
+            <div class="col-md-6" style="text-align: center;">End date</div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="sectiontitle">
+                <h2>Project Manager</h2>
+                <span class="headerLine"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row member-tile">
+                <div
+                  style="
+                    text-align: center;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                  "
+                  class="col-md-2"
+                >
+                  <img
+                    id="avatar-img"
+                    style="width: 70px;"
+                    src="{{ project_manager.photo_address }}"
+                    alt="avatar mx-auto white"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="col-md-8" style="margin: auto;">
+                  <div class="row">
+                    <div
+                      style="
+                        font-family: sans-serif;
+                        font-size: 20px;
+                        margin-left: 0px;
+                        padding-left: 0px;
+                      "
+                      class="col-md-12"
+                    >
+                      {{
+                        project_manager.first_name +
+                          " " +
+                          project_manager.last_name
+                      }}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12" style="margin-left: 0px;">
+                      <a
+                        ><i class="fas fa-envelope"></i
+                        ><span
+                          style="margin-left: 5px; font-family: sans-serif;"
+                        >
+                          {{ project_manager.email }}
+                        </span></a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div style="text-align: center; margin: auto;" class="col-md-2">
+                  <button
+                    type="submit"
+                    class="message-button"
+                    value="{{ project_manager.id }}"
+                    (click)="navigateToMessages()"
+                  >
+                    Message
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          style="background-color: #17252a !important;"
+          type="button"
+          class="close-button"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </form> -->
+<!-- Central Modal Small -->

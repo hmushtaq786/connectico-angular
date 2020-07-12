@@ -13,6 +13,8 @@ export class WorkspaceProjectComponent implements OnInit {
   currentWorkspace;
 
   projects: any;
+  user;
+  selectedProject: any;
 
   constructor(
     private connectionService: ConnectionService,
@@ -51,5 +53,19 @@ export class WorkspaceProjectComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  inProgress(currentProject) {
+    this.dataService.changeCurrentInProgressProject(currentProject);
+    this.selectedProject = currentProject;
+    var modal_obj: any = $("#inProgressProject");
+    modal_obj.modal("show");
+  }
+
+  completed(currentProject) {
+    this.dataService.changeCurrentCompletedProject(currentProject);
+    this.selectedProject = currentProject;
+    var modal_obj: any = $("#completedProject");
+    modal_obj.modal("show");
   }
 }

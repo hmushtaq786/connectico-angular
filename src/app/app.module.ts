@@ -105,6 +105,8 @@ import { InProgressTeamComponent } from './project/modals/in-progress-team/in-pr
 import { CompletedTeamComponent } from './project/modals/completed-team/completed-team.component';
 import { TeamFinishComponent } from './team/team-finish/team-finish.component';
 import { ProjectFinishComponent } from './project/project-finish/project-finish.component';
+import { CompletedProjectComponent } from './workspace/modals/completed-project/completed-project.component';
+import { InProgressProjectComponent } from './workspace/modals/in-progress-project/in-progress-project.component';
 
 @NgModule({
   declarations: [
@@ -197,6 +199,8 @@ import { ProjectFinishComponent } from './project/project-finish/project-finish.
     CompletedTeamComponent,
     TeamFinishComponent,
     ProjectFinishComponent,
+    CompletedProjectComponent,
+    InProgressProjectComponent,
   ],
   imports: [
     BrowserAnimationsModule,

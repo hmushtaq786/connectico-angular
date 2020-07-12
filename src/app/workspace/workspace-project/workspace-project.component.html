@@ -1,3 +1,10 @@
+<app-in-progress-project
+  [currentProject]="selectedProject"
+></app-in-progress-project>
+<app-completed-project
+  [currentProject]="selectedProject"
+></app-completed-project>
+
 <div style="min-height: 84.5vh;">
   <div *ngIf="projects; else emptyProjects">
     <table
@@ -13,7 +20,7 @@
           <th class="th-sm">Project Manager</th>
           <th class="th-sm">Start Date</th>
           <th class="th-sm">End Date</th>
-          <th class="th-sm">Status</th>
+          <th class="th-sm">Check status</th>
         </tr>
       </thead>
       <tbody>
@@ -23,7 +30,27 @@
           <td>{{ project.manager_name }}</td>
           <td>{{ project.p_start_date }}</td>
           <td>{{ project.p_end_date }}</td>
-          <td>{{ project.p_status }}</td>
+          <td *ngIf="project.p_completed == false">
+            <a (click)="inProgress(project)"
+              >In progress<a
+                ><i
+                  style="padding-right: 10px !important;"
+                  class="fas fa-info-circle"
+                >
+                </i></a
+            ></a>
+          </td>
+          <td *ngIf="project.p_completed == true">
+            <a (click)="completed(project)"
+              >Completed
+              <a
+                ><i
+                  style="padding-right: 10px !important;"
+                  class="fas fa-info-circle"
+                >
+                </i></a
+            ></a>
+          </td>
         </tr>
       </tbody>
     </table>

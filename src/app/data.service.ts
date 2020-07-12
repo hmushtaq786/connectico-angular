@@ -32,7 +32,21 @@ export class DataService {
   private completedTeamSubject = new BehaviorSubject(0);
   currentCompletedTeam = this.completedTeamSubject.asObservable();
 
+  private inProgressProjectSubject = new BehaviorSubject(0);
+  currentinProgressProject = this.inProgressProjectSubject.asObservable();
+
+  private completedProjectSubject = new BehaviorSubject(0);
+  currentCompletedProject = this.completedProjectSubject.asObservable();
+
   constructor() {}
+
+  changeCurrentCompletedProject(project) {
+    this.completedProjectSubject.next(project);
+  }
+
+  changeCurrentInProgressProject(project) {
+    this.inProgressProjectSubject.next(project);
+  }
 
   changeCurrentCompletedTeam(team) {
     this.completedTeamSubject.next(team);
