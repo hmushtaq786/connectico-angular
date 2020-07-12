@@ -37,10 +37,17 @@ export class ProjectComponent implements OnInit {
           // + is for converting the string to int
           this.project = element;
           this.dataService.changeCurrentProject(this.project);
+
+          if (this.project.p_id__p_completed == true) {
+            var routerDiv = $("#routerDiv");
+            routerDiv.addClass("disabled");
+
+            var finishTab = $("#finishTab");
+            finishTab.addClass("disabled");
+          }
         }
       });
     });
-    console.log(this.project);
   }
 
   openFinishModal() {

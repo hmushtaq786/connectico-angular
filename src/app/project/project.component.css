@@ -46,3 +46,11 @@
   padding-bottom: 5px;
   margin: auto;
 }
+
+.locked {
+  /* height: 40px; */
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #ff3547;
+  text-align: center;
+}

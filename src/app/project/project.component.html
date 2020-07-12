@@ -1,4 +1,12 @@
+<app-project-finish [currentProject]="project"></app-project-finish>
 <app-navbar></app-navbar>
+
+<div class="row" *ngIf="project.p_id__p_completed == true">
+  <div class="col-md-12 locked">
+    <i class="fas fa-exclamation-triangle"></i>{{ " " }}This team is locked. No
+    further changes can be made.
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-2 left-column">
@@ -90,7 +98,7 @@
       </div>
     </div>
     <div class="row" style="background-color: #feffff; padding-right: 0px;">
-      <div class="col-md-12" style="padding: 0px;">
+      <div id="routerDiv" class="col-md-12" style="padding: 0px;">
         <router-outlet></router-outlet>
       </div>
     </div>

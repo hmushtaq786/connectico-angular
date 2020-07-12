@@ -104,6 +104,7 @@ import { WorkspaceSettingsComponent } from './workspace/workspace-settings/works
 import { InProgressTeamComponent } from './project/modals/in-progress-team/in-progress-team.component';
 import { CompletedTeamComponent } from './project/modals/completed-team/completed-team.component';
 import { TeamFinishComponent } from './team/team-finish/team-finish.component';
+import { ProjectFinishComponent } from './project/project-finish/project-finish.component';
 
 @NgModule({
   declarations: [
@@ -195,6 +196,7 @@ import { TeamFinishComponent } from './team/team-finish/team-finish.component';
     InProgressTeamComponent,
     CompletedTeamComponent,
     TeamFinishComponent,
+    ProjectFinishComponent,
   ],
   imports: [
     BrowserAnimationsModule,

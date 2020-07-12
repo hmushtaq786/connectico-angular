@@ -44,8 +44,6 @@ export class TeamComponent implements OnInit {
             var finishTab = $("#finishTab");
             finishTab.addClass("disabled");
           }
-
-          console.log(this.team);
         }
       });
     });
