@@ -37,7 +37,8 @@ interface FirstAuthCredentials {
   providedIn: "root",
 })
 export class ConnectionService {
-  baseUrl = "http://127.0.0.1:8000/";
+  // baseUrl = "http://127.0.0.1:8000/";
+  baseUrl = "https://connectico.el.r.appspot.com/";
   CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/connectico/image/upload";
   CLOUDINARY_URL_RAW = "https://api.cloudinary.com/v1_1/connectico/raw/upload";
   CLOUDINARY_UPLOAD_PRESET_USER = "v1zqrsgl";
@@ -484,6 +485,16 @@ export class ConnectionService {
     );
   }
 
+  // get project by project id
+  getProjectByPID(id) {
+    return this.httpClient.get(
+      `${this.baseUrl}register/organization/workspaces/projects/${"p" + id}/`,
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
   getTeamByPID(id) {
     return this.httpClient.get(
       `${this.baseUrl}register/organization/workspaces/teams/${"p" + id}/`,
@@ -568,7 +579,7 @@ export class ConnectionService {
     });
   }
 
-  getOrganization(id: string) {
+  getOrganization(id) {
     return this.httpClient.get(`${this.baseUrl}register/organizations/${id}/`, {
       headers: this.getHeaders(),
     });

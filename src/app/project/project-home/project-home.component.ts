@@ -103,6 +103,12 @@ export class ProjectHomeComponent implements OnInit {
                 team["totalTasks"] = 0;
                 team["pending"] = 0;
                 team["completed"] = 0;
+                counter(
+                  this.totalProjectMembers,
+                  this.totalCompletedTasks,
+                  this.totalRemainingTasks,
+                  this.totalTeams
+                );
               }
             );
           });

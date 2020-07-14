@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { DataService } from "src/app/data.service";
+import { ConnectionService } from "src/app/connection.service";
 
 @Component({
   selector: "app-completed-project",
@@ -13,19 +14,27 @@ export class CompletedProjectComponent implements OnInit {
   comment_attached = false;
   file_attached = false;
   org;
+  workspace_name = "<placeholder>";
   project_manager = {
     id: 0,
     photo_address: "",
+    phone_number: "",
     first_name: "",
     last_name: "",
     email: "",
   };
-  constructor(private router: Router, private dataService: DataService) {}
+  projectMembers = [];
+  totalProjectMembers = 0;
+  constructor(
+    private router: Router,
+    private dataService: DataService,
+    private connectionService: ConnectionService
+  ) {}
 
   ngOnInit() {
     this.dataService.currentCompletedProject.subscribe((data) => {
       this.currentProject = data;
-      console.log(this.currentProject);
+      // console.log(this.currentProject);
       if (this.currentProject.p_submitted_comment != undefined) {
         this.comment_attached = true;
       }
@@ -39,6 +48,39 @@ export class CompletedProjectComponent implements OnInit {
           this.project_manager = user;
         }
       }
+
+      let orgWorkspaces = JSON.parse(localStorage.getItem("org-workspaces"));
+
+      for (var workspace of orgWorkspaces) {
+        if (this.currentProject.workspace_id == workspace.w_id) {
+          this.workspace_name = workspace.w_name;
+        }
+      }
+
+      this.connectionService
+        .ProjectMembersData(this.currentProject.p_id)
+        .subscribe(
+          (ProjectMembersData: any) => {
+            // this.projectMembers = ProjectMembersData;
+
+            ProjectMembersData.forEach((member) => {
+              if (member.u_id__id != this.project_manager.id) {
+                this.projectMembers.push(member);
+              }
+            });
+            this.totalProjectMembers = this.projectMembers.length;
+
+            // this.projectMembers.forEach(member => {
+            //   if (member.u_id__id == this.project_manager.id) {
+            //     this.projectMembers
+            //   }
+            // });
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+
       this.org = JSON.parse(localStorage.getItem("org"));
     });
   }

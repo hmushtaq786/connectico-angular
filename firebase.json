@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "site": "connectico-fyp",
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

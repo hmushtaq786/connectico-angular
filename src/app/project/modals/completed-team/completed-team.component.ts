@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { DataService } from "src/app/data.service";
 import jsPDF from "jspdf";
+import { ConnectionService } from "src/app/connection.service";
 
 @Component({
   selector: "app-completed-team",
@@ -14,14 +15,24 @@ export class CompletedTeamComponent implements OnInit {
   comment_attached = false;
   file_attached = false;
   org;
+  project: string;
+  workspace: string;
   team_lead = {
     id: 0,
     photo_address: "",
+    phone_number: "",
     first_name: "",
     last_name: "",
     email: "",
   };
-  constructor(private router: Router, private dataService: DataService) {}
+  teamMembers = [];
+  totalTeamMembers = 0;
+
+  constructor(
+    private router: Router,
+    private dataService: DataService,
+    private connectionService: ConnectionService
+  ) {}
 
   ngOnInit() {
     this.dataService.currentCompletedTeam.subscribe((data) => {
@@ -39,6 +50,44 @@ export class CompletedTeamComponent implements OnInit {
           this.team_lead = user;
         }
       }
+
+      this.connectionService
+        .getProjectByPID(this.currentTeam.project_id)
+        .subscribe(
+          (getProjectByPIDResult: any) => {
+            console.log(getProjectByPIDResult);
+            this.project = getProjectByPIDResult[0].p_name;
+            let orgWorkspaces = JSON.parse(
+              localStorage.getItem("org-workspaces")
+            );
+            for (var workspace of orgWorkspaces) {
+              if (getProjectByPIDResult[0].workspace_id == workspace.w_id) {
+                this.workspace = workspace.w_name;
+              }
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+
+      this.connectionService
+        .getTotalTeams("t" + this.currentTeam.tm_id)
+        .subscribe(
+          (getTotalTeamsResult: any) => {
+            // console.log(getTotalTeamsResult);
+            getTotalTeamsResult.forEach((member) => {
+              if (member.u_id__id != this.team_lead.id) {
+                this.teamMembers.push(member);
+              }
+            });
+            this.totalTeamMembers = this.teamMembers.length;
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+
       this.org = JSON.parse(localStorage.getItem("org"));
     });
   }

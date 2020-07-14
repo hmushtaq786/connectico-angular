@@ -63,6 +63,7 @@ export class CreateProjectComponent implements OnInit {
         (membersOfWorkspaceResult: any) => {
           OuterLoop: for (var wcMember of membersOfWorkspaceResult) {
             if (wcMember.w_id == this.currentWorkspace.w_id) {
+              console.log("Working!");
               InnerLoop: for (var orgMember of this.orgMembers) {
                 if (wcMember.u_id == orgMember.id) {
                   this.workspaceMembers.push({
@@ -75,8 +76,7 @@ export class CreateProjectComponent implements OnInit {
               }
             }
           }
-
-          // console.log(this.workspaceMembers);
+          console.log(this.workspaceMembers);
         },
         (error) => {
           console.log(error);

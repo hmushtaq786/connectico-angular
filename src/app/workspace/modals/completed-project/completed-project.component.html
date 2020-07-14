@@ -1,72 +1,72 @@
 <!-- Central Modal Small -->
 <!-- <form [formGroup]="submitTaskForm" (ngSubmit)="submitTask()"> -->
 
-    <div id="templateDiv" style="display: none;">
-        <div class="container">
-          <div class="row" style="border: 1px solid lightgrey; padding: 20px;">
-            <!-- <div class="col-md-1"></div> -->
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-12" style="text-align: center;">
-                  <div class="avatar-div">
-                    <img
-                      id="avatar-img"
-                      style="
-                        width: 150px;
-                        height: 150px;
-                        border-width: 10px;
-                        border-radius: 100px;
-                        background-color: white;
-                        padding: 10px;
-                      "
-                      src="{{ org.photo_address }}"
-                      alt="avatar mx-auto white"
-                      class="img-fluid"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12" style="text-align: center;">
-                  <h2
-                    style="
-                      font-family: sans-serif;
-                      font-size: 16px;
-                      font-weight: bold;
-                    "
-                  >
-                    {{ org.name }}
-                  </h2>
-                </div>
-              </div>
-      
-              <div class="row">
-                <div class="col-sm-5">
-                  <h3 style="font-family: sans-serif; font-size: 15px;">
-                    Completion report for project:
-                  </h3>
-                </div>
-                <div
-                  class="col-sm-7"
-                  style="
-                    text-align: center;
-                    border-bottom: 1px solid gray;
-                    padding-bottom: 0px;
-                  "
-                >
-                  <h4
-                    style="
-                      font-family: sans-serif;
-                      font-size: 14px;
-                      font-weight: 300;
-                    "
-                  >
-                    {{ currentProject.p_name }}
-                  </h4>
-                </div>
-              </div>
-      
-              <!-- <div class="row">
+<div id="templateDiv" style="display: none;">
+  <div class="container">
+    <div class="row" style="border: 1px solid lightgrey; padding: 20px;">
+      <!-- <div class="col-md-1"></div> -->
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <div class="avatar-div">
+              <img
+                id="avatar-img"
+                style="
+                  width: 150px;
+                  height: 150px;
+                  border-width: 10px;
+                  border-radius: 100px;
+                  background-color: white;
+                  padding: 10px;
+                "
+                src="{{ org.photo_address }}"
+                alt="avatar mx-auto white"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <h2
+              style="
+                font-family: sans-serif;
+                font-size: 16px;
+                font-weight: bold;
+              "
+            >
+              {{ org.name }}
+            </h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-5">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Completion report for project:
+            </h3>
+          </div>
+          <div
+            class="col-sm-7"
+            style="
+              text-align: center;
+              border-bottom: 1px solid gray;
+              padding-bottom: 0px;
+            "
+          >
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              {{ currentProject.p_name }}
+            </h4>
+          </div>
+        </div>
+
+        <!-- <div class="row">
                   <div class="col-sm-5">
                     <h3>Team lead:</h3>
                   </div>
@@ -74,590 +74,545 @@
                     <h3>Hamza Mushtaq</h3>
                   </div>
                 </div> -->
-              <div class="row">
-                <div class="col-sm-5">
-                  <h3 style="font-family: sans-serif; font-size: 15px;">
-                    Workspace:
-                  </h3>
+        <div class="row">
+          <div class="col-sm-5">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Workspace:
+            </h3>
+          </div>
+          <div
+            class="col-sm-7"
+            style="
+              text-align: center;
+              border-bottom: 1px solid gray;
+              padding-bottom: 0px;
+            "
+          >
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              {{ workspace_name }}
+            </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12" style="padding-top: 20px;">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Description:
+            </h3>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-sm-12"
+            style="padding-top: 10px; text-align: justify;"
+          >
+            <p
+              style="
+                font-family: sans-serif;
+                font-weight: lighter;
+                font-size: 12px;
+              "
+            >
+              {{ currentProject.p_description }}
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12" style="padding-top: 20px;">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Participants:
+            </h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              Project Manager:
+            </h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10" style="border: 1px solid gray;">
+            <div class="row member-tile" style="">
+              <div
+                style="
+                  text-align: center;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                "
+                class="col-md-2"
+              >
+                <img
+                  id="avatar-img"
+                  style="width: 60px; border-radius: 100px;"
+                  src="{{ project_manager.photo_address }}"
+                  alt="avatar mx-auto white"
+                  class="img-fluid"
+                />
+              </div>
+              <div
+                class="col-md-4"
+                style="margin: auto; text-align: center; padding: 5px;"
+              >
+                <div class="row">
+                  <div
+                    style="font-family: sans-serif; font-size: 12px;"
+                    class="col-md-12"
+                  >
+                    {{
+                      project_manager.first_name +
+                        " " +
+                        project_manager.last_name
+                    }}
+                  </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-12" style="margin-left: 0px;">
+                    <a
+                      ><i class="fas fa-envelope"></i
+                      ><span
+                        style="
+                          margin-left: 5px;
+                          font-size: 11px;
+                          font-family: sans-serif;
+                        "
+                      >
+                        {{ project_manager.email }}
+                      </span></a
+                    >
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12" style="margin-left: 0px;">
+                    <a
+                      ><i class="fas fa-envelope"></i
+                      ><span
+                        style="
+                          margin-left: 5px;
+                          font-size: 11px;
+                          font-family: sans-serif;
+                        "
+                      >
+                        {{ project_manager.phone_number }}
+                      </span></a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6"></div>
+            </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              Members:
+            </h4>
+          </div>
+        </div>
+        <div *ngIf="totalProjectMembers != 0">
+          <div class="row" *ngFor="let member of projectMembers">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10" style="border: 1px solid gray;">
+              <div class="row member-tile" style="">
                 <div
-                  class="col-sm-7"
                   style="
                     text-align: center;
-                    border-bottom: 1px solid gray;
-                    padding-bottom: 0px;
-                  "
-                >
-                  <h4
-                    style="
-                      font-family: sans-serif;
-                      font-size: 14px;
-                      font-weight: 300;
-                    "
-                  >
-                    Islamabad HQ
-                  </h4>
-                </div>
-              </div>
-      
-              <div class="row">
-                <div class="col-sm-12" style="padding-top: 20px;">
-                  <h3 style="font-family: sans-serif; font-size: 15px;">
-                    Description:
-                  </h3>
-                </div>
-              </div>
-              <div class="row">
-                <div
-                  class="col-sm-12"
-                  style="padding-top: 10px; text-align: justify;"
-                >
-                  <p
-                    style="
-                      font-family: sans-serif;
-                      font-weight: lighter;
-                      font-size: 12px;
-                    "
-                  >
-                    {{ currentProject.p_description }}
-                  </p>
-                </div>
-              </div>
-      
-              <div class="row">
-                <div class="col-sm-12" style="padding-top: 20px;">
-                  <h3 style="font-family: sans-serif; font-size: 15px;">
-                    Participants:
-                  </h3>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <h4
-                    style="
-                      font-family: sans-serif;
-                      font-size: 14px;
-                      font-weight: 300;
-                    "
-                  >
-                    Project Manager:
-                  </h4>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10" style="border: 1px solid gray;">
-                  <div class="row member-tile" style="">
-                    <div
-                      style="
-                        text-align: center;
-                        padding-top: 5px;
-                        padding-bottom: 5px;
-                      "
-                      class="col-md-2"
-                    >
-                      <img
-                        id="avatar-img"
-                        style="width: 60px; border-radius: 100px;"
-                        src="https://res.cloudinary.com/connectico/image/upload/v1582964696/user_photos/wyi0az9h1d88r5ntkni8.jpg"
-                        alt="avatar mx-auto white"
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div
-                      class="col-md-4"
-                      style="margin: auto; text-align: center; padding: 5px;"
-                    >
-                      <div class="row">
-                        <div
-                          style="font-family: sans-serif; font-size: 12px;"
-                          class="col-md-12"
-                        >
-                          {{ currentProject.project_manager }}
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12" style="margin-left: 0px;">
-                          <a
-                            ><i class="fas fa-envelope"></i
-                            ><span
-                              style="
-                                margin-left: 5px;
-                                font-size: 11px;
-                                font-family: sans-serif;
-                              "
-                            >
-                              hm.khanzada786@gmail.com
-                            </span></a
-                          >
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12" style="margin-left: 0px;">
-                          <a
-                            ><i class="fas fa-envelope"></i
-                            ><span
-                              style="
-                                margin-left: 5px;
-                                font-size: 11px;
-                                font-family: sans-serif;
-                              "
-                            >
-                              03006857834
-                            </span></a
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6"></div>
-                  </div>
-                </div>
-                <div class="col-sm-1"></div>
-              </div>
-      
-              <div class="row">
-                <div class="col-sm-12">
-                  <h4
-                    style="
-                      font-family: sans-serif;
-                      font-size: 14px;
-                      font-weight: 300;
-                    "
-                  >
-                    Members:
-                  </h4>
-                </div>
-              </div>
-      
-              <div class="row">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10" style="border: 1px solid gray;">
-                  <div class="row member-tile" style="">
-                    <div
-                      style="
-                        text-align: center;
-                        padding-top: 5px;
-                        padding-bottom: 5px;
-                      "
-                      class="col-md-2"
-                    >
-                      <img
-                        id="avatar-img"
-                        style="width: 60px; border-radius: 100px;"
-                        src="https://res.cloudinary.com/connectico/image/upload/v1582964696/user_photos/wyi0az9h1d88r5ntkni8.jpg"
-                        alt="avatar mx-auto white"
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div
-                      class="col-md-4"
-                      style="margin: auto; text-align: center; padding: 5px;"
-                    >
-                      <div class="row">
-                        <div
-                          style="font-family: sans-serif; font-size: 12px;"
-                          class="col-md-12"
-                        >
-                          Asad Shah
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12" style="margin-left: 0px;">
-                          <a
-                            ><i class="fas fa-envelope"></i
-                            ><span
-                              style="
-                                margin-left: 5px;
-                                font-size: 11px;
-                                font-family: sans-serif;
-                              "
-                            >
-                              asad.shah@gmail.com
-                            </span></a
-                          >
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12" style="margin-left: 0px;">
-                          <a
-                            ><i class="fas fa-envelope"></i
-                            ><span
-                              style="
-                                margin-left: 5px;
-                                font-size: 11px;
-                                font-family: sans-serif;
-                              "
-                            >
-                              03006434434
-                            </span></a
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6"></div>
-                  </div>
-                </div>
-                <div class="col-sm-1"></div>
-              </div>
-      
-              <div class="row">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10" style="border: 1px solid gray;">
-                  <div class="row member-tile" style="">
-                    <div
-                      style="
-                        text-align: center;
-                        padding-top: 5px;
-                        padding-bottom: 5px;
-                      "
-                      class="col-md-2"
-                    >
-                      <img
-                        id="avatar-img"
-                        style="width: 60px; border-radius: 100px;"
-                        src="https://res.cloudinary.com/connectico/image/upload/v1582964696/user_photos/wyi0az9h1d88r5ntkni8.jpg"
-                        alt="avatar mx-auto white"
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div
-                      class="col-md-4"
-                      style="margin: auto; text-align: center; padding: 5px;"
-                    >
-                      <div class="row">
-                        <div
-                          style="font-family: sans-serif; font-size: 12px;"
-                          class="col-md-12"
-                        >
-                          Ahmed Ali
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12" style="margin-left: 0px;">
-                          <a
-                            ><i class="fas fa-envelope"></i
-                            ><span
-                              style="
-                                margin-left: 5px;
-                                font-size: 11px;
-                                font-family: sans-serif;
-                              "
-                            >
-                              hm.ahmed@gmail.com
-                            </span></a
-                          >
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12" style="margin-left: 0px;">
-                          <a
-                            ><i class="fas fa-envelope"></i
-                            ><span
-                              style="
-                                margin-left: 5px;
-                                font-size: 11px;
-                                font-family: sans-serif;
-                              "
-                            >
-                              03304385434
-                            </span></a
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6"></div>
-                  </div>
-                </div>
-                <div class="col-sm-1"></div>
-              </div>
-      
-              <div class="row">
-                <div class="col-sm-12" style="padding-top: 20px;">
-                  <h3 style="font-family: sans-serif; font-size: 15px;">
-                    Submission:
-                  </h3>
-                </div>
-              </div>
-      
-              <div class="row">
-                <div class="col-sm-12">
-                  <h4
-                    style="
-                      font-family: sans-serif;
-                      font-size: 14px;
-                      font-weight: 300;
-                    "
-                  >
-                    Comment:
-                  </h4>
-                </div>
-              </div>
-      
-              <div class="row">
-                <div
-                  class="col-sm-12"
-                  style="padding-top: 10px; text-align: justify;"
-                >
-                  <p
-                    style="
-                      font-family: sans-serif;
-                      font-weight: lighter;
-                      font-size: 12px;
-                    "
-                  >
-                    {{ currentProject.p_submitted_comment }}
-                  </p>
-                </div>
-              </div>
-      
-              <div class="row">
-                <div class="col-sm-12">
-                  <h4
-                    style="
-                      font-family: sans-serif;
-                      font-size: 14px;
-                      font-weight: 300;
-                    "
-                  >
-                    File:
-                  </h4>
-                </div>
-              </div>
-      
-              <div class="row">
-                <div
-                  class="col-sm-12"
-                  style="
-                    padding-top: 10px;
-                    text-align: justify;
-                    font-family: sans-serif;
-                    font-size: 12px;
-                  "
-                >
-                  Download project submission file from
-                  <a href="{{ currentProject.p_submitted_filepath }}">here</a>
-                </div>
-              </div>
-      
-              <div class="row">
-                <div class="col-sm-12" style="padding-top: 20px;">
-                  <h3 style="font-family: sans-serif; font-size: 15px;">
-                    Signature:
-                  </h3>
-                </div>
-              </div>
-      
-              <div class="row" style="padding-top: 40px;">
-                <div
-                  class="col-md-12"
-                  style="
-                    left: 20px;
-                    width: 200px;
-                    border-top: 1px solid gray;
                     padding-top: 5px;
-                    font-family: sans-serif;
-                    font-size: 14px;
+                    padding-bottom: 5px;
                   "
+                  class="col-md-2"
                 >
-                  Workspace Admin
+                  <img
+                    id="avatar-img"
+                    style="width: 60px; border-radius: 100px;"
+                    src="{{ member.u_id__photo_address }}"
+                    alt="avatar mx-auto white"
+                    class="img-fluid"
+                  />
                 </div>
-              </div>
-            </div>
-            <!-- <div class="col-md-1"></div> -->
-          </div>
-        </div>
-      </div>
-      
-      <div
-        class="modal fade"
-        id="completedProject"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="myModalLabel"
-        aria-hidden="true"
-      >
-        <!-- Change class .modal-sm to change the size of the modal -->
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div
-              class="modal-header"
-              style="background-color: #17252a; color: white;"
-            >
-              <h4 class="modal-title w-100" id="myModalLabel">
-                <a
-                  ><i
-                    style="padding-right: 10px !important;"
-                    class="fas fa-info-circle"
-                  >
-                  </i></a
-                >{{ currentProject.p_name }}
-              </h4>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-                style="color: white;"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-      
-            <div class="modal-body">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12" style="padding-top: 0px;">
-                    <div class="sectiontitle">
-                      <h2>Description</h2>
-                      <span class="headerLine"></span>
+                <div
+                  class="col-md-4"
+                  style="margin: auto; text-align: center; padding: 5px;"
+                >
+                  <div class="row">
+                    <div
+                      style="font-family: sans-serif; font-size: 12px;"
+                      class="col-md-12"
+                    >
+                      {{
+                        member.u_id__first_name + " " + member.u_id__last_name
+                      }}
                     </div>
                   </div>
-                </div>
-      
-                <div class="row">
-                  <div
-                    class="col-md-12"
-                    style="
-                      background-color: #def2f1;
-                      padding: 10px;
-                      text-align: center;
-                    "
-                  >
-                    {{ currentProject.p_description }}
-                  </div>
-                </div>
-      
-                <div class="row">
-                  <div class="col-md-12" style="padding-top: 5px;">
-                    <div class="sectiontitle">
-                      <h2>Submission</h2>
-                      <span class="headerLine"></span>
-                    </div>
-                  </div>
-                </div>
-      
-                <div class="row">
-                  <div
-                    class="col-md-12"
-                    style="
-                      background-color: #def2f1;
-                      padding: 10px;
-                      text-align: center;
-                    "
-                  >
-                    <div class="row" *ngIf="comment_attached == true">
-                      <div class="col-md-12">
-                        {{ currentProject.p_submitted_comment }}
-                      </div>
-                    </div>
-      
-                    <div class="row" *ngIf="comment_attached == false">
-                      <div class="col-md-12">
-                        No comments attached.
-                      </div>
-                    </div>
-      
-                    <div class="row" *ngIf="file_attached == true">
-                      <div class="col-md-12">
-                        <a href="{{ currentProject.p_submitted_filepath }}">Download</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-      
-                <div class="row">
-                  <div class="col-md-12" style="padding-top: 5px;">
-                    <div class="sectiontitle">
-                      <h2>Project Manager</h2>
-                      <span style="margin: 0px;" class="headerLine"></span>
-                    </div>
-                  </div>
-                </div>
-      
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="row member-tile">
-                      <div
-                        style="
-                          text-align: center;
-                          padding-top: 5px;
-                          padding-bottom: 5px;
-                        "
-                        class="col-md-2"
-                      >
-                        <img
-                          id="avatar-img"
-                          style="width: 70px;"
-                          src="{{ project_manager.photo_address }}"
-                          alt="avatar mx-auto white"
-                          class="img-fluid"
-                        />
-                      </div>
-                      <div class="col-md-8" style="margin: auto;">
-                        <div class="row">
-                          <div
-                            style="
-                              font-family: sans-serif;
-                              font-size: 20px;
-                              margin-left: 0px;
-                              padding-left: 0px;
-                            "
-                            class="col-md-12"
-                          >
-                            {{ project_manager.first_name + " " + project_manager.last_name }}
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-12" style="margin-left: 0px;">
-                            <a
-                              ><i class="fas fa-envelope"></i
-                              ><span
-                                style="margin-left: 5px; font-family: sans-serif;"
-                              >
-                                {{ project_manager.email }}
-                              </span></a
-                            >
-                          </div>
-                        </div>
-                      </div>
-                      <div style="text-align: center; margin: auto;" class="col-md-2">
-                        <button
-                          type="submit"
-                          class="message-button"
-                          value="{{ project_manager.id }}"
-                          (click)="navigateToMessages()"
+                  <div class="row">
+                    <div class="col-md-12" style="margin-left: 0px;">
+                      <a
+                        ><i class="fas fa-envelope"></i
+                        ><span
+                          style="
+                            margin-left: 5px;
+                            font-size: 11px;
+                            font-family: sans-serif;
+                          "
                         >
-                          Message
-                        </button>
-                      </div>
+                          {{ member.u_id__email }}
+                        </span></a
+                      >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12" style="margin-left: 0px;">
+                      <a
+                        ><i class="fas fa-envelope"></i
+                        ><span
+                          style="
+                            margin-left: 5px;
+                            font-size: 11px;
+                            font-family: sans-serif;
+                          "
+                        >
+                          {{ member.u_id__phone_number }}
+                        </span></a
+                      >
                     </div>
                   </div>
                 </div>
+                <div class="col-md-6"></div>
               </div>
             </div>
-      
-            <div class="modal-footer">
-              <button
-                style="background-color: #17252a !important; margin-right: 5px;"
-                type="button"
-                class="close-button"
-                (click)="generateReport()"
-              >
-                Report
-              </button>
-      
-              <button
-                style="background-color: #17252a !important;"
-                type="button"
-                class="close-button"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
+            <div class="col-sm-1"></div>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="totalProjectMembers == 0">
+          <div class="col-md-12">
+            <p
+              style="
+                font-family: sans-serif;
+                font-weight: lighter;
+                font-size: 12px;
+              "
+            >
+              No other members in the project.
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12" style="padding-top: 20px;">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Submission:
+            </h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              Comment:
+            </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div
+            class="col-sm-12"
+            style="padding-top: 10px; text-align: justify;"
+          >
+            <p
+              style="
+                font-family: sans-serif;
+                font-weight: lighter;
+                font-size: 12px;
+              "
+            >
+              {{ currentProject.p_submitted_comment }}
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4
+              style="
+                font-family: sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+              "
+            >
+              File:
+            </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div
+            class="col-sm-12"
+            style="
+              padding-top: 10px;
+              text-align: justify;
+              font-family: sans-serif;
+              font-size: 12px;
+            "
+          >
+            Download project submission file from
+            <a href="{{ currentProject.p_submitted_filepath }}">here</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12" style="padding-top: 20px;">
+            <h3 style="font-family: sans-serif; font-size: 15px;">
+              Signature:
+            </h3>
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 40px;">
+          <div
+            class="col-md-12"
+            style="
+              left: 20px;
+              width: 200px;
+              border-top: 1px solid gray;
+              padding-top: 5px;
+              font-family: sans-serif;
+              font-size: 14px;
+            "
+          >
+            Workspace Admin
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-1"></div> -->
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="completedProject"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div
+        class="modal-header"
+        style="background-color: #17252a; color: white;"
+      >
+        <h4 class="modal-title w-100" id="myModalLabel">
+          <a
+            ><i
+              style="padding-right: 10px !important;"
+              class="fas fa-info-circle"
+            >
+            </i></a
+          >{{ currentProject.p_name }}
+        </h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          style="color: white;"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12" style="padding-top: 0px;">
+              <div class="sectiontitle">
+                <h2>Description</h2>
+                <span class="headerLine"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div
+              class="col-md-12"
+              style="
+                background-color: #def2f1;
+                padding: 10px;
+                text-align: center;
+              "
+            >
+              {{ currentProject.p_description }}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12" style="padding-top: 5px;">
+              <div class="sectiontitle">
+                <h2>Submission</h2>
+                <span class="headerLine"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div
+              class="col-md-12"
+              style="
+                background-color: #def2f1;
+                padding: 10px;
+                text-align: center;
+              "
+            >
+              <div class="row" *ngIf="comment_attached == true">
+                <div class="col-md-12">
+                  {{ currentProject.p_submitted_comment }}
+                </div>
+              </div>
+
+              <div class="row" *ngIf="comment_attached == false">
+                <div class="col-md-12">
+                  No comments attached.
+                </div>
+              </div>
+
+              <div class="row" *ngIf="file_attached == true">
+                <div class="col-md-12">
+                  <a href="{{ currentProject.p_submitted_filepath }}"
+                    >Download</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12" style="padding-top: 5px;">
+              <div class="sectiontitle">
+                <h2>Project Manager</h2>
+                <span style="margin: 0px;" class="headerLine"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row member-tile">
+                <div
+                  style="
+                    text-align: center;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                  "
+                  class="col-md-2"
+                >
+                  <img
+                    id="avatar-img"
+                    style="width: 70px;"
+                    src="{{ project_manager.photo_address }}"
+                    alt="avatar mx-auto white"
+                    class="img-fluid"
+                  />
+                </div>
+                <div class="col-md-8" style="margin: auto;">
+                  <div class="row">
+                    <div
+                      style="
+                        font-family: sans-serif;
+                        font-size: 20px;
+                        margin-left: 0px;
+                        padding-left: 0px;
+                      "
+                      class="col-md-12"
+                    >
+                      {{
+                        project_manager.first_name +
+                          " " +
+                          project_manager.last_name
+                      }}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12" style="margin-left: 0px;">
+                      <a
+                        ><i class="fas fa-envelope"></i
+                        ><span
+                          style="margin-left: 5px; font-family: sans-serif;"
+                        >
+                          {{ project_manager.email }}
+                        </span></a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div style="text-align: center; margin: auto;" class="col-md-2">
+                  <button
+                    type="submit"
+                    class="message-button"
+                    value="{{ project_manager.id }}"
+                    (click)="navigateToMessages()"
+                  >
+                    Message
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- </form> -->
-      <!-- Central Modal Small -->
-      
+
+      <div class="modal-footer">
+        <button
+          style="background-color: #17252a !important; margin-right: 5px;"
+          type="button"
+          class="close-button"
+          (click)="generateReport()"
+        >
+          Report
+        </button>
+
+        <button
+          style="background-color: #17252a !important;"
+          type="button"
+          class="close-button"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </form> -->
+<!-- Central Modal Small -->

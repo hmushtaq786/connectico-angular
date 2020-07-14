@@ -60,6 +60,7 @@ export class TeamHomeComponent implements OnInit {
               },
               (error) => {
                 console.log(error);
+                this.counter();
               }
             );
         },

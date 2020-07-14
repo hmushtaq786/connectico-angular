@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ConnectionService } from "src/app/connection.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-show-members",
@@ -12,7 +13,10 @@ export class ShowMembersComponent implements OnInit {
   orgMembers: any;
   workspaceMembers: any;
 
-  constructor(private connectionService: ConnectionService) {}
+  constructor(
+    private connectionService: ConnectionService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.orgMembers = JSON.parse(localStorage.getItem("org-members"));
@@ -31,5 +35,9 @@ export class ShowMembersComponent implements OnInit {
         }
       );
   }
-  sendMessage() {}
+  navigateToMessages() {
+    var membersModal: any = $("#totalMembers");
+    membersModal.modal("hide");
+    this.router.navigate(["messages/"]);
+  }
 }

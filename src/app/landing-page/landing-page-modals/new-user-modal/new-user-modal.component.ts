@@ -11,10 +11,15 @@ declare const errorModal: any;
 @Component({
   selector: "app-new-user-modal",
   templateUrl: "./new-user-modal.component.html",
-  styleUrls: ["./new-user-modal.component.css"]
+  styleUrls: ["./new-user-modal.component.css"],
 })
 export class NewUserModalComponent implements OnInit {
-  temp_auth: any;
+  temp_auth = {
+    id: 0,
+    email: "",
+    organization_id: 0,
+    password: "",
+  };
 
   fixed_email = "";
 
@@ -26,7 +31,7 @@ export class NewUserModalComponent implements OnInit {
     status_line: new FormControl(),
     email: new FormControl(),
     phone_number: new FormControl(),
-    photo_address: new FormControl()
+    photo_address: new FormControl(),
   });
 
   user = {
@@ -37,7 +42,7 @@ export class NewUserModalComponent implements OnInit {
     status_line: "",
     email: "",
     phone_number: "",
-    photo_address: ""
+    photo_address: "",
   };
 
   constructor(
@@ -48,29 +53,31 @@ export class NewUserModalComponent implements OnInit {
 
   ngOnInit() {
     this.buttonLoader();
-    this.temp_auth = JSON.parse(localStorage.getItem("temp-auth"));
-    if (this.temp_auth) {
-      this.fixed_email = this.temp_auth.email;
-    }
   }
 
-  userFileSelected = event => {
+  userFileSelected = (event) => {
     this.user.photo_address = event.target.files[0];
   };
 
   newUserRegister() {
+    this.temp_auth = JSON.parse(localStorage.getItem("temp-auth"));
+    if (this.temp_auth != null) {
+      this.fixed_email = this.temp_auth.email;
+    }
     this.user.username = this.newUserForm.get("username").value;
     this.user.password = this.newUserForm.get("password").value;
     this.user.first_name = this.newUserForm.get("first_name").value;
     this.user.last_name = this.newUserForm.get("last_name").value;
     this.user.status_line = this.newUserForm.get("status_line").value;
-    this.user.email = this.newUserForm.get("email").value;
+    this.user.email = this.fixed_email;
     this.user.phone_number = this.newUserForm.get("phone_number").value;
 
     this.connectionService.uploadUserPhoto(this.user.photo_address).subscribe(
       (userPhotoResult: any) => {
         this.user.photo_address = userPhotoResult.secure_url;
+        console.log(this.temp_auth);
         this.user["organization_id"] = this.temp_auth.organization_id;
+
         this.user["org_creator"] = false;
         console.log(this.user);
         this.connectionService.registerUser(this.user).subscribe(
@@ -85,7 +92,7 @@ export class NewUserModalComponent implements OnInit {
                       localStorage.setItem("org", JSON.stringify(getOrgResult));
                       var loginData = {
                         username: getUserResult.username,
-                        password: this.user.password
+                        password: this.user.password,
                       };
                       this.connectionService.loginUser(loginData).subscribe(
                         (loginUserResult: any) => {
@@ -101,39 +108,39 @@ export class NewUserModalComponent implements OnInit {
                                 hideNewUserModal();
                                 this.router.navigate(["profile"]);
                               },
-                              error => {
+                              (error) => {
                                 console.log(error);
                               }
                             );
                         },
-                        error => {
+                        (error) => {
                           console.log(error);
                         }
                       );
                     },
-                    error => {
+                    (error) => {
                       console.log(error);
                     }
                   );
               },
-              error => {
+              (error) => {
                 console.log(error);
               }
             );
           },
-          error => {
+          (error) => {
             console.log(error);
           }
         );
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
   }
 
   buttonLoader() {
-    $("#continueBtn").click(function() {
+    $("#continueBtn").click(function () {
       $("#continueBtn")
         .html(
           'Continue <span class="spinner-border spinner-border-sm mr-2" style="padding-left=10px" role="status" aria-hidden="true"></span>'
