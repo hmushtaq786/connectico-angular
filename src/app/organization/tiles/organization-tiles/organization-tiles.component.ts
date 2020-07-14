@@ -23,40 +23,22 @@ export class OrganizationTilesComponent implements OnInit {
 
   ngOnInit() {
     this.org = JSON.parse(localStorage.getItem("org"));
-    this.connectionService.getTotalMembers(this.org.id).subscribe(
-      (getTotalMembersResult: any) => {
-        localStorage.setItem(
-          "org-members",
-          JSON.stringify(getTotalMembersResult)
-        );
-        this.totalMembers = getTotalMembersResult.length;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-    this.connectionService.getTotalWorkspaces(this.org.id).subscribe(
-      (getTotalWorkspacesResult: any) => {
-        if (!getTotalWorkspacesResult) {
-          this.totalWorkspaces = 0;
-        } else {
-          localStorage.setItem(
-            "org-workspaces",
-            JSON.stringify(getTotalWorkspacesResult)
-          );
-          this.totalWorkspaces = getTotalWorkspacesResult.length;
-        }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+
+    let orgMembers = JSON.parse(localStorage.getItem("org-members"));
+    this.totalMembers = orgMembers.length;
+
+    let orgWorspaces = JSON.parse(localStorage.getItem("org-workspaces"));
+    if (!orgWorspaces) {
+      this.totalWorkspaces = 0;
+    } else {
+      this.totalWorkspaces = orgWorspaces.length;
+    }
+
     this.connectionService.getTotalProjects("o" + this.org.id).subscribe(
       (getTotalProjectsResult: any) => {
         if (!getTotalProjectsResult) {
           this.totalProjects = 0;
         } else {
-          console.log(getTotalProjectsResult);
           this.totalProjects = getTotalProjectsResult.length;
         }
       },
@@ -67,7 +49,6 @@ export class OrganizationTilesComponent implements OnInit {
     );
     this.connectionService.getTotalTeams("o" + this.org.id).subscribe(
       (getTotalTeamsResult: any) => {
-        console.log(getTotalTeamsResult);
         this.totalTeams = getTotalTeamsResult.length;
       },
       (error) => {

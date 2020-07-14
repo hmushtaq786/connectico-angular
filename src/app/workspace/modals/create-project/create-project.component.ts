@@ -37,10 +37,16 @@ export class CreateProjectComponent implements OnInit {
     created_by: "",
   };
 
+  data = {
+    u_id: "",
+    p_id: "",
+    r_id: 2, //by default Workspace User = 2
+  };
+
   constructor(
     private connectionService: ConnectionService,
     private router: Router,
-    private data: DataService
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
@@ -103,19 +109,32 @@ export class CreateProjectComponent implements OnInit {
 
     this.connectionService.createProject(this.project).subscribe(
       (createProjectResult: any) => {
-        // console.log(createProjectResult);
-        this.data.changeErrorModalMessage("New project created successfully.");
-        var createModal: any = $("#createProject");
-        $("#projectCreateBtn").html("Create").removeClass("disabled");
-        createModal.modal("hide");
-        errorModal();
-        $("#errorModal").on("hidden.bs.modal", () => {
-          this.router
-            .navigateByUrl("/loading", { skipLocationChange: true })
-            .then(() => {
-              this.router.navigate(["workspace/" + this.currentWorkspace.w_id]);
+        this.data.u_id = user.id;
+        this.data.p_id = createProjectResult.p_id;
+
+        this.connectionService.addMemberProject(this.data).subscribe(
+          (addMemberProjectResult: any) => {
+            this.dataService.changeErrorModalMessage(
+              "New project created successfully."
+            );
+            var createModal: any = $("#createProject");
+            $("#projectCreateBtn").html("Create").removeClass("disabled");
+            createModal.modal("hide");
+            errorModal();
+            $("#errorModal").on("hidden.bs.modal", () => {
+              this.router
+                .navigateByUrl("/loading", { skipLocationChange: true })
+                .then(() => {
+                  this.router.navigate([
+                    "workspace/" + this.currentWorkspace.w_id,
+                  ]);
+                });
             });
-        });
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
       },
       (error) => {
         console.log(error);

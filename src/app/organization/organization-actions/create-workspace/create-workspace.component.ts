@@ -27,6 +27,13 @@ export class CreateWorkspaceComponent implements OnInit {
     created_by: "",
     w_manager_id: 0,
   };
+
+  data = {
+    u_id: "",
+    w_id: "",
+    r_id: 2, //by default Workspace User = 2
+  };
+
   orgMembers: any;
 
   constructor(
@@ -63,20 +70,29 @@ export class CreateWorkspaceComponent implements OnInit {
 
     this.connectionService.createWorkspace(this.workspace).subscribe(
       (createWorkspaceResult: any) => {
-        console.log(createWorkspaceResult);
-        this.modalMessage = "New workspace created successfully!";
-        $("#createBtn").html("Create").removeClass("disabled");
-        var error: any = $("#errorModal");
-        errorModal();
-        // $("#errorModal").on("hidden.bs.modal", this.reloadPage);
-        $("#errorModal").on("hidden.bs.modal", () => {
-          this.router
-            .navigateByUrl("/loading", { skipLocationChange: true })
-            .then(() => {
-              errorModal();
-              this.router.navigate(["organization"]);
+        this.data.u_id = createWorkspaceResult.w_manager_id;
+        this.data.w_id = createWorkspaceResult.w_id;
+
+        this.connectionService.addMemberWorkspace(this.data).subscribe(
+          (addMemberWorkspaceResult: any) => {
+            this.modalMessage = "New workspace created successfully!";
+            $("#createBtn").html("Create").removeClass("disabled");
+            var error: any = $("#errorModal");
+            errorModal();
+            // $("#errorModal").on("hidden.bs.modal", this.reloadPage);
+            $("#errorModal").on("hidden.bs.modal", () => {
+              this.router
+                .navigateByUrl("/loading", { skipLocationChange: true })
+                .then(() => {
+                  this.router.navigate(["organization"]);
+                });
             });
-        });
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+
         // this.router
         //   .navigateByUrl("/loading", { skipLocationChange: true })
         //   .then(() => {

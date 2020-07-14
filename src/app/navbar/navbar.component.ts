@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+// import { CookieService } from "ngx-cookie-service";
 import { CookieService } from "ngx-cookie-service";
 import { ConnectionService } from "../connection.service";
 import Pusher from "pusher-js";
@@ -99,11 +100,37 @@ export class NavbarComponent implements OnInit {
         console.log(error);
       }
     );
+
+    //////SET LocalStorage ///////////////////////
+    this.connectionService.getTotalWorkspaces(this.org.id).subscribe(
+      (getTotalWorkspacesResult: any) => {
+        localStorage.setItem(
+          "org-workspaces",
+          JSON.stringify(getTotalWorkspacesResult)
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    this.connectionService.getTotalMembers(this.org.id).subscribe(
+      (getTotalMembersResult: any) => {
+        localStorage.setItem(
+          "org-members",
+          JSON.stringify(getTotalMembersResult)
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   logout() {
+    this.cookieService.deleteAll();
     localStorage.clear();
-    this.cookieService.delete("auth-token");
+    // this.cookieService.delete("auth-token");
     this.router.navigate(["/"]);
   }
 

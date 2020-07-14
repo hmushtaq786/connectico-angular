@@ -34,10 +34,16 @@ export class CreateTeamComponent implements OnInit {
     created_by: "",
   };
 
+  data = {
+    u_id: "",
+    t_id: "",
+    r_id: 2, //by default Workspace User = 2
+  };
+
   constructor(
     private connectionService: ConnectionService,
     private router: Router,
-    private data: DataService
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
@@ -81,21 +87,32 @@ export class CreateTeamComponent implements OnInit {
 
     this.connectionService.createTeam(this.team).subscribe(
       (createTeamResult: any) => {
-        console.log(createTeamResult);
-        this.data.changeErrorModalMessage("New team created successfully.");
-        var createModal: any = $("#createTeam");
-        $("#teamCreateBtn").html("Create").removeClass("disabled");
-        createModal.modal("hide");
-        errorModal();
-        $("#errorModal").on("hidden.bs.modal", () => {
-          this.router
-            .navigateByUrl("/loading", { skipLocationChange: true })
-            .then(() => {
-              this.router.navigate([
-                "project/" + this.currentProject.p_id__p_id,
-              ]);
+        this.data.u_id = user.id;
+        this.data.t_id = createTeamResult.tm_id;
+
+        this.connectionService.addMemberTeam(this.data).subscribe(
+          (addMemberTeamResult: any) => {
+            this.dataService.changeErrorModalMessage(
+              "New team created successfully."
+            );
+            var createModal: any = $("#createTeam");
+            $("#teamCreateBtn").html("Create").removeClass("disabled");
+            createModal.modal("hide");
+            errorModal();
+            $("#errorModal").on("hidden.bs.modal", () => {
+              this.router
+                .navigateByUrl("/loading", { skipLocationChange: true })
+                .then(() => {
+                  this.router.navigate([
+                    "project/" + this.currentProject.p_id__p_id,
+                  ]);
+                });
             });
-        });
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
       },
       (error) => {
         console.log(error);
