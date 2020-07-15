@@ -93,6 +93,7 @@ export class WorkspaceHomeComponent implements OnInit {
                             },
                             (error) => {
                               console.log(error);
+                              this.counter();
                             }
                           );
                       });
@@ -100,18 +101,21 @@ export class WorkspaceHomeComponent implements OnInit {
                     },
                     (error) => {
                       console.log(error);
+                      this.counter();
                     }
                   );
                 });
               },
               (error) => {
                 console.log(error);
+                this.counter();
               }
             );
           // this.counter(this.totalWorkspaceMembers);
         },
         (error) => {
           console.log(error);
+          this.counter();
         }
       );
 
