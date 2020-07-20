@@ -24,9 +24,11 @@
       >
         <option value="" disabled selected>Select member</option>
         <ng-container *ngFor="let member of orgMembers">
-          <option *ngIf="member['isAdded'] == false" value="{{ member.id }}">{{
-            member.first_name + " " + member.last_name
-          }}</option>
+          <option
+            *ngIf="member['isAdded'] == false && member.id != user.id"
+            value="{{ member.id }}"
+            >{{ member.first_name + " " + member.last_name }}</option
+          >
         </ng-container>
       </select>
       <!-- <input style="width: 100%;" type="text" /> -->

@@ -54,6 +54,20 @@ export class TeamComponent implements OnInit {
     modal_obj.modal("show");
   }
 
+  leftbar_click(event) {
+    if (event.target.innerText === "Home") {
+      this.page = "Home";
+    } else if (event.target.innerText === "Feed") {
+      this.page = "Feed";
+    } else if (event.target.innerText === "Tasks") {
+      this.page = "Projects";
+    } else if (event.target.innerText === "Events") {
+      this.page = "Events";
+    } else if (event.target.innerText === "Files") {
+      this.page = "Files";
+    }
+  }
+
   // fold() {
   //   $(".left-column").toggleClass("col-md-1");
   //   $(".left-column").toggleClass("col-md-2");

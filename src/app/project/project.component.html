@@ -3,8 +3,8 @@
 
 <div class="row" *ngIf="project.p_id__p_completed == true">
   <div class="col-md-12 locked">
-    <i class="fas fa-exclamation-triangle"></i>{{ " " }}This team is locked. No
-    further changes can be made.
+    <i class="fas fa-exclamation-triangle"></i>{{ " " }}This project is locked.
+    No further changes can be made.
   </div>
 </div>
 
@@ -14,6 +14,7 @@
       <div class="col-md-12">
         <div
           class="row heading-column"
+          (click)="leftbar_click($event)"
           [routerLink]="['/project', project.p_id__p_id]"
         >
           <a style="margin-right: 5px;"><i class="fas fa-home"></i></a>Home
@@ -23,7 +24,11 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" [routerLink]="['feed']">
+        <div
+          class="row heading-column"
+          (click)="leftbar_click($event)"
+          [routerLink]="['feed']"
+        >
           <a style="margin-right: 5px;"><i class="fas fa-newspaper"></i></a>Feed
         </div>
       </div>
@@ -31,7 +36,11 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" [routerLink]="['teams']">
+        <div
+          class="row heading-column"
+          (click)="leftbar_click($event)"
+          [routerLink]="['teams']"
+        >
           <a style="margin-right: 5px;"><i class="fas fa-users-class"></i></a
           >Teams
         </div>
@@ -40,7 +49,11 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" [routerLink]="['events']">
+        <div
+          class="row heading-column"
+          (click)="leftbar_click($event)"
+          [routerLink]="['events']"
+        >
           <a style="margin-right: 5px;"><i class="fas fa-calendar-star"></i></a
           >Events
         </div>
@@ -49,7 +62,11 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" [routerLink]="['files']">
+        <div
+          class="row heading-column"
+          (click)="leftbar_click($event)"
+          [routerLink]="['files']"
+        >
           <a style="margin-right: 5px;"><i class="fas fa-file-signature"></i></a
           >Files
         </div>
@@ -85,16 +102,16 @@
   <div class="col-md-9 right-column">
     <div class="row">
       <div class="col-md-12 header">
-        <h3 style="font-family: sans-serif; padding: 5px; margin: auto;">
+        <h4 style="font-family: sans-serif; padding: 5px; margin: auto;">
           {{ project.p_id__workspace_id__w_name + " " }}
-          <span style="font-weight: normal; font-size: 25px;"
+          <span style="font-family: sans-serif; padding: 5px; margin: auto;"
             ><i class="fas fa-caret-right"></i
             >{{ " " + project.p_id__p_name + " " }}</span
           >
-          <span style="font-weight: normal; font-size: 25px;"
+          <span style="font-family: sans-serif; padding: 5px; margin: auto;"
             ><i class="fas fa-caret-right"></i>{{ " " + page }}</span
           >
-        </h3>
+        </h4>
       </div>
     </div>
     <div class="row" style="background-color: #feffff; padding-right: 0px;">

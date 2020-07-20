@@ -30,17 +30,17 @@
             <div class="row">
               <div class="col-md-3">
                 <a><i class="fas fa-users" title="Total members"></i></a>
-                302
+                {{ totalMembers }}
               </div>
               <div style="text-align: center;" class="col-md-3">
                 <a
                   ><i class="fas fa-network-wired" title="Total workspaces"></i
                 ></a>
-                11
+                {{ totalWorkspaces }}
               </div>
               <div style="text-align: center;" class="col-md-3">
                 <a><i class="fas fa-tasks" title="Total projects"></i></a>
-                51
+                {{ totalProjects }}
               </div>
               <div class="col-md-3"></div>
             </div>
@@ -52,9 +52,7 @@
                 <a
                   ><i class="fas fa-globe"></i
                   ><span style="margin-left: 5px;"
-                    ><a href="{{ org.website }}" target="_blank">{{
-                      org.website
-                    }}</a></span
+                    ><a href="{{ org.website }}">{{ org.website }}</a></span
                   ></a
                 >
               </div>

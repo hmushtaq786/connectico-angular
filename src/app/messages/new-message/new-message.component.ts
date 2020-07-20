@@ -50,6 +50,10 @@ export class NewMessageComponent implements OnInit {
     this.orgMembers = JSON.parse(localStorage.getItem("org-members"));
     this.user = JSON.parse(localStorage.getItem("user"));
 
+    this.orgMembers.forEach((member) => {
+      member["isAdded"] = false;
+    });
+
     $(document).ready(function () {
       var comp: any = $(".mdb-select");
       comp.materialSelect();

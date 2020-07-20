@@ -115,6 +115,12 @@ export class ProjectHomeComponent implements OnInit {
         },
         (error) => {
           console.log(error);
+          counter(
+            this.totalProjectMembers,
+            this.totalCompletedTasks,
+            this.totalRemainingTasks,
+            this.totalTeams
+          );
         }
       );
 

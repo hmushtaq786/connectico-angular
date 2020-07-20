@@ -6,6 +6,7 @@
       <div class="col-md-12">
         <div
           class="row heading-column"
+          (click)="leftbar_click($event)"
           [routerLink]="['/workspace', workspace.w_id]"
         >
           <a style="margin-right: 5px;"><i class="fas fa-home"></i></a>Home
@@ -15,7 +16,11 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" [routerLink]="['feed']">
+        <div
+          class="row heading-column"
+          (click)="leftbar_click($event)"
+          [routerLink]="['feed']"
+        >
           <a style="margin-right: 5px;"><i class="fas fa-newspaper"></i></a>Feed
         </div>
       </div>
@@ -23,7 +28,11 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" [routerLink]="['projects']">
+        <div
+          class="row heading-column"
+          (click)="leftbar_click($event)"
+          [routerLink]="['projects']"
+        >
           <a style="margin-right: 5px;"><i class="fas fa-folder"></i></a
           >Projects
         </div>
@@ -32,7 +41,11 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" [routerLink]="['events']">
+        <div
+          class="row heading-column"
+          (click)="leftbar_click($event)"
+          [routerLink]="['events']"
+        >
           <a style="margin-right: 5px;"><i class="fas fa-calendar-star"></i></a
           >Events
         </div>
@@ -41,7 +54,11 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" [routerLink]="['files']">
+        <div
+          class="row heading-column"
+          (click)="leftbar_click($event)"
+          [routerLink]="['files']"
+        >
           <a style="margin-right: 5px;"><i class="fas fa-file-signature"></i></a
           >Files
         </div>
@@ -50,7 +67,11 @@
 
     <div class="row">
       <div class="col-md-12">
-        <div class="row heading-column" [routerLink]="['settings']">
+        <div
+          class="row heading-column"
+          (click)="leftbar_click($event)"
+          [routerLink]="['settings']"
+        >
           <a style="margin-right: 5px;"><i class="fas fa-cog"></i></a>Settings
         </div>
       </div>
@@ -60,12 +81,12 @@
   <div class="col-md-9 right-column">
     <div class="row">
       <div class="col-md-12 header">
-        <h3 style="font-family: sans-serif; padding: 5px; margin: auto;">
+        <h4 style="font-family: sans-serif; padding: 5px; margin: auto;">
           {{ workspace.w_name }}
-          <span style="font-weight: normal; font-size: 25px;"
+          <span style="font-family: sans-serif; padding: 5px; margin: auto;"
             ><i class="fas fa-caret-right"></i>{{ " " + page }}</span
           >
-        </h3>
+        </h4>
       </div>
     </div>
     <div class="row" style="background-color: #feffff; padding-right: 0px;">

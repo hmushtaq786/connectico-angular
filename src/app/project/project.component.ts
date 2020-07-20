@@ -50,6 +50,20 @@ export class ProjectComponent implements OnInit {
     });
   }
 
+  leftbar_click(event) {
+    if (event.target.innerText === "Home") {
+      this.page = "Home";
+    } else if (event.target.innerText === "Feed") {
+      this.page = "Feed";
+    } else if (event.target.innerText === "Teams") {
+      this.page = "Projects";
+    } else if (event.target.innerText === "Events") {
+      this.page = "Events";
+    } else if (event.target.innerText === "Files") {
+      this.page = "Files";
+    }
+  }
+
   openFinishModal() {
     var modal_obj: any = $("#finishProject");
     modal_obj.modal("show");
