@@ -3,6 +3,12 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 Connectico is a project management and inter-organization social media application using Django and Angular. This repository is for the angular part of that application.
 
+## How to compile
+
+1. Once the api server is started, go to angular-updated folder and type npm install to download the required node_modules.
+2. Once downloaded, type ng serve to start the localhost at 127.0.0.1:4200
+3. For deployment, build the project using ng build.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
