@@ -24,7 +24,7 @@
     "@cloudinary/angular-5.x": "^1.1.0",
     "@swimlane/ngx-charts": "^14.0.0",
     "angular-google-charts": "^0.1.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "jquery": "^3.5.1",
     "jspdf": "^1.5.3",
     "ng2-file-upload": "^1.4.0",
